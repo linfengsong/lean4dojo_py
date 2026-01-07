@@ -16,12 +16,8 @@ from contextlib import contextmanager
 from subprocess import CalledProcessError
 from typing import Union, Optional, List, Generator
 
-from .cache import cache
-from .lean import LeanRepo
 from ..constants import NUM_PROCS
-from .traced_data import TracedRepo
-from ..utils import working_directory, execute, is_git_repo
-from .lean_git import LeanGitRepo
+from ..utils import working_directory, execute
 
 
 LEAN4_DATA_EXTRACTOR_PATH = Path(__file__).with_name("ExtractData.lean")
@@ -120,18 +116,8 @@ def check_files(packages_path: Path, no_deps: bool) -> None:
         for p in missing_jsons.union(missing_deps):
             logger.warning(f"Missing {p}")
 
-
-def _trace(repo: LeanRepo, build_deps: bool) -> None:
-    assert (
-        repo.exists()
-    ), f"The {repo} does not exist. Please check the URL `{repo.commit_url}`."
-
-    # Trace `repo` in the current working directory.
-    assert not repo.is_lean4, "Cannot trace Lean 4 itself."
-    repo.clone_and_checkout()
-    logger.debug(f"Tracing {repo}")
-
-    with working_directory(repo.name):
+def build_trace(path: Optional[Union[str, Path]], build_deps: bool) -> None:
+    with working_directory(path):
         # Build the repo using lake.
         if not build_deps:
             try:
@@ -167,7 +153,7 @@ def _trace(repo: LeanRepo, build_deps: bool) -> None:
         # Copy Lean4Repl.lean into the repo and build it.
         if os.path.exists(LEAN4_REPL_PATH.name):
             logger.warning(
-                f"{repo} contains {LEAN4_REPL_PATH.name}. You may run into issues when interacting with this repo."
+                f"{path} contains {LEAN4_REPL_PATH.name}. You may run into issues when interacting with this repo."
             )
         shutil.copyfile(LEAN4_REPL_PATH, LEAN4_REPL_PATH.name)
 
@@ -186,69 +172,3 @@ def _trace(repo: LeanRepo, build_deps: bool) -> None:
                 f"Failed to build Lean4Repl. You may run into issues when interacting with the repo."
             )
 
-
-def is_available_in_cache(repo: LeanRepo) -> bool:
-    """Check if ``repo`` has a traced repo available in the cache (including the remote cache)."""
-    return repo.is_available_in_cache()
-
-
-def get_traced_repo_path(repo: LeanRepo, build_deps: bool = True) -> Path:
-    """Return the path of a traced repo in the cache.
-
-    The function will trace a repo if it is not available in the cache. See :ref:`caching` for details.
-
-    Args:
-        repo (LeanGitRepo): The Lean repo to trace.
-        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
-
-    Returns:
-        Path: The path of the traced repo in the cache, e.g. :file:`/home/kaiyu/.cache/lean_dojo/leanprover-community-mathlib-2196ab363eb097c008d4497125e0dde23fb36db2`
-    """
-
-    rel_cache_dir = repo.get_cache_dir()
-    
-    path = cache.get(rel_cache_dir)
-    if path is None:
-        logger.info(f"Tracing {repo}")
-        with working_directory() as tmp_dir:
-            logger.debug(f"Working in the temporary directory {tmp_dir}")
-            _trace(repo, build_deps)
-            src_dir = tmp_dir / repo.name
-            traced_repo = TracedRepo.from_traced_files(src_dir, build_deps)
-            traced_repo.save_to_disk()
-            path = cache.store(src_dir, rel_cache_dir)
-    else:
-        logger.debug("The traced repo is available in the cache.")
-    return path
-
-
-def trace(
-    git_repo: LeanGitRepo,
-    build_deps: bool = True,
-) -> TracedRepo:
-    """Trace a repo (and its dependencies), saving the results to ``dst_dir``.
-
-    The function only traces the repo when it's not available in the cache. Otherwise,
-    it directly copies the traced repo from the cache to ``dst_dir``. See :ref:`caching` for details.
-
-    Args:
-        repo (LeanGitRepo): The Lean repo to trace.
-        dst_dir (Union[str, Path]): The directory for saving the traced repo. If None, the traced repo is only saved in the cahe.
-        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
-
-    Returns:
-        TracedRepo: A :class:`TracedRepo` object corresponding.
-    """
-
-    cached_path = get_traced_repo_path(git_repo, build_deps)
-    logger.info(f"Loading the traced repo from {cached_path}")
-            
-    """Load a traced repo from :file:`*.trace.xml` files."""
-    root_dir = Path(cached_path).resolve()
-    if not is_git_repo(root_dir):
-        raise RuntimeError(f"{root_dir} is not a Git repo.")
-    repo = LeanRepo.from_path(cached_path, git_repo.lean_version, git_repo.name)
-
-    traced_repo = TracedRepo.get_traced_repo(repo, build_deps)
-
-    return traced_repo

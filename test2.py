@@ -1,7 +1,8 @@
 from lean4dojo.data_extraction.traced_data import TracedRepo
 from lean4dojo.data_extraction.lean import LeanRepo
 
-repo = LeanRepo.from_path("traced_lean4-example/lean4-example", "main", "lean4-example")
+#repo = LeanRepo.from_path("traced_lean4-example/lean4-example", "main", "lean4-example")
+repo = LeanRepo.from_path("lean4-example", "main", "lean4-example")
 #repo = LeanRepo("https://github.com/yangky11/lean4-example", "7b6ecb9ad4829e4e73600a3329baeb3b5df8d23f")
 #trace(repo, dst_dir="traced_lean4-example")
 

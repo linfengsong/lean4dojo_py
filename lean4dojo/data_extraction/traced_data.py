@@ -600,6 +600,7 @@ class TracedFile:
         inside_sections_namespaces = []
 
         def _callback(node: Node, _):
+
             if (
                 isinstance(
                     node,
@@ -1110,7 +1111,7 @@ class TracedRepo:
         root_dir = Path(root_dir).resolve()
         if not is_git_repo(root_dir):
             raise RuntimeError(f"{root_dir} is not a Git repo.")
-        repo = LeanRepo.from_path(root_dir)
+        repo = LeanRepo(root_dir)
 
         json_paths = list(root_dir.glob("**/*.ast.json"))
         random.shuffle(json_paths)
@@ -1149,7 +1150,8 @@ class TracedRepo:
     def get_traced_file(self, path: Union[str, Path]) -> TracedFile:
         """Return a traced file by its path."""
         assert self.traced_files_graph is not None
-        return self.traced_files_graph.nodes[str(path)]["traced_file"]
+        node = self.traced_files_graph.nodes[str(path)]
+        return node["traced_file"]
 
     def _update_traced_files(self) -> None:
         for tf in self.traced_files:

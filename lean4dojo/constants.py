@@ -5,7 +5,6 @@ Many of them are configurable via :ref:`environment-variables`.
 import os
 import re
 import sys
-import subprocess
 import multiprocessing
 from pathlib import Path
 from typing import Tuple
@@ -70,22 +69,3 @@ TACTIC_MEMORY_LIMIT = os.getenv("TACTIC_MEMORY_LIMIT", "32g")
 
 assert re.fullmatch(r"\d+g", TACTIC_MEMORY_LIMIT)
 
-
-def check_git_version(min_version: Tuple[int, int, int]) -> None:
-    """Check the version of Git installed on the system."""
-    res = subprocess.run("git --version", shell=True, capture_output=True, check=True)
-    output = res.stdout.decode().strip()
-    error = res.stderr.decode()
-    assert error == "", error
-    m = re.search(r"git version (\d+\.\d+\.\d+)", output)
-    assert m, f"Could not parse Git version from: {output}"
-    # Convert version number string to tuple of integers
-    version = tuple(int(_) for _ in m.group(1).split("."))
-    version_str = ".".join(str(_) for _ in version)
-    min_version_str = ".".join(str(_) for _ in min_version)
-    assert (
-        version >= min_version
-    ), f"Git version {version_str} is too old. Please upgrade to at least {min_version_str}."
-
-
-check_git_version((2, 25, 0))

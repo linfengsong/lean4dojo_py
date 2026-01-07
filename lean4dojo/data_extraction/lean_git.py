@@ -4,6 +4,7 @@ import os
 import json
 import toml
 import time
+import subprocess
 import urllib
 import shutil
 import tempfile
@@ -23,9 +24,31 @@ from .lean import LeanRepo
 from ..constants import TMP_DIR
 from .cache import cache as repo_cache
 from ..utils import (
+    is_git_repo,
     read_url,
     url_exists
 )
+from .traced_data import TracedRepo
+from .trace import build_trace
+
+def check_git_version(min_version: Tuple[int, int, int]) -> None:
+    """Check the version of Git installed on the system."""
+    res = subprocess.run("git --version", shell=True, capture_output=True, check=True)
+    output = res.stdout.decode().strip()
+    error = res.stderr.decode()
+    assert error == "", error
+    m = re.search(r"git version (\d+\.\d+\.\d+)", output)
+    assert m, f"Could not parse Git version from: {output}"
+    # Convert version number string to tuple of integers
+    version = tuple(int(_) for _ in m.group(1).split("."))
+    version_str = ".".join(str(_) for _ in version)
+    min_version_str = ".".join(str(_) for _ in min_version)
+    assert (
+        version >= min_version
+    ), f"Git version {version_str} is too old. Please upgrade to at least {min_version_str}."
+
+
+check_git_version((2, 25, 0))
 
 GITHUB_ACCESS_TOKEN = os.getenv("GITHUB_ACCESS_TOKEN", None)
 """GiHub personal access token is optional. 
@@ -470,3 +493,82 @@ class LeanGitRepo(LeanRepo):
             return url_exists(url)
         else:
             return super().uses_lakefile_toml()
+
+
+def _trace(repo: LeanGitRepo, build_deps: bool) -> None:
+    assert (
+        repo.exists()
+    ), f"The {repo} does not exist. Please check the URL `{repo.commit_url}`."
+
+    # Trace `repo` in the current working directory.
+    assert not repo.is_lean4, "Cannot trace Lean 4 itself."
+    repo.clone_and_checkout()
+    logger.debug(f"Tracing {repo}")
+
+    build_trace(repo.name, build_deps)
+
+def is_available_in_cache(repo: LeanGitRepo) -> bool:
+    """Check if ``repo`` has a traced repo available in the cache (including the remote cache)."""
+    return repo.is_available_in_cache()
+
+
+def get_traced_repo_path(repo: LeanGitRepo, build_deps: bool = True) -> Path:
+    """Return the path of a traced repo in the cache.
+
+    The function will trace a repo if it is not available in the cache. See :ref:`caching` for details.
+
+    Args:
+        repo (LeanGitRepo): The Lean repo to trace.
+        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
+
+    Returns:
+        Path: The path of the traced repo in the cache, e.g. :file:`/home/kaiyu/.cache/lean_dojo/leanprover-community-mathlib-2196ab363eb097c008d4497125e0dde23fb36db2`
+    """
+
+    rel_cache_dir = repo.get_cache_dir()
+    
+    path = repo_cache.get(rel_cache_dir)
+    if path is None:
+        logger.info(f"Tracing {repo}")
+        with working_directory() as tmp_dir:
+            logger.debug(f"Working in the temporary directory {tmp_dir}")
+            _trace(repo, build_deps)
+            src_dir = tmp_dir / repo.name
+            traced_repo = TracedRepo.from_traced_files(src_dir, build_deps)
+            traced_repo.save_to_disk()
+            path = repo_cache.store(src_dir, rel_cache_dir)
+    else:
+        logger.debug("The traced repo is available in the cache.")
+    return path
+
+
+def trace(
+    git_repo: LeanGitRepo,
+    build_deps: bool = True,
+) -> TracedRepo:
+    """Trace a repo (and its dependencies), saving the results to ``dst_dir``.
+
+    The function only traces the repo when it's not available in the cache. Otherwise,
+    it directly copies the traced repo from the cache to ``dst_dir``. See :ref:`caching` for details.
+
+    Args:
+        repo (LeanGitRepo): The Lean repo to trace.
+        dst_dir (Union[str, Path]): The directory for saving the traced repo. If None, the traced repo is only saved in the cahe.
+        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
+
+    Returns:
+        TracedRepo: A :class:`TracedRepo` object corresponding.
+    """
+
+    cached_path = get_traced_repo_path(git_repo, build_deps)
+    logger.info(f"Loading the traced repo from {cached_path}")
+            
+    """Load a traced repo from :file:`*.trace.xml` files."""
+    root_dir = Path(cached_path).resolve()
+    if not is_git_repo(root_dir):
+        raise RuntimeError(f"{root_dir} is not a Git repo.")
+    repo = LeanRepo(cached_path, git_repo.lean_version, git_repo.name)
+
+    traced_repo = TracedRepo.get_traced_repo(repo, build_deps)
+
+    return traced_repo

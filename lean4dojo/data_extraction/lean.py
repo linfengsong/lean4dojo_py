@@ -12,6 +12,8 @@ from loguru import logger
 from dataclasses import dataclass, field
 from typing import List, Dict, Any, Generator, Union, Optional, Tuple
 
+from .trace import build_trace
+
 def get_lean4_src_path(lean4_version: str) -> str:
     """Return the required Lean src path given a ``lean4_version``."""
     home_directory = Path.home()
@@ -272,9 +274,14 @@ class LeanRepo:
         self.cache_dir = cache_dir
 
     @classmethod
-    def from_path(cls, path: Union[Path, str], lean_version: str, name: str) -> "LeanRepo":
+    def from_path(cls, path: Union[Path, str], lean_version: str, name: str, build_deps = False) -> "LeanRepo":
         """Construct a :class:`LeanRepo` object from the path to a local Git repo."""
-        return cls(str(path), lean_version, name)
+        if build_deps and Path(path).exists():
+                shutil.rmtree(path)
+        if build_deps or not Path(path).exists():
+            build_trace(path, build_deps)
+        repo = cls(str(path), lean_version, name)
+        return repo
 
     @property
     def is_lean4(self) -> bool:
@@ -304,7 +311,7 @@ class LeanRepo:
         logger.debug(f"Querying the dependencies of {self}")
 
         lean4_src_path = get_lean4_src_path(self.lean_version)
-        deps = {"lean4": LeanRepo.from_path(lean4_src_path, self.lean_version, "lean4")}
+        deps = {"lean4": LeanRepo(lean4_src_path, self.lean_version, "lean4")}
 
         try:
             lake_manifest = (
@@ -318,7 +325,7 @@ class LeanRepo:
                 pkg_path = path / packagesDir / "packages" / name
                 pkg_version = pkg["inputRev"]
                 print(f"#### dependency name: {pkg_name}, path: {pkg_path}, version:{pkg_version}")
-                deps[name] = LeanRepo.from_path(pkg_path, pkg_version, pkg_name)
+                deps[name] = LeanRepo(pkg_path, pkg_version, pkg_name)
         except Exception:
             for name, repo in self._parse_lakefile_dependencies(path):
                 if name not in deps:
