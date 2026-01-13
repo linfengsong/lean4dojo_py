@@ -14,7 +14,7 @@ from time import sleep, monotonic
 from multiprocessing import Process
 from contextlib import contextmanager
 from subprocess import CalledProcessError
-from typing import Union, Optional, List, Generator
+from typing import List, Generator
 
 from ..constants import NUM_PROCS
 from ..utils import working_directory, execute
@@ -94,6 +94,7 @@ def check_files(packages_path: Path, no_deps: bool) -> None:
     """Check if all :file:`*.lean` files have been processed to produce :file:`*.ast.json` and :file:`*.dep_paths` files."""
     cwd = Path.cwd()
     packages_path = cwd / packages_path
+    logger.debug(f"check_files: {packages_path}")
     jsons = {
         p.with_suffix("").with_suffix("")
         for p in cwd.glob("**/build/ir/**/*.ast.json")
@@ -109,6 +110,7 @@ def check_files(packages_path: Path, no_deps: bool) -> None:
         for p in cwd.glob("**/build/lib/lean/**/*.olean")
         if not no_deps or not p.is_relative_to(packages_path)
     }
+    logger.debug(f"check_files  jsons:{len(jsons)}, deps: {len(deps)}, oleans: {len(oleans)}")
     assert len(jsons) <= len(oleans) and len(deps) <= len(oleans)
     missing_jsons = {p.with_suffix(".ast.json") for p in oleans - jsons}
     missing_deps = {p.with_suffix(".dep_paths") for p in oleans - deps}
@@ -116,31 +118,52 @@ def check_files(packages_path: Path, no_deps: bool) -> None:
         for p in missing_jsons.union(missing_deps):
             logger.warning(f"Missing {p}")
 
-def build_trace(path: Optional[Union[str, Path]], build_deps: bool) -> None:
+def build_trace(path: Path, build_deps: bool) -> None:
+    logger.info(f"build_trace, path:{path}, build_deps: {build_deps}")
+    #if not build_deps and Path(".lake").exists:
+    #    logger.info(f"path:{path} already build")
+    #    return
     with working_directory(path):
-        # Build the repo using lake.
-        if not build_deps:
-            try:
-                execute("lake exe cache get")
-            except CalledProcessError:
-                pass
-        execute("lake build")
+        lean_prefix = execute(f"lean --print-prefix", capture_output=True)[0].strip()
+        logger.debug(f"lean_prefix: {lean_prefix}")
 
         # Copy the Lean 4 stdlib into the path of packages.
-        lean_prefix = execute(f"lean --print-prefix", capture_output=True)[0].strip()
         if is_new_version(get_lean_version()):
             packages_path = Path(".lake/packages")
             build_path = Path(".lake/build")
         else:
             packages_path = Path("lake-packages")
             build_path = Path("build")
-        shutil.copytree(lean_prefix, str(packages_path / "lean4"))
+
+        if build_deps and packages_path.exists():
+            logger.info(f"delete {packages_path}")
+            shutil.rmtree(packages_path)
+
+        # Build the repo using lake.
+        logger.debug(f"build_trace: {path}")
+        if build_deps:
+            try:
+                execute("lake exe cache get")
+            except CalledProcessError:
+                try:
+                    # without lean4
+                    execute("lake update")
+                except CalledProcessError:
+                    pass
+        execute("lake build")
+
+        dirs_to_monitor = [build_path]
+        if not os.path.exists(packages_path / "lean4"):
+            logger.info(f"copy lean4 from: {lean_prefix}, to: {packages_path}/lean4")
+            shutil.copytree(lean_prefix, str(packages_path / "lean4"))
+            build_deps = True
+            dirs_to_monitor.append(packages_path)
+        elif build_deps:
+            dirs_to_monitor.append(packages_path)
 
         # Run ExtractData.lean to extract ASTs, tactic states, and premise information.
         shutil.copyfile(LEAN4_DATA_EXTRACTOR_PATH, LEAN4_DATA_EXTRACTOR_PATH.name)
-        dirs_to_monitor = [build_path]
-        if build_deps:
-            dirs_to_monitor.append(packages_path)
+            
         with launch_progressbar(dirs_to_monitor):
             cmd = f"lake env lean --threads {NUM_PROCS} --run ExtractData.lean"
             if not build_deps:
@@ -155,15 +178,16 @@ def build_trace(path: Optional[Union[str, Path]], build_deps: bool) -> None:
             logger.warning(
                 f"{path} contains {LEAN4_REPL_PATH.name}. You may run into issues when interacting with this repo."
             )
-        shutil.copyfile(LEAN4_REPL_PATH, LEAN4_REPL_PATH.name)
-
-        if os.path.exists("lakefile.lean"):
-            with open("lakefile.lean", "a") as oup:
-                oup.write("\nlean_lib Lean4Repl {\n\n}\n")
         else:
-            assert os.path.exists("lakefile.toml")
-            with open("lakefile.toml", "a") as oup:
-                oup.write('\n[[lean_lib]]\nname = "Lean4Repl"\n')
+            shutil.copyfile(LEAN4_REPL_PATH, LEAN4_REPL_PATH.name)
+
+            if os.path.exists("lakefile.lean"):
+                with open("lakefile.lean", "a") as oup:
+                    oup.write("\nlean_lib Lean4Repl {\n\n}\n")
+            else:
+                assert os.path.exists("lakefile.toml")
+                with open("lakefile.toml", "a") as oup:
+                    oup.write('\n[[lean_lib]]\nname = "Lean4Repl"\n')
 
         try:
             execute("lake build Lean4Repl")

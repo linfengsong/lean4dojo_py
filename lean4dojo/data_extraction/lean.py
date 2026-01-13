@@ -10,9 +10,7 @@ import toml
 from pathlib import Path
 from loguru import logger
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Generator, Union, Optional, Tuple
-
-from .trace import build_trace
+from typing import List, Dict, Any, Generator, Union, Optional
 
 def get_lean4_src_path(lean4_version: str) -> str:
     """Return the required Lean src path given a ``lean4_version``."""
@@ -263,23 +261,14 @@ class LeanRepo:
     """Required repo name.
     """
 
-    cache_dir: str = None
-    """ Optional to specify the cache directory name.
-    """
-
-    def __init__(self, working_dir: str, lean_version: str, name: str, cache_dir: str = None) -> None:
+    def __init__(self, working_dir: str, lean_version: str, name: str) -> None:
         self.working_dir = working_dir
         self.lean_version = lean_version
         self.name = name
-        self.cache_dir = cache_dir
 
     @classmethod
-    def from_path(cls, path: Union[Path, str], lean_version: str, name: str, build_deps = False) -> "LeanRepo":
+    def from_path(cls, path: str, lean_version: str, name: str) -> "LeanRepo":
         """Construct a :class:`LeanRepo` object from the path to a local Git repo."""
-        if build_deps and Path(path).exists():
-                shutil.rmtree(path)
-        if build_deps or not Path(path).exists():
-            build_trace(path, build_deps)
         repo = cls(str(path), lean_version, name)
         return repo
 
@@ -288,30 +277,26 @@ class LeanRepo:
         return self.name == "lean4"
     
     def is_available_in_cache(self) -> bool:
+        """Check if ``repo`` has a traced repo available in the cache (including the remote cache)."""
         return self.cache_dir is not None
-
-    def get_cache_dir(self) -> Path:
-        """Return the formatted cache directory name"""
-        assert self.cache_dir is not None, "cache_dir is not set"
-        return Path(self.cache_dir)
 
     def get_dependencies(
         self, path: Union[str, Path, None] = None
-    ) -> Dict[str, "LeanRepo"]:
+    ) -> List["LeanRepo"]:
         """Return the dependencies required by the target repo.
 
         Args:
             path (Union[str, Path, None], optional): Root directory of the repo if it is on the disk.
 
         Returns:
-            Dict[str, :class:`LeanGitRepo`]: A dictionary mapping the name of each
-            dependency to its :class:`LeanGitRepo` object.
+            Dict[str, :class:`LeanRepo`]: A dictionary mapping the name of each
+            dependency to its :class:`LeanRepo` object.
         """
-        print(f"#### get_dependencies")
-        logger.debug(f"Querying the dependencies of {self}")
+
+        logger.debug(f"Querying the dependencies of path: {path}, {self}")
 
         lean4_src_path = get_lean4_src_path(self.lean_version)
-        deps = {"lean4": LeanRepo(lean4_src_path, self.lean_version, "lean4")}
+        deps = [LeanRepo(lean4_src_path, self.lean_version, "lean4")]
 
         try:
             lake_manifest = (
@@ -322,22 +307,22 @@ class LeanRepo:
             packagesDir = lake_manifest["packagesDir"]
             for pkg in lake_manifest["packages"]:
                 pkg_name = pkg["name"]
-                pkg_path = path / packagesDir / "packages" / name
+                pkg_path = path / packagesDir / "packages" / pkg_name
                 pkg_version = pkg["inputRev"]
-                print(f"#### dependency name: {pkg_name}, path: {pkg_path}, version:{pkg_version}")
-                deps[name] = LeanRepo(pkg_path, pkg_version, pkg_name)
+                logger.debug(f"dependency name: {pkg_name}, path: {pkg_path}, version:{pkg_version}")
+                deps.append(LeanRepo(pkg_path, pkg_version, pkg_name))
         except Exception:
-            for name, repo in self._parse_lakefile_dependencies(path):
-                if name not in deps:
-                    deps[name] = repo
-                for dd_name, dd_repo in repo.get_dependencies().items():
-                    deps[dd_name] = dd_repo
+            for repo in self._parse_lakefile_dependencies(path):
+                if repo.name not in deps:
+                    deps.append(repo)
+                for dd_repo in repo.get_dependencies():
+                    deps.append(dd_repo)
 
         return deps
 
     def _parse_lakefile_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List[Tuple[str, "LeanRepo"]]:
+    ) -> List["LeanRepo"]:
         if self.uses_lakefile_lean():
             return self._parse_lakefile_lean_dependencies(path)
         else:
@@ -345,7 +330,7 @@ class LeanRepo:
 
     def _parse_lakefile_lean_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List[Tuple[str, "LeanRepo"]]:
+    ) -> List["LeanRepo"]:
         lakefile = (
             self.get_config("lakefile.lean")["content"]
             if path is None
@@ -355,11 +340,12 @@ class LeanRepo:
         if _LAKEFILE_LEAN_LOCAL_REQUIREMENT_REGEX.search(lakefile):
             raise ValueError("Local dependencies are not supported.")
 
-        return self._parse_deps(_LAKEFILE_LEAN_GIT_REQUIREMENT_REGEX.finditer(lakefile))
+        from .lean_git import LeanGitRepo
+        return LeanGitRepo.parse_deps(_LAKEFILE_LEAN_GIT_REQUIREMENT_REGEX.finditer(lakefile))
 
     def _parse_lakefile_toml_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List[Tuple[str, "LeanRepo"]]:
+    ) -> List["LeanRepo"]:
         lakefile = (
             self.get_config("lakefile.toml")
             if path is None
@@ -385,7 +371,8 @@ class LeanRepo:
                 match["url"] = match["git"]
                 del match["git"]
 
-        return self._parse_deps(matches)
+        from .lean_git import LeanGitRepo
+        return LeanGitRepo.parse_deps(matches)
 
     def get_license(self) -> Optional[str]:
         """Return the content of the ``LICENSE`` file."""
@@ -399,7 +386,7 @@ class LeanRepo:
         """Return the repo's files."""
         working_dir = self.working_dir
         config_path = os.path.join(working_dir, filename)
-        print(f"#### get_config: {config_path}")
+        logger.debug(f"get_config: {config_path}")
         with open(config_path, "r") as f:
             content = f.read()
         if filename.endswith(".toml"):
@@ -419,7 +406,8 @@ class LeanRepo:
         lakefile_path = Path(self.working_dir) / "lakefile.toml"
         return lakefile_path.exists()
         
-    def save_to(self, dst_dir: Path) -> None:
+    def save_to(self, dst_dir: Union[str, Path]) -> None:
+        """ dst_dir (Union[str, Path]): The directory for saving the traced repo. If None, the traced repo is only saved in the cahe """
         dst_dir = Path(dst_dir)
         assert (
             not dst_dir.exists()
@@ -427,6 +415,9 @@ class LeanRepo:
         shutil.copytree(self.working_dir, dst_dir)
         print(f"Saved repo to {dst_dir}")
 
+    def get_traced_repo(self, build_deps: bool = True):
+        from .traced_data import TracedRepo
+        return TracedRepo.get_traced_repo(self, build_deps)
 
 @dataclass(frozen=True)
 class Theorem:

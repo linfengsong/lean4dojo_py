@@ -26,10 +26,9 @@ from .cache import cache as repo_cache
 from ..utils import (
     is_git_repo,
     read_url,
-    url_exists
+    url_exists,
+    working_directory
 )
-from .traced_data import TracedRepo
-from .trace import build_trace
 
 def check_git_version(min_version: Tuple[int, int, int]) -> None:
     """Check the version of Git installed on the system."""
@@ -312,6 +311,10 @@ class LeanGitRepo(LeanRepo):
     You can also use tags such as ``v3.5.0``. They will be converted to commit hashes.
     """
 
+    cache_dir: str = None
+    """ Optional to specify the cache directory name.
+    """
+
     repo: Union[Repository, Repo]
     """A :class:`github.Repository` object for GitHub repos or
     a :class:`git.Repo` object for local or remote Git repos.
@@ -321,10 +324,10 @@ class LeanGitRepo(LeanRepo):
     """Type of the repo. It can be ``GITHUB``, ``LOCAL`` or ``REMOTE``.
     """
 
-    def __init__(self, url: str, commit: str) -> None:
+    def __init__(self, url: str, commit: str, name : str = None) -> None:
         object.__setattr__(self, "url", url)
         object.__setattr__(self, "commit", commit)
-        print(f"LeanGitRepo Initializing LeanRepo: url={self.url}, commit={self.commit}")
+        logger.debug(f"LeanGitRepo Initializing LeanRepo: url={self.url}, commit={self.commit}")
         repo_type = get_repo_type(self.url)
         if repo_type is None:
             raise ValueError(f"{self.url} is not a valid URL")
@@ -334,13 +337,18 @@ class LeanGitRepo(LeanRepo):
         working_dir = None
 
         """Return the formatted cache directory name"""
-        assert is_commit_hash(self.commit), f"Invalid commit hash: {self.commit}"
         cache_dirname = Path(_format_cache_dirname(self.url, self.commit))
-        repo_name = os.path.basename(self.url)
+        repo_name = name
+        if repo_name is None:
+            repo_name = os.path.basename(self.url)
         cache_repo_dir = f"{cache_dirname}/{repo_name}"
 
         if repo_type == RepoType.GITHUB:
             repo = url_to_repo(self.url, repo_type=self.repo_type)
+            if not is_commit_hash(self.commit):
+                commit = _to_commit_hash(repo, self.commit)
+                logger.info(f"convert commit {self.commit} to hash {commit}")
+                object.__setattr__(self, "commit", commit)
             assert is_commit_hash(self.commit), f"Invalid commit hash: {self.commit}"
         else:
             # get repo from cache
@@ -348,7 +356,7 @@ class LeanGitRepo(LeanRepo):
                 f"{REPO_CACHE_PREFIX}/{cache_dirname}/{self.name}"
             )
             cache_repo_dir = repo_cache.get(rel_cache_dir(self.url, self.commit))
-            print(f"#### LeanRepo: cache_repo_dir={cache_repo_dir}")
+            logger.debug(f"cache_repo_dir={cache_repo_dir}")
             if cache_repo_dir is None:
                 with working_directory() as tmp_dir:
                     repo = url_to_repo(self.url, repo_type=self.repo_type, tmp_dir=tmp_dir)
@@ -358,6 +366,8 @@ class LeanGitRepo(LeanRepo):
                     )
             repo = Repo(cache_repo_dir)
             working_dir = repo.working_dir
+        logger.debug(f"set cache_dir: {cache_repo_dir}")
+        object.__setattr__(self, "cache_dir", cache_repo_dir)
 
         # Convert tags or branches to commit hashes
         if not is_commit_hash(self.commit):
@@ -383,7 +393,12 @@ class LeanGitRepo(LeanRepo):
                 )
         info_cache.lean_version[(self.url, self.commit)] = lean_version
 
-        super().__init__(working_dir, lean_version, repo_name, cache_repo_dir)
+        super().__init__(working_dir, lean_version, repo_name)
+
+    def get_cache_dir(self) -> Path:
+        """Return the formatted cache directory name"""
+        assert self.cache_dir is not None, "cache_dir is not set"
+        return Path(self.cache_dir)
 
     @property
     def commit_url(self) -> str:
@@ -414,9 +429,9 @@ class LeanGitRepo(LeanRepo):
         repo.git.checkout(self.commit)
         repo.submodule_update(init=True, recursive=True)
 
-
-    def _parse_deps(
-        self, matches: Union[Iterator[re.Match[str]], Dict[str, str]]
+    @classmethod
+    def parse_deps(
+        cls, matches: Union[Iterator[re.Match[str]], Dict[str, str]]
     ) -> List[Tuple[str, "LeanGitRepo"]]:
         deps = []
 
@@ -441,7 +456,7 @@ class LeanGitRepo(LeanRepo):
                     commit = get_latest_commit(url)
                 assert _COMMIT_REGEX.fullmatch(commit)
 
-            deps.append((m["name"], LeanGitRepo(url, commit)))  # type: ignore
+            deps.append(cls(url, commit, m["name"]))  # type: ignore
 
         return deps
     
@@ -493,82 +508,40 @@ class LeanGitRepo(LeanRepo):
             return url_exists(url)
         else:
             return super().uses_lakefile_toml()
-
-
-def _trace(repo: LeanGitRepo, build_deps: bool) -> None:
-    assert (
-        repo.exists()
-    ), f"The {repo} does not exist. Please check the URL `{repo.commit_url}`."
-
-    # Trace `repo` in the current working directory.
-    assert not repo.is_lean4, "Cannot trace Lean 4 itself."
-    repo.clone_and_checkout()
-    logger.debug(f"Tracing {repo}")
-
-    build_trace(repo.name, build_deps)
-
-def is_available_in_cache(repo: LeanGitRepo) -> bool:
-    """Check if ``repo`` has a traced repo available in the cache (including the remote cache)."""
-    return repo.is_available_in_cache()
-
-
-def get_traced_repo_path(repo: LeanGitRepo, build_deps: bool = True) -> Path:
-    """Return the path of a traced repo in the cache.
-
-    The function will trace a repo if it is not available in the cache. See :ref:`caching` for details.
-
-    Args:
-        repo (LeanGitRepo): The Lean repo to trace.
-        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
-
-    Returns:
-        Path: The path of the traced repo in the cache, e.g. :file:`/home/kaiyu/.cache/lean_dojo/leanprover-community-mathlib-2196ab363eb097c008d4497125e0dde23fb36db2`
-    """
-
-    rel_cache_dir = repo.get_cache_dir()
+        
+    def get_traced_repo(self, build_deps: bool = False):
+        """
+        The function will trace a repo if it is not available in the cache. See :ref:`caching` for details.
+        Args:
+            build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
+        Returns:
+            TracedRepo: A :class:`TracedRepo` object corresponding.
+        """
+        rel_cache_dir = self.get_cache_dir()
     
-    path = repo_cache.get(rel_cache_dir)
-    if path is None:
-        logger.info(f"Tracing {repo}")
-        with working_directory() as tmp_dir:
-            logger.debug(f"Working in the temporary directory {tmp_dir}")
-            _trace(repo, build_deps)
-            src_dir = tmp_dir / repo.name
-            traced_repo = TracedRepo.from_traced_files(src_dir, build_deps)
-            traced_repo.save_to_disk()
-            path = repo_cache.store(src_dir, rel_cache_dir)
-    else:
-        logger.debug("The traced repo is available in the cache.")
-    return path
+        #The path of the traced repo in the cache, e.g. :file:`/home/kaiyu/.cache/lean_dojo/leanprover-community-mathlib-2196ab363eb097c008d4497125e0dde23fb36db2`
+        cached_path = repo_cache.get(rel_cache_dir)
+        
+        logger.debug(f"Loading the traced repo from: {cached_path}")
+        if cached_path is None:
+            with working_directory() as tmp_dir:
+                logger.debug(f"Working in the temporary directory {tmp_dir}")
+                assert (
+                    self.exists()
+                ), f"The {self.name} does not exist. Please check the URL `{self.commit_url}`."
 
+                # Trace `repo` in the current working directory.
+                assert not self.is_lean4, "Cannot trace Lean 4 itself."
+                self.clone_and_checkout()
+                
+                cached_path = repo_cache.store(tmp_dir / self.name, rel_cache_dir)
 
-def trace(
-    git_repo: LeanGitRepo,
-    build_deps: bool = True,
-) -> TracedRepo:
-    """Trace a repo (and its dependencies), saving the results to ``dst_dir``.
-
-    The function only traces the repo when it's not available in the cache. Otherwise,
-    it directly copies the traced repo from the cache to ``dst_dir``. See :ref:`caching` for details.
-
-    Args:
-        repo (LeanGitRepo): The Lean repo to trace.
-        dst_dir (Union[str, Path]): The directory for saving the traced repo. If None, the traced repo is only saved in the cahe.
-        build_deps (bool): Whether to build the dependencies of ``repo``. Defaults to True.
-
-    Returns:
-        TracedRepo: A :class:`TracedRepo` object corresponding.
-    """
-
-    cached_path = get_traced_repo_path(git_repo, build_deps)
-    logger.info(f"Loading the traced repo from {cached_path}")
+                logger.debug(f"Tracing {cached_path}")
+        else:
+            logger.debug("The traced repo is available in the cache.")
             
-    """Load a traced repo from :file:`*.trace.xml` files."""
-    root_dir = Path(cached_path).resolve()
-    if not is_git_repo(root_dir):
-        raise RuntimeError(f"{root_dir} is not a Git repo.")
-    repo = LeanRepo(cached_path, git_repo.lean_version, git_repo.name)
-
-    traced_repo = TracedRepo.get_traced_repo(repo, build_deps)
-
-    return traced_repo
+        if not is_git_repo(cached_path):
+            raise RuntimeError(f"{cached_path} is not a Git repo.")
+        
+        repo = LeanRepo(cached_path, self.lean_version, self.name)
+        return repo.get_traced_repo(build_deps)

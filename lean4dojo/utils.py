@@ -17,6 +17,7 @@ from ray.util.actor_pool import ActorPool
 from typing import Tuple, Union, List, Generator, Optional
 
 from .constants import NUM_WORKERS, TMP_DIR, LEAN4_PACKAGES_DIR, LEAN4_BUILD_DIR
+import lean4dojo
 
 
 @contextmanager
@@ -69,7 +70,7 @@ def ray_actor_pool(
         Generator[ActorPool, None, None]: A :class:`ray.util.actor_pool.ActorPool` object.
     """
     assert not ray.is_initialized()
-    ray.init(address="local")
+    ray.init(address="local", runtime_env={"py_modules": [lean4dojo]})
     pool = ActorPool([actor_cls.remote(*args, **kwargs) for _ in range(NUM_WORKERS)])  # type: ignore
     try:
         yield pool

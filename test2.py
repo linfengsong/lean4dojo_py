@@ -1,5 +1,10 @@
-from lean4dojo.data_extraction.traced_data import TracedRepo
-from lean4dojo.data_extraction.lean import LeanRepo
+from lean4dojo import LeanRepo
+
+from loguru import logger
+import sys
+
+logger.remove()
+logger.add(sys.stderr, level="DEBUG")
 
 #repo = LeanRepo.from_path("traced_lean4-example/lean4-example", "main", "lean4-example")
 repo = LeanRepo.from_path("lean4-example", "main", "lean4-example")
@@ -7,58 +12,57 @@ repo = LeanRepo.from_path("lean4-example", "main", "lean4-example")
 #trace(repo, dst_dir="traced_lean4-example")
 
 #repo = LeanGitRepo("https://github.com/leanprover-community/mathlib4", "v4.24.0")
-print(f"repo: {repo}")
+logger.debug(f"repo: {repo}")
 
 toolchain = repo.get_config("lean-toolchain")
-print(f"Toolchain: {toolchain}")
+logger.debug(f"Toolchain: {toolchain}")
 
 #traced_repo = trace(repo, dst_dir="traced_mathlib4")
 #traced_repo = trace(repo)
-traced_repo = TracedRepo.get_traced_repo(repo)
-print(f"Traced repo at: {traced_repo}")
+traced_repo = repo.get_traced_repo()
+logger.debug(f"traced_repo: {traced_repo}")
 
 #files_graph = traced_repo.traced_files_graph()
-#print(f"Files graph nodes: {files_graph.nodes}")
-#print(f"Files graph edges: {files_graph.edges}")    
+#logger.debug(f"Files graph nodes: {files_graph.nodes}")
+#logger.debug(f"Files graph edges: {files_graph.edges}")
 
 #for file in traced_repo.get_all_files():
-#    print(f"File: {file.path}, size: {file.size} bytes")
+#    logger.debug(f"File:  {file.path}, size: {file.size} bytes")
 
 #traced_file = traced_repo.get_traced_file("Mathlib/LinearAlgebra/Basic.lean")
 traced_file = traced_repo.get_traced_file("Lean4Example.lean")
-print(f"Traced file: {traced_file}")
+logger.debug(f"Traced file: {traced_file}")
 
 direct_dependencies = traced_file.get_direct_dependencies(repo)
-print(f"Premise dependencies of {traced_file.path}: {direct_dependencies}")
+logger.debug(f"Premise dependencies of {traced_file.path}: {direct_dependencies}")
 
 traced_theorems = traced_file.get_traced_theorems()
-print(f"traced_theorems len: {len(traced_theorems)}")
+logger.debug(f"traced_theorems len: {len(traced_theorems)}")
 
 #thm = traced_file.get_traced_theorem("pi_eq_sum_univ")
 thm = traced_file.get_traced_theorem("hello_world")
-print(f"Theorem: {thm}")
+logger.debug(f"Theorem: {thm}")
 
-print(f"Theorem.theorem: {thm.theorem}")
+logger.debug(f"Theorem.theorem: {thm.theorem}")
 
-#print(f"Theorem start: {thm.start_line}:{thm.start_col}, end: {thm.end_line}:{thm.end_col}")
+#logger.debug(f"Theorem start: {thm.start_line}:{thm.start_col}, end: {thm.end_line}:{thm.end_col}")
 
 tactic_proof = thm.get_tactic_proof()
-print(f"Tactic proof: {tactic_proof}")
+logger.debug(f"Tactic proof: {tactic_proof}")
 
 #num_tactics = len(tactic_proof.get_tactics())
-#print(f"Number of tactics in the proof: {num_tactics}")
+#logger.debug(f"Number of tactics in the proof: {num_tactics}")
 
 proof_node = thm.get_proof_node()
-print(f"Proof node: {proof_node}") 
+logger.debug(f"Proof node: {proof_node}")
 
 proof = proof_node.lean_file[proof_node.start: proof_node.end]
-print(f"Proof text: {proof}")
+logger.debug(f"Proof text: {proof}")
 
 #traced_tactics = tactic_proof.get_tactics()
-#print(f"tactics: {traced_tactics}")
+#logger.debug(f"tactics: {traced_tactics}")
 
-#print(f"second tactic: {traced_tactics[1]}")
-
+#logger.debug(f"second tactic: {traced_tactics[1]}")
 
 repo.save_to("traced_lean4-example/saved_lean4-example")
 
