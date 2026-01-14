@@ -119,7 +119,7 @@ def check_files(packages_path: Path, no_deps: bool) -> None:
             logger.warning(f"Missing {p}")
 
 def build_trace(path: Path, build_deps: bool) -> None:
-    logger.info(f"build_trace, path:{path}, build_deps: {build_deps}")
+    logger.debug(f"build_trace, path:{path}, build_deps: {build_deps}")
     #if not build_deps and Path(".lake").exists:
     #    logger.info(f"path:{path} already build")
     #    return
@@ -195,4 +195,4 @@ def build_trace(path: Path, build_deps: bool) -> None:
             logger.warning(
                 f"Failed to build Lean4Repl. You may run into issues when interacting with the repo."
             )
-
+        logger.debug(f"build_trace end")
