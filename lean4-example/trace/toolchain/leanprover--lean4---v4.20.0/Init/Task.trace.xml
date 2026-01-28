@@ -1,0 +1,367 @@
+<TracedFile path="src/lean/Init/Task.lean" md5="87c87131d95695026972a484d1eb5658">
+  <FileNode start="(1, 1)" end="(31, 63)">
+    <ModuleHeaderNode start="(8, 1)" end="(12, 28)">
+      <NullNode start="(8, 1)" end="(8, 7)">
+        <OtherNode start="(8, 1)" end="(8, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(8, 1)" end="(8, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(10, 1)" end="(10, 8)">
+        <ModulePreludeNode start="(10, 1)" end="(10, 8)">
+          <AtomNode start="(10, 1)" end="(10, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(11, 1)" end="(12, 28)">
+        <ModuleImportNode start="(11, 1)" end="(11, 17)" module="Init.Core" path="src/lean/Init/Core.lean">
+          <NullNode/>
+          <AtomNode start="(11, 1)" end="(11, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(11, 8)" end="(11, 17)" leading="" trailing="&#10;" raw_val="Init.Core" val="Init.Core"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(12, 1)" end="(12, 28)" module="Init.Data.List.Basic" path="src/lean/Init/Data/List/Basic.lean">
+          <NullNode/>
+          <AtomNode start="(12, 1)" end="(12, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(12, 8)" end="(12, 28)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.List.Basic" val="Init.Data.List.Basic"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <CommandNamespaceNode start="(14, 1)" end="(14, 15)" name="Task">
+      <AtomNode start="(14, 1)" end="(14, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(14, 11)" end="(14, 15)" leading="" trailing="&#10;&#10;" raw_val="Task" val="Task"/>
+    </CommandNamespaceNode>
+    <CommandDeclarationNode start="(16, 1)" end="(31, 63)" name="mapList" full_name="Task.mapList">
+      <CommandDeclmodifiersNode start="(16, 1)" end="(19, 3)">
+        <NullNode start="(16, 1)" end="(19, 3)">
+          <CommandDoccommentNode start="(16, 1)" end="(19, 3)" comment="Creates a task that, when all `tasks` have finished, computes the result of `f` applied to their&#10;results.&#10;-/">
+            <AtomNode start="(16, 1)" end="(16, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(17, 1)" end="(19, 3)" leading="" trailing="&#10;" val="Creates a task that, when all `tasks` have finished, computes the result of `f` applied to their&#10;results.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(20, 1)" end="(31, 63)" name="mapList">
+        <AtomNode start="(20, 1)" end="(20, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(20, 5)" end="(20, 12)">
+          <IdentNode start="(20, 5)" end="(20, 12)" leading="" trailing=" " raw_val="mapList" val="mapList"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(20, 13)" end="(21, 29)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(20, 13)" end="(21, 20)">
+            <TermExplicitbinderNode start="(20, 13)" end="(20, 29)">
+              <AtomNode start="(20, 13)" end="(20, 14)" leading="" trailing="" val="("/>
+              <NullNode start="(20, 14)" end="(20, 15)">
+                <IdentNode start="(20, 14)" end="(20, 15)" leading="" trailing=" " raw_val="f" val="f"/>
+              </NullNode>
+              <NullNode start="(20, 16)" end="(20, 28)">
+                <AtomNode start="(20, 16)" end="(20, 17)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(20, 18)" end="(20, 28)" kind="Lean.Parser.Term.arrow">
+                  <OtherNode start="(20, 18)" end="(20, 24)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(20, 18)" end="(20, 22)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(20, 23)" end="(20, 24)">
+                      <IdentNode start="(20, 23)" end="(20, 24)" leading="" trailing=" " raw_val="α" val="α"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(20, 25)" end="(20, 26)" leading="" trailing=" " val="→"/>
+                  <IdentNode start="(20, 27)" end="(20, 28)" leading="" trailing="" raw_val="β" val="β"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(20, 28)" end="(20, 29)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(20, 30)" end="(20, 53)">
+              <AtomNode start="(20, 30)" end="(20, 31)" leading="" trailing="" val="("/>
+              <NullNode start="(20, 31)" end="(20, 36)">
+                <IdentNode start="(20, 31)" end="(20, 36)" leading="" trailing=" " raw_val="tasks" val="tasks"/>
+              </NullNode>
+              <NullNode start="(20, 37)" end="(20, 52)">
+                <AtomNode start="(20, 37)" end="(20, 38)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(20, 39)" end="(20, 52)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(20, 39)" end="(20, 43)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(20, 44)" end="(20, 52)">
+                    <OtherNode start="(20, 44)" end="(20, 52)" kind="Lean.Parser.Term.paren">
+                      <AtomNode start="(20, 44)" end="(20, 45)" leading="" trailing="" val="("/>
+                      <OtherNode start="(20, 45)" end="(20, 51)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(20, 45)" end="(20, 49)" leading="" trailing=" " raw_val="Task" val="Task" full_name="Task" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                        <NullNode start="(20, 50)" end="(20, 51)">
+                          <IdentNode start="(20, 50)" end="(20, 51)" leading="" trailing="" raw_val="α" val="α"/>
+                        </NullNode>
+                      </OtherNode>
+                      <AtomNode start="(20, 51)" end="(20, 52)" leading="" trailing="" val=")"/>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(20, 52)" end="(20, 53)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(20, 54)" end="(20, 85)">
+              <AtomNode start="(20, 54)" end="(20, 55)" leading="" trailing="" val="("/>
+              <NullNode start="(20, 55)" end="(20, 59)">
+                <IdentNode start="(20, 55)" end="(20, 59)" leading="" trailing=" " raw_val="prio" val="prio"/>
+              </NullNode>
+              <NullNode/>
+              <NullNode start="(20, 60)" end="(20, 84)">
+                <OtherNode start="(20, 60)" end="(20, 84)" kind="Lean.Parser.Term.binderDefault">
+                  <AtomNode start="(20, 60)" end="(20, 62)" leading="" trailing=" " val=":="/>
+                  <IdentNode start="(20, 63)" end="(20, 84)" leading="" trailing="" raw_val="Task.Priority.default" val="Task.Priority.default" full_name="Task.Priority.default" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(20, 84)" end="(20, 85)" leading="" trailing="&#10;    " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(21, 5)" end="(21, 20)">
+              <AtomNode start="(21, 5)" end="(21, 6)" leading="" trailing="" val="("/>
+              <NullNode start="(21, 6)" end="(21, 10)">
+                <IdentNode start="(21, 6)" end="(21, 10)" leading="" trailing=" " raw_val="sync" val="sync"/>
+              </NullNode>
+              <NullNode/>
+              <NullNode start="(21, 11)" end="(21, 19)">
+                <OtherNode start="(21, 11)" end="(21, 19)" kind="Lean.Parser.Term.binderDefault">
+                  <AtomNode start="(21, 11)" end="(21, 13)" leading="" trailing=" " val=":="/>
+                  <IdentNode start="(21, 14)" end="(21, 19)" leading="" trailing="" raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(21, 19)" end="(21, 20)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(21, 21)" end="(21, 29)">
+            <TermTypespecNode start="(21, 21)" end="(21, 29)">
+              <AtomNode start="(21, 21)" end="(21, 22)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(21, 23)" end="(21, 29)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(21, 23)" end="(21, 27)" leading="" trailing=" " raw_val="Task" val="Task" full_name="Task" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                <NullNode start="(21, 28)" end="(21, 29)">
+                  <IdentNode start="(21, 28)" end="(21, 29)" leading="" trailing=" " raw_val="β" val="β"/>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(21, 30)" end="(31, 63)">
+          <AtomNode start="(21, 30)" end="(21, 32)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(22, 3)" end="(22, 14)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(22, 3)" end="(22, 5)" leading="" trailing=" " raw_val="go" val="go"/>
+            <NullNode start="(22, 6)" end="(22, 14)">
+              <IdentNode start="(22, 6)" end="(22, 11)" leading="" trailing=" " raw_val="tasks" val="tasks"/>
+              <OtherNode start="(22, 12)" end="(22, 14)" kind="«term[_]»">
+                <AtomNode start="(22, 12)" end="(22, 13)" leading="" trailing="" val="["/>
+                <NullNode/>
+                <AtomNode start="(22, 13)" end="(22, 14)" leading="" trailing="&#10;" val="]"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode start="(23, 1)" end="(31, 63)">
+            <OtherNode start="(23, 1)" end="(31, 63)" kind="Lean.Parser.Term.whereDecls">
+              <AtomNode start="(23, 1)" end="(23, 6)" leading="" trailing="&#10;  " val="where"/>
+              <NullNode start="(24, 3)" end="(31, 63)">
+                <OtherNode start="(24, 3)" end="(31, 63)" kind="Lean.Parser.Term.letRecDecl">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(24, 3)" end="(31, 63)" kind="Lean.Parser.Term.letDecl">
+                    <OtherNode start="(24, 3)" end="(31, 63)" kind="Lean.Parser.Term.letEqnsDecl">
+                      <IdentNode start="(24, 3)" end="(24, 5)" leading="" trailing="&#10;    " raw_val="go" val="go"/>
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(25, 5)" end="(31, 63)" kind="Lean.Parser.Term.matchAlts">
+                        <NullNode start="(25, 5)" end="(31, 63)">
+                          <OtherNode start="(25, 5)" end="(29, 56)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(25, 5)" end="(25, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(25, 7)" end="(25, 13)">
+                              <NullNode start="(25, 7)" end="(25, 13)">
+                                <OtherNode start="(25, 7)" end="(25, 9)" kind="«term[_]»">
+                                  <AtomNode start="(25, 7)" end="(25, 8)" leading="" trailing="" val="["/>
+                                  <NullNode/>
+                                  <AtomNode start="(25, 8)" end="(25, 9)" leading="" trailing="" val="]"/>
+                                </OtherNode>
+                                <AtomNode start="(25, 9)" end="(25, 10)" leading="" trailing=" " val=","/>
+                                <IdentNode start="(25, 11)" end="(25, 13)" leading="" trailing=" " raw_val="as" val="as"/>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(25, 14)" end="(25, 16)" leading="" trailing="&#10;      " val="=&amp;gt;"/>
+                            <OtherNode start="(26, 7)" end="(29, 56)" kind="termIfThenElse">
+                              <AtomNode start="(26, 7)" end="(26, 9)" leading="" trailing=" " val="if"/>
+                              <IdentNode start="(26, 10)" end="(26, 14)" leading="" trailing=" " raw_val="sync" val="sync"/>
+                              <AtomNode start="(26, 15)" end="(26, 19)" leading="" trailing="&#10;        " val="then"/>
+                              <OtherNode start="(27, 9)" end="(27, 30)" kind="«term_&amp;lt;|_»">
+                                <OtherNode start="(27, 9)" end="(27, 14)" kind="Lean.Parser.Term.dotIdent">
+                                  <AtomNode start="(27, 9)" end="(27, 10)" leading="" trailing="" val="."/>
+                                  <IdentNode start="(27, 10)" end="(27, 14)" leading="" trailing=" " raw_val="pure" val="pure"/>
+                                </OtherNode>
+                                <AtomNode start="(27, 15)" end="(27, 17)" leading="" trailing=" " val="&amp;lt;|"/>
+                                <OtherNode start="(27, 18)" end="(27, 30)" kind="Lean.Parser.Term.app">
+                                  <IdentNode start="(27, 18)" end="(27, 19)" leading="" trailing=" " raw_val="f" val="f"/>
+                                  <NullNode start="(27, 20)" end="(27, 30)">
+                                    <IdentNode start="(27, 20)" end="(27, 30)" leading="" trailing="&#10;      " raw_val="as.reverse" val="as.reverse"/>
+                                  </NullNode>
+                                </OtherNode>
+                              </OtherNode>
+                              <AtomNode start="(28, 7)" end="(28, 11)" leading="" trailing="&#10;        " val="else"/>
+                              <OtherNode start="(29, 9)" end="(29, 56)" kind="Lean.Parser.Term.app">
+                                <IdentNode start="(29, 9)" end="(29, 19)" leading="" trailing=" " raw_val="Task.spawn" val="Task.spawn" full_name="Task.spawn" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                                <NullNode start="(29, 20)" end="(29, 56)">
+                                  <OtherNode start="(29, 20)" end="(29, 34)" kind="Lean.Parser.Term.namedArgument">
+                                    <AtomNode start="(29, 20)" end="(29, 21)" leading="" trailing="" val="("/>
+                                    <IdentNode start="(29, 21)" end="(29, 25)" leading="" trailing=" " raw_val="prio" val="prio"/>
+                                    <AtomNode start="(29, 26)" end="(29, 28)" leading="" trailing=" " val=":="/>
+                                    <IdentNode start="(29, 29)" end="(29, 33)" leading="" trailing="" raw_val="prio" val="prio"/>
+                                    <AtomNode start="(29, 33)" end="(29, 34)" leading="" trailing=" " val=")"/>
+                                  </OtherNode>
+                                  <OtherNode start="(29, 35)" end="(29, 56)" kind="Lean.Parser.Term.fun">
+                                    <AtomNode start="(29, 35)" end="(29, 38)" leading="" trailing=" " val="fun"/>
+                                    <OtherNode start="(29, 39)" end="(29, 56)" kind="Lean.Parser.Term.basicFun">
+                                      <NullNode start="(29, 39)" end="(29, 40)">
+                                        <TermHoleNode start="(29, 39)" end="(29, 40)">
+                                          <AtomNode start="(29, 39)" end="(29, 40)" leading="" trailing=" " val="_"/>
+                                        </TermHoleNode>
+                                      </NullNode>
+                                      <NullNode/>
+                                      <AtomNode start="(29, 41)" end="(29, 43)" leading="" trailing=" " val="=&amp;gt;"/>
+                                      <OtherNode start="(29, 44)" end="(29, 56)" kind="Lean.Parser.Term.app">
+                                        <IdentNode start="(29, 44)" end="(29, 45)" leading="" trailing=" " raw_val="f" val="f"/>
+                                        <NullNode start="(29, 46)" end="(29, 56)">
+                                          <IdentNode start="(29, 46)" end="(29, 56)" leading="" trailing="&#10;    " raw_val="as.reverse" val="as.reverse"/>
+                                        </NullNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                </NullNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </OtherNode>
+                          <OtherNode start="(30, 5)" end="(30, 64)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(30, 5)" end="(30, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(30, 7)" end="(30, 14)">
+                              <NullNode start="(30, 7)" end="(30, 14)">
+                                <OtherNode start="(30, 7)" end="(30, 10)" kind="«term[_]»">
+                                  <AtomNode start="(30, 7)" end="(30, 8)" leading="" trailing="" val="["/>
+                                  <NullNode start="(30, 8)" end="(30, 9)">
+                                    <IdentNode start="(30, 8)" end="(30, 9)" leading="" trailing="" raw_val="t" val="t"/>
+                                  </NullNode>
+                                  <AtomNode start="(30, 9)" end="(30, 10)" leading="" trailing="" val="]"/>
+                                </OtherNode>
+                                <AtomNode start="(30, 10)" end="(30, 11)" leading="" trailing=" " val=","/>
+                                <IdentNode start="(30, 12)" end="(30, 14)" leading="" trailing=" " raw_val="as" val="as"/>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(30, 15)" end="(30, 17)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(30, 18)" end="(30, 64)" kind="Lean.Parser.Term.app">
+                              <IdentNode start="(30, 18)" end="(30, 23)" leading="" trailing=" " raw_val="t.map" val="t.map"/>
+                              <NullNode start="(30, 24)" end="(30, 64)">
+                                <OtherNode start="(30, 24)" end="(30, 54)" kind="Lean.Parser.Term.paren">
+                                  <AtomNode start="(30, 24)" end="(30, 25)" leading="" trailing="" val="("/>
+                                  <OtherNode start="(30, 25)" end="(30, 53)" kind="Lean.Parser.Term.fun">
+                                    <AtomNode start="(30, 25)" end="(30, 28)" leading="" trailing=" " val="fun"/>
+                                    <OtherNode start="(30, 29)" end="(30, 53)" kind="Lean.Parser.Term.basicFun">
+                                      <NullNode start="(30, 29)" end="(30, 30)">
+                                        <IdentNode start="(30, 29)" end="(30, 30)" leading="" trailing=" " raw_val="a" val="a"/>
+                                      </NullNode>
+                                      <NullNode/>
+                                      <AtomNode start="(30, 31)" end="(30, 33)" leading="" trailing=" " val="=&amp;gt;"/>
+                                      <OtherNode start="(30, 34)" end="(30, 53)" kind="Lean.Parser.Term.app">
+                                        <IdentNode start="(30, 34)" end="(30, 35)" leading="" trailing=" " raw_val="f" val="f"/>
+                                        <NullNode start="(30, 36)" end="(30, 53)">
+                                          <OtherNode start="(30, 36)" end="(30, 53)" kind="Lean.Parser.Term.proj">
+                                            <OtherNode start="(30, 36)" end="(30, 45)" kind="Lean.Parser.Term.paren">
+                                              <AtomNode start="(30, 36)" end="(30, 37)" leading="" trailing="" val="("/>
+                                              <OtherNode start="(30, 37)" end="(30, 44)" kind="«term_::_»">
+                                                <IdentNode start="(30, 37)" end="(30, 38)" leading="" trailing=" " raw_val="a" val="a"/>
+                                                <AtomNode start="(30, 39)" end="(30, 41)" leading="" trailing=" " val="::"/>
+                                                <IdentNode start="(30, 42)" end="(30, 44)" leading="" trailing="" raw_val="as" val="as"/>
+                                              </OtherNode>
+                                              <AtomNode start="(30, 44)" end="(30, 45)" leading="" trailing="" val=")"/>
+                                            </OtherNode>
+                                            <AtomNode start="(30, 45)" end="(30, 46)" leading="" trailing="" val="."/>
+                                            <IdentNode start="(30, 46)" end="(30, 53)" leading="" trailing="" raw_val="reverse" val="reverse" full_name="List.reverse" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                          </OtherNode>
+                                        </NullNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <AtomNode start="(30, 53)" end="(30, 54)" leading="" trailing=" " val=")"/>
+                                </OtherNode>
+                                <IdentNode start="(30, 55)" end="(30, 59)" leading="" trailing=" " raw_val="prio" val="prio"/>
+                                <IdentNode start="(30, 60)" end="(30, 64)" leading="" trailing="&#10;    " raw_val="sync" val="sync"/>
+                              </NullNode>
+                            </OtherNode>
+                          </OtherNode>
+                          <OtherNode start="(31, 5)" end="(31, 63)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(31, 5)" end="(31, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(31, 7)" end="(31, 16)">
+                              <NullNode start="(31, 7)" end="(31, 16)">
+                                <OtherNode start="(31, 7)" end="(31, 12)" kind="«term_::_»">
+                                  <IdentNode start="(31, 7)" end="(31, 8)" leading="" trailing="" raw_val="t" val="t"/>
+                                  <AtomNode start="(31, 8)" end="(31, 10)" leading="" trailing="" val="::"/>
+                                  <IdentNode start="(31, 10)" end="(31, 12)" leading="" trailing="" raw_val="ts" val="ts"/>
+                                </OtherNode>
+                                <AtomNode start="(31, 12)" end="(31, 13)" leading="" trailing=" " val=","/>
+                                <IdentNode start="(31, 14)" end="(31, 16)" leading="" trailing=" " raw_val="as" val="as"/>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(31, 17)" end="(31, 19)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(31, 20)" end="(31, 63)" kind="Lean.Parser.Term.app">
+                              <IdentNode start="(31, 20)" end="(31, 26)" leading="" trailing=" " raw_val="t.bind" val="t.bind"/>
+                              <NullNode start="(31, 27)" end="(31, 63)">
+                                <OtherNode start="(31, 27)" end="(31, 53)" kind="Lean.Parser.Term.paren">
+                                  <AtomNode start="(31, 27)" end="(31, 28)" leading="" trailing="" val="("/>
+                                  <OtherNode start="(31, 28)" end="(31, 52)" kind="Lean.Parser.Term.fun">
+                                    <AtomNode start="(31, 28)" end="(31, 31)" leading="" trailing=" " val="fun"/>
+                                    <OtherNode start="(31, 32)" end="(31, 52)" kind="Lean.Parser.Term.basicFun">
+                                      <NullNode start="(31, 32)" end="(31, 33)">
+                                        <IdentNode start="(31, 32)" end="(31, 33)" leading="" trailing=" " raw_val="a" val="a"/>
+                                      </NullNode>
+                                      <NullNode/>
+                                      <AtomNode start="(31, 34)" end="(31, 36)" leading="" trailing=" " val="=&amp;gt;"/>
+                                      <OtherNode start="(31, 37)" end="(31, 52)" kind="Lean.Parser.Term.app">
+                                        <IdentNode start="(31, 37)" end="(31, 39)" leading="" trailing=" " raw_val="go" val="go"/>
+                                        <NullNode start="(31, 40)" end="(31, 52)">
+                                          <IdentNode start="(31, 40)" end="(31, 42)" leading="" trailing=" " raw_val="ts" val="ts"/>
+                                          <OtherNode start="(31, 43)" end="(31, 52)" kind="Lean.Parser.Term.paren">
+                                            <AtomNode start="(31, 43)" end="(31, 44)" leading="" trailing="" val="("/>
+                                            <OtherNode start="(31, 44)" end="(31, 51)" kind="«term_::_»">
+                                              <IdentNode start="(31, 44)" end="(31, 45)" leading="" trailing=" " raw_val="a" val="a"/>
+                                              <AtomNode start="(31, 46)" end="(31, 48)" leading="" trailing=" " val="::"/>
+                                              <IdentNode start="(31, 49)" end="(31, 51)" leading="" trailing="" raw_val="as" val="as"/>
+                                            </OtherNode>
+                                            <AtomNode start="(31, 51)" end="(31, 52)" leading="" trailing="" val=")"/>
+                                          </OtherNode>
+                                        </NullNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <AtomNode start="(31, 52)" end="(31, 53)" leading="" trailing=" " val=")"/>
+                                </OtherNode>
+                                <IdentNode start="(31, 54)" end="(31, 58)" leading="" trailing=" " raw_val="prio" val="prio"/>
+                                <IdentNode start="(31, 59)" end="(31, 63)" leading="" trailing="&#10;" raw_val="sync" val="sync"/>
+                              </NullNode>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <OtherNode kind="Lean.Parser.Termination.suffix">
+                    <NullNode/>
+                    <NullNode/>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </NullNode>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(16, 1)" end="(19, 3)" text="Creates a task that, when all `tasks` have finished, computes the result of `f` applied to their&#10;results.&#10;-/"/>
+  </Comments>
+</TracedFile>

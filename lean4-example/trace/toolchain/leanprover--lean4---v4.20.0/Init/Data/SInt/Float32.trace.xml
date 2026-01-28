@@ -1,0 +1,685 @@
+<TracedFile path="src/lean/Init/Data/SInt/Float32.lean" md5="8df13de488c436a9ae26c56abcb0ff6c">
+  <FileNode start="(1, 1)" end="(110, 79)">
+    <ModuleHeaderNode start="(6, 1)" end="(10, 28)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(10, 28)">
+        <ModuleImportNode start="(9, 1)" end="(9, 25)" module="Init.Data.Float32" path="src/lean/Init/Data/Float32.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 25)" leading="" trailing="&#10;" raw_val="Init.Data.Float32" val="Init.Data.Float32"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(10, 1)" end="(10, 28)" module="Init.Data.SInt.Basic" path="src/lean/Init/Data/SInt/Basic.lean">
+          <NullNode/>
+          <AtomNode start="(10, 1)" end="(10, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(10, 8)" end="(10, 28)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.SInt.Basic" val="Init.Data.SInt.Basic"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(12, 1)" end="(12, 35)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(12, 1)" end="(12, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(12, 12)" end="(12, 30)" leading="" trailing=" " raw_val="linter.missingDocs" val="linter.missingDocs"/>
+      <NullNode/>
+      <AtomNode start="(12, 31)" end="(12, 35)" leading="" trailing="&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandDeclarationNode start="(14, 1)" end="(23, 72)" name="Float32.toInt8" full_name="Float32.toInt8">
+      <CommandDeclmodifiersNode start="(14, 1)" end="(23, 33)">
+        <NullNode start="(14, 1)" end="(22, 3)">
+          <CommandDoccommentNode start="(14, 1)" end="(22, 3)" comment="Truncates a floating-point number to the nearest 8-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int8` (including `Inf`), returns the maximum value of&#10;`Int8` (i.e. `Int8.maxValue`). If it is smaller than the minimum value for `Int8` (including `-Inf`),&#10;returns the minimum value of `Int8` (i.e. `Int8.minValue`). If it is `NaN`, returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(14, 1)" end="(14, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(15, 1)" end="(22, 3)" leading="" trailing="&#10;" val="Truncates a floating-point number to the nearest 8-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int8` (including `Inf`), returns the maximum value of&#10;`Int8` (i.e. `Int8.maxValue`). If it is smaller than the minimum value for `Int8` (including `-Inf`),&#10;returns the minimum value of `Int8` (i.e. `Int8.minValue`). If it is `NaN`, returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(23, 1)" end="(23, 33)">
+          <OtherNode start="(23, 1)" end="(23, 33)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(23, 1)" end="(23, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(23, 3)" end="(23, 32)">
+              <OtherNode start="(23, 3)" end="(23, 32)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(23, 3)" end="(23, 32)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(23, 3)" end="(23, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(23, 10)" end="(23, 32)">
+                    <OtherNode start="(23, 10)" end="(23, 32)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(23, 10)" end="(23, 32)" kind="str">
+                        <AtomNode start="(23, 10)" end="(23, 32)" leading="" trailing="" val="&amp;quot;lean_float32_to_int8&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(23, 32)" end="(23, 33)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(23, 34)" end="(23, 72)" name="Float32.toInt8">
+        <AtomNode start="(23, 34)" end="(23, 40)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(23, 41)" end="(23, 55)">
+          <IdentNode start="(23, 41)" end="(23, 55)" leading="" trailing=" " raw_val="Float32.toInt8" val="Float32.toInt8"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(23, 56)" end="(23, 72)">
+          <NullNode/>
+          <TermTypespecNode start="(23, 56)" end="(23, 72)">
+            <AtomNode start="(23, 56)" end="(23, 57)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(23, 58)" end="(23, 72)" kind="Lean.Parser.Term.arrow">
+              <IdentNode start="(23, 58)" end="(23, 65)" leading="" trailing=" " raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+              <AtomNode start="(23, 66)" end="(23, 67)" leading="" trailing=" " val="→"/>
+              <IdentNode start="(23, 68)" end="(23, 72)" leading="" trailing="&#10;" raw_val="Int8" val="Int8" full_name="Int8" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(24, 1)" end="(34, 75)" name="Float32.toInt16" full_name="Float32.toInt16">
+      <CommandDeclmodifiersNode start="(24, 1)" end="(34, 34)">
+        <NullNode start="(24, 1)" end="(33, 3)">
+          <CommandDoccommentNode start="(24, 1)" end="(33, 3)" comment="Truncates a floating-point number to the nearest 16-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int16` (including `Inf`), returns the maximum&#10;value of `Int16` (i.e. `Int16.maxValue`). If it is smaller than the minimum value for `Int16`&#10;(including `-Inf`), returns the minimum value of `Int16` (i.e. `Int16.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(24, 1)" end="(24, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(25, 1)" end="(33, 3)" leading="" trailing="&#10;" val="Truncates a floating-point number to the nearest 16-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int16` (including `Inf`), returns the maximum&#10;value of `Int16` (i.e. `Int16.maxValue`). If it is smaller than the minimum value for `Int16`&#10;(including `-Inf`), returns the minimum value of `Int16` (i.e. `Int16.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(34, 1)" end="(34, 34)">
+          <OtherNode start="(34, 1)" end="(34, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(34, 1)" end="(34, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(34, 3)" end="(34, 33)">
+              <OtherNode start="(34, 3)" end="(34, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(34, 3)" end="(34, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(34, 3)" end="(34, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(34, 10)" end="(34, 33)">
+                    <OtherNode start="(34, 10)" end="(34, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(34, 10)" end="(34, 33)" kind="str">
+                        <AtomNode start="(34, 10)" end="(34, 33)" leading="" trailing="" val="&amp;quot;lean_float32_to_int16&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(34, 33)" end="(34, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(34, 35)" end="(34, 75)" name="Float32.toInt16">
+        <AtomNode start="(34, 35)" end="(34, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(34, 42)" end="(34, 57)">
+          <IdentNode start="(34, 42)" end="(34, 57)" leading="" trailing=" " raw_val="Float32.toInt16" val="Float32.toInt16"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(34, 58)" end="(34, 75)">
+          <NullNode/>
+          <TermTypespecNode start="(34, 58)" end="(34, 75)">
+            <AtomNode start="(34, 58)" end="(34, 59)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(34, 60)" end="(34, 75)" kind="Lean.Parser.Term.arrow">
+              <IdentNode start="(34, 60)" end="(34, 67)" leading="" trailing=" " raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+              <AtomNode start="(34, 68)" end="(34, 69)" leading="" trailing=" " val="→"/>
+              <IdentNode start="(34, 70)" end="(34, 75)" leading="" trailing="&#10;" raw_val="Int16" val="Int16" full_name="Int16" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(35, 1)" end="(45, 75)" name="Float32.toInt32" full_name="Float32.toInt32">
+      <CommandDeclmodifiersNode start="(35, 1)" end="(45, 34)">
+        <NullNode start="(35, 1)" end="(44, 3)">
+          <CommandDoccommentNode start="(35, 1)" end="(44, 3)" comment="Truncates a floating-point number to the nearest 32-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int32` (including `Inf`), returns the maximum&#10;value of `Int32` (i.e. `Int32.maxValue`). If it is smaller than the minimum value for `Int32`&#10;(including `-Inf`), returns the minimum value of `Int32` (i.e. `Int32.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(35, 1)" end="(35, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(36, 1)" end="(44, 3)" leading="" trailing="&#10;" val="Truncates a floating-point number to the nearest 32-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int32` (including `Inf`), returns the maximum&#10;value of `Int32` (i.e. `Int32.maxValue`). If it is smaller than the minimum value for `Int32`&#10;(including `-Inf`), returns the minimum value of `Int32` (i.e. `Int32.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(45, 1)" end="(45, 34)">
+          <OtherNode start="(45, 1)" end="(45, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(45, 1)" end="(45, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(45, 3)" end="(45, 33)">
+              <OtherNode start="(45, 3)" end="(45, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(45, 3)" end="(45, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(45, 3)" end="(45, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(45, 10)" end="(45, 33)">
+                    <OtherNode start="(45, 10)" end="(45, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(45, 10)" end="(45, 33)" kind="str">
+                        <AtomNode start="(45, 10)" end="(45, 33)" leading="" trailing="" val="&amp;quot;lean_float32_to_int32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(45, 33)" end="(45, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(45, 35)" end="(45, 75)" name="Float32.toInt32">
+        <AtomNode start="(45, 35)" end="(45, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(45, 42)" end="(45, 57)">
+          <IdentNode start="(45, 42)" end="(45, 57)" leading="" trailing=" " raw_val="Float32.toInt32" val="Float32.toInt32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(45, 58)" end="(45, 75)">
+          <NullNode/>
+          <TermTypespecNode start="(45, 58)" end="(45, 75)">
+            <AtomNode start="(45, 58)" end="(45, 59)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(45, 60)" end="(45, 75)" kind="Lean.Parser.Term.arrow">
+              <IdentNode start="(45, 60)" end="(45, 67)" leading="" trailing=" " raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+              <AtomNode start="(45, 68)" end="(45, 69)" leading="" trailing=" " val="→"/>
+              <IdentNode start="(45, 70)" end="(45, 75)" leading="" trailing="&#10;" raw_val="Int32" val="Int32" full_name="Int32" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(46, 1)" end="(56, 75)" name="Float32.toInt64" full_name="Float32.toInt64">
+      <CommandDeclmodifiersNode start="(46, 1)" end="(56, 34)">
+        <NullNode start="(46, 1)" end="(55, 3)">
+          <CommandDoccommentNode start="(46, 1)" end="(55, 3)" comment="Truncates a floating-point number to the nearest 64-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int64` (including `Inf`), returns the maximum&#10;value of `Int64` (i.e. `Int64.maxValue`). If it is smaller than the minimum value for `Int64`&#10;(including `-Inf`), returns the minimum value of `Int64` (i.e. `Int64.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(46, 1)" end="(46, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(47, 1)" end="(55, 3)" leading="" trailing="&#10;" val="Truncates a floating-point number to the nearest 64-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int64` (including `Inf`), returns the maximum&#10;value of `Int64` (i.e. `Int64.maxValue`). If it is smaller than the minimum value for `Int64`&#10;(including `-Inf`), returns the minimum value of `Int64` (i.e. `Int64.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(56, 1)" end="(56, 34)">
+          <OtherNode start="(56, 1)" end="(56, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(56, 1)" end="(56, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(56, 3)" end="(56, 33)">
+              <OtherNode start="(56, 3)" end="(56, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(56, 3)" end="(56, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(56, 3)" end="(56, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(56, 10)" end="(56, 33)">
+                    <OtherNode start="(56, 10)" end="(56, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(56, 10)" end="(56, 33)" kind="str">
+                        <AtomNode start="(56, 10)" end="(56, 33)" leading="" trailing="" val="&amp;quot;lean_float32_to_int64&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(56, 33)" end="(56, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(56, 35)" end="(56, 75)" name="Float32.toInt64">
+        <AtomNode start="(56, 35)" end="(56, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(56, 42)" end="(56, 57)">
+          <IdentNode start="(56, 42)" end="(56, 57)" leading="" trailing=" " raw_val="Float32.toInt64" val="Float32.toInt64"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(56, 58)" end="(56, 75)">
+          <NullNode/>
+          <TermTypespecNode start="(56, 58)" end="(56, 75)">
+            <AtomNode start="(56, 58)" end="(56, 59)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(56, 60)" end="(56, 75)" kind="Lean.Parser.Term.arrow">
+              <IdentNode start="(56, 60)" end="(56, 67)" leading="" trailing=" " raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+              <AtomNode start="(56, 68)" end="(56, 69)" leading="" trailing=" " val="→"/>
+              <IdentNode start="(56, 70)" end="(56, 75)" leading="" trailing="&#10;" raw_val="Int64" val="Int64" full_name="Int64" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(57, 1)" end="(67, 75)" name="Float32.toISize" full_name="Float32.toISize">
+      <CommandDeclmodifiersNode start="(57, 1)" end="(67, 34)">
+        <NullNode start="(57, 1)" end="(66, 3)">
+          <CommandDoccommentNode start="(57, 1)" end="(66, 3)" comment="Truncates a floating-point number to the nearest word-sized signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `ISize` (including `Inf`), returns the maximum&#10;value of `ISize` (i.e. `ISize.maxValue`). If it is smaller than the minimum value for `ISize`&#10;(including `-Inf`), returns the minimum value of `ISize` (i.e. `ISize.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(57, 1)" end="(57, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(58, 1)" end="(66, 3)" leading="" trailing="&#10;" val="Truncates a floating-point number to the nearest word-sized signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `ISize` (including `Inf`), returns the maximum&#10;value of `ISize` (i.e. `ISize.maxValue`). If it is smaller than the minimum value for `ISize`&#10;(including `-Inf`), returns the minimum value of `ISize` (i.e. `ISize.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(67, 1)" end="(67, 34)">
+          <OtherNode start="(67, 1)" end="(67, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(67, 1)" end="(67, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(67, 3)" end="(67, 33)">
+              <OtherNode start="(67, 3)" end="(67, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(67, 3)" end="(67, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(67, 3)" end="(67, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(67, 10)" end="(67, 33)">
+                    <OtherNode start="(67, 10)" end="(67, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(67, 10)" end="(67, 33)" kind="str">
+                        <AtomNode start="(67, 10)" end="(67, 33)" leading="" trailing="" val="&amp;quot;lean_float32_to_isize&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(67, 33)" end="(67, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(67, 35)" end="(67, 75)" name="Float32.toISize">
+        <AtomNode start="(67, 35)" end="(67, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(67, 42)" end="(67, 57)">
+          <IdentNode start="(67, 42)" end="(67, 57)" leading="" trailing=" " raw_val="Float32.toISize" val="Float32.toISize"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(67, 58)" end="(67, 75)">
+          <NullNode/>
+          <TermTypespecNode start="(67, 58)" end="(67, 75)">
+            <AtomNode start="(67, 58)" end="(67, 59)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(67, 60)" end="(67, 75)" kind="Lean.Parser.Term.arrow">
+              <IdentNode start="(67, 60)" end="(67, 67)" leading="" trailing=" " raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+              <AtomNode start="(67, 68)" end="(67, 69)" leading="" trailing=" " val="→"/>
+              <IdentNode start="(67, 70)" end="(67, 75)" leading="" trailing="&#10;&#10;" raw_val="ISize" val="ISize" full_name="ISize" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(69, 1)" end="(74, 76)" name="Int8.toFloat32" full_name="Int8.toFloat32">
+      <CommandDeclmodifiersNode start="(69, 1)" end="(74, 33)">
+        <NullNode start="(69, 1)" end="(73, 3)">
+          <CommandDoccommentNode start="(69, 1)" end="(73, 3)" comment="Obtains the `Float32` whose value is the same as the given `Int8`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(69, 1)" end="(69, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(70, 1)" end="(73, 3)" leading="" trailing="&#10;" val="Obtains the `Float32` whose value is the same as the given `Int8`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(74, 1)" end="(74, 33)">
+          <OtherNode start="(74, 1)" end="(74, 33)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(74, 1)" end="(74, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(74, 3)" end="(74, 32)">
+              <OtherNode start="(74, 3)" end="(74, 32)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(74, 3)" end="(74, 32)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(74, 3)" end="(74, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(74, 10)" end="(74, 32)">
+                    <OtherNode start="(74, 10)" end="(74, 32)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(74, 10)" end="(74, 32)" kind="str">
+                        <AtomNode start="(74, 10)" end="(74, 32)" leading="" trailing="" val="&amp;quot;lean_int8_to_float32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(74, 32)" end="(74, 33)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(74, 34)" end="(74, 76)" name="Int8.toFloat32">
+        <AtomNode start="(74, 34)" end="(74, 40)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(74, 41)" end="(74, 55)">
+          <IdentNode start="(74, 41)" end="(74, 55)" leading="" trailing=" " raw_val="Int8.toFloat32" val="Int8.toFloat32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(74, 56)" end="(74, 76)">
+          <NullNode start="(74, 56)" end="(74, 66)">
+            <TermExplicitbinderNode start="(74, 56)" end="(74, 66)">
+              <AtomNode start="(74, 56)" end="(74, 57)" leading="" trailing="" val="("/>
+              <NullNode start="(74, 57)" end="(74, 58)">
+                <IdentNode start="(74, 57)" end="(74, 58)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(74, 59)" end="(74, 65)">
+                <AtomNode start="(74, 59)" end="(74, 60)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(74, 61)" end="(74, 65)" leading="" trailing="" raw_val="Int8" val="Int8" full_name="Int8" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(74, 65)" end="(74, 66)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(74, 67)" end="(74, 76)">
+            <AtomNode start="(74, 67)" end="(74, 68)" leading="" trailing=" " val=":"/>
+            <IdentNode start="(74, 69)" end="(74, 76)" leading="" trailing="&#10;" raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(75, 1)" end="(80, 79)" name="Int16.toFloat32" full_name="Int16.toFloat32">
+      <CommandDeclmodifiersNode start="(75, 1)" end="(80, 34)">
+        <NullNode start="(75, 1)" end="(79, 3)">
+          <CommandDoccommentNode start="(75, 1)" end="(79, 3)" comment="Obtains the `Float32` whose value is the same as the given `Int16`.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(75, 1)" end="(75, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(76, 1)" end="(79, 3)" leading="" trailing="&#10;" val="Obtains the `Float32` whose value is the same as the given `Int16`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(80, 1)" end="(80, 34)">
+          <OtherNode start="(80, 1)" end="(80, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(80, 1)" end="(80, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(80, 3)" end="(80, 33)">
+              <OtherNode start="(80, 3)" end="(80, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(80, 3)" end="(80, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(80, 3)" end="(80, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(80, 10)" end="(80, 33)">
+                    <OtherNode start="(80, 10)" end="(80, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(80, 10)" end="(80, 33)" kind="str">
+                        <AtomNode start="(80, 10)" end="(80, 33)" leading="" trailing="" val="&amp;quot;lean_int16_to_float32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(80, 33)" end="(80, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(80, 35)" end="(80, 79)" name="Int16.toFloat32">
+        <AtomNode start="(80, 35)" end="(80, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(80, 42)" end="(80, 57)">
+          <IdentNode start="(80, 42)" end="(80, 57)" leading="" trailing=" " raw_val="Int16.toFloat32" val="Int16.toFloat32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(80, 58)" end="(80, 79)">
+          <NullNode start="(80, 58)" end="(80, 69)">
+            <TermExplicitbinderNode start="(80, 58)" end="(80, 69)">
+              <AtomNode start="(80, 58)" end="(80, 59)" leading="" trailing="" val="("/>
+              <NullNode start="(80, 59)" end="(80, 60)">
+                <IdentNode start="(80, 59)" end="(80, 60)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(80, 61)" end="(80, 68)">
+                <AtomNode start="(80, 61)" end="(80, 62)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(80, 63)" end="(80, 68)" leading="" trailing="" raw_val="Int16" val="Int16" full_name="Int16" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(80, 68)" end="(80, 69)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(80, 70)" end="(80, 79)">
+            <AtomNode start="(80, 70)" end="(80, 71)" leading="" trailing=" " val=":"/>
+            <IdentNode start="(80, 72)" end="(80, 79)" leading="" trailing="&#10;" raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(81, 1)" end="(90, 79)" name="Int32.toFloat32" full_name="Int32.toFloat32">
+      <CommandDeclmodifiersNode start="(81, 1)" end="(90, 34)">
+        <NullNode start="(81, 1)" end="(89, 3)">
+          <CommandDoccommentNode start="(81, 1)" end="(89, 3)" comment="Obtains a `Float32` whose value is near the given `Int32`.&#10;&#10;It will be exactly the value of the given `Int32` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(81, 1)" end="(81, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(82, 1)" end="(89, 3)" leading="" trailing="&#10;" val="Obtains a `Float32` whose value is near the given `Int32`.&#10;&#10;It will be exactly the value of the given `Int32` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(90, 1)" end="(90, 34)">
+          <OtherNode start="(90, 1)" end="(90, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(90, 1)" end="(90, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(90, 3)" end="(90, 33)">
+              <OtherNode start="(90, 3)" end="(90, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(90, 3)" end="(90, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(90, 3)" end="(90, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(90, 10)" end="(90, 33)">
+                    <OtherNode start="(90, 10)" end="(90, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(90, 10)" end="(90, 33)" kind="str">
+                        <AtomNode start="(90, 10)" end="(90, 33)" leading="" trailing="" val="&amp;quot;lean_int32_to_float32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(90, 33)" end="(90, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(90, 35)" end="(90, 79)" name="Int32.toFloat32">
+        <AtomNode start="(90, 35)" end="(90, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(90, 42)" end="(90, 57)">
+          <IdentNode start="(90, 42)" end="(90, 57)" leading="" trailing=" " raw_val="Int32.toFloat32" val="Int32.toFloat32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(90, 58)" end="(90, 79)">
+          <NullNode start="(90, 58)" end="(90, 69)">
+            <TermExplicitbinderNode start="(90, 58)" end="(90, 69)">
+              <AtomNode start="(90, 58)" end="(90, 59)" leading="" trailing="" val="("/>
+              <NullNode start="(90, 59)" end="(90, 60)">
+                <IdentNode start="(90, 59)" end="(90, 60)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(90, 61)" end="(90, 68)">
+                <AtomNode start="(90, 61)" end="(90, 62)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(90, 63)" end="(90, 68)" leading="" trailing="" raw_val="Int32" val="Int32" full_name="Int32" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(90, 68)" end="(90, 69)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(90, 70)" end="(90, 79)">
+            <AtomNode start="(90, 70)" end="(90, 71)" leading="" trailing=" " val=":"/>
+            <IdentNode start="(90, 72)" end="(90, 79)" leading="" trailing="&#10;" raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(91, 1)" end="(100, 79)" name="Int64.toFloat32" full_name="Int64.toFloat32">
+      <CommandDeclmodifiersNode start="(91, 1)" end="(100, 34)">
+        <NullNode start="(91, 1)" end="(99, 3)">
+          <CommandDoccommentNode start="(91, 1)" end="(99, 3)" comment="Obtains a `Float32` whose value is near the given `Int64`.&#10;&#10;It will be exactly the value of the given `Int64` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(91, 1)" end="(91, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(92, 1)" end="(99, 3)" leading="" trailing="&#10;" val="Obtains a `Float32` whose value is near the given `Int64`.&#10;&#10;It will be exactly the value of the given `Int64` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(100, 1)" end="(100, 34)">
+          <OtherNode start="(100, 1)" end="(100, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(100, 1)" end="(100, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(100, 3)" end="(100, 33)">
+              <OtherNode start="(100, 3)" end="(100, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(100, 3)" end="(100, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(100, 3)" end="(100, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(100, 10)" end="(100, 33)">
+                    <OtherNode start="(100, 10)" end="(100, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(100, 10)" end="(100, 33)" kind="str">
+                        <AtomNode start="(100, 10)" end="(100, 33)" leading="" trailing="" val="&amp;quot;lean_int64_to_float32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(100, 33)" end="(100, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(100, 35)" end="(100, 79)" name="Int64.toFloat32">
+        <AtomNode start="(100, 35)" end="(100, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(100, 42)" end="(100, 57)">
+          <IdentNode start="(100, 42)" end="(100, 57)" leading="" trailing=" " raw_val="Int64.toFloat32" val="Int64.toFloat32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(100, 58)" end="(100, 79)">
+          <NullNode start="(100, 58)" end="(100, 69)">
+            <TermExplicitbinderNode start="(100, 58)" end="(100, 69)">
+              <AtomNode start="(100, 58)" end="(100, 59)" leading="" trailing="" val="("/>
+              <NullNode start="(100, 59)" end="(100, 60)">
+                <IdentNode start="(100, 59)" end="(100, 60)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(100, 61)" end="(100, 68)">
+                <AtomNode start="(100, 61)" end="(100, 62)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(100, 63)" end="(100, 68)" leading="" trailing="" raw_val="Int64" val="Int64" full_name="Int64" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(100, 68)" end="(100, 69)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(100, 70)" end="(100, 79)">
+            <AtomNode start="(100, 70)" end="(100, 71)" leading="" trailing=" " val=":"/>
+            <IdentNode start="(100, 72)" end="(100, 79)" leading="" trailing="&#10;" raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(101, 1)" end="(110, 79)" name="ISize.toFloat32" full_name="ISize.toFloat32">
+      <CommandDeclmodifiersNode start="(101, 1)" end="(110, 34)">
+        <NullNode start="(101, 1)" end="(109, 3)">
+          <CommandDoccommentNode start="(101, 1)" end="(109, 3)" comment="Obtains a `Float32` whose value is near the given `ISize`.&#10;&#10;It will be exactly the value of the given `ISize` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/">
+            <AtomNode start="(101, 1)" end="(101, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(102, 1)" end="(109, 3)" leading="" trailing="&#10;" val="Obtains a `Float32` whose value is near the given `ISize`.&#10;&#10;It will be exactly the value of the given `ISize` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(110, 1)" end="(110, 34)">
+          <OtherNode start="(110, 1)" end="(110, 34)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(110, 1)" end="(110, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(110, 3)" end="(110, 33)">
+              <OtherNode start="(110, 3)" end="(110, 33)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(110, 3)" end="(110, 33)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(110, 3)" end="(110, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(110, 10)" end="(110, 33)">
+                    <OtherNode start="(110, 10)" end="(110, 33)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(110, 10)" end="(110, 33)" kind="str">
+                        <AtomNode start="(110, 10)" end="(110, 33)" leading="" trailing="" val="&amp;quot;lean_isize_to_float32&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(110, 33)" end="(110, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandOpaqueNode start="(110, 35)" end="(110, 79)" name="ISize.toFloat32">
+        <AtomNode start="(110, 35)" end="(110, 41)" leading="" trailing=" " val="opaque"/>
+        <CommandDeclidNode start="(110, 42)" end="(110, 57)">
+          <IdentNode start="(110, 42)" end="(110, 57)" leading="" trailing=" " raw_val="ISize.toFloat32" val="ISize.toFloat32"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(110, 58)" end="(110, 79)">
+          <NullNode start="(110, 58)" end="(110, 69)">
+            <TermExplicitbinderNode start="(110, 58)" end="(110, 69)">
+              <AtomNode start="(110, 58)" end="(110, 59)" leading="" trailing="" val="("/>
+              <NullNode start="(110, 59)" end="(110, 60)">
+                <IdentNode start="(110, 59)" end="(110, 60)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(110, 61)" end="(110, 68)">
+                <AtomNode start="(110, 61)" end="(110, 62)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(110, 63)" end="(110, 68)" leading="" trailing="" raw_val="ISize" val="ISize" full_name="ISize" mod_name="Init.Data.SInt.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/SInt/Basic.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(110, 68)" end="(110, 69)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(110, 70)" end="(110, 79)">
+            <AtomNode start="(110, 70)" end="(110, 71)" leading="" trailing=" " val=":"/>
+            <IdentNode start="(110, 72)" end="(110, 79)" leading="" trailing="&#10;" raw_val="Float32" val="Float32" full_name="Float32" mod_name="Init.Data.Float32" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Float32.lean"/>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <NullNode/>
+      </CommandOpaqueNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(14, 1)" end="(22, 3)" text="Truncates a floating-point number to the nearest 8-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int8` (including `Inf`), returns the maximum value of&#10;`Int8` (i.e. `Int8.maxValue`). If it is smaller than the minimum value for `Int8` (including `-Inf`),&#10;returns the minimum value of `Int8` (i.e. `Int8.minValue`). If it is `NaN`, returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(24, 1)" end="(33, 3)" text="Truncates a floating-point number to the nearest 16-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int16` (including `Inf`), returns the maximum&#10;value of `Int16` (i.e. `Int16.maxValue`). If it is smaller than the minimum value for `Int16`&#10;(including `-Inf`), returns the minimum value of `Int16` (i.e. `Int16.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(35, 1)" end="(44, 3)" text="Truncates a floating-point number to the nearest 32-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int32` (including `Inf`), returns the maximum&#10;value of `Int32` (i.e. `Int32.maxValue`). If it is smaller than the minimum value for `Int32`&#10;(including `-Inf`), returns the minimum value of `Int32` (i.e. `Int32.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(46, 1)" end="(55, 3)" text="Truncates a floating-point number to the nearest 64-bit signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `Int64` (including `Inf`), returns the maximum&#10;value of `Int64` (i.e. `Int64.maxValue`). If it is smaller than the minimum value for `Int64`&#10;(including `-Inf`), returns the minimum value of `Int64` (i.e. `Int64.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(57, 1)" end="(66, 3)" text="Truncates a floating-point number to the nearest word-sized signed integer, rounding towards zero.&#10;&#10;If the `Float` is larger than the maximum value for `ISize` (including `Inf`), returns the maximum&#10;value of `ISize` (i.e. `ISize.maxValue`). If it is smaller than the minimum value for `ISize`&#10;(including `-Inf`), returns the minimum value of `ISize` (i.e. `ISize.minValue`). If it is `NaN`,&#10;returns `0`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(69, 1)" end="(73, 3)" text="Obtains the `Float32` whose value is the same as the given `Int8`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(75, 1)" end="(79, 3)" text="Obtains the `Float32` whose value is the same as the given `Int16`.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(81, 1)" end="(89, 3)" text="Obtains a `Float32` whose value is near the given `Int32`.&#10;&#10;It will be exactly the value of the given `Int32` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(91, 1)" end="(99, 3)" text="Obtains a `Float32` whose value is near the given `Int64`.&#10;&#10;It will be exactly the value of the given `Int64` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+    <Comment start="(101, 1)" end="(109, 3)" text="Obtains a `Float32` whose value is near the given `ISize`.&#10;&#10;It will be exactly the value of the given `ISize` if such a `Float32` exists. If no such `Float32`&#10;exists, the returned value will either be the smallest `Float32` that is larger than the given&#10;value, or the largest `Float32` that is smaller than the given value.&#10;&#10;This function does not reduce in the kernel.&#10;-/"/>
+  </Comments>
+</TracedFile>

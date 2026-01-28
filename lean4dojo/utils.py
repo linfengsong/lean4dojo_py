@@ -9,6 +9,7 @@ import typing
 import hashlib
 import tempfile
 import subprocess
+import json
 from pathlib import Path
 from loguru import logger
 from functools import cache
@@ -16,8 +17,20 @@ from contextlib import contextmanager
 from ray.util.actor_pool import ActorPool
 from typing import Tuple, Union, List, Generator, Optional
 
-from .constants import NUM_WORKERS, TMP_DIR, LEAN4_PACKAGES_DIR, LEAN4_BUILD_DIR
-import lean4dojo
+from .constants import (
+    NUM_WORKERS, 
+    TMP_DIR,
+    LEAN4_PACKAGES_DIR,
+    LEAN4_BUILD_DIR,
+    LEAN4_SRC_LEAN_DIR,
+    LEAN4_SRC_LEAN_LAKE_DIR,
+    LEAN4_LIB_LEAN_DIR,
+    LEAN4_LEAN_LAKE_NAME_PREFIX,
+    LEAN4_TOOLCHAINS_DIR,
+    LEAN4_TRACED_DIR,
+    LEAN4_TRACED_PACKAGES_DIR,
+    LEAN4_TRACED_TOOLCHAINS_DIR,
+)
 
 
 @contextmanager
@@ -70,7 +83,7 @@ def ray_actor_pool(
         Generator[ActorPool, None, None]: A :class:`ray.util.actor_pool.ActorPool` object.
     """
     assert not ray.is_initialized()
-    ray.init(address="local", runtime_env={"py_modules": [lean4dojo]})
+    ray.init(address="local")
     pool = ActorPool([actor_cls.remote(*args, **kwargs) for _ in range(NUM_WORKERS)])  # type: ignore
     try:
         yield pool
@@ -210,82 +223,228 @@ def is_git_repo(path: Path) -> bool:
             == 0
         )
 
+@cache
+def get_toolchain_name(working_dir: str) -> str:
+     with working_directory(working_dir):
+        lean_prefix = execute(f"lake env lean --print-prefix", capture_output=True)[0].strip()
+        path = Path(lean_prefix)
+        return path.name
 
-def _from_lean_path(root_dir: Path, path: Path, repo, ext: str) -> Path:
-    assert path.suffix == ".lean"
-    if path.is_absolute():
-        path = path.relative_to(root_dir)
+@cache
+def get_lean_version() -> str:
+    """Get the version of Lean."""
+    output = execute("lean --version", capture_output=True)[0].strip()
+    m = re.match(r"Lean \(version (?P<version>\S+?),", output)
+    return m["version"]  # type: ignore
 
-    assert root_dir.name != "lean4"
-    if path.is_relative_to(LEAN4_PACKAGES_DIR / "lean4/src/lean/lake"):
-        # E.g., "lake-packages/lean4/src/lean/lake/Lake/CLI/Error.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR / "lean4/src/lean/lake")
-        return LEAN4_PACKAGES_DIR / "lean4/lib/lean" / p.with_suffix(ext)
-    elif path.is_relative_to(LEAN4_PACKAGES_DIR / "lean4/src"):
-        # E.g., "lake-packages/lean4/src/lean/Init.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR / "lean4/src").with_suffix(ext)
-        return LEAN4_PACKAGES_DIR / "lean4/lib" / p
-    elif path.is_relative_to(LEAN4_PACKAGES_DIR):
-        # E.g., "lake-packages/std/Std.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR).with_suffix(ext)
-        repo_name = p.parts[0]
-        return (
-            LEAN4_PACKAGES_DIR
-            / repo_name
-            / LEAN4_BUILD_DIR
-            / "ir"
-            / p.relative_to(repo_name)
-        )
+@cache
+def is_new_version(v: str) -> bool:
+    """Check if ``v`` is at least `4.3.0-rc2`."""
+    major, minor, patch = [int(_) for _ in v.split("-")[0].split(".")]
+    if major < 4 or (major == 4 and minor < 3):
+        return False
+    if (
+        major > 4
+        or (major == 4 and minor > 3)
+        or (major == 4 and minor == 3 and patch > 0)
+    ):
+        return True
+    assert major == 4 and minor == 3 and patch == 0
+    if "4.3.0-rc" in v:
+        rc = int(v.split("-")[1][2:])
+        return rc >= 2
     else:
-        # E.g., "Mathlib/LinearAlgebra/Basics.lean"
-        return LEAN4_BUILD_DIR / "ir" / path.with_suffix(ext)
+        return True
+
+@cache
+def get_packages_path() -> Path:
+    if is_new_version(get_lean_version()):
+        return Path(".lake/packages")    
+    else:
+        return Path("lake-packages")
+    
+@cache
+def get_build_path() -> Path:
+    if is_new_version(get_lean_version()):
+        return Path(".lake/build")    
+    else:
+        return Path("build")
+
+@cache
+def get_elan_toolchain_path(working_dir: str) -> Path:
+    toolchainName =get_toolchain_name(working_dir)
+    return Path.home() / LEAN4_TOOLCHAINS_DIR /Path(toolchainName)
+
+@cache
+def get_package_versions(working_dir: str) -> dict:
+    with open(working_dir + "/lake-manifest.json", 'r') as file:
+        package_versions = {}
+        jsonData = json.load(file)
+        packages = jsonData["packages"]
+        for package in packages:
+            name = package["name"]
+            rev = package["rev"]
+            package_versions[name] = rev
+        return package_versions
+    
+@cache    
+def get_traced_package_parent_path() ->Path:
+    return Path.home() / LEAN4_TRACED_PACKAGES_DIR
+
+@cache    
+def get_traced_package_paths(working_dir: str) ->List[Path]:
+    h = str(Path.home())
+    paths = []
+    package_versions = get_package_versions(working_dir)
+    for name, version in package_versions.items():
+        p = get_traced_package_parent_path() / Path(name + "-" + version)
+        paths.append(p)
+    return paths
+
+def get_traced_working_path(working_dir: str) ->str:
+    return Path(working_dir) / LEAN4_TRACED_DIR
+
+@cache    
+def get_traced_package_path(working_dir: str, package_name: str) ->str:
+    h = str(Path.home())
+    package_versions = get_package_versions(working_dir)
+    if package_name in package_versions:
+        version = package_versions[package_name]
+        return get_traced_package_parent_path() / Path(package_name + "-" + version)
+    print(f"Package {package_name} not found in lake-manifest.json: {package_versions}")
+    return None
+
+def get_traced_toolchain_path(working_dir: str) -> Path:
+    toolchainName =get_toolchain_name(working_dir)
+    return Path.home() / LEAN4_TRACED_TOOLCHAINS_DIR / Path(toolchainName)
 
 
-def to_xml_path(root_dir: Path, path: Path, repo) -> Path:
+def get_olean_working_path(working_dir: Path) -> Path:
+    return Path(working_dir) / LEAN4_BUILD_DIR / LEAN4_LIB_LEAN_DIR
+
+@cache    
+def get_olean_package_paths(working_dir: str) -> List[Path]:
+    h = str(Path.home())
+    paths = []
+    packages_path = get_packages_path()
+    working_dir / get_packages_path()
+    package_versions = get_package_versions(working_dir)
+    for package_name in package_versions.keys():
+        path = Path(working_dir) / Path(packages_path) / Path(package_name) / LEAN4_BUILD_DIR / LEAN4_LIB_LEAN_DIR
+        paths.append(path)
+    return paths
+
+def get_olean_toolchain_path(working_dir: str) -> Path:
+    return get_elan_toolchain_path(working_dir) / Path("lib/lean")
+
+def to_trace_file_ext_from_olean(root_dir: Path, path: Path, repo, ext: str) -> Path:
+    assert path.suffix == ".olean", "path is {path}"
+    ext_path = path.with_suffix(ext)
+    if ext_path.is_absolute():
+        assert ext_path.is_relative_to(root_dir), f"root_dir is {root_dir}, lean_path is {ext_path}"
+        ext_path = ext_path.relative_to(root_dir)
+
+    if root_dir == get_elan_toolchain_path(repo.working_dir):
+        #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, lib/lean/Init/Data.olean
+        #/home/linfe/.alean/toolchains/leanprover--lean4---v4.20.0, Init/Data.ast.json
+        return  get_traced_toolchain_path(repo.working_dir), ext_path.relative_to(LEAN4_LIB_LEAN_DIR)
+    else:
+        assert root_dir == Path(repo.working_dir), f"root_dir {root_dir} is not working_dir {repo.working_dir}"
+        if ext_path.is_relative_to(LEAN4_PACKAGES_DIR):
+            #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, .lake/packages/mathlib/.lake/build/lib/lean/Mathlib/Algebra/EuclideanDomain/Field.olean
+            ext_path = ext_path.relative_to(LEAN4_PACKAGES_DIR)
+            package_name = ext_path.parts[0]
+            ext_package_path = ext_path.relative_to(Path(package_name))
+            package_path = get_traced_package_path(repo.working_dir, package_name)
+            #/home/linfe/.alean/packages/mathlib-c211948581bde9846a99e32d97a03f0d5307c31e, Mathlib/Data/Nat/Factorial/Cast.ast.json
+            return package_path, ext_package_path.to_relative(LEAN4_BUILD_DIR / LEAN4_LIB_LEAN_DIR)
+        else:
+            #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, .lake/build/lib/lean/Lean4Examp.olean
+            #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, .alean/Lean4Example.ast.json
+            return root_dir, LEAN4_TRACED_DIR / ext_path.to_relative(LEAN4_BUILD_DIR / LEAN4_LIB_LEAN_DIR)  
+
+def _from_lean_path(root_dir: Path, path: Path, repo, ext: str) -> tuple[Path, Path]:
+    """ working_dir: project working_dir, path relative path to working_dir or absolute lean file path
+	    return package, toolchain or project working directory and relative trace file path 
+    """
+	
+    assert path.suffix == ".lean", "path is {path}"
+
+    ext_path = path.with_suffix(ext)
+    working_dir = Path(repo.working_dir)
+    if ext_path.is_absolute():
+        assert ext_path.is_relative_to(root_dir), f"root_dir is {root_dir}, lean_path is {ext_path}"
+        ext_path = ext_path.relative_to(root_dir)
+
+    if root_dir == get_elan_toolchain_path(repo.working_dir):
+        #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, src/lean/Init/Data.lean
+        assert ext_path.is_relative_to(LEAN4_SRC_LEAN_DIR), f"ext_path {ext_path} is not relative to {LEAN4_SRC_LEAN_DIR}"
+        ext_path = ext_path.relative_to(LEAN4_SRC_LEAN_DIR)
+
+        if ext_path.is_relative_to(LEAN4_SRC_LEAN_LAKE_DIR):
+            #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, lake/Lake/Build/Package.lean
+            #Lake/Build/Package.ast.json
+            ext_path = ext_path.relative_to(LEAN4_SRC_LEAN_LAKE_DIR)
+    
+        #//home/linfe/.alean/toolchains/leanprover--lean4---v4.20.0, Init/Data.ast.json
+        return  get_traced_toolchain_path(repo.working_dir), ext_path
+    elif root_dir.is_relative_to(working_dir / LEAN4_PACKAGES_DIR):
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3/.lake/packages/mathlib, Mathlib/Data/Nat/Factorial/Cast.lean
+        package_name = str(root_dir.relative_to(working_dir / LEAN4_PACKAGES_DIR))
+        package_path = get_traced_package_path(repo.working_dir, package_name)
+        #/home/linfe/.alean/packages/mathlib-c211948581bde9846a99e32d97a03f0d5307c31e, Mathlib/Data/Nat/Factorial/Cast.ast.json
+        return package_path, ext_path
+    else:
+        assert root_dir == Path(repo.working_dir), f"root_dir {root_dir}  {type(root_dir)}is not working_dir {repo.working_dir}"
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, Lean4Examp.lean
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, .alean/Lean4Example.ast.json
+        return root_dir, LEAN4_TRACED_DIR / ext_path  
+    
+def to_xml_path(root_dir: Path, path: Path, repo) -> tuple[Path, Path]:
     return _from_lean_path(root_dir, path, repo, ext=".trace.xml")
 
 
-def to_dep_path(root_dir: Path, path: Path, repo) -> Path:
+def to_dep_path(root_dir: Path, path: Path, repo) -> tuple[Path, Path]:
     return _from_lean_path(root_dir, path, repo, ext=".dep_paths")
 
 
-def to_json_path(root_dir: Path, path: Path, repo) -> Path:
+def to_json_path(root_dir: Path, path: Path, repo) -> tuple[Path, Path]:
     return _from_lean_path(root_dir, path, repo, ext=".ast.json")
 
 
-def to_lean_path(root_dir: Path, path: Path) -> Path:
-    if path.is_absolute():
-        path = path.relative_to(root_dir)
+def to_lean_path(root_dir: Path, path: Path, repo) -> tuple[Path, Path]:
+    """ working_dir: project working_dir, path relative path to working_dir or absolute trace file path
+        return package, toolchain or project working directory and relative leantrace file path 
+    """
 
-    if path.suffix in (".xml", ".json"):
-        path = path.with_suffix("").with_suffix(".lean")
-    else:
-        assert path.suffix == ".dep_paths"
-        path = path.with_suffix(".lean")
+    assert path.suffix == ".json" and Path(path.stem).suffix == ".ast" or path.suffix == ".dep_paths" or path.suffix == ".xml" and Path(path.stem).suffix == ".trace", f"path is {path}, root_dir is {root_dir}"
 
-    assert root_dir.name != "lean4"
-    if path == LEAN4_PACKAGES_DIR / "lean4/lib/lean/Lake.lean":
-        return LEAN4_PACKAGES_DIR / "lean4/src/lean/lake/Lake.lean"
-    elif path == LEAN4_PACKAGES_DIR / "lean4/lib/lean/LakeMain.lean":
-        return LEAN4_PACKAGES_DIR / "lean4/src/lean/lake/LakeMain.lean"
-    elif path.is_relative_to(LEAN4_PACKAGES_DIR / "lean4/lib/lean/Lake"):
-        # E.g., "lake-packages/lean4/lib/lean/Lake/Util/List.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR / "lean4/lib/lean/Lake")
-        return LEAN4_PACKAGES_DIR / "lean4/src/lean/lake/Lake" / p
-    elif path.is_relative_to(LEAN4_PACKAGES_DIR / "lean4/lib"):
-        # E.g., "lake-packages/lean4/lib/lean/Init.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR / "lean4/lib")
-        return LEAN4_PACKAGES_DIR / "lean4/src" / p
-    elif path.is_relative_to(LEAN4_PACKAGES_DIR):
-        # E.g., "lake-packages/std/build/ir/Std.lean"
-        p = path.relative_to(LEAN4_PACKAGES_DIR)
-        repo_name = p.parts[0]
-        return (
-            LEAN4_PACKAGES_DIR
-            / repo_name
-            / p.relative_to(Path(repo_name) / LEAN4_BUILD_DIR / "ir")
-        )
+    lean_path = path.with_suffix("").with_suffix(".lean")
+    if lean_path.is_absolute():
+        assert lean_path.is_relative_to(root_dir), f"root_dir is {root_dir}, lean_path is {lean_path}"
+        lean_path = lean_path.relative_to(root_dir)
+
+    working_dir = Path(repo.working_dir)
+    traced_package_parent_path = get_traced_package_parent_path()
+    if root_dir == get_traced_toolchain_path(repo.working_dir):
+        if str(lean_path).startswith(LEAN4_LEAN_LAKE_NAME_PREFIX):
+            #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, Lake/Build/Package.lean
+            #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, lake/Lake/Build/Package.lean
+            lean_path = LEAN4_SRC_LEAN_LAKE_DIR / lean_path
+        #/home/linfe/.alean/toolchains/leanprover--lean4---v4.20.0, Init/Data.ast.json
+
+        #/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0, src/lean/Init/Data.lean
+        #/home/linfe/.alean/toolchains/leanprover--lean4---v4.20.0, src/lean/lake/Lake/Build/Package.lean
+        return get_elan_toolchain_path(repo.working_dir), LEAN4_SRC_LEAN_DIR / lean_path
+    elif root_dir.is_relative_to(traced_package_parent_path):
+        #/home/linfe/.alean/packages/mathlib-c211948581bde9846a99e32d97a03f0d5307c31e, Mathlib/Data/Nat/Factorial/Cast.ast.json
+        package_path = root_dir.relative_to(traced_package_parent_path)
+        index = str(package_path).rindex("-")
+        package_name = str(package_path)[:index]
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3/.lake/packages/mathlib, Mathlib/Data/Nat/Factorial/Cast.lean
+        return working_dir / LEAN4_PACKAGES_DIR / Path(package_name), lean_path 
     else:
-        # E.g., ".lake/build/ir/Mathlib/LinearAlgebra/Basics.lean" or "build/ir/Mathlib/LinearAlgebra/Basics.lean"
-        assert path.is_relative_to(LEAN4_BUILD_DIR / "ir"), path
-        return path.relative_to(LEAN4_BUILD_DIR / "ir")
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, .alean/Lean4Example.ast.json
+        #/home/linfe/math/dojo/lean4dojo_py/lean4-example3, Lean4Examp.lean
+        assert lean_path.is_relative_to(LEAN4_TRACED_DIR), f"lean_path {lean_path} is not relative to {LEAN4_TRACED_DIR}"
+        return working_dir, lean_path.relative_to(LEAN4_TRACED_DIR)

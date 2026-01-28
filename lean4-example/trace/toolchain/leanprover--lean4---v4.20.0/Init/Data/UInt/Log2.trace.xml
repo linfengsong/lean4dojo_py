@@ -1,0 +1,512 @@
+<TracedFile path="src/lean/Init/Data/UInt/Log2.lean" md5="e2351f8f32e5057c2e31c87dd45485c1">
+  <FileNode start="(1, 1)" end="(94, 59)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 26)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 26)">
+        <ModuleImportNode start="(9, 1)" end="(9, 26)" module="Init.Data.Fin.Log2" path="src/lean/Init/Data/Fin/Log2.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 26)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.Fin.Log2" val="Init.Data.Fin.Log2"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <CommandDeclarationNode start="(11, 1)" end="(26, 59)" name="UInt8.log2" full_name="UInt8.log2">
+      <CommandDeclmodifiersNode start="(11, 1)" end="(25, 28)">
+        <NullNode start="(11, 1)" end="(24, 3)">
+          <CommandDoccommentNode start="(11, 1)" end="(24, 3)" comment="Base-two logarithm of 8-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt8.log2 0 = 0`&#10; * `UInt8.log2 1 = 0`&#10; * `UInt8.log2 2 = 1`&#10; * `UInt8.log2 4 = 2`&#10; * `UInt8.log2 7 = 2`&#10; * `UInt8.log2 8 = 3`&#10;-/">
+            <AtomNode start="(11, 1)" end="(11, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(12, 1)" end="(24, 3)" leading="" trailing="&#10;" val="Base-two logarithm of 8-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt8.log2 0 = 0`&#10; * `UInt8.log2 1 = 0`&#10; * `UInt8.log2 2 = 1`&#10; * `UInt8.log2 4 = 2`&#10; * `UInt8.log2 7 = 2`&#10; * `UInt8.log2 8 = 3`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(25, 1)" end="(25, 28)">
+          <OtherNode start="(25, 1)" end="(25, 28)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(25, 1)" end="(25, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(25, 3)" end="(25, 27)">
+              <OtherNode start="(25, 3)" end="(25, 27)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(25, 3)" end="(25, 27)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(25, 3)" end="(25, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(25, 10)" end="(25, 27)">
+                    <OtherNode start="(25, 10)" end="(25, 27)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(25, 10)" end="(25, 27)" kind="str">
+                        <AtomNode start="(25, 10)" end="(25, 27)" leading="" trailing="" val="&amp;quot;lean_uint8_log2&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(25, 27)" end="(25, 28)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(26, 1)" end="(26, 59)" name="UInt8.log2">
+        <AtomNode start="(26, 1)" end="(26, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(26, 5)" end="(26, 15)">
+          <IdentNode start="(26, 5)" end="(26, 15)" leading="" trailing=" " raw_val="UInt8.log2" val="UInt8.log2"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(26, 16)" end="(26, 35)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(26, 16)" end="(26, 27)">
+            <TermExplicitbinderNode start="(26, 16)" end="(26, 27)">
+              <AtomNode start="(26, 16)" end="(26, 17)" leading="" trailing="" val="("/>
+              <NullNode start="(26, 17)" end="(26, 18)">
+                <IdentNode start="(26, 17)" end="(26, 18)" leading="" trailing=" " raw_val="a" val="a"/>
+              </NullNode>
+              <NullNode start="(26, 19)" end="(26, 26)">
+                <AtomNode start="(26, 19)" end="(26, 20)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(26, 21)" end="(26, 26)" leading="" trailing="" raw_val="UInt8" val="UInt8" full_name="UInt8" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(26, 26)" end="(26, 27)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(26, 28)" end="(26, 35)">
+            <TermTypespecNode start="(26, 28)" end="(26, 35)">
+              <AtomNode start="(26, 28)" end="(26, 29)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(26, 30)" end="(26, 35)" leading="" trailing=" " raw_val="UInt8" val="UInt8" full_name="UInt8" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(26, 36)" end="(26, 59)">
+          <AtomNode start="(26, 36)" end="(26, 38)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(26, 39)" end="(26, 59)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(26, 39)" end="(26, 40)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(26, 40)" end="(26, 58)">
+              <OtherNode start="(26, 40)" end="(26, 58)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(26, 40)" end="(26, 41)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(26, 41)" end="(26, 57)">
+                  <OtherNode start="(26, 41)" end="(26, 57)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(26, 41)" end="(26, 49)" leading="" trailing=" " raw_val="Fin.log2" val="Fin.log2" full_name="Fin.log2" mod_name="Init.Data.Fin.Log2" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Log2.lean"/>
+                    <NullNode start="(26, 50)" end="(26, 57)">
+                      <IdentNode start="(26, 50)" end="(26, 57)" leading="" trailing="" raw_val="a.toFin" val="a.toFin"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(26, 57)" end="(26, 58)" leading="" trailing="" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(26, 58)" end="(26, 59)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(28, 1)" end="(43, 62)" name="UInt16.log2" full_name="UInt16.log2">
+      <CommandDeclmodifiersNode start="(28, 1)" end="(42, 29)">
+        <NullNode start="(28, 1)" end="(41, 3)">
+          <CommandDoccommentNode start="(28, 1)" end="(41, 3)" comment="Base-two logarithm of 16-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt16.log2 0 = 0`&#10; * `UInt16.log2 1 = 0`&#10; * `UInt16.log2 2 = 1`&#10; * `UInt16.log2 4 = 2`&#10; * `UInt16.log2 7 = 2`&#10; * `UInt16.log2 8 = 3`&#10;-/">
+            <AtomNode start="(28, 1)" end="(28, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(29, 1)" end="(41, 3)" leading="" trailing="&#10;" val="Base-two logarithm of 16-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt16.log2 0 = 0`&#10; * `UInt16.log2 1 = 0`&#10; * `UInt16.log2 2 = 1`&#10; * `UInt16.log2 4 = 2`&#10; * `UInt16.log2 7 = 2`&#10; * `UInt16.log2 8 = 3`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(42, 1)" end="(42, 29)">
+          <OtherNode start="(42, 1)" end="(42, 29)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(42, 1)" end="(42, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(42, 3)" end="(42, 28)">
+              <OtherNode start="(42, 3)" end="(42, 28)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(42, 3)" end="(42, 28)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(42, 3)" end="(42, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(42, 10)" end="(42, 28)">
+                    <OtherNode start="(42, 10)" end="(42, 28)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(42, 10)" end="(42, 28)" kind="str">
+                        <AtomNode start="(42, 10)" end="(42, 28)" leading="" trailing="" val="&amp;quot;lean_uint16_log2&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(42, 28)" end="(42, 29)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(43, 1)" end="(43, 62)" name="UInt16.log2">
+        <AtomNode start="(43, 1)" end="(43, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(43, 5)" end="(43, 16)">
+          <IdentNode start="(43, 5)" end="(43, 16)" leading="" trailing=" " raw_val="UInt16.log2" val="UInt16.log2"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(43, 17)" end="(43, 38)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(43, 17)" end="(43, 29)">
+            <TermExplicitbinderNode start="(43, 17)" end="(43, 29)">
+              <AtomNode start="(43, 17)" end="(43, 18)" leading="" trailing="" val="("/>
+              <NullNode start="(43, 18)" end="(43, 19)">
+                <IdentNode start="(43, 18)" end="(43, 19)" leading="" trailing=" " raw_val="a" val="a"/>
+              </NullNode>
+              <NullNode start="(43, 20)" end="(43, 28)">
+                <AtomNode start="(43, 20)" end="(43, 21)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(43, 22)" end="(43, 28)" leading="" trailing="" raw_val="UInt16" val="UInt16" full_name="UInt16" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(43, 28)" end="(43, 29)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(43, 30)" end="(43, 38)">
+            <TermTypespecNode start="(43, 30)" end="(43, 38)">
+              <AtomNode start="(43, 30)" end="(43, 31)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(43, 32)" end="(43, 38)" leading="" trailing=" " raw_val="UInt16" val="UInt16" full_name="UInt16" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(43, 39)" end="(43, 62)">
+          <AtomNode start="(43, 39)" end="(43, 41)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(43, 42)" end="(43, 62)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(43, 42)" end="(43, 43)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(43, 43)" end="(43, 61)">
+              <OtherNode start="(43, 43)" end="(43, 61)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(43, 43)" end="(43, 44)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(43, 44)" end="(43, 60)">
+                  <OtherNode start="(43, 44)" end="(43, 60)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(43, 44)" end="(43, 52)" leading="" trailing=" " raw_val="Fin.log2" val="Fin.log2" full_name="Fin.log2" mod_name="Init.Data.Fin.Log2" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Log2.lean"/>
+                    <NullNode start="(43, 53)" end="(43, 60)">
+                      <IdentNode start="(43, 53)" end="(43, 60)" leading="" trailing="" raw_val="a.toFin" val="a.toFin"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(43, 60)" end="(43, 61)" leading="" trailing="" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(43, 61)" end="(43, 62)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(45, 1)" end="(60, 62)" name="UInt32.log2" full_name="UInt32.log2">
+      <CommandDeclmodifiersNode start="(45, 1)" end="(59, 29)">
+        <NullNode start="(45, 1)" end="(58, 3)">
+          <CommandDoccommentNode start="(45, 1)" end="(58, 3)" comment="Base-two logarithm of 32-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt32.log2 0 = 0`&#10; * `UInt32.log2 1 = 0`&#10; * `UInt32.log2 2 = 1`&#10; * `UInt32.log2 4 = 2`&#10; * `UInt32.log2 7 = 2`&#10; * `UInt32.log2 8 = 3`&#10;-/">
+            <AtomNode start="(45, 1)" end="(45, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(46, 1)" end="(58, 3)" leading="" trailing="&#10;" val="Base-two logarithm of 32-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt32.log2 0 = 0`&#10; * `UInt32.log2 1 = 0`&#10; * `UInt32.log2 2 = 1`&#10; * `UInt32.log2 4 = 2`&#10; * `UInt32.log2 7 = 2`&#10; * `UInt32.log2 8 = 3`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(59, 1)" end="(59, 29)">
+          <OtherNode start="(59, 1)" end="(59, 29)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(59, 1)" end="(59, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(59, 3)" end="(59, 28)">
+              <OtherNode start="(59, 3)" end="(59, 28)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(59, 3)" end="(59, 28)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(59, 3)" end="(59, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(59, 10)" end="(59, 28)">
+                    <OtherNode start="(59, 10)" end="(59, 28)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(59, 10)" end="(59, 28)" kind="str">
+                        <AtomNode start="(59, 10)" end="(59, 28)" leading="" trailing="" val="&amp;quot;lean_uint32_log2&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(59, 28)" end="(59, 29)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(60, 1)" end="(60, 62)" name="UInt32.log2">
+        <AtomNode start="(60, 1)" end="(60, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(60, 5)" end="(60, 16)">
+          <IdentNode start="(60, 5)" end="(60, 16)" leading="" trailing=" " raw_val="UInt32.log2" val="UInt32.log2"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(60, 17)" end="(60, 38)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(60, 17)" end="(60, 29)">
+            <TermExplicitbinderNode start="(60, 17)" end="(60, 29)">
+              <AtomNode start="(60, 17)" end="(60, 18)" leading="" trailing="" val="("/>
+              <NullNode start="(60, 18)" end="(60, 19)">
+                <IdentNode start="(60, 18)" end="(60, 19)" leading="" trailing=" " raw_val="a" val="a"/>
+              </NullNode>
+              <NullNode start="(60, 20)" end="(60, 28)">
+                <AtomNode start="(60, 20)" end="(60, 21)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(60, 22)" end="(60, 28)" leading="" trailing="" raw_val="UInt32" val="UInt32" full_name="UInt32" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(60, 28)" end="(60, 29)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(60, 30)" end="(60, 38)">
+            <TermTypespecNode start="(60, 30)" end="(60, 38)">
+              <AtomNode start="(60, 30)" end="(60, 31)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(60, 32)" end="(60, 38)" leading="" trailing=" " raw_val="UInt32" val="UInt32" full_name="UInt32" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(60, 39)" end="(60, 62)">
+          <AtomNode start="(60, 39)" end="(60, 41)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(60, 42)" end="(60, 62)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(60, 42)" end="(60, 43)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(60, 43)" end="(60, 61)">
+              <OtherNode start="(60, 43)" end="(60, 61)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(60, 43)" end="(60, 44)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(60, 44)" end="(60, 60)">
+                  <OtherNode start="(60, 44)" end="(60, 60)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(60, 44)" end="(60, 52)" leading="" trailing=" " raw_val="Fin.log2" val="Fin.log2" full_name="Fin.log2" mod_name="Init.Data.Fin.Log2" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Log2.lean"/>
+                    <NullNode start="(60, 53)" end="(60, 60)">
+                      <IdentNode start="(60, 53)" end="(60, 60)" leading="" trailing="" raw_val="a.toFin" val="a.toFin"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(60, 60)" end="(60, 61)" leading="" trailing="" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(60, 61)" end="(60, 62)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(62, 1)" end="(77, 62)" name="UInt64.log2" full_name="UInt64.log2">
+      <CommandDeclmodifiersNode start="(62, 1)" end="(76, 29)">
+        <NullNode start="(62, 1)" end="(75, 3)">
+          <CommandDoccommentNode start="(62, 1)" end="(75, 3)" comment="Base-two logarithm of 64-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt64.log2 0 = 0`&#10; * `UInt64.log2 1 = 0`&#10; * `UInt64.log2 2 = 1`&#10; * `UInt64.log2 4 = 2`&#10; * `UInt64.log2 7 = 2`&#10; * `UInt64.log2 8 = 3`&#10;-/">
+            <AtomNode start="(62, 1)" end="(62, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(63, 1)" end="(75, 3)" leading="" trailing="&#10;" val="Base-two logarithm of 64-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt64.log2 0 = 0`&#10; * `UInt64.log2 1 = 0`&#10; * `UInt64.log2 2 = 1`&#10; * `UInt64.log2 4 = 2`&#10; * `UInt64.log2 7 = 2`&#10; * `UInt64.log2 8 = 3`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(76, 1)" end="(76, 29)">
+          <OtherNode start="(76, 1)" end="(76, 29)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(76, 1)" end="(76, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(76, 3)" end="(76, 28)">
+              <OtherNode start="(76, 3)" end="(76, 28)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(76, 3)" end="(76, 28)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(76, 3)" end="(76, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(76, 10)" end="(76, 28)">
+                    <OtherNode start="(76, 10)" end="(76, 28)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(76, 10)" end="(76, 28)" kind="str">
+                        <AtomNode start="(76, 10)" end="(76, 28)" leading="" trailing="" val="&amp;quot;lean_uint64_log2&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(76, 28)" end="(76, 29)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(77, 1)" end="(77, 62)" name="UInt64.log2">
+        <AtomNode start="(77, 1)" end="(77, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(77, 5)" end="(77, 16)">
+          <IdentNode start="(77, 5)" end="(77, 16)" leading="" trailing=" " raw_val="UInt64.log2" val="UInt64.log2"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(77, 17)" end="(77, 38)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(77, 17)" end="(77, 29)">
+            <TermExplicitbinderNode start="(77, 17)" end="(77, 29)">
+              <AtomNode start="(77, 17)" end="(77, 18)" leading="" trailing="" val="("/>
+              <NullNode start="(77, 18)" end="(77, 19)">
+                <IdentNode start="(77, 18)" end="(77, 19)" leading="" trailing=" " raw_val="a" val="a"/>
+              </NullNode>
+              <NullNode start="(77, 20)" end="(77, 28)">
+                <AtomNode start="(77, 20)" end="(77, 21)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(77, 22)" end="(77, 28)" leading="" trailing="" raw_val="UInt64" val="UInt64" full_name="UInt64" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(77, 28)" end="(77, 29)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(77, 30)" end="(77, 38)">
+            <TermTypespecNode start="(77, 30)" end="(77, 38)">
+              <AtomNode start="(77, 30)" end="(77, 31)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(77, 32)" end="(77, 38)" leading="" trailing=" " raw_val="UInt64" val="UInt64" full_name="UInt64" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(77, 39)" end="(77, 62)">
+          <AtomNode start="(77, 39)" end="(77, 41)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(77, 42)" end="(77, 62)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(77, 42)" end="(77, 43)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(77, 43)" end="(77, 61)">
+              <OtherNode start="(77, 43)" end="(77, 61)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(77, 43)" end="(77, 44)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(77, 44)" end="(77, 60)">
+                  <OtherNode start="(77, 44)" end="(77, 60)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(77, 44)" end="(77, 52)" leading="" trailing=" " raw_val="Fin.log2" val="Fin.log2" full_name="Fin.log2" mod_name="Init.Data.Fin.Log2" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Log2.lean"/>
+                    <NullNode start="(77, 53)" end="(77, 60)">
+                      <IdentNode start="(77, 53)" end="(77, 60)" leading="" trailing="" raw_val="a.toFin" val="a.toFin"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(77, 60)" end="(77, 61)" leading="" trailing="" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(77, 61)" end="(77, 62)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(79, 1)" end="(94, 59)" name="USize.log2" full_name="USize.log2">
+      <CommandDeclmodifiersNode start="(79, 1)" end="(93, 28)">
+        <NullNode start="(79, 1)" end="(92, 3)">
+          <CommandDoccommentNode start="(79, 1)" end="(92, 3)" comment="Base-two logarithm of word-sized unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `USize.log2 0 = 0`&#10; * `USize.log2 1 = 0`&#10; * `USize.log2 2 = 1`&#10; * `USize.log2 4 = 2`&#10; * `USize.log2 7 = 2`&#10; * `USize.log2 8 = 3`&#10;-/">
+            <AtomNode start="(79, 1)" end="(79, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(80, 1)" end="(92, 3)" leading="" trailing="&#10;" val="Base-two logarithm of word-sized unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `USize.log2 0 = 0`&#10; * `USize.log2 1 = 0`&#10; * `USize.log2 2 = 1`&#10; * `USize.log2 4 = 2`&#10; * `USize.log2 7 = 2`&#10; * `USize.log2 8 = 3`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(93, 1)" end="(93, 28)">
+          <OtherNode start="(93, 1)" end="(93, 28)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(93, 1)" end="(93, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(93, 3)" end="(93, 27)">
+              <OtherNode start="(93, 3)" end="(93, 27)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(93, 3)" end="(93, 27)" kind="Lean.Parser.Attr.extern">
+                  <AtomNode start="(93, 3)" end="(93, 9)" leading="" trailing=" " val="extern"/>
+                  <NullNode/>
+                  <NullNode start="(93, 10)" end="(93, 27)">
+                    <OtherNode start="(93, 10)" end="(93, 27)" kind="Lean.Parser.Attr.externEntry">
+                      <NullNode/>
+                      <NullNode/>
+                      <OtherNode start="(93, 10)" end="(93, 27)" kind="str">
+                        <AtomNode start="(93, 10)" end="(93, 27)" leading="" trailing="" val="&amp;quot;lean_usize_log2&amp;quot;"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(93, 27)" end="(93, 28)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(94, 1)" end="(94, 59)" name="USize.log2">
+        <AtomNode start="(94, 1)" end="(94, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(94, 5)" end="(94, 15)">
+          <IdentNode start="(94, 5)" end="(94, 15)" leading="" trailing=" " raw_val="USize.log2" val="USize.log2"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(94, 16)" end="(94, 35)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(94, 16)" end="(94, 27)">
+            <TermExplicitbinderNode start="(94, 16)" end="(94, 27)">
+              <AtomNode start="(94, 16)" end="(94, 17)" leading="" trailing="" val="("/>
+              <NullNode start="(94, 17)" end="(94, 18)">
+                <IdentNode start="(94, 17)" end="(94, 18)" leading="" trailing=" " raw_val="a" val="a"/>
+              </NullNode>
+              <NullNode start="(94, 19)" end="(94, 26)">
+                <AtomNode start="(94, 19)" end="(94, 20)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(94, 21)" end="(94, 26)" leading="" trailing="" raw_val="USize" val="USize" full_name="USize" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(94, 26)" end="(94, 27)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(94, 28)" end="(94, 35)">
+            <TermTypespecNode start="(94, 28)" end="(94, 35)">
+              <AtomNode start="(94, 28)" end="(94, 29)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(94, 30)" end="(94, 35)" leading="" trailing=" " raw_val="USize" val="USize" full_name="USize" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(94, 36)" end="(94, 59)">
+          <AtomNode start="(94, 36)" end="(94, 38)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(94, 39)" end="(94, 59)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(94, 39)" end="(94, 40)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(94, 40)" end="(94, 58)">
+              <OtherNode start="(94, 40)" end="(94, 58)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(94, 40)" end="(94, 41)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(94, 41)" end="(94, 57)">
+                  <OtherNode start="(94, 41)" end="(94, 57)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(94, 41)" end="(94, 49)" leading="" trailing=" " raw_val="Fin.log2" val="Fin.log2" full_name="Fin.log2" mod_name="Init.Data.Fin.Log2" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Log2.lean"/>
+                    <NullNode start="(94, 50)" end="(94, 57)">
+                      <IdentNode start="(94, 50)" end="(94, 57)" leading="" trailing="" raw_val="a.toFin" val="a.toFin"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(94, 57)" end="(94, 58)" leading="" trailing="" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(94, 58)" end="(94, 59)" leading="" trailing="&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(11, 1)" end="(24, 3)" text="Base-two logarithm of 8-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt8.log2 0 = 0`&#10; * `UInt8.log2 1 = 0`&#10; * `UInt8.log2 2 = 1`&#10; * `UInt8.log2 4 = 2`&#10; * `UInt8.log2 7 = 2`&#10; * `UInt8.log2 8 = 3`&#10;-/"/>
+    <Comment start="(28, 1)" end="(41, 3)" text="Base-two logarithm of 16-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt16.log2 0 = 0`&#10; * `UInt16.log2 1 = 0`&#10; * `UInt16.log2 2 = 1`&#10; * `UInt16.log2 4 = 2`&#10; * `UInt16.log2 7 = 2`&#10; * `UInt16.log2 8 = 3`&#10;-/"/>
+    <Comment start="(45, 1)" end="(58, 3)" text="Base-two logarithm of 32-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt32.log2 0 = 0`&#10; * `UInt32.log2 1 = 0`&#10; * `UInt32.log2 2 = 1`&#10; * `UInt32.log2 4 = 2`&#10; * `UInt32.log2 7 = 2`&#10; * `UInt32.log2 8 = 3`&#10;-/"/>
+    <Comment start="(62, 1)" end="(75, 3)" text="Base-two logarithm of 64-bit unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `UInt64.log2 0 = 0`&#10; * `UInt64.log2 1 = 0`&#10; * `UInt64.log2 2 = 1`&#10; * `UInt64.log2 4 = 2`&#10; * `UInt64.log2 7 = 2`&#10; * `UInt64.log2 8 = 3`&#10;-/"/>
+    <Comment start="(79, 1)" end="(92, 3)" text="Base-two logarithm of word-sized unsigned integers. Returns `⌊max 0 (log₂ a)⌋`.&#10;&#10;This function is overridden at runtime with an efficient implementation. This definition is&#10;the logical model.&#10;&#10;Examples:&#10; * `USize.log2 0 = 0`&#10; * `USize.log2 1 = 0`&#10; * `USize.log2 2 = 1`&#10; * `USize.log2 4 = 2`&#10; * `USize.log2 7 = 2`&#10; * `USize.log2 8 = 3`&#10;-/"/>
+  </Comments>
+</TracedFile>

@@ -1,0 +1,696 @@
+{"tactics": [],
+ "premises": [],
+ "commandASTs":
+ [{"node":
+   {"kind": "Lean.Parser.Module.header",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.moduleTk",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": "module",
+             "info":
+             {"original":
+              {"trailing": "\n\n",
+               "pos": 156,
+               "leading": "",
+               "endPos": 162}}}}]}}]}},
+     {"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.prelude",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": "prelude",
+             "info":
+             {"original":
+              {"trailing": "\n",
+               "pos": 164,
+               "leading": "",
+               "endPos": 171}}}}]}}]}},
+     {"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.import",
+          "info": "none",
+          "args":
+          [{"node": {"kind": "null", "info": "none", "args": []}},
+           {"atom":
+            {"val": "import",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 172, "leading": "", "endPos": 178}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"ident":
+            {"val": "Init.Prelude",
+             "rawVal": "Init.Prelude",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": "\n", "pos": 179, "leading": "", "endPos": 191}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Module.import",
+          "info": "none",
+          "args":
+          [{"node": {"kind": "null", "info": "none", "args": []}},
+           {"atom":
+            {"val": "import",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 192, "leading": "", "endPos": 198}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"ident":
+            {"val": "Init.Tactics",
+             "rawVal": "Init.Tactics",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": "\n\n", "pos": 199, "leading": "", "endPos": 211}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.in",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.set_option",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "set_option",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 213, "leading": "", "endPos": 223}}}},
+        {"ident":
+         {"val": "linter.unusedVariables",
+          "rawVal": "linter.unusedVariables",
+          "preresolved": [],
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 224, "leading": "", "endPos": 246}}}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"atom":
+         {"val": "false",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 247, "leading": "", "endPos": 252}}}}]}},
+     {"atom":
+      {"val": "in",
+       "info":
+       {"original":
+        {"trailing": "\n", "pos": 253, "leading": "", "endPos": 255}}}},
+     {"node":
+      {"kind": "Lean.Parser.Command.declaration",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Command.declModifiers",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Command.docComment",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "/--",
+                   "info":
+                   {"original":
+                    {"trailing": "\n",
+                     "pos": 256,
+                     "leading": "",
+                     "endPos": 259}}}},
+                 {"atom":
+                  {"val":
+                   "The expression `binderNameHint v binder e` defined to be `e`.\n\nIf it is used on the right-hand side of an equation that is used for rewriting by `rw` or `simp`,\nand `v` is a local variable, and `binder` is an expression that (after beta-reduction) is a binder\n(`fun w => …` or `∀ w, …`), then it will rename `v` to the name used in that binder, and remove\nthe `binderNameHint`.\n\nA typical use of this gadget would be as follows; the gadget ensures that after rewriting, the local\nvariable is still `name`, and not `x`:\n```\ntheorem all_eq_not_any_not (l : List α) (p : α → Bool) :\n    l.all p = !l.any fun x => binderNameHint x p (!p x) := sorry\n\nexample (names : List String) : names.all (fun name => \"Waldo\".isPrefixOf name) = true := by\n  rw [all_eq_not_any_not]\n  -- ⊢ (!names.any fun name => !\"Waldo\".isPrefixOf name) = true\n```\n\nIf `binder` is not a binder, then the name of `v` attains a macro scope. This only matters when the\nresulting term is used in a non-hygienic way, e.g. in termination proofs for well-founded recursion.\n\nThis gadget is supported by\n* `simp`, `dsimp` and `rw` in the right-hand-side of an equation\n* `simp` in the assumptions of congruence rules\n\nIt is ineffective in other positions (hyptheses of rewrite rules) or when used by other tactics\n(e.g. `apply`).\n-/",
+                   "info":
+                   {"original":
+                    {"trailing": "\n",
+                     "pos": 260,
+                     "leading": "",
+                     "endPos": 1564}}}}]}}]}},
+           {"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.attributes",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "@[",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1565,
+                     "leading": "",
+                     "endPos": 1567}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrInstance",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Term.attrKind",
+                         "info": "none",
+                         "args":
+                         [{"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"node":
+                        {"kind": "Lean.Parser.Attr.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1567,
+                              "leading": "",
+                              "endPos": 1571}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.simpPre",
+                               "info": "none",
+                               "args":
+                               [{"atom":
+                                 {"val": "↓",
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 1572,
+                                    "leading": "",
+                                    "endPos": 1575}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}},
+                 {"atom":
+                  {"val": "]",
+                   "info":
+                   {"original":
+                    {"trailing": "\n",
+                     "pos": 1575,
+                     "leading": "",
+                     "endPos": 1576}}}}]}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.definition",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": "def",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1577, "leading": "", "endPos": 1580}}}},
+           {"node":
+            {"kind": "Lean.Parser.Command.declId",
+             "info": "none",
+             "args":
+             [{"ident":
+               {"val": "binderNameHint",
+                "rawVal": "binderNameHint",
+                "preresolved": [],
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1581,
+                  "leading": "",
+                  "endPos": 1595}}}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Command.optDeclSig",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.implicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "{",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1596,
+                        "leading": "",
+                        "endPos": 1597}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "α",
+                         "rawVal": "α",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1597,
+                           "leading": "",
+                           "endPos": 1599}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1600,
+                           "leading": "",
+                           "endPos": 1601}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Term.sort",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "Sort",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1602,
+                              "leading": "",
+                              "endPos": 1606}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"ident":
+                              {"val": "u",
+                               "rawVal": "u",
+                               "preresolved": [],
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 1607,
+                                 "leading": "",
+                                 "endPos": 1608}}}}]}}]}}]}},
+                    {"atom":
+                     {"val": "}",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1608,
+                        "leading": "",
+                        "endPos": 1609}}}}]}},
+                 {"node":
+                  {"kind": "Lean.Parser.Term.implicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "{",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1610,
+                        "leading": "",
+                        "endPos": 1611}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "β",
+                         "rawVal": "β",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1611,
+                           "leading": "",
+                           "endPos": 1613}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1614,
+                           "leading": "",
+                           "endPos": 1615}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Term.sort",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "Sort",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1616,
+                              "leading": "",
+                              "endPos": 1620}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"ident":
+                              {"val": "v",
+                               "rawVal": "v",
+                               "preresolved": [],
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 1621,
+                                 "leading": "",
+                                 "endPos": 1622}}}}]}}]}}]}},
+                    {"atom":
+                     {"val": "}",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1622,
+                        "leading": "",
+                        "endPos": 1623}}}}]}},
+                 {"node":
+                  {"kind": "Lean.Parser.Term.implicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "{",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1624,
+                        "leading": "",
+                        "endPos": 1625}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "γ",
+                         "rawVal": "γ",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1625,
+                           "leading": "",
+                           "endPos": 1627}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1628,
+                           "leading": "",
+                           "endPos": 1629}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Term.sort",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "Sort",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1630,
+                              "leading": "",
+                              "endPos": 1634}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"ident":
+                              {"val": "w",
+                               "rawVal": "w",
+                               "preresolved": [],
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 1635,
+                                 "leading": "",
+                                 "endPos": 1636}}}}]}}]}}]}},
+                    {"atom":
+                     {"val": "}",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1636,
+                        "leading": "",
+                        "endPos": 1637}}}}]}},
+                 {"node":
+                  {"kind": "Lean.Parser.Term.explicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "(",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1638,
+                        "leading": "",
+                        "endPos": 1639}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "v",
+                         "rawVal": "v",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1639,
+                           "leading": "",
+                           "endPos": 1640}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1641,
+                           "leading": "",
+                           "endPos": 1642}}}},
+                       {"ident":
+                        {"val": "α",
+                         "rawVal": "α",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1643,
+                           "leading": "",
+                           "endPos": 1645}}}}]}},
+                    {"node": {"kind": "null", "info": "none", "args": []}},
+                    {"atom":
+                     {"val": ")",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1645,
+                        "leading": "",
+                        "endPos": 1646}}}}]}},
+                 {"node":
+                  {"kind": "Lean.Parser.Term.explicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "(",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1647,
+                        "leading": "",
+                        "endPos": 1648}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "binder",
+                         "rawVal": "binder",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1648,
+                           "leading": "",
+                           "endPos": 1654}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1655,
+                           "leading": "",
+                           "endPos": 1656}}}},
+                       {"ident":
+                        {"val": "β",
+                         "rawVal": "β",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1657,
+                           "leading": "",
+                           "endPos": 1659}}}}]}},
+                    {"node": {"kind": "null", "info": "none", "args": []}},
+                    {"atom":
+                     {"val": ")",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1659,
+                        "leading": "",
+                        "endPos": 1660}}}}]}},
+                 {"node":
+                  {"kind": "Lean.Parser.Term.explicitBinder",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": "(",
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1661,
+                        "leading": "",
+                        "endPos": 1662}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "e",
+                         "rawVal": "e",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1662,
+                           "leading": "",
+                           "endPos": 1663}}}}]}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": ":",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1664,
+                           "leading": "",
+                           "endPos": 1665}}}},
+                       {"ident":
+                        {"val": "γ",
+                         "rawVal": "γ",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1666,
+                           "leading": "",
+                           "endPos": 1668}}}}]}},
+                    {"node": {"kind": "null", "info": "none", "args": []}},
+                    {"atom":
+                     {"val": ")",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1668,
+                        "leading": "",
+                        "endPos": 1669}}}}]}}]}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.typeSpec",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1670,
+                        "leading": "",
+                        "endPos": 1671}}}},
+                    {"ident":
+                     {"val": "γ",
+                      "rawVal": "γ",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1672,
+                        "leading": "",
+                        "endPos": 1674}}}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Command.declValSimple",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":=",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1675,
+                  "leading": "",
+                  "endPos": 1677}}}},
+              {"ident":
+               {"val": "e",
+                "rawVal": "e",
+                "preresolved": [],
+                "info":
+                {"original":
+                 {"trailing": "\n",
+                  "pos": 1678,
+                  "leading": "",
+                  "endPos": 1679}}}},
+              {"node":
+               {"kind": "Lean.Parser.Termination.suffix",
+                "info": "none",
+                "args":
+                [{"node": {"kind": "null", "info": "none", "args": []}},
+                 {"node": {"kind": "null", "info": "none", "args": []}}]}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}}]}

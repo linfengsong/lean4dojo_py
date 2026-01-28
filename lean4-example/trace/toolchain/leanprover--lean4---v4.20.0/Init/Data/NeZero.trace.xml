@@ -1,0 +1,1203 @@
+<TracedFile path="src/lean/Init/Data/NeZero.lean" md5="958e0d50f155b91f92198d25b790b982">
+  <FileNode start="(1, 1)" end="(61, 47)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 22)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 22)">
+        <ModuleImportNode start="(9, 1)" end="(9, 22)" module="Init.Data.Zero" path="src/lean/Init/Data/Zero.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 22)" leading="" trailing="&#10;&#10;&#10;" raw_val="Init.Data.Zero" val="Init.Data.Zero"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <CommandModuledocNode start="(12, 1)" end="(20, 3)" comment="# `NeZero` typeclass&#10;&#10;We create a typeclass `NeZero n` which carries around the fact that `(n : R) ≠ 0`.&#10;&#10;## Main declarations&#10;&#10;* `NeZero`: `n ≠ 0` as a typeclass.&#10;-/">
+      <AtomNode start="(12, 1)" end="(12, 4)" leading="" trailing="&#10;" val="/-!"/>
+      <AtomNode start="(13, 1)" end="(20, 3)" leading="" trailing="&#10;&#10;&#10;" val="# `NeZero` typeclass&#10;&#10;We create a typeclass `NeZero n` which carries around the fact that `(n : R) ≠ 0`.&#10;&#10;## Main declarations&#10;&#10;* `NeZero`: `n ≠ 0` as a typeclass.&#10;-/"/>
+    </CommandModuledocNode>
+    <OtherNode start="(23, 1)" end="(23, 31)" kind="Lean.Parser.Command.variable">
+      <AtomNode start="(23, 1)" end="(23, 9)" leading="" trailing=" " val="variable"/>
+      <NullNode start="(23, 10)" end="(23, 31)">
+        <OtherNode start="(23, 10)" end="(23, 22)" kind="Lean.Parser.Term.implicitBinder">
+          <AtomNode start="(23, 10)" end="(23, 11)" leading="" trailing="" val="{"/>
+          <NullNode start="(23, 11)" end="(23, 12)">
+            <IdentNode start="(23, 11)" end="(23, 12)" leading="" trailing=" " raw_val="R" val="R"/>
+          </NullNode>
+          <NullNode start="(23, 13)" end="(23, 21)">
+            <AtomNode start="(23, 13)" end="(23, 14)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(23, 15)" end="(23, 21)" kind="Lean.Parser.Term.type">
+              <AtomNode start="(23, 15)" end="(23, 19)" leading="" trailing=" " val="Type"/>
+              <NullNode start="(23, 20)" end="(23, 21)">
+                <OtherNode start="(23, 20)" end="(23, 21)" kind="Lean.Parser.Level.hole">
+                  <AtomNode start="(23, 20)" end="(23, 21)" leading="" trailing="" val="_"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </NullNode>
+          <AtomNode start="(23, 21)" end="(23, 22)" leading="" trailing=" " val="}"/>
+        </OtherNode>
+        <OtherNode start="(23, 23)" end="(23, 31)" kind="Lean.Parser.Term.instBinder">
+          <AtomNode start="(23, 23)" end="(23, 24)" leading="" trailing="" val="["/>
+          <NullNode/>
+          <OtherNode start="(23, 24)" end="(23, 30)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(23, 24)" end="(23, 28)" leading="" trailing=" " raw_val="Zero" val="Zero" full_name="Zero" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            <NullNode start="(23, 29)" end="(23, 30)">
+              <IdentNode start="(23, 29)" end="(23, 30)" leading="" trailing="" raw_val="R" val="R"/>
+            </NullNode>
+          </OtherNode>
+          <AtomNode start="(23, 30)" end="(23, 31)" leading="" trailing="&#10;&#10;" val="]"/>
+        </OtherNode>
+      </NullNode>
+    </OtherNode>
+    <CommandDeclarationNode start="(25, 1)" end="(28, 14)" name="NeZero" full_name="NeZero">
+      <CommandDeclmodifiersNode start="(25, 1)" end="(25, 41)">
+        <NullNode start="(25, 1)" end="(25, 41)">
+          <CommandDoccommentNode start="(25, 1)" end="(25, 41)" comment="A type-class version of `n ≠ 0`.  -/">
+            <AtomNode start="(25, 1)" end="(25, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(25, 5)" end="(25, 41)" leading="" trailing="&#10;" val="A type-class version of `n ≠ 0`.  -/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandStructureNode start="(26, 1)" end="(28, 14)" name="NeZero">
+        <CommandClasstkNode start="(26, 1)" end="(26, 6)">
+          <AtomNode start="(26, 1)" end="(26, 6)" leading="" trailing=" " val="class"/>
+        </CommandClasstkNode>
+        <CommandDeclidNode start="(26, 7)" end="(26, 13)">
+          <IdentNode start="(26, 7)" end="(26, 13)" leading="" trailing=" " raw_val="NeZero" val="NeZero"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <NullNode start="(26, 14)" end="(26, 21)">
+          <TermExplicitbinderNode start="(26, 14)" end="(26, 21)">
+            <AtomNode start="(26, 14)" end="(26, 15)" leading="" trailing="" val="("/>
+            <NullNode start="(26, 15)" end="(26, 16)">
+              <IdentNode start="(26, 15)" end="(26, 16)" leading="" trailing=" " raw_val="n" val="n"/>
+            </NullNode>
+            <NullNode start="(26, 17)" end="(26, 20)">
+              <AtomNode start="(26, 17)" end="(26, 18)" leading="" trailing=" " val=":"/>
+              <IdentNode start="(26, 19)" end="(26, 20)" leading="" trailing="" raw_val="R" val="R"/>
+            </NullNode>
+            <NullNode/>
+            <AtomNode start="(26, 20)" end="(26, 21)" leading="" trailing=" " val=")"/>
+          </TermExplicitbinderNode>
+        </NullNode>
+        <NullNode start="(26, 22)" end="(26, 28)">
+          <TermTypespecNode start="(26, 22)" end="(26, 28)">
+            <AtomNode start="(26, 22)" end="(26, 23)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(26, 24)" end="(26, 28)" kind="Lean.Parser.Term.prop">
+              <AtomNode start="(26, 24)" end="(26, 28)" leading="" trailing=" " val="Prop"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode start="(26, 29)" end="(28, 14)">
+          <AtomNode start="(26, 29)" end="(26, 34)" leading="" trailing="&#10;  " val="where"/>
+          <NullNode/>
+          <OtherNode start="(27, 3)" end="(28, 14)" kind="Lean.Parser.Command.structFields">
+            <NullNode start="(27, 3)" end="(28, 14)">
+              <OtherNode start="(27, 3)" end="(28, 14)" kind="Lean.Parser.Command.structSimpleBinder">
+                <CommandDeclmodifiersNode start="(27, 3)" end="(27, 47)">
+                  <NullNode start="(27, 3)" end="(27, 47)">
+                    <CommandDoccommentNode start="(27, 3)" end="(27, 47)" comment="The proposition that `n` is not zero. -/">
+                      <AtomNode start="(27, 3)" end="(27, 6)" leading="" trailing=" " val="/--"/>
+                      <AtomNode start="(27, 7)" end="(27, 47)" leading="" trailing="&#10;  " val="The proposition that `n` is not zero. -/"/>
+                    </CommandDoccommentNode>
+                  </NullNode>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </CommandDeclmodifiersNode>
+                <IdentNode start="(28, 3)" end="(28, 6)" leading="" trailing=" " raw_val="out" val="out"/>
+                <OtherNode start="(28, 7)" end="(28, 14)" kind="Lean.Parser.Command.optDeclSig">
+                  <NullNode/>
+                  <NullNode start="(28, 7)" end="(28, 14)">
+                    <TermTypespecNode start="(28, 7)" end="(28, 14)">
+                      <AtomNode start="(28, 7)" end="(28, 8)" leading="" trailing=" " val=":"/>
+                      <OtherNode start="(28, 9)" end="(28, 14)" kind="«term_≠_»">
+                        <IdentNode start="(28, 9)" end="(28, 10)" leading="" trailing=" " raw_val="n" val="n"/>
+                        <AtomNode start="(28, 11)" end="(28, 12)" leading="" trailing=" " val="≠"/>
+                        <OtherNode start="(28, 13)" end="(28, 14)" kind="num">
+                          <AtomNode start="(28, 13)" end="(28, 14)" leading="" trailing="&#10;&#10;" val="0"/>
+                        </OtherNode>
+                      </OtherNode>
+                    </TermTypespecNode>
+                  </NullNode>
+                </OtherNode>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+        </NullNode>
+        <OtherNode kind="Lean.Parser.Command.optDeriving">
+          <NullNode/>
+        </OtherNode>
+      </CommandStructureNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(30, 1)" end="(31, 8)" name="NeZero.ne" full_name="NeZero.ne">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(30, 1)" end="(31, 8)" name="NeZero.ne" full_name="NeZero.ne" _is_private_decl="False">
+        <AtomNode start="(30, 1)" end="(30, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(30, 9)" end="(30, 18)">
+          <IdentNode start="(30, 9)" end="(30, 18)" leading="" trailing=" " raw_val="NeZero.ne" val="NeZero.ne"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(30, 19)" end="(30, 49)">
+          <NullNode start="(30, 19)" end="(30, 41)">
+            <TermExplicitbinderNode start="(30, 19)" end="(30, 26)">
+              <AtomNode start="(30, 19)" end="(30, 20)" leading="" trailing="" val="("/>
+              <NullNode start="(30, 20)" end="(30, 21)">
+                <IdentNode start="(30, 20)" end="(30, 21)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(30, 22)" end="(30, 25)">
+                <AtomNode start="(30, 22)" end="(30, 23)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(30, 24)" end="(30, 25)" leading="" trailing="" raw_val="R" val="R"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(30, 25)" end="(30, 26)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <OtherNode start="(30, 27)" end="(30, 41)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(30, 27)" end="(30, 28)" leading="" trailing="" val="["/>
+              <NullNode start="(30, 28)" end="(30, 31)">
+                <IdentNode start="(30, 28)" end="(30, 29)" leading="" trailing=" " raw_val="h" val="h"/>
+                <AtomNode start="(30, 30)" end="(30, 31)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(30, 32)" end="(30, 40)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(30, 32)" end="(30, 38)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(30, 39)" end="(30, 40)">
+                  <IdentNode start="(30, 39)" end="(30, 40)" leading="" trailing="" raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(30, 40)" end="(30, 41)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(30, 42)" end="(30, 49)">
+            <AtomNode start="(30, 42)" end="(30, 43)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(30, 44)" end="(30, 49)" kind="«term_≠_»">
+              <IdentNode start="(30, 44)" end="(30, 45)" leading="" trailing=" " raw_val="n" val="n"/>
+              <AtomNode start="(30, 46)" end="(30, 47)" leading="" trailing=" " val="≠"/>
+              <OtherNode start="(30, 48)" end="(30, 49)" kind="num">
+                <AtomNode start="(30, 48)" end="(30, 49)" leading="" trailing=" " val="0"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(30, 50)" end="(31, 8)">
+          <AtomNode start="(30, 50)" end="(30, 52)" leading="" trailing="&#10;  " val=":="/>
+          <IdentNode start="(31, 3)" end="(31, 8)" leading="" trailing="&#10;&#10;" raw_val="h.out" val="h.out"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(33, 1)" end="(34, 13)" name="NeZero.ne'" full_name="NeZero.ne'">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(33, 1)" end="(34, 13)" name="NeZero.ne'" full_name="NeZero.ne'" _is_private_decl="False">
+        <AtomNode start="(33, 1)" end="(33, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(33, 9)" end="(33, 19)">
+          <IdentNode start="(33, 9)" end="(33, 19)" leading="" trailing=" " raw_val="NeZero.ne'" val="NeZero.ne'"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(33, 20)" end="(33, 50)">
+          <NullNode start="(33, 20)" end="(33, 42)">
+            <TermExplicitbinderNode start="(33, 20)" end="(33, 27)">
+              <AtomNode start="(33, 20)" end="(33, 21)" leading="" trailing="" val="("/>
+              <NullNode start="(33, 21)" end="(33, 22)">
+                <IdentNode start="(33, 21)" end="(33, 22)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(33, 23)" end="(33, 26)">
+                <AtomNode start="(33, 23)" end="(33, 24)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(33, 25)" end="(33, 26)" leading="" trailing="" raw_val="R" val="R"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(33, 26)" end="(33, 27)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <OtherNode start="(33, 28)" end="(33, 42)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(33, 28)" end="(33, 29)" leading="" trailing="" val="["/>
+              <NullNode start="(33, 29)" end="(33, 32)">
+                <IdentNode start="(33, 29)" end="(33, 30)" leading="" trailing=" " raw_val="h" val="h"/>
+                <AtomNode start="(33, 31)" end="(33, 32)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(33, 33)" end="(33, 41)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(33, 33)" end="(33, 39)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(33, 40)" end="(33, 41)">
+                  <IdentNode start="(33, 40)" end="(33, 41)" leading="" trailing="" raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(33, 41)" end="(33, 42)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(33, 43)" end="(33, 50)">
+            <AtomNode start="(33, 43)" end="(33, 44)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(33, 45)" end="(33, 50)" kind="«term_≠_»">
+              <OtherNode start="(33, 45)" end="(33, 46)" kind="num">
+                <AtomNode start="(33, 45)" end="(33, 46)" leading="" trailing=" " val="0"/>
+              </OtherNode>
+              <AtomNode start="(33, 47)" end="(33, 48)" leading="" trailing=" " val="≠"/>
+              <IdentNode start="(33, 49)" end="(33, 50)" leading="" trailing=" " raw_val="n" val="n"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(33, 51)" end="(34, 13)">
+          <AtomNode start="(33, 51)" end="(33, 53)" leading="" trailing="&#10;  " val=":="/>
+          <IdentNode start="(34, 3)" end="(34, 13)" leading="" trailing="&#10;&#10;" raw_val="h.out.symm" val="h.out.symm"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(36, 1)" end="(37, 29)" name="neZero_iff" full_name="neZero_iff">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(36, 1)" end="(37, 29)" name="neZero_iff" full_name="neZero_iff" _is_private_decl="False">
+        <AtomNode start="(36, 1)" end="(36, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(36, 9)" end="(36, 19)">
+          <IdentNode start="(36, 9)" end="(36, 19)" leading="" trailing=" " raw_val="neZero_iff" val="neZero_iff"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(36, 20)" end="(36, 46)">
+          <NullNode start="(36, 20)" end="(36, 27)">
+            <OtherNode start="(36, 20)" end="(36, 27)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(36, 20)" end="(36, 21)" leading="" trailing="" val="{"/>
+              <NullNode start="(36, 21)" end="(36, 22)">
+                <IdentNode start="(36, 21)" end="(36, 22)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(36, 23)" end="(36, 26)">
+                <AtomNode start="(36, 23)" end="(36, 24)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(36, 25)" end="(36, 26)" leading="" trailing="" raw_val="R" val="R"/>
+              </NullNode>
+              <AtomNode start="(36, 26)" end="(36, 27)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(36, 28)" end="(36, 46)">
+            <AtomNode start="(36, 28)" end="(36, 29)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(36, 30)" end="(36, 46)" kind="«term_↔_»">
+              <OtherNode start="(36, 30)" end="(36, 38)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(36, 30)" end="(36, 36)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(36, 37)" end="(36, 38)">
+                  <IdentNode start="(36, 37)" end="(36, 38)" leading="" trailing=" " raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(36, 39)" end="(36, 40)" leading="" trailing=" " val="↔"/>
+              <OtherNode start="(36, 41)" end="(36, 46)" kind="«term_≠_»">
+                <IdentNode start="(36, 41)" end="(36, 42)" leading="" trailing=" " raw_val="n" val="n"/>
+                <AtomNode start="(36, 43)" end="(36, 44)" leading="" trailing=" " val="≠"/>
+                <OtherNode start="(36, 45)" end="(36, 46)" kind="num">
+                  <AtomNode start="(36, 45)" end="(36, 46)" leading="" trailing=" " val="0"/>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(36, 47)" end="(37, 29)">
+          <AtomNode start="(36, 47)" end="(36, 49)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(37, 3)" end="(37, 29)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(37, 3)" end="(37, 4)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(37, 4)" end="(37, 28)">
+              <OtherNode start="(37, 4)" end="(37, 17)" kind="Lean.Parser.Term.fun">
+                <AtomNode start="(37, 4)" end="(37, 7)" leading="" trailing=" " val="fun"/>
+                <OtherNode start="(37, 8)" end="(37, 17)" kind="Lean.Parser.Term.basicFun">
+                  <NullNode start="(37, 8)" end="(37, 9)">
+                    <IdentNode start="(37, 8)" end="(37, 9)" leading="" trailing=" " raw_val="h" val="h"/>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(37, 10)" end="(37, 11)" leading="" trailing=" " val="↦"/>
+                  <IdentNode start="(37, 12)" end="(37, 17)" leading="" trailing="" raw_val="h.out" val="h.out"/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(37, 17)" end="(37, 18)" leading="" trailing=" " val=","/>
+              <IdentNode start="(37, 19)" end="(37, 28)" leading="" trailing="" raw_val="NeZero.mk" val="NeZero.mk" full_name="NeZero.mk" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+            </NullNode>
+            <AtomNode start="(37, 28)" end="(37, 29)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(39, 1)" end="(40, 50)" name="neZero_zero_iff_false" full_name="neZero_zero_iff_false">
+      <CommandDeclmodifiersNode start="(39, 1)" end="(39, 8)">
+        <NullNode/>
+        <NullNode start="(39, 1)" end="(39, 8)">
+          <OtherNode start="(39, 1)" end="(39, 8)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(39, 1)" end="(39, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(39, 3)" end="(39, 7)">
+              <OtherNode start="(39, 3)" end="(39, 7)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(39, 3)" end="(39, 7)" kind="Lean.Parser.Attr.simp">
+                  <AtomNode start="(39, 3)" end="(39, 7)" leading="" trailing="" val="simp"/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(39, 7)" end="(39, 8)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(39, 9)" end="(40, 50)" name="neZero_zero_iff_false" full_name="neZero_zero_iff_false" _is_private_decl="False">
+        <AtomNode start="(39, 9)" end="(39, 16)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(39, 17)" end="(39, 38)">
+          <IdentNode start="(39, 17)" end="(39, 38)" leading="" trailing=" " raw_val="neZero_zero_iff_false" val="neZero_zero_iff_false"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(39, 39)" end="(39, 85)">
+          <NullNode start="(39, 39)" end="(39, 60)">
+            <OtherNode start="(39, 39)" end="(39, 51)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(39, 39)" end="(39, 40)" leading="" trailing="" val="{"/>
+              <NullNode start="(39, 40)" end="(39, 41)">
+                <IdentNode start="(39, 40)" end="(39, 41)" leading="" trailing=" " raw_val="α" val="α"/>
+              </NullNode>
+              <NullNode start="(39, 42)" end="(39, 50)">
+                <AtomNode start="(39, 42)" end="(39, 43)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(39, 44)" end="(39, 50)" kind="Lean.Parser.Term.type">
+                  <AtomNode start="(39, 44)" end="(39, 48)" leading="" trailing=" " val="Type"/>
+                  <NullNode start="(39, 49)" end="(39, 50)">
+                    <OtherNode start="(39, 49)" end="(39, 50)" kind="Lean.Parser.Level.hole">
+                      <AtomNode start="(39, 49)" end="(39, 50)" leading="" trailing="" val="_"/>
+                    </OtherNode>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(39, 50)" end="(39, 51)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(39, 52)" end="(39, 60)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(39, 52)" end="(39, 53)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(39, 53)" end="(39, 59)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(39, 53)" end="(39, 57)" leading="" trailing=" " raw_val="Zero" val="Zero" full_name="Zero" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(39, 58)" end="(39, 59)">
+                  <IdentNode start="(39, 58)" end="(39, 59)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(39, 59)" end="(39, 60)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(39, 61)" end="(39, 85)">
+            <AtomNode start="(39, 61)" end="(39, 62)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(39, 63)" end="(39, 85)" kind="«term_↔_»">
+              <OtherNode start="(39, 63)" end="(39, 77)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(39, 63)" end="(39, 69)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(39, 70)" end="(39, 77)">
+                  <OtherNode start="(39, 70)" end="(39, 77)" kind="Lean.Parser.Term.typeAscription">
+                    <AtomNode start="(39, 70)" end="(39, 71)" leading="" trailing="" val="("/>
+                    <OtherNode start="(39, 71)" end="(39, 72)" kind="num">
+                      <AtomNode start="(39, 71)" end="(39, 72)" leading="" trailing=" " val="0"/>
+                    </OtherNode>
+                    <AtomNode start="(39, 73)" end="(39, 74)" leading="" trailing=" " val=":"/>
+                    <NullNode start="(39, 75)" end="(39, 76)">
+                      <IdentNode start="(39, 75)" end="(39, 76)" leading="" trailing="" raw_val="α" val="α"/>
+                    </NullNode>
+                    <AtomNode start="(39, 76)" end="(39, 77)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(39, 78)" end="(39, 79)" leading="" trailing=" " val="↔"/>
+              <IdentNode start="(39, 80)" end="(39, 85)" leading="" trailing=" " raw_val="False" val="False" full_name="False" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(39, 86)" end="(40, 50)">
+          <AtomNode start="(39, 86)" end="(39, 88)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(40, 3)" end="(40, 50)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(40, 3)" end="(40, 4)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(40, 4)" end="(40, 49)">
+              <OtherNode start="(40, 4)" end="(40, 33)" kind="Lean.Parser.Term.fun">
+                <AtomNode start="(40, 4)" end="(40, 7)" leading="" trailing=" " val="fun"/>
+                <OtherNode start="(40, 8)" end="(40, 33)" kind="Lean.Parser.Term.basicFun">
+                  <NullNode start="(40, 8)" end="(40, 9)">
+                    <TermHoleNode start="(40, 8)" end="(40, 9)">
+                      <AtomNode start="(40, 8)" end="(40, 9)" leading="" trailing=" " val="_"/>
+                    </TermHoleNode>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(40, 10)" end="(40, 11)" leading="" trailing=" " val="↦"/>
+                  <OtherNode start="(40, 12)" end="(40, 33)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(40, 12)" end="(40, 21)" leading="" trailing=" " raw_val="NeZero.ne" val="NeZero.ne" full_name="NeZero.ne" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(30, 9)" def_end="(30, 18)"/>
+                    <NullNode start="(40, 22)" end="(40, 33)">
+                      <OtherNode start="(40, 22)" end="(40, 29)" kind="Lean.Parser.Term.typeAscription">
+                        <AtomNode start="(40, 22)" end="(40, 23)" leading="" trailing="" val="("/>
+                        <OtherNode start="(40, 23)" end="(40, 24)" kind="num">
+                          <AtomNode start="(40, 23)" end="(40, 24)" leading="" trailing=" " val="0"/>
+                        </OtherNode>
+                        <AtomNode start="(40, 25)" end="(40, 26)" leading="" trailing=" " val=":"/>
+                        <NullNode start="(40, 27)" end="(40, 28)">
+                          <IdentNode start="(40, 27)" end="(40, 28)" leading="" trailing="" raw_val="α" val="α"/>
+                        </NullNode>
+                        <AtomNode start="(40, 28)" end="(40, 29)" leading="" trailing=" " val=")"/>
+                      </OtherNode>
+                      <IdentNode start="(40, 30)" end="(40, 33)" leading="" trailing="" raw_val="rfl" val="rfl" full_name="rfl" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    </NullNode>
+                  </OtherNode>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(40, 33)" end="(40, 34)" leading="" trailing=" " val=","/>
+              <OtherNode start="(40, 35)" end="(40, 49)" kind="Lean.Parser.Term.fun">
+                <AtomNode start="(40, 35)" end="(40, 38)" leading="" trailing=" " val="fun"/>
+                <OtherNode start="(40, 39)" end="(40, 49)" kind="Lean.Parser.Term.basicFun">
+                  <NullNode start="(40, 39)" end="(40, 40)">
+                    <IdentNode start="(40, 39)" end="(40, 40)" leading="" trailing=" " raw_val="h" val="h"/>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(40, 41)" end="(40, 42)" leading="" trailing=" " val="↦"/>
+                  <IdentNode start="(40, 43)" end="(40, 49)" leading="" trailing="" raw_val="h.elim" val="h.elim"/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(40, 49)" end="(40, 50)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(42, 1)" end="(44, 27)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(42, 1)" end="(44, 27)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(42, 1)" end="(42, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(42, 10)" end="(43, 32)">
+          <NullNode start="(42, 10)" end="(42, 68)">
+            <OtherNode start="(42, 10)" end="(42, 20)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(42, 10)" end="(42, 11)" leading="" trailing="" val="{"/>
+              <NullNode start="(42, 11)" end="(42, 12)">
+                <IdentNode start="(42, 11)" end="(42, 12)" leading="" trailing=" " raw_val="p" val="p"/>
+              </NullNode>
+              <NullNode start="(42, 13)" end="(42, 19)">
+                <AtomNode start="(42, 13)" end="(42, 14)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(42, 15)" end="(42, 19)" kind="Lean.Parser.Term.prop">
+                  <AtomNode start="(42, 15)" end="(42, 19)" leading="" trailing="" val="Prop"/>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(42, 19)" end="(42, 20)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(42, 21)" end="(42, 34)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(42, 21)" end="(42, 22)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(42, 22)" end="(42, 33)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(42, 22)" end="(42, 31)" leading="" trailing=" " raw_val="Decidable" val="Decidable" full_name="Decidable" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(42, 32)" end="(42, 33)">
+                  <IdentNode start="(42, 32)" end="(42, 33)" leading="" trailing="" raw_val="p" val="p"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(42, 33)" end="(42, 34)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(42, 35)" end="(42, 46)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(42, 35)" end="(42, 36)" leading="" trailing="" val="{"/>
+              <NullNode start="(42, 36)" end="(42, 39)">
+                <IdentNode start="(42, 36)" end="(42, 37)" leading="" trailing=" " raw_val="n" val="n"/>
+                <IdentNode start="(42, 38)" end="(42, 39)" leading="" trailing=" " raw_val="m" val="m"/>
+              </NullNode>
+              <NullNode start="(42, 40)" end="(42, 45)">
+                <AtomNode start="(42, 40)" end="(42, 41)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(42, 42)" end="(42, 45)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(42, 45)" end="(42, 46)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(42, 47)" end="(42, 57)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(42, 47)" end="(42, 48)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(42, 48)" end="(42, 56)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(42, 48)" end="(42, 54)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(42, 55)" end="(42, 56)">
+                  <IdentNode start="(42, 55)" end="(42, 56)" leading="" trailing="" raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(42, 56)" end="(42, 57)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(42, 58)" end="(42, 68)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(42, 58)" end="(42, 59)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(42, 59)" end="(42, 67)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(42, 59)" end="(42, 65)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(42, 66)" end="(42, 67)">
+                  <IdentNode start="(42, 66)" end="(42, 67)" leading="" trailing="" raw_val="m" val="m"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(42, 67)" end="(42, 68)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(42, 69)" end="(43, 32)">
+            <AtomNode start="(42, 69)" end="(42, 70)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(43, 5)" end="(43, 32)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(43, 5)" end="(43, 11)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+              <NullNode start="(43, 12)" end="(43, 32)">
+                <OtherNode start="(43, 12)" end="(43, 32)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(43, 12)" end="(43, 13)" leading="" trailing="" val="("/>
+                  <OtherNode start="(43, 13)" end="(43, 31)" kind="termIfThenElse">
+                    <AtomNode start="(43, 13)" end="(43, 15)" leading="" trailing=" " val="if"/>
+                    <IdentNode start="(43, 16)" end="(43, 17)" leading="" trailing=" " raw_val="p" val="p"/>
+                    <AtomNode start="(43, 18)" end="(43, 22)" leading="" trailing=" " val="then"/>
+                    <IdentNode start="(43, 23)" end="(43, 24)" leading="" trailing=" " raw_val="n" val="n"/>
+                    <AtomNode start="(43, 25)" end="(43, 29)" leading="" trailing=" " val="else"/>
+                    <IdentNode start="(43, 30)" end="(43, 31)" leading="" trailing="" raw_val="m" val="m"/>
+                  </OtherNode>
+                  <AtomNode start="(43, 31)" end="(43, 32)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(43, 33)" end="(44, 27)">
+          <AtomNode start="(43, 33)" end="(43, 35)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(43, 36)" end="(44, 27)">
+            <AtomNode start="(43, 36)" end="(43, 38)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(44, 3)" end="(44, 27)">
+              <TacticTacticseq1IndentedNode start="(44, 3)" end="(44, 27)">
+                <NullNode start="(44, 3)" end="(44, 27)">
+                  <OtherNode start="(44, 3)" end="(44, 27)" kind="Lean.Parser.Tactic.«tactic_&amp;lt;;&amp;gt;_»" state_before="R : Type ?u.391&#10;inst✝³ : Zero R&#10;p : Prop&#10;inst✝² : Decidable p&#10;n m : Nat&#10;inst✝¹ : NeZero n&#10;inst✝ : NeZero m&#10;⊢ NeZero (ite p n m)" state_after="no goals" tactic="split &amp;lt;;&amp;gt; infer_instance">
+                    <OtherNode start="(44, 3)" end="(44, 8)" kind="Lean.Parser.Tactic.split">
+                      <AtomNode start="(44, 3)" end="(44, 8)" leading="" trailing=" " val="split"/>
+                      <NullNode/>
+                      <NullNode/>
+                    </OtherNode>
+                    <AtomNode start="(44, 9)" end="(44, 12)" leading="" trailing=" " val="&amp;lt;;&amp;gt;"/>
+                    <OtherNode start="(44, 13)" end="(44, 27)" kind="Lean.Parser.Tactic.tacticInfer_instance">
+                      <AtomNode start="(44, 13)" end="(44, 27)" leading="" trailing="&#10;&#10;" val="infer_instance"/>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(46, 1)" end="(50, 44)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(46, 1)" end="(50, 44)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(46, 1)" end="(46, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(46, 10)" end="(46, 53)">
+          <NullNode start="(46, 10)" end="(46, 36)">
+            <OtherNode start="(46, 10)" end="(46, 21)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(46, 10)" end="(46, 11)" leading="" trailing="" val="{"/>
+              <NullNode start="(46, 11)" end="(46, 14)">
+                <IdentNode start="(46, 11)" end="(46, 12)" leading="" trailing=" " raw_val="n" val="n"/>
+                <IdentNode start="(46, 13)" end="(46, 14)" leading="" trailing=" " raw_val="m" val="m"/>
+              </NullNode>
+              <NullNode start="(46, 15)" end="(46, 20)">
+                <AtomNode start="(46, 15)" end="(46, 16)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(46, 17)" end="(46, 20)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(46, 20)" end="(46, 21)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(46, 22)" end="(46, 36)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(46, 22)" end="(46, 23)" leading="" trailing="" val="["/>
+              <NullNode start="(46, 23)" end="(46, 26)">
+                <IdentNode start="(46, 23)" end="(46, 24)" leading="" trailing=" " raw_val="h" val="h"/>
+                <AtomNode start="(46, 25)" end="(46, 26)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(46, 27)" end="(46, 35)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(46, 27)" end="(46, 33)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(46, 34)" end="(46, 35)">
+                  <IdentNode start="(46, 34)" end="(46, 35)" leading="" trailing="" raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(46, 35)" end="(46, 36)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(46, 37)" end="(46, 53)">
+            <AtomNode start="(46, 37)" end="(46, 38)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(46, 39)" end="(46, 53)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(46, 39)" end="(46, 45)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+              <NullNode start="(46, 46)" end="(46, 53)">
+                <OtherNode start="(46, 46)" end="(46, 53)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(46, 46)" end="(46, 47)" leading="" trailing="" val="("/>
+                  <OtherNode start="(46, 47)" end="(46, 52)" kind="«term_+_»">
+                    <IdentNode start="(46, 47)" end="(46, 48)" leading="" trailing=" " raw_val="n" val="n"/>
+                    <AtomNode start="(46, 49)" end="(46, 50)" leading="" trailing=" " val="+"/>
+                    <IdentNode start="(46, 51)" end="(46, 52)" leading="" trailing="" raw_val="m" val="m"/>
+                  </OtherNode>
+                  <AtomNode start="(46, 52)" end="(46, 53)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(46, 54)" end="(50, 44)">
+          <AtomNode start="(46, 54)" end="(46, 59)" leading="" trailing="&#10;  " val="where"/>
+          <OtherNode start="(47, 3)" end="(50, 44)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(47, 3)" end="(50, 44)">
+              <OtherNode start="(47, 3)" end="(50, 44)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(47, 3)" end="(47, 6)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(47, 3)" end="(47, 6)" leading="" trailing=" " raw_val="out" val="out"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(47, 7)" end="(50, 44)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(47, 7)" end="(50, 44)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(47, 7)" end="(47, 9)" leading="" trailing="&#10;    " val=":="/>
+                    <OtherNode start="(48, 5)" end="(50, 44)" kind="Lean.Parser.Term.match">
+                      <AtomNode start="(48, 5)" end="(48, 10)" leading="" trailing=" " val="match"/>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode start="(48, 11)" end="(48, 18)">
+                        <OtherNode start="(48, 11)" end="(48, 12)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(48, 11)" end="(48, 12)" leading="" trailing="" raw_val="n" val="n"/>
+                        </OtherNode>
+                        <AtomNode start="(48, 12)" end="(48, 13)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(48, 14)" end="(48, 15)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(48, 14)" end="(48, 15)" leading="" trailing="" raw_val="h" val="h"/>
+                        </OtherNode>
+                        <AtomNode start="(48, 15)" end="(48, 16)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(48, 17)" end="(48, 18)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(48, 17)" end="(48, 18)" leading="" trailing=" " raw_val="m" val="m"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(48, 19)" end="(48, 23)" leading="" trailing="&#10;    " val="with"/>
+                      <OtherNode start="(49, 5)" end="(50, 44)" kind="Lean.Parser.Term.matchAlts">
+                        <NullNode start="(49, 5)" end="(50, 44)">
+                          <OtherNode start="(49, 5)" end="(50, 44)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(49, 5)" end="(49, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(49, 7)" end="(50, 22)">
+                              <NullNode start="(49, 7)" end="(49, 18)">
+                                <OtherNode start="(49, 7)" end="(49, 12)" kind="«term_+_»">
+                                  <TermHoleNode start="(49, 7)" end="(49, 8)">
+                                    <AtomNode start="(49, 7)" end="(49, 8)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(49, 9)" end="(49, 10)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(49, 11)" end="(49, 12)" kind="num">
+                                    <AtomNode start="(49, 11)" end="(49, 12)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(49, 12)" end="(49, 13)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(49, 14)" end="(49, 15)">
+                                  <AtomNode start="(49, 14)" end="(49, 15)" leading="" trailing="" val="_"/>
+                                </TermHoleNode>
+                                <AtomNode start="(49, 15)" end="(49, 16)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(49, 17)" end="(49, 18)" kind="num">
+                                  <AtomNode start="(49, 17)" end="(49, 18)" leading="" trailing="&#10;    " val="0"/>
+                                </OtherNode>
+                              </NullNode>
+                              <AtomNode start="(50, 5)" end="(50, 6)" leading="" trailing=" " val="|"/>
+                              <NullNode start="(50, 7)" end="(50, 22)">
+                                <OtherNode start="(50, 7)" end="(50, 12)" kind="«term_+_»">
+                                  <TermHoleNode start="(50, 7)" end="(50, 8)">
+                                    <AtomNode start="(50, 7)" end="(50, 8)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(50, 9)" end="(50, 10)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(50, 11)" end="(50, 12)" kind="num">
+                                    <AtomNode start="(50, 11)" end="(50, 12)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(50, 12)" end="(50, 13)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(50, 14)" end="(50, 15)">
+                                  <AtomNode start="(50, 14)" end="(50, 15)" leading="" trailing="" val="_"/>
+                                </TermHoleNode>
+                                <AtomNode start="(50, 15)" end="(50, 16)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(50, 17)" end="(50, 22)" kind="«term_+_»">
+                                  <TermHoleNode start="(50, 17)" end="(50, 18)">
+                                    <AtomNode start="(50, 17)" end="(50, 18)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(50, 19)" end="(50, 20)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(50, 21)" end="(50, 22)" kind="num">
+                                    <AtomNode start="(50, 21)" end="(50, 22)" leading="" trailing=" " val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(50, 23)" end="(50, 25)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(50, 26)" end="(50, 44)" kind="Lean.Parser.Term.fun">
+                              <AtomNode start="(50, 26)" end="(50, 29)" leading="" trailing=" " val="fun"/>
+                              <OtherNode start="(50, 30)" end="(50, 44)" kind="Lean.Parser.Term.basicFun">
+                                <NullNode start="(50, 30)" end="(50, 31)">
+                                  <IdentNode start="(50, 30)" end="(50, 31)" leading="" trailing=" " raw_val="h" val="h"/>
+                                </NullNode>
+                                <NullNode/>
+                                <AtomNode start="(50, 32)" end="(50, 34)" leading="" trailing=" " val="=&amp;gt;"/>
+                                <OtherNode start="(50, 35)" end="(50, 44)" kind="Lean.Parser.Term.nomatch">
+                                  <AtomNode start="(50, 35)" end="(50, 42)" leading="" trailing=" " val="nomatch"/>
+                                  <NullNode start="(50, 43)" end="(50, 44)">
+                                    <IdentNode start="(50, 43)" end="(50, 44)" leading="" trailing="&#10;&#10;" raw_val="h" val="h"/>
+                                  </NullNode>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(52, 1)" end="(56, 44)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(52, 1)" end="(56, 44)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(52, 1)" end="(52, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(52, 10)" end="(52, 53)">
+          <NullNode start="(52, 10)" end="(52, 36)">
+            <OtherNode start="(52, 10)" end="(52, 21)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(52, 10)" end="(52, 11)" leading="" trailing="" val="{"/>
+              <NullNode start="(52, 11)" end="(52, 14)">
+                <IdentNode start="(52, 11)" end="(52, 12)" leading="" trailing=" " raw_val="n" val="n"/>
+                <IdentNode start="(52, 13)" end="(52, 14)" leading="" trailing=" " raw_val="m" val="m"/>
+              </NullNode>
+              <NullNode start="(52, 15)" end="(52, 20)">
+                <AtomNode start="(52, 15)" end="(52, 16)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(52, 17)" end="(52, 20)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(52, 20)" end="(52, 21)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(52, 22)" end="(52, 36)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(52, 22)" end="(52, 23)" leading="" trailing="" val="["/>
+              <NullNode start="(52, 23)" end="(52, 26)">
+                <IdentNode start="(52, 23)" end="(52, 24)" leading="" trailing=" " raw_val="h" val="h"/>
+                <AtomNode start="(52, 25)" end="(52, 26)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(52, 27)" end="(52, 35)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(52, 27)" end="(52, 33)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(52, 34)" end="(52, 35)">
+                  <IdentNode start="(52, 34)" end="(52, 35)" leading="" trailing="" raw_val="m" val="m"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(52, 35)" end="(52, 36)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(52, 37)" end="(52, 53)">
+            <AtomNode start="(52, 37)" end="(52, 38)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(52, 39)" end="(52, 53)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(52, 39)" end="(52, 45)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+              <NullNode start="(52, 46)" end="(52, 53)">
+                <OtherNode start="(52, 46)" end="(52, 53)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(52, 46)" end="(52, 47)" leading="" trailing="" val="("/>
+                  <OtherNode start="(52, 47)" end="(52, 52)" kind="«term_+_»">
+                    <IdentNode start="(52, 47)" end="(52, 48)" leading="" trailing=" " raw_val="n" val="n"/>
+                    <AtomNode start="(52, 49)" end="(52, 50)" leading="" trailing=" " val="+"/>
+                    <IdentNode start="(52, 51)" end="(52, 52)" leading="" trailing="" raw_val="m" val="m"/>
+                  </OtherNode>
+                  <AtomNode start="(52, 52)" end="(52, 53)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(52, 54)" end="(56, 44)">
+          <AtomNode start="(52, 54)" end="(52, 59)" leading="" trailing="&#10;  " val="where"/>
+          <OtherNode start="(53, 3)" end="(56, 44)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(53, 3)" end="(56, 44)">
+              <OtherNode start="(53, 3)" end="(56, 44)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(53, 3)" end="(53, 6)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(53, 3)" end="(53, 6)" leading="" trailing=" " raw_val="out" val="out"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(53, 7)" end="(56, 44)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(53, 7)" end="(56, 44)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(53, 7)" end="(53, 9)" leading="" trailing="&#10;    " val=":="/>
+                    <OtherNode start="(54, 5)" end="(56, 44)" kind="Lean.Parser.Term.match">
+                      <AtomNode start="(54, 5)" end="(54, 10)" leading="" trailing=" " val="match"/>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode start="(54, 11)" end="(54, 18)">
+                        <OtherNode start="(54, 11)" end="(54, 12)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(54, 11)" end="(54, 12)" leading="" trailing="" raw_val="m" val="m"/>
+                        </OtherNode>
+                        <AtomNode start="(54, 12)" end="(54, 13)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(54, 14)" end="(54, 15)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(54, 14)" end="(54, 15)" leading="" trailing="" raw_val="h" val="h"/>
+                        </OtherNode>
+                        <AtomNode start="(54, 15)" end="(54, 16)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(54, 17)" end="(54, 18)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(54, 17)" end="(54, 18)" leading="" trailing=" " raw_val="n" val="n"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(54, 19)" end="(54, 23)" leading="" trailing="&#10;    " val="with"/>
+                      <OtherNode start="(55, 5)" end="(56, 44)" kind="Lean.Parser.Term.matchAlts">
+                        <NullNode start="(55, 5)" end="(56, 44)">
+                          <OtherNode start="(55, 5)" end="(55, 40)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(55, 5)" end="(55, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(55, 7)" end="(55, 18)">
+                              <NullNode start="(55, 7)" end="(55, 18)">
+                                <OtherNode start="(55, 7)" end="(55, 12)" kind="«term_+_»">
+                                  <TermHoleNode start="(55, 7)" end="(55, 8)">
+                                    <AtomNode start="(55, 7)" end="(55, 8)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(55, 9)" end="(55, 10)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(55, 11)" end="(55, 12)" kind="num">
+                                    <AtomNode start="(55, 11)" end="(55, 12)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(55, 12)" end="(55, 13)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(55, 14)" end="(55, 15)">
+                                  <AtomNode start="(55, 14)" end="(55, 15)" leading="" trailing="" val="_"/>
+                                </TermHoleNode>
+                                <AtomNode start="(55, 15)" end="(55, 16)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(55, 17)" end="(55, 18)" kind="num">
+                                  <AtomNode start="(55, 17)" end="(55, 18)" leading="" trailing=" " val="0"/>
+                                </OtherNode>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(55, 19)" end="(55, 21)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(55, 22)" end="(55, 40)" kind="Lean.Parser.Term.fun">
+                              <AtomNode start="(55, 22)" end="(55, 25)" leading="" trailing=" " val="fun"/>
+                              <OtherNode start="(55, 26)" end="(55, 40)" kind="Lean.Parser.Term.basicFun">
+                                <NullNode start="(55, 26)" end="(55, 27)">
+                                  <IdentNode start="(55, 26)" end="(55, 27)" leading="" trailing=" " raw_val="h" val="h"/>
+                                </NullNode>
+                                <NullNode/>
+                                <AtomNode start="(55, 28)" end="(55, 30)" leading="" trailing=" " val="=&amp;gt;"/>
+                                <OtherNode start="(55, 31)" end="(55, 40)" kind="Lean.Parser.Term.nomatch">
+                                  <AtomNode start="(55, 31)" end="(55, 38)" leading="" trailing=" " val="nomatch"/>
+                                  <NullNode start="(55, 39)" end="(55, 40)">
+                                    <IdentNode start="(55, 39)" end="(55, 40)" leading="" trailing="&#10;    " raw_val="h" val="h"/>
+                                  </NullNode>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </OtherNode>
+                          <OtherNode start="(56, 5)" end="(56, 44)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(56, 5)" end="(56, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(56, 7)" end="(56, 22)">
+                              <NullNode start="(56, 7)" end="(56, 22)">
+                                <OtherNode start="(56, 7)" end="(56, 12)" kind="«term_+_»">
+                                  <TermHoleNode start="(56, 7)" end="(56, 8)">
+                                    <AtomNode start="(56, 7)" end="(56, 8)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(56, 9)" end="(56, 10)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(56, 11)" end="(56, 12)" kind="num">
+                                    <AtomNode start="(56, 11)" end="(56, 12)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(56, 12)" end="(56, 13)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(56, 14)" end="(56, 15)">
+                                  <AtomNode start="(56, 14)" end="(56, 15)" leading="" trailing="" val="_"/>
+                                </TermHoleNode>
+                                <AtomNode start="(56, 15)" end="(56, 16)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(56, 17)" end="(56, 22)" kind="«term_+_»">
+                                  <TermHoleNode start="(56, 17)" end="(56, 18)">
+                                    <AtomNode start="(56, 17)" end="(56, 18)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(56, 19)" end="(56, 20)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(56, 21)" end="(56, 22)" kind="num">
+                                    <AtomNode start="(56, 21)" end="(56, 22)" leading="" trailing=" " val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(56, 23)" end="(56, 25)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(56, 26)" end="(56, 44)" kind="Lean.Parser.Term.fun">
+                              <AtomNode start="(56, 26)" end="(56, 29)" leading="" trailing=" " val="fun"/>
+                              <OtherNode start="(56, 30)" end="(56, 44)" kind="Lean.Parser.Term.basicFun">
+                                <NullNode start="(56, 30)" end="(56, 31)">
+                                  <IdentNode start="(56, 30)" end="(56, 31)" leading="" trailing=" " raw_val="h" val="h"/>
+                                </NullNode>
+                                <NullNode/>
+                                <AtomNode start="(56, 32)" end="(56, 34)" leading="" trailing=" " val="=&amp;gt;"/>
+                                <OtherNode start="(56, 35)" end="(56, 44)" kind="Lean.Parser.Term.nomatch">
+                                  <AtomNode start="(56, 35)" end="(56, 42)" leading="" trailing=" " val="nomatch"/>
+                                  <NullNode start="(56, 43)" end="(56, 44)">
+                                    <IdentNode start="(56, 43)" end="(56, 44)" leading="" trailing="&#10;&#10;" raw_val="h" val="h"/>
+                                  </NullNode>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(58, 1)" end="(61, 47)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(58, 1)" end="(61, 47)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(58, 1)" end="(58, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(58, 10)" end="(58, 70)">
+          <NullNode start="(58, 10)" end="(58, 53)">
+            <OtherNode start="(58, 10)" end="(58, 21)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(58, 10)" end="(58, 11)" leading="" trailing="" val="{"/>
+              <NullNode start="(58, 11)" end="(58, 14)">
+                <IdentNode start="(58, 11)" end="(58, 12)" leading="" trailing=" " raw_val="n" val="n"/>
+                <IdentNode start="(58, 13)" end="(58, 14)" leading="" trailing=" " raw_val="m" val="m"/>
+              </NullNode>
+              <NullNode start="(58, 15)" end="(58, 20)">
+                <AtomNode start="(58, 15)" end="(58, 16)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(58, 17)" end="(58, 20)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(58, 20)" end="(58, 21)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(58, 22)" end="(58, 37)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(58, 22)" end="(58, 23)" leading="" trailing="" val="["/>
+              <NullNode start="(58, 23)" end="(58, 27)">
+                <IdentNode start="(58, 23)" end="(58, 25)" leading="" trailing=" " raw_val="hn" val="hn"/>
+                <AtomNode start="(58, 26)" end="(58, 27)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(58, 28)" end="(58, 36)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(58, 28)" end="(58, 34)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(58, 35)" end="(58, 36)">
+                  <IdentNode start="(58, 35)" end="(58, 36)" leading="" trailing="" raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(58, 36)" end="(58, 37)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(58, 38)" end="(58, 53)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(58, 38)" end="(58, 39)" leading="" trailing="" val="["/>
+              <NullNode start="(58, 39)" end="(58, 43)">
+                <IdentNode start="(58, 39)" end="(58, 41)" leading="" trailing=" " raw_val="hm" val="hm"/>
+                <AtomNode start="(58, 42)" end="(58, 43)" leading="" trailing=" " val=":"/>
+              </NullNode>
+              <OtherNode start="(58, 44)" end="(58, 52)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(58, 44)" end="(58, 50)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+                <NullNode start="(58, 51)" end="(58, 52)">
+                  <IdentNode start="(58, 51)" end="(58, 52)" leading="" trailing="" raw_val="m" val="m"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(58, 52)" end="(58, 53)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(58, 54)" end="(58, 70)">
+            <AtomNode start="(58, 54)" end="(58, 55)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(58, 56)" end="(58, 70)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(58, 56)" end="(58, 62)" leading="" trailing=" " raw_val="NeZero" val="NeZero" full_name="NeZero" mod_name="Init.Data.NeZero" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/NeZero.lean" def_start="(26, 7)" def_end="(26, 13)"/>
+              <NullNode start="(58, 63)" end="(58, 70)">
+                <OtherNode start="(58, 63)" end="(58, 70)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(58, 63)" end="(58, 64)" leading="" trailing="" val="("/>
+                  <OtherNode start="(58, 64)" end="(58, 69)" kind="«term_*_»">
+                    <IdentNode start="(58, 64)" end="(58, 65)" leading="" trailing=" " raw_val="n" val="n"/>
+                    <AtomNode start="(58, 66)" end="(58, 67)" leading="" trailing=" " val="*"/>
+                    <IdentNode start="(58, 68)" end="(58, 69)" leading="" trailing="" raw_val="m" val="m"/>
+                  </OtherNode>
+                  <AtomNode start="(58, 69)" end="(58, 70)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(58, 71)" end="(61, 47)">
+          <AtomNode start="(58, 71)" end="(58, 76)" leading="" trailing="&#10;  " val="where"/>
+          <OtherNode start="(59, 3)" end="(61, 47)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(59, 3)" end="(61, 47)">
+              <OtherNode start="(59, 3)" end="(61, 47)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(59, 3)" end="(59, 6)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(59, 3)" end="(59, 6)" leading="" trailing=" " raw_val="out" val="out"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(59, 7)" end="(61, 47)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(59, 7)" end="(61, 47)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(59, 7)" end="(59, 9)" leading="" trailing="&#10;    " val=":="/>
+                    <OtherNode start="(60, 5)" end="(61, 47)" kind="Lean.Parser.Term.match">
+                      <AtomNode start="(60, 5)" end="(60, 10)" leading="" trailing=" " val="match"/>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode start="(60, 11)" end="(60, 23)">
+                        <OtherNode start="(60, 11)" end="(60, 12)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(60, 11)" end="(60, 12)" leading="" trailing="" raw_val="n" val="n"/>
+                        </OtherNode>
+                        <AtomNode start="(60, 12)" end="(60, 13)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(60, 14)" end="(60, 16)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(60, 14)" end="(60, 16)" leading="" trailing="" raw_val="hn" val="hn"/>
+                        </OtherNode>
+                        <AtomNode start="(60, 16)" end="(60, 17)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(60, 18)" end="(60, 19)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(60, 18)" end="(60, 19)" leading="" trailing="" raw_val="m" val="m"/>
+                        </OtherNode>
+                        <AtomNode start="(60, 19)" end="(60, 20)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(60, 21)" end="(60, 23)" kind="Lean.Parser.Term.matchDiscr">
+                          <NullNode/>
+                          <IdentNode start="(60, 21)" end="(60, 23)" leading="" trailing=" " raw_val="hm" val="hm"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(60, 24)" end="(60, 28)" leading="" trailing="&#10;    " val="with"/>
+                      <OtherNode start="(61, 5)" end="(61, 47)" kind="Lean.Parser.Term.matchAlts">
+                        <NullNode start="(61, 5)" end="(61, 47)">
+                          <OtherNode start="(61, 5)" end="(61, 47)" kind="Lean.Parser.Term.matchAlt">
+                            <AtomNode start="(61, 5)" end="(61, 6)" leading="" trailing=" " val="|"/>
+                            <NullNode start="(61, 7)" end="(61, 25)">
+                              <NullNode start="(61, 7)" end="(61, 25)">
+                                <OtherNode start="(61, 7)" end="(61, 12)" kind="«term_+_»">
+                                  <TermHoleNode start="(61, 7)" end="(61, 8)">
+                                    <AtomNode start="(61, 7)" end="(61, 8)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(61, 9)" end="(61, 10)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(61, 11)" end="(61, 12)" kind="num">
+                                    <AtomNode start="(61, 11)" end="(61, 12)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(61, 12)" end="(61, 13)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(61, 14)" end="(61, 15)">
+                                  <AtomNode start="(61, 14)" end="(61, 15)" leading="" trailing="" val="_"/>
+                                </TermHoleNode>
+                                <AtomNode start="(61, 15)" end="(61, 16)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(61, 17)" end="(61, 22)" kind="«term_+_»">
+                                  <TermHoleNode start="(61, 17)" end="(61, 18)">
+                                    <AtomNode start="(61, 17)" end="(61, 18)" leading="" trailing=" " val="_"/>
+                                  </TermHoleNode>
+                                  <AtomNode start="(61, 19)" end="(61, 20)" leading="" trailing=" " val="+"/>
+                                  <OtherNode start="(61, 21)" end="(61, 22)" kind="num">
+                                    <AtomNode start="(61, 21)" end="(61, 22)" leading="" trailing="" val="1"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(61, 22)" end="(61, 23)" leading="" trailing=" " val=","/>
+                                <TermHoleNode start="(61, 24)" end="(61, 25)">
+                                  <AtomNode start="(61, 24)" end="(61, 25)" leading="" trailing=" " val="_"/>
+                                </TermHoleNode>
+                              </NullNode>
+                            </NullNode>
+                            <AtomNode start="(61, 26)" end="(61, 28)" leading="" trailing=" " val="=&amp;gt;"/>
+                            <OtherNode start="(61, 29)" end="(61, 47)" kind="Lean.Parser.Term.fun">
+                              <AtomNode start="(61, 29)" end="(61, 32)" leading="" trailing=" " val="fun"/>
+                              <OtherNode start="(61, 33)" end="(61, 47)" kind="Lean.Parser.Term.basicFun">
+                                <NullNode start="(61, 33)" end="(61, 34)">
+                                  <IdentNode start="(61, 33)" end="(61, 34)" leading="" trailing=" " raw_val="h" val="h"/>
+                                </NullNode>
+                                <NullNode/>
+                                <AtomNode start="(61, 35)" end="(61, 37)" leading="" trailing=" " val="=&amp;gt;"/>
+                                <OtherNode start="(61, 38)" end="(61, 47)" kind="Lean.Parser.Term.nomatch">
+                                  <AtomNode start="(61, 38)" end="(61, 45)" leading="" trailing=" " val="nomatch"/>
+                                  <NullNode start="(61, 46)" end="(61, 47)">
+                                    <IdentNode start="(61, 46)" end="(61, 47)" leading="" trailing="&#10;" raw_val="h" val="h"/>
+                                  </NullNode>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(12, 1)" end="(20, 3)" text="# `NeZero` typeclass&#10;&#10;We create a typeclass `NeZero n` which carries around the fact that `(n : R) ≠ 0`.&#10;&#10;## Main declarations&#10;&#10;* `NeZero`: `n ≠ 0` as a typeclass.&#10;-/"/>
+    <Comment start="(25, 1)" end="(25, 41)" text="A type-class version of `n ≠ 0`.  -/"/>
+    <Comment start="(27, 3)" end="(27, 47)" text="The proposition that `n` is not zero. -/"/>
+  </Comments>
+</TracedFile>

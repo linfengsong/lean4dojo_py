@@ -10,7 +10,7 @@ import toml
 from pathlib import Path
 from loguru import logger
 from dataclasses import dataclass, field
-from typing import List, Dict, Any, Generator, Union, Optional
+from typing import List, Dict, Any, Generator, Union, Optional, Tuple
 
 def get_lean4_src_path(lean4_version: str) -> str:
     """Return the required Lean src path given a ``lean4_version``."""
@@ -63,7 +63,7 @@ class Pos:
 class LeanFile:
     """A Lean source file (:file:`*.lean`)."""
 
-    root_dir: Path = field(repr=False)
+    root_dir: Path
     """Root directory of the traced repo this :class:`LeanFile` object belongs to.
 
     ``root_dir`` must be an absolute path, e.g., :file:`/home/kaiyu/traced_lean-example/lean-example`
@@ -262,7 +262,7 @@ class LeanRepo:
     """
 
     def __init__(self, working_dir: str, lean_version: str, name: str) -> None:
-        self.working_dir = working_dir
+        self.working_dir = str(Path(working_dir).resolve())
         self.lean_version = lean_version
         self.name = name
 
@@ -282,7 +282,7 @@ class LeanRepo:
 
     def get_dependencies(
         self, path: Union[str, Path, None] = None
-    ) -> List["LeanRepo"]:
+    ) -> Dict[str, "LeanRepo"]:
         """Return the dependencies required by the target repo.
 
         Args:
@@ -296,7 +296,7 @@ class LeanRepo:
         logger.debug(f"Querying the dependencies of path: {path}, {self}")
 
         lean4_src_path = get_lean4_src_path(self.lean_version)
-        deps = [LeanRepo(lean4_src_path, self.lean_version, "lean4")]
+        deps = {"lean4": LeanRepo(lean4_src_path, self.lean_version, "lean4")}
 
         try:
             lake_manifest = (
@@ -310,19 +310,19 @@ class LeanRepo:
                 pkg_path = path / packagesDir / "packages" / pkg_name
                 pkg_version = pkg["inputRev"]
                 logger.debug(f"dependency name: {pkg_name}, path: {pkg_path}, version:{pkg_version}")
-                deps.append(LeanRepo(pkg_path, pkg_version, pkg_name))
+                deps[pkg_name] = LeanRepo(pkg_path, pkg_version, pkg_name)
         except Exception:
-            for repo in self._parse_lakefile_dependencies(path):
-                if repo.name not in deps:
-                    deps.append(repo)
-                for dd_repo in repo.get_dependencies():
-                    deps.append(dd_repo)
+            for name, repo in self._parse_lakefile_dependencies(path):
+                if name not in deps:
+                    deps[name] = repo
+                for dd_name, dd_repo in repo.get_dependencies().items():
+                    deps[dd_name] = dd_repo
 
         return deps
 
     def _parse_lakefile_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List["LeanRepo"]:
+    ) -> List[Tuple[str, "LeanRepo"]]:
         if self.uses_lakefile_lean():
             return self._parse_lakefile_lean_dependencies(path)
         else:
@@ -330,7 +330,7 @@ class LeanRepo:
 
     def _parse_lakefile_lean_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List["LeanRepo"]:
+    ) -> List[Tuple[str, "LeanRepo"]]:
         lakefile = (
             self.get_config("lakefile.lean")["content"]
             if path is None
@@ -345,7 +345,7 @@ class LeanRepo:
 
     def _parse_lakefile_toml_dependencies(
         self, path: Union[str, Path, None]
-    ) -> List["LeanRepo"]:
+    ) -> List[Tuple[str, "LeanRepo"]]:
         lakefile = (
             self.get_config("lakefile.toml")
             if path is None
@@ -409,15 +409,19 @@ class LeanRepo:
     def save_to(self, dst_dir: Union[str, Path]) -> None:
         """ dst_dir (Union[str, Path]): The directory for saving the traced repo. If None, the traced repo is only saved in the cahe """
         dst_dir = Path(dst_dir)
-        assert (
-            not dst_dir.exists()
-        ), f"The destination directory {dst_dir} already exists."
-        shutil.copytree(self.working_dir, dst_dir)
-        print(f"Saved repo to {dst_dir}")
+        if dst_dir.exists():
+            logger.error(f"The destination directory {dst_dir} already exists.")
+        else:
+            shutil.copytree(self.working_dir, dst_dir)
+            logger.info(f"Saved repo to {dst_dir}")
 
-    def get_traced_repo(self, build_deps: bool = True):
+    def build_traced_repo_to_disk(self, build_deps: bool = True):
         from .traced_data import TracedRepo
-        return TracedRepo.get_traced_repo(self, build_deps)
+        return TracedRepo.build_traced_repo_to_disk(self, build_deps)
+    
+    def load_traced_repo_from_disk(self, build_deps: bool = True):
+        from .traced_data import TracedRepo
+        return TracedRepo.load_from_disk(self, build_deps)
 
 @dataclass(frozen=True)
 class Theorem:
@@ -446,4 +450,3 @@ class Theorem:
         assert (
             self.file_path.suffix == ".lean"
         ), f"File extension must be .lean: {self.file_path}"
-

@@ -1,0 +1,632 @@
+<TracedFile path="src/lean/Init/Data/BitVec/BasicAux.lean" md5="3a3cac397e0f4bc57ee00f95012010c6">
+  <FileNode start="(1, 1)" end="(57, 11)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 27)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 27)">
+        <ModuleImportNode start="(9, 1)" end="(9, 27)" module="Init.Data.Fin.Basic" path="src/lean/Init/Data/Fin/Basic.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 27)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.Fin.Basic" val="Init.Data.Fin.Basic"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(11, 1)" end="(11, 35)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(11, 1)" end="(11, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(11, 12)" end="(11, 30)" leading="" trailing=" " raw_val="linter.missingDocs" val="linter.missingDocs"/>
+      <NullNode/>
+      <AtomNode start="(11, 31)" end="(11, 35)" leading="" trailing="&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandModuledocNode start="(13, 1)" end="(16, 3)" comment="This module exists to provide the very basic `BitVec` definitions required for&#10;`Init.Data.UInt.BasicAux`.&#10;-/">
+      <AtomNode start="(13, 1)" end="(13, 4)" leading="" trailing="&#10;" val="/-!"/>
+      <AtomNode start="(14, 1)" end="(16, 3)" leading="" trailing="&#10;&#10;" val="This module exists to provide the very basic `BitVec` definitions required for&#10;`Init.Data.UInt.BasicAux`.&#10;-/"/>
+    </CommandModuledocNode>
+    <CommandNamespaceNode start="(18, 1)" end="(18, 17)" name="BitVec">
+      <AtomNode start="(18, 1)" end="(18, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(18, 11)" end="(18, 17)" leading="" trailing="&#10;&#10;" raw_val="BitVec" val="BitVec"/>
+    </CommandNamespaceNode>
+    <CommandSectionNode start="(20, 1)" end="(20, 12)" name="Nat">
+      <AtomNode start="(20, 1)" end="(20, 8)" leading="" trailing=" " val="section"/>
+      <NullNode start="(20, 9)" end="(20, 12)">
+        <IdentNode start="(20, 9)" end="(20, 12)" leading="" trailing="&#10;&#10;" raw_val="Nat" val="Nat"/>
+      </NullNode>
+    </CommandSectionNode>
+    <CommandDeclarationNode start="(22, 1)" end="(27, 30)" name="ofNat" full_name="BitVec.ofNat">
+      <CommandDeclmodifiersNode start="(22, 1)" end="(26, 10)">
+        <NullNode start="(22, 1)" end="(24, 3)">
+          <CommandDoccommentNode start="(22, 1)" end="(24, 3)" comment="The bitvector with value `i mod 2^n`.&#10;-/">
+            <AtomNode start="(22, 1)" end="(22, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(23, 1)" end="(24, 3)" leading="" trailing="&#10;" val="The bitvector with value `i mod 2^n`.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(25, 1)" end="(25, 17)">
+          <OtherNode start="(25, 1)" end="(25, 17)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(25, 1)" end="(25, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(25, 3)" end="(25, 16)">
+              <OtherNode start="(25, 3)" end="(25, 16)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(25, 3)" end="(25, 16)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(25, 3)" end="(25, 16)" leading="" trailing="" raw_val="match_pattern" val="match_pattern"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(25, 16)" end="(25, 17)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode start="(26, 1)" end="(26, 10)">
+          <OtherNode start="(26, 1)" end="(26, 10)" kind="Lean.Parser.Command.protected">
+            <AtomNode start="(26, 1)" end="(26, 10)" leading="" trailing=" " val="protected"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(26, 11)" end="(27, 30)" name="ofNat">
+        <AtomNode start="(26, 11)" end="(26, 14)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(26, 15)" end="(26, 20)">
+          <IdentNode start="(26, 15)" end="(26, 20)" leading="" trailing=" " raw_val="ofNat" val="ofNat"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(26, 21)" end="(26, 51)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(26, 21)" end="(26, 40)">
+            <TermExplicitbinderNode start="(26, 21)" end="(26, 30)">
+              <AtomNode start="(26, 21)" end="(26, 22)" leading="" trailing="" val="("/>
+              <NullNode start="(26, 22)" end="(26, 23)">
+                <IdentNode start="(26, 22)" end="(26, 23)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(26, 24)" end="(26, 29)">
+                <AtomNode start="(26, 24)" end="(26, 25)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(26, 26)" end="(26, 29)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(26, 29)" end="(26, 30)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(26, 31)" end="(26, 40)">
+              <AtomNode start="(26, 31)" end="(26, 32)" leading="" trailing="" val="("/>
+              <NullNode start="(26, 32)" end="(26, 33)">
+                <IdentNode start="(26, 32)" end="(26, 33)" leading="" trailing=" " raw_val="i" val="i"/>
+              </NullNode>
+              <NullNode start="(26, 34)" end="(26, 39)">
+                <AtomNode start="(26, 34)" end="(26, 35)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(26, 36)" end="(26, 39)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(26, 39)" end="(26, 40)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(26, 41)" end="(26, 51)">
+            <TermTypespecNode start="(26, 41)" end="(26, 51)">
+              <AtomNode start="(26, 41)" end="(26, 42)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(26, 43)" end="(26, 51)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(26, 43)" end="(26, 49)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(26, 50)" end="(26, 51)">
+                  <IdentNode start="(26, 50)" end="(26, 51)" leading="" trailing=" " raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandWherestructinstNode start="(26, 52)" end="(27, 30)">
+          <AtomNode start="(26, 52)" end="(26, 57)" leading="" trailing="&#10;  " val="where"/>
+          <OtherNode start="(27, 3)" end="(27, 30)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(27, 3)" end="(27, 30)">
+              <OtherNode start="(27, 3)" end="(27, 30)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(27, 3)" end="(27, 8)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(27, 3)" end="(27, 8)" leading="" trailing=" " raw_val="toFin" val="toFin"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(27, 9)" end="(27, 30)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(27, 9)" end="(27, 30)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(27, 9)" end="(27, 11)" leading="" trailing=" " val=":="/>
+                    <OtherNode start="(27, 12)" end="(27, 30)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(27, 12)" end="(27, 22)" leading="" trailing=" " raw_val="Fin.ofNat'" val="Fin.ofNat'" full_name="Fin.ofNat'" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                      <NullNode start="(27, 23)" end="(27, 30)">
+                        <OtherNode start="(27, 23)" end="(27, 28)" kind="Lean.Parser.Term.paren">
+                          <AtomNode start="(27, 23)" end="(27, 24)" leading="" trailing="" val="("/>
+                          <OtherNode start="(27, 24)" end="(27, 27)" kind="«term_^_»">
+                            <OtherNode start="(27, 24)" end="(27, 25)" kind="num">
+                              <AtomNode start="(27, 24)" end="(27, 25)" leading="" trailing="" val="2"/>
+                            </OtherNode>
+                            <AtomNode start="(27, 25)" end="(27, 26)" leading="" trailing="" val="^"/>
+                            <IdentNode start="(27, 26)" end="(27, 27)" leading="" trailing="" raw_val="n" val="n"/>
+                          </OtherNode>
+                          <AtomNode start="(27, 27)" end="(27, 28)" leading="" trailing=" " val=")"/>
+                        </OtherNode>
+                        <IdentNode start="(27, 29)" end="(27, 30)" leading="" trailing="&#10;&#10;" raw_val="i" val="i"/>
+                      </NullNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(29, 1)" end="(29, 66)" name="instOfNat" full_name="BitVec.instOfNat">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(29, 1)" end="(29, 66)" name="instOfNat">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(29, 1)" end="(29, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode start="(29, 10)" end="(29, 19)">
+          <CommandDeclidNode start="(29, 10)" end="(29, 19)">
+            <IdentNode start="(29, 10)" end="(29, 19)" leading="" trailing=" " raw_val="instOfNat" val="instOfNat"/>
+            <NullNode/>
+          </CommandDeclidNode>
+        </NullNode>
+        <CommandDeclsigNode start="(29, 20)" end="(29, 40)">
+          <NullNode/>
+          <TermTypespecNode start="(29, 20)" end="(29, 40)">
+            <AtomNode start="(29, 20)" end="(29, 21)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(29, 22)" end="(29, 40)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(29, 22)" end="(29, 27)" leading="" trailing=" " raw_val="OfNat" val="OfNat" full_name="OfNat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode start="(29, 28)" end="(29, 40)">
+                <OtherNode start="(29, 28)" end="(29, 38)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(29, 28)" end="(29, 29)" leading="" trailing="" val="("/>
+                  <OtherNode start="(29, 29)" end="(29, 37)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(29, 29)" end="(29, 35)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(29, 36)" end="(29, 37)">
+                      <IdentNode start="(29, 36)" end="(29, 37)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(29, 37)" end="(29, 38)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+                <IdentNode start="(29, 39)" end="(29, 40)" leading="" trailing=" " raw_val="i" val="i"/>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(29, 41)" end="(29, 66)">
+          <AtomNode start="(29, 41)" end="(29, 46)" leading="" trailing=" " val="where"/>
+          <OtherNode start="(29, 47)" end="(29, 66)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(29, 47)" end="(29, 66)">
+              <OtherNode start="(29, 47)" end="(29, 66)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(29, 47)" end="(29, 52)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(29, 47)" end="(29, 52)" leading="" trailing=" " raw_val="ofNat" val="ofNat"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(29, 53)" end="(29, 66)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(29, 53)" end="(29, 66)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(29, 53)" end="(29, 55)" leading="" trailing=" " val=":="/>
+                    <OtherNode start="(29, 56)" end="(29, 66)" kind="Lean.Parser.Term.app">
+                      <OtherNode start="(29, 56)" end="(29, 62)" kind="Lean.Parser.Term.dotIdent">
+                        <AtomNode start="(29, 56)" end="(29, 57)" leading="" trailing="" val="."/>
+                        <IdentNode start="(29, 57)" end="(29, 62)" leading="" trailing=" " raw_val="ofNat" val="ofNat"/>
+                      </OtherNode>
+                      <NullNode start="(29, 63)" end="(29, 66)">
+                        <IdentNode start="(29, 63)" end="(29, 64)" leading="" trailing=" " raw_val="n" val="n"/>
+                        <IdentNode start="(29, 65)" end="(29, 66)" leading="" trailing="&#10;&#10;" raw_val="i" val="i"/>
+                      </NullNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(31, 1)" end="(32, 60)" name="isLt" full_name="BitVec.isLt">
+      <CommandDeclmodifiersNode start="(31, 1)" end="(31, 43)">
+        <NullNode start="(31, 1)" end="(31, 43)">
+          <CommandDoccommentNode start="(31, 1)" end="(31, 43)" comment="Return the bound in terms of toNat. -/">
+            <AtomNode start="(31, 1)" end="(31, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(31, 5)" end="(31, 43)" leading="" trailing="&#10;" val="Return the bound in terms of toNat. -/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(32, 1)" end="(32, 60)" name="isLt" full_name="BitVec.isLt" _is_private_decl="False">
+        <AtomNode start="(32, 1)" end="(32, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(32, 9)" end="(32, 13)">
+          <IdentNode start="(32, 9)" end="(32, 13)" leading="" trailing=" " raw_val="isLt" val="isLt"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(32, 14)" end="(32, 44)">
+          <NullNode start="(32, 14)" end="(32, 28)">
+            <TermExplicitbinderNode start="(32, 14)" end="(32, 28)">
+              <AtomNode start="(32, 14)" end="(32, 15)" leading="" trailing="" val="("/>
+              <NullNode start="(32, 15)" end="(32, 16)">
+                <IdentNode start="(32, 15)" end="(32, 16)" leading="" trailing=" " raw_val="x" val="x"/>
+              </NullNode>
+              <NullNode start="(32, 17)" end="(32, 27)">
+                <AtomNode start="(32, 17)" end="(32, 18)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(32, 19)" end="(32, 27)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(32, 19)" end="(32, 25)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(32, 26)" end="(32, 27)">
+                    <IdentNode start="(32, 26)" end="(32, 27)" leading="" trailing="" raw_val="w" val="w"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(32, 27)" end="(32, 28)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(32, 29)" end="(32, 44)">
+            <AtomNode start="(32, 29)" end="(32, 30)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(32, 31)" end="(32, 44)" kind="«term_&amp;lt;_»">
+              <IdentNode start="(32, 31)" end="(32, 38)" leading="" trailing=" " raw_val="x.toNat" val="x.toNat"/>
+              <AtomNode start="(32, 39)" end="(32, 40)" leading="" trailing=" " val="&amp;lt;"/>
+              <OtherNode start="(32, 41)" end="(32, 44)" kind="«term_^_»">
+                <OtherNode start="(32, 41)" end="(32, 42)" kind="num">
+                  <AtomNode start="(32, 41)" end="(32, 42)" leading="" trailing="" val="2"/>
+                </OtherNode>
+                <AtomNode start="(32, 42)" end="(32, 43)" leading="" trailing="" val="^"/>
+                <IdentNode start="(32, 43)" end="(32, 44)" leading="" trailing=" " raw_val="w" val="w"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(32, 45)" end="(32, 60)">
+          <AtomNode start="(32, 45)" end="(32, 47)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(32, 48)" end="(32, 60)" leading="" trailing="&#10;&#10;" raw_val="x.toFin.isLt" val="x.toFin.isLt"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandEndNode start="(34, 1)" end="(34, 8)" name="Nat">
+      <AtomNode start="(34, 1)" end="(34, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(34, 5)" end="(34, 8)">
+        <IdentNode start="(34, 5)" end="(34, 8)" leading="" trailing="&#10;&#10;" raw_val="Nat" val="Nat"/>
+      </NullNode>
+    </CommandEndNode>
+    <CommandSectionNode start="(36, 1)" end="(36, 19)" name="arithmetic">
+      <AtomNode start="(36, 1)" end="(36, 8)" leading="" trailing=" " val="section"/>
+      <NullNode start="(36, 9)" end="(36, 19)">
+        <IdentNode start="(36, 9)" end="(36, 19)" leading="" trailing="&#10;&#10;" raw_val="arithmetic" val="arithmetic"/>
+      </NullNode>
+    </CommandSectionNode>
+    <CommandDeclarationNode start="(38, 1)" end="(44, 78)" name="add" full_name="BitVec.add">
+      <CommandDeclmodifiersNode start="(38, 1)" end="(44, 10)">
+        <NullNode start="(38, 1)" end="(43, 3)">
+          <CommandDoccommentNode start="(38, 1)" end="(43, 3)" comment="Adds two bitvectors. This can be interpreted as either signed or unsigned addition modulo `2^n`.&#10;Usually accessed via the `+` operator.&#10;&#10;SMT-LIB name: `bvadd`.&#10;-/">
+            <AtomNode start="(38, 1)" end="(38, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(39, 1)" end="(43, 3)" leading="" trailing="&#10;" val="Adds two bitvectors. This can be interpreted as either signed or unsigned addition modulo `2^n`.&#10;Usually accessed via the `+` operator.&#10;&#10;SMT-LIB name: `bvadd`.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode start="(44, 1)" end="(44, 10)">
+          <OtherNode start="(44, 1)" end="(44, 10)" kind="Lean.Parser.Command.protected">
+            <AtomNode start="(44, 1)" end="(44, 10)" leading="" trailing=" " val="protected"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(44, 11)" end="(44, 78)" name="add">
+        <AtomNode start="(44, 11)" end="(44, 14)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(44, 15)" end="(44, 18)">
+          <IdentNode start="(44, 15)" end="(44, 18)" leading="" trailing=" " raw_val="add" val="add"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(44, 19)" end="(44, 46)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(44, 19)" end="(44, 35)">
+            <TermExplicitbinderNode start="(44, 19)" end="(44, 35)">
+              <AtomNode start="(44, 19)" end="(44, 20)" leading="" trailing="" val="("/>
+              <NullNode start="(44, 20)" end="(44, 23)">
+                <IdentNode start="(44, 20)" end="(44, 21)" leading="" trailing=" " raw_val="x" val="x"/>
+                <IdentNode start="(44, 22)" end="(44, 23)" leading="" trailing=" " raw_val="y" val="y"/>
+              </NullNode>
+              <NullNode start="(44, 24)" end="(44, 34)">
+                <AtomNode start="(44, 24)" end="(44, 25)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(44, 26)" end="(44, 34)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(44, 26)" end="(44, 32)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(44, 33)" end="(44, 34)">
+                    <IdentNode start="(44, 33)" end="(44, 34)" leading="" trailing="" raw_val="n" val="n"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(44, 34)" end="(44, 35)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(44, 36)" end="(44, 46)">
+            <TermTypespecNode start="(44, 36)" end="(44, 46)">
+              <AtomNode start="(44, 36)" end="(44, 37)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(44, 38)" end="(44, 46)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(44, 38)" end="(44, 44)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(44, 45)" end="(44, 46)">
+                  <IdentNode start="(44, 45)" end="(44, 46)" leading="" trailing=" " raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(44, 47)" end="(44, 78)">
+          <AtomNode start="(44, 47)" end="(44, 49)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(44, 50)" end="(44, 78)" kind="Lean.Parser.Term.app">
+            <OtherNode start="(44, 50)" end="(44, 56)" kind="Lean.Parser.Term.dotIdent">
+              <AtomNode start="(44, 50)" end="(44, 51)" leading="" trailing="" val="."/>
+              <IdentNode start="(44, 51)" end="(44, 56)" leading="" trailing=" " raw_val="ofNat" val="ofNat"/>
+            </OtherNode>
+            <NullNode start="(44, 57)" end="(44, 78)">
+              <IdentNode start="(44, 57)" end="(44, 58)" leading="" trailing=" " raw_val="n" val="n"/>
+              <OtherNode start="(44, 59)" end="(44, 78)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(44, 59)" end="(44, 60)" leading="" trailing="" val="("/>
+                <OtherNode start="(44, 60)" end="(44, 77)" kind="«term_+_»">
+                  <IdentNode start="(44, 60)" end="(44, 67)" leading="" trailing=" " raw_val="x.toNat" val="x.toNat"/>
+                  <AtomNode start="(44, 68)" end="(44, 69)" leading="" trailing=" " val="+"/>
+                  <IdentNode start="(44, 70)" end="(44, 77)" leading="" trailing="" raw_val="y.toNat" val="y.toNat"/>
+                </OtherNode>
+                <AtomNode start="(44, 77)" end="(44, 78)" leading="" trailing="&#10;" val=")"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(45, 1)" end="(45, 42)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(45, 1)" end="(45, 42)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(45, 1)" end="(45, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(45, 10)" end="(45, 26)">
+          <NullNode/>
+          <TermTypespecNode start="(45, 10)" end="(45, 26)">
+            <AtomNode start="(45, 10)" end="(45, 11)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(45, 12)" end="(45, 26)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(45, 12)" end="(45, 15)" leading="" trailing=" " raw_val="Add" val="Add" full_name="Add" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode start="(45, 16)" end="(45, 26)">
+                <OtherNode start="(45, 16)" end="(45, 26)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(45, 16)" end="(45, 17)" leading="" trailing="" val="("/>
+                  <OtherNode start="(45, 17)" end="(45, 25)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(45, 17)" end="(45, 23)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(45, 24)" end="(45, 25)">
+                      <IdentNode start="(45, 24)" end="(45, 25)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(45, 25)" end="(45, 26)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(45, 27)" end="(45, 42)">
+          <AtomNode start="(45, 27)" end="(45, 29)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(45, 30)" end="(45, 42)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(45, 30)" end="(45, 31)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(45, 31)" end="(45, 41)">
+              <IdentNode start="(45, 31)" end="(45, 41)" leading="" trailing="" raw_val="BitVec.add" val="BitVec.add" full_name="BitVec.add" mod_name="Init.Data.BitVec.BasicAux" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BitVec/BasicAux.lean" def_start="(44, 15)" def_end="(44, 18)"/>
+            </NullNode>
+            <AtomNode start="(45, 41)" end="(45, 42)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(47, 1)" end="(52, 86)" name="sub" full_name="BitVec.sub">
+      <CommandDeclmodifiersNode start="(47, 1)" end="(52, 10)">
+        <NullNode start="(47, 1)" end="(51, 3)">
+          <CommandDoccommentNode start="(47, 1)" end="(51, 3)" comment="Subtracts one bitvector from another. This can be interpreted as either signed or unsigned subtraction&#10;modulo `2^n`. Usually accessed via the `-` operator.&#10;&#10;-/">
+            <AtomNode start="(47, 1)" end="(47, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(48, 1)" end="(51, 3)" leading="" trailing="&#10;" val="Subtracts one bitvector from another. This can be interpreted as either signed or unsigned subtraction&#10;modulo `2^n`. Usually accessed via the `-` operator.&#10;&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode start="(52, 1)" end="(52, 10)">
+          <OtherNode start="(52, 1)" end="(52, 10)" kind="Lean.Parser.Command.protected">
+            <AtomNode start="(52, 1)" end="(52, 10)" leading="" trailing=" " val="protected"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(52, 11)" end="(52, 86)" name="sub">
+        <AtomNode start="(52, 11)" end="(52, 14)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(52, 15)" end="(52, 18)">
+          <IdentNode start="(52, 15)" end="(52, 18)" leading="" trailing=" " raw_val="sub" val="sub"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(52, 19)" end="(52, 46)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(52, 19)" end="(52, 35)">
+            <TermExplicitbinderNode start="(52, 19)" end="(52, 35)">
+              <AtomNode start="(52, 19)" end="(52, 20)" leading="" trailing="" val="("/>
+              <NullNode start="(52, 20)" end="(52, 23)">
+                <IdentNode start="(52, 20)" end="(52, 21)" leading="" trailing=" " raw_val="x" val="x"/>
+                <IdentNode start="(52, 22)" end="(52, 23)" leading="" trailing=" " raw_val="y" val="y"/>
+              </NullNode>
+              <NullNode start="(52, 24)" end="(52, 34)">
+                <AtomNode start="(52, 24)" end="(52, 25)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(52, 26)" end="(52, 34)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(52, 26)" end="(52, 32)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(52, 33)" end="(52, 34)">
+                    <IdentNode start="(52, 33)" end="(52, 34)" leading="" trailing="" raw_val="n" val="n"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(52, 34)" end="(52, 35)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(52, 36)" end="(52, 46)">
+            <TermTypespecNode start="(52, 36)" end="(52, 46)">
+              <AtomNode start="(52, 36)" end="(52, 37)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(52, 38)" end="(52, 46)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(52, 38)" end="(52, 44)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(52, 45)" end="(52, 46)">
+                  <IdentNode start="(52, 45)" end="(52, 46)" leading="" trailing=" " raw_val="n" val="n"/>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(52, 47)" end="(52, 86)">
+          <AtomNode start="(52, 47)" end="(52, 49)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(52, 50)" end="(52, 86)" kind="Lean.Parser.Term.app">
+            <OtherNode start="(52, 50)" end="(52, 56)" kind="Lean.Parser.Term.dotIdent">
+              <AtomNode start="(52, 50)" end="(52, 51)" leading="" trailing="" val="."/>
+              <IdentNode start="(52, 51)" end="(52, 56)" leading="" trailing=" " raw_val="ofNat" val="ofNat"/>
+            </OtherNode>
+            <NullNode start="(52, 57)" end="(52, 86)">
+              <IdentNode start="(52, 57)" end="(52, 58)" leading="" trailing=" " raw_val="n" val="n"/>
+              <OtherNode start="(52, 59)" end="(52, 86)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(52, 59)" end="(52, 60)" leading="" trailing="" val="("/>
+                <OtherNode start="(52, 60)" end="(52, 85)" kind="«term_+_»">
+                  <OtherNode start="(52, 60)" end="(52, 75)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(52, 60)" end="(52, 61)" leading="" trailing="" val="("/>
+                    <OtherNode start="(52, 61)" end="(52, 74)" kind="«term_-_»">
+                      <OtherNode start="(52, 61)" end="(52, 64)" kind="«term_^_»">
+                        <OtherNode start="(52, 61)" end="(52, 62)" kind="num">
+                          <AtomNode start="(52, 61)" end="(52, 62)" leading="" trailing="" val="2"/>
+                        </OtherNode>
+                        <AtomNode start="(52, 62)" end="(52, 63)" leading="" trailing="" val="^"/>
+                        <IdentNode start="(52, 63)" end="(52, 64)" leading="" trailing=" " raw_val="n" val="n"/>
+                      </OtherNode>
+                      <AtomNode start="(52, 65)" end="(52, 66)" leading="" trailing=" " val="-"/>
+                      <IdentNode start="(52, 67)" end="(52, 74)" leading="" trailing="" raw_val="y.toNat" val="y.toNat"/>
+                    </OtherNode>
+                    <AtomNode start="(52, 74)" end="(52, 75)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(52, 76)" end="(52, 77)" leading="" trailing=" " val="+"/>
+                  <IdentNode start="(52, 78)" end="(52, 85)" leading="" trailing="" raw_val="x.toNat" val="x.toNat"/>
+                </OtherNode>
+                <AtomNode start="(52, 85)" end="(52, 86)" leading="" trailing="&#10;" val=")"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(53, 1)" end="(53, 42)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(53, 1)" end="(53, 42)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(53, 1)" end="(53, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(53, 10)" end="(53, 26)">
+          <NullNode/>
+          <TermTypespecNode start="(53, 10)" end="(53, 26)">
+            <AtomNode start="(53, 10)" end="(53, 11)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(53, 12)" end="(53, 26)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(53, 12)" end="(53, 15)" leading="" trailing=" " raw_val="Sub" val="Sub" full_name="Sub" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode start="(53, 16)" end="(53, 26)">
+                <OtherNode start="(53, 16)" end="(53, 26)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(53, 16)" end="(53, 17)" leading="" trailing="" val="("/>
+                  <OtherNode start="(53, 17)" end="(53, 25)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(53, 17)" end="(53, 23)" leading="" trailing=" " raw_val="BitVec" val="BitVec" full_name="BitVec" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(53, 24)" end="(53, 25)">
+                      <IdentNode start="(53, 24)" end="(53, 25)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(53, 25)" end="(53, 26)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(53, 27)" end="(53, 42)">
+          <AtomNode start="(53, 27)" end="(53, 29)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(53, 30)" end="(53, 42)" kind="Lean.Parser.Term.anonymousCtor">
+            <AtomNode start="(53, 30)" end="(53, 31)" leading="" trailing="" val="⟨"/>
+            <NullNode start="(53, 31)" end="(53, 41)">
+              <IdentNode start="(53, 31)" end="(53, 41)" leading="" trailing="" raw_val="BitVec.sub" val="BitVec.sub" full_name="BitVec.sub" mod_name="Init.Data.BitVec.BasicAux" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BitVec/BasicAux.lean" def_start="(52, 15)" def_end="(52, 18)"/>
+            </NullNode>
+            <AtomNode start="(53, 41)" end="(53, 42)" leading="" trailing="&#10;&#10;" val="⟩"/>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandEndNode start="(55, 1)" end="(55, 15)" name="arithmetic">
+      <AtomNode start="(55, 1)" end="(55, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(55, 5)" end="(55, 15)">
+        <IdentNode start="(55, 5)" end="(55, 15)" leading="" trailing="&#10;&#10;" raw_val="arithmetic" val="arithmetic"/>
+      </NullNode>
+    </CommandEndNode>
+    <CommandEndNode start="(57, 1)" end="(57, 11)" name="BitVec">
+      <AtomNode start="(57, 1)" end="(57, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(57, 5)" end="(57, 11)">
+        <IdentNode start="(57, 5)" end="(57, 11)" leading="" trailing="&#10;" raw_val="BitVec" val="BitVec"/>
+      </NullNode>
+    </CommandEndNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(13, 1)" end="(16, 3)" text="This module exists to provide the very basic `BitVec` definitions required for&#10;`Init.Data.UInt.BasicAux`.&#10;-/"/>
+    <Comment start="(22, 1)" end="(24, 3)" text="The bitvector with value `i mod 2^n`.&#10;-/"/>
+    <Comment start="(31, 1)" end="(31, 43)" text="Return the bound in terms of toNat. -/"/>
+    <Comment start="(38, 1)" end="(43, 3)" text="Adds two bitvectors. This can be interpreted as either signed or unsigned addition modulo `2^n`.&#10;Usually accessed via the `+` operator.&#10;&#10;SMT-LIB name: `bvadd`.&#10;-/"/>
+    <Comment start="(47, 1)" end="(51, 3)" text="Subtracts one bitvector from another. This can be interpreted as either signed or unsigned subtraction&#10;modulo `2^n`. Usually accessed via the `-` operator.&#10;&#10;-/"/>
+  </Comments>
+</TracedFile>

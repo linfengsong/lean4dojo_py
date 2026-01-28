@@ -1,0 +1,1955 @@
+<TracedFile path="src/lean/Init/Data/List/Nat/Perm.lean" md5="0d099eab0057cf3d62107bde8cc67ae1">
+  <FileNode start="(1, 1)" end="(78, 9)">
+    <ModuleHeaderNode start="(6, 1)" end="(10, 27)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(10, 27)">
+        <ModuleImportNode start="(9, 1)" end="(9, 35)" module="Init.Data.List.Nat.TakeDrop" path="src/lean/Init/Data/List/Nat/TakeDrop.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 35)" leading="" trailing="&#10;" raw_val="Init.Data.List.Nat.TakeDrop" val="Init.Data.List.Nat.TakeDrop"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(10, 1)" end="(10, 27)" module="Init.Data.List.Perm" path="src/lean/Init/Data/List/Perm.lean">
+          <NullNode/>
+          <AtomNode start="(10, 1)" end="(10, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(10, 8)" end="(10, 27)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.List.Perm" val="Init.Data.List.Perm"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(12, 1)" end="(12, 37)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(12, 1)" end="(12, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(12, 12)" end="(12, 32)" leading="" trailing=" " raw_val="linter.listVariables" val="linter.listVariables"/>
+      <NullNode/>
+      <AtomNode start="(12, 33)" end="(12, 37)" leading="" trailing=" -- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;" val="true"/>
+    </OtherNode>
+    <OtherNode start="(13, 1)" end="(13, 38)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(13, 1)" end="(13, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(13, 12)" end="(13, 33)" leading="" trailing=" " raw_val="linter.indexVariables" val="linter.indexVariables"/>
+      <NullNode/>
+      <AtomNode start="(13, 34)" end="(13, 38)" leading="" trailing=" -- Enforce naming conventions for index variables.&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandNamespaceNode start="(15, 1)" end="(15, 15)" name="List">
+      <AtomNode start="(15, 1)" end="(15, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(15, 11)" end="(15, 15)" leading="" trailing="&#10;&#10;" raw_val="List" val="List"/>
+    </CommandNamespaceNode>
+    <CommandDeclarationNode start="(17, 1)" end="(38, 30)" name="set_set_perm'" full_name="List.set_set_perm'">
+      <CommandDeclmodifiersNode start="(17, 1)" end="(18, 8)">
+        <NullNode start="(17, 1)" end="(17, 38)">
+          <CommandDoccommentNode start="(17, 1)" end="(17, 38)" comment="Helper lemma for `set_set_perm`-/">
+            <AtomNode start="(17, 1)" end="(17, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(17, 5)" end="(17, 38)" leading="" trailing="&#10;" val="Helper lemma for `set_set_perm`-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode start="(18, 1)" end="(18, 8)">
+          <CommandPrivateNode start="(18, 1)" end="(18, 8)">
+            <AtomNode start="(18, 1)" end="(18, 8)" leading="" trailing=" " val="private"/>
+          </CommandPrivateNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(18, 9)" end="(38, 30)" name="set_set_perm'" full_name="List.set_set_perm'" _is_private_decl="True">
+        <AtomNode start="(18, 9)" end="(18, 16)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(18, 17)" end="(18, 30)">
+          <IdentNode start="(18, 17)" end="(18, 30)" leading="" trailing=" " raw_val="set_set_perm'" val="set_set_perm'"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(18, 31)" end="(20, 48)">
+          <NullNode start="(18, 31)" end="(19, 17)">
+            <OtherNode start="(18, 31)" end="(18, 44)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(18, 31)" end="(18, 32)" leading="" trailing="" val="{"/>
+              <NullNode start="(18, 32)" end="(18, 34)">
+                <IdentNode start="(18, 32)" end="(18, 34)" leading="" trailing=" " raw_val="as" val="as"/>
+              </NullNode>
+              <NullNode start="(18, 35)" end="(18, 43)">
+                <AtomNode start="(18, 35)" end="(18, 36)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(18, 37)" end="(18, 43)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(18, 37)" end="(18, 41)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(18, 42)" end="(18, 43)">
+                    <IdentNode start="(18, 42)" end="(18, 43)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(18, 43)" end="(18, 44)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(18, 45)" end="(18, 56)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(18, 45)" end="(18, 46)" leading="" trailing="" val="{"/>
+              <NullNode start="(18, 46)" end="(18, 49)">
+                <IdentNode start="(18, 46)" end="(18, 47)" leading="" trailing=" " raw_val="i" val="i"/>
+                <IdentNode start="(18, 48)" end="(18, 49)" leading="" trailing=" " raw_val="j" val="j"/>
+              </NullNode>
+              <NullNode start="(18, 50)" end="(18, 55)">
+                <AtomNode start="(18, 50)" end="(18, 51)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(18, 52)" end="(18, 55)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(18, 55)" end="(18, 56)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(18, 57)" end="(18, 77)">
+              <AtomNode start="(18, 57)" end="(18, 58)" leading="" trailing="" val="("/>
+              <NullNode start="(18, 58)" end="(18, 60)">
+                <IdentNode start="(18, 58)" end="(18, 60)" leading="" trailing=" " raw_val="h₁" val="h₁"/>
+              </NullNode>
+              <NullNode start="(18, 61)" end="(18, 76)">
+                <AtomNode start="(18, 61)" end="(18, 62)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(18, 63)" end="(18, 76)" kind="«term_&amp;lt;_»">
+                  <IdentNode start="(18, 63)" end="(18, 64)" leading="" trailing=" " raw_val="i" val="i"/>
+                  <AtomNode start="(18, 65)" end="(18, 66)" leading="" trailing=" " val="&amp;lt;"/>
+                  <IdentNode start="(18, 67)" end="(18, 76)" leading="" trailing="" raw_val="as.length" val="as.length"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(18, 76)" end="(18, 77)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(18, 78)" end="(18, 102)">
+              <AtomNode start="(18, 78)" end="(18, 79)" leading="" trailing="" val="("/>
+              <NullNode start="(18, 79)" end="(18, 81)">
+                <IdentNode start="(18, 79)" end="(18, 81)" leading="" trailing=" " raw_val="h₂" val="h₂"/>
+              </NullNode>
+              <NullNode start="(18, 82)" end="(18, 101)">
+                <AtomNode start="(18, 82)" end="(18, 83)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(18, 84)" end="(18, 101)" kind="«term_&amp;lt;_»">
+                  <OtherNode start="(18, 84)" end="(18, 89)" kind="«term_+_»">
+                    <IdentNode start="(18, 84)" end="(18, 85)" leading="" trailing=" " raw_val="i" val="i"/>
+                    <AtomNode start="(18, 86)" end="(18, 87)" leading="" trailing=" " val="+"/>
+                    <IdentNode start="(18, 88)" end="(18, 89)" leading="" trailing=" " raw_val="j" val="j"/>
+                  </OtherNode>
+                  <AtomNode start="(18, 90)" end="(18, 91)" leading="" trailing=" " val="&amp;lt;"/>
+                  <IdentNode start="(18, 92)" end="(18, 101)" leading="" trailing="" raw_val="as.length" val="as.length"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(18, 101)" end="(18, 102)" leading="" trailing="&#10;    " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(19, 5)" end="(19, 17)">
+              <AtomNode start="(19, 5)" end="(19, 6)" leading="" trailing="" val="("/>
+              <NullNode start="(19, 6)" end="(19, 8)">
+                <IdentNode start="(19, 6)" end="(19, 8)" leading="" trailing=" " raw_val="hj" val="hj"/>
+              </NullNode>
+              <NullNode start="(19, 9)" end="(19, 16)">
+                <AtomNode start="(19, 9)" end="(19, 10)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(19, 11)" end="(19, 16)" kind="«term_&amp;lt;_»">
+                  <OtherNode start="(19, 11)" end="(19, 12)" kind="num">
+                    <AtomNode start="(19, 11)" end="(19, 12)" leading="" trailing=" " val="0"/>
+                  </OtherNode>
+                  <AtomNode start="(19, 13)" end="(19, 14)" leading="" trailing=" " val="&amp;lt;"/>
+                  <IdentNode start="(19, 15)" end="(19, 16)" leading="" trailing="" raw_val="j" val="j"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(19, 16)" end="(19, 17)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(19, 18)" end="(20, 48)">
+            <AtomNode start="(19, 18)" end="(19, 19)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(20, 5)" end="(20, 48)" kind="List.«term_~_»">
+              <OtherNode start="(20, 5)" end="(20, 43)" kind="Lean.Parser.Term.app">
+                <OtherNode start="(20, 5)" end="(20, 29)" kind="Lean.Parser.Term.proj">
+                  <OtherNode start="(20, 5)" end="(20, 25)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(20, 5)" end="(20, 6)" leading="" trailing="" val="("/>
+                    <OtherNode start="(20, 6)" end="(20, 24)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(20, 6)" end="(20, 12)" leading="" trailing=" " raw_val="as.set" val="as.set"/>
+                      <NullNode start="(20, 13)" end="(20, 24)">
+                        <IdentNode start="(20, 13)" end="(20, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                        <OtherNode start="(20, 15)" end="(20, 24)" kind="«term__[_]»">
+                          <IdentNode start="(20, 15)" end="(20, 17)" leading="" trailing="" raw_val="as" val="as"/>
+                          <AtomNode start="(20, 17)" end="(20, 18)" leading="" trailing="" val="["/>
+                          <OtherNode start="(20, 18)" end="(20, 23)" kind="«term_+_»">
+                            <IdentNode start="(20, 18)" end="(20, 19)" leading="" trailing=" " raw_val="i" val="i"/>
+                            <AtomNode start="(20, 20)" end="(20, 21)" leading="" trailing=" " val="+"/>
+                            <IdentNode start="(20, 22)" end="(20, 23)" leading="" trailing="" raw_val="j" val="j"/>
+                          </OtherNode>
+                          <AtomNode start="(20, 23)" end="(20, 24)" leading="" trailing="" val="]"/>
+                        </OtherNode>
+                      </NullNode>
+                    </OtherNode>
+                    <AtomNode start="(20, 24)" end="(20, 25)" leading="" trailing="" val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(20, 25)" end="(20, 26)" leading="" trailing="" val="."/>
+                  <IdentNode start="(20, 26)" end="(20, 29)" leading="" trailing=" " raw_val="set" val="set" full_name="List.set" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+                <NullNode start="(20, 30)" end="(20, 43)">
+                  <OtherNode start="(20, 30)" end="(20, 37)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(20, 30)" end="(20, 31)" leading="" trailing="" val="("/>
+                    <OtherNode start="(20, 31)" end="(20, 36)" kind="«term_+_»">
+                      <IdentNode start="(20, 31)" end="(20, 32)" leading="" trailing=" " raw_val="i" val="i"/>
+                      <AtomNode start="(20, 33)" end="(20, 34)" leading="" trailing=" " val="+"/>
+                      <IdentNode start="(20, 35)" end="(20, 36)" leading="" trailing="" raw_val="j" val="j"/>
+                    </OtherNode>
+                    <AtomNode start="(20, 36)" end="(20, 37)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                  <OtherNode start="(20, 38)" end="(20, 43)" kind="«term__[_]»">
+                    <IdentNode start="(20, 38)" end="(20, 40)" leading="" trailing="" raw_val="as" val="as"/>
+                    <AtomNode start="(20, 40)" end="(20, 41)" leading="" trailing="" val="["/>
+                    <IdentNode start="(20, 41)" end="(20, 42)" leading="" trailing="" raw_val="i" val="i"/>
+                    <AtomNode start="(20, 42)" end="(20, 43)" leading="" trailing=" " val="]"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(20, 44)" end="(20, 45)" leading="" trailing=" " val="~"/>
+              <IdentNode start="(20, 46)" end="(20, 48)" leading="" trailing=" " raw_val="as" val="as"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(20, 49)" end="(38, 30)">
+          <AtomNode start="(20, 49)" end="(20, 51)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(20, 52)" end="(38, 30)">
+            <AtomNode start="(20, 52)" end="(20, 54)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(21, 3)" end="(38, 30)">
+              <TacticTacticseq1IndentedNode start="(21, 3)" end="(38, 30)">
+                <NullNode start="(21, 3)" end="(38, 30)">
+                  <OtherNode start="(21, 3)" end="(26, 18)" kind="Lean.Parser.Tactic.tacticHave_" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ (as.set i as[i + j]).set (i + j) as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ (as.set i as[i + j]).set (i + j) as[i] ~ as" tactic="have : as =&#10;    as.take i ++ as[i] :: (as.take (i + j)).drop (i + 1) ++ as[i + j] :: as.drop (i + j + 1) := by&#10;  simp only [getElem_cons_drop, append_assoc, cons_append]&#10;  rw [← drop_append_of_le_length]&#10;  · simp&#10;  · simp; omega">
+                    <AtomNode start="(21, 3)" end="(21, 7)" leading="" trailing=" " val="have"/>
+                    <OtherNode start="(21, 8)" end="(26, 18)" kind="Lean.Parser.Term.haveDecl">
+                      <OtherNode start="(21, 8)" end="(26, 18)" kind="Lean.Parser.Term.haveIdDecl">
+                        <OtherNode start="(21, 8)" end="(21, 8)" kind="Lean.Parser.Term.haveId">
+                          <OtherNode start="(21, 8)" end="(21, 8)" kind="hygieneInfo">
+                            <IdentNode start="(21, 8)" end="(21, 8)" leading="" trailing="" raw_val="" val="[anonymous]"/>
+                          </OtherNode>
+                        </OtherNode>
+                        <NullNode/>
+                        <NullNode start="(21, 8)" end="(22, 95)">
+                          <TermTypespecNode start="(21, 8)" end="(22, 95)">
+                            <AtomNode start="(21, 8)" end="(21, 9)" leading="" trailing=" " val=":"/>
+                            <OtherNode start="(21, 10)" end="(22, 95)" kind="«term_=_»">
+                              <IdentNode start="(21, 10)" end="(21, 12)" leading="" trailing=" " raw_val="as" val="as"/>
+                              <AtomNode start="(21, 13)" end="(21, 14)" leading="" trailing="&#10;      " val="="/>
+                              <OtherNode start="(22, 7)" end="(22, 95)" kind="«term_++_»">
+                                <OtherNode start="(22, 7)" end="(22, 59)" kind="«term_++_»">
+                                  <OtherNode start="(22, 7)" end="(22, 16)" kind="Lean.Parser.Term.app">
+                                    <IdentNode start="(22, 7)" end="(22, 14)" leading="" trailing=" " raw_val="as.take" val="as.take"/>
+                                    <NullNode start="(22, 15)" end="(22, 16)">
+                                      <IdentNode start="(22, 15)" end="(22, 16)" leading="" trailing=" " raw_val="i" val="i"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <AtomNode start="(22, 17)" end="(22, 19)" leading="" trailing=" " val="++"/>
+                                  <OtherNode start="(22, 20)" end="(22, 59)" kind="«term_::_»">
+                                    <OtherNode start="(22, 20)" end="(22, 25)" kind="«term__[_]»">
+                                      <IdentNode start="(22, 20)" end="(22, 22)" leading="" trailing="" raw_val="as" val="as"/>
+                                      <AtomNode start="(22, 22)" end="(22, 23)" leading="" trailing="" val="["/>
+                                      <IdentNode start="(22, 23)" end="(22, 24)" leading="" trailing="" raw_val="i" val="i"/>
+                                      <AtomNode start="(22, 24)" end="(22, 25)" leading="" trailing=" " val="]"/>
+                                    </OtherNode>
+                                    <AtomNode start="(22, 26)" end="(22, 28)" leading="" trailing=" " val="::"/>
+                                    <OtherNode start="(22, 29)" end="(22, 59)" kind="Lean.Parser.Term.app">
+                                      <OtherNode start="(22, 29)" end="(22, 51)" kind="Lean.Parser.Term.proj">
+                                        <OtherNode start="(22, 29)" end="(22, 46)" kind="Lean.Parser.Term.paren">
+                                          <AtomNode start="(22, 29)" end="(22, 30)" leading="" trailing="" val="("/>
+                                          <OtherNode start="(22, 30)" end="(22, 45)" kind="Lean.Parser.Term.app">
+                                            <IdentNode start="(22, 30)" end="(22, 37)" leading="" trailing=" " raw_val="as.take" val="as.take"/>
+                                            <NullNode start="(22, 38)" end="(22, 45)">
+                                              <OtherNode start="(22, 38)" end="(22, 45)" kind="Lean.Parser.Term.paren">
+                                                <AtomNode start="(22, 38)" end="(22, 39)" leading="" trailing="" val="("/>
+                                                <OtherNode start="(22, 39)" end="(22, 44)" kind="«term_+_»">
+                                                  <IdentNode start="(22, 39)" end="(22, 40)" leading="" trailing=" " raw_val="i" val="i"/>
+                                                  <AtomNode start="(22, 41)" end="(22, 42)" leading="" trailing=" " val="+"/>
+                                                  <IdentNode start="(22, 43)" end="(22, 44)" leading="" trailing="" raw_val="j" val="j"/>
+                                                </OtherNode>
+                                                <AtomNode start="(22, 44)" end="(22, 45)" leading="" trailing="" val=")"/>
+                                              </OtherNode>
+                                            </NullNode>
+                                          </OtherNode>
+                                          <AtomNode start="(22, 45)" end="(22, 46)" leading="" trailing="" val=")"/>
+                                        </OtherNode>
+                                        <AtomNode start="(22, 46)" end="(22, 47)" leading="" trailing="" val="."/>
+                                        <IdentNode start="(22, 47)" end="(22, 51)" leading="" trailing=" " raw_val="drop" val="drop" full_name="List.drop" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                      </OtherNode>
+                                      <NullNode start="(22, 52)" end="(22, 59)">
+                                        <OtherNode start="(22, 52)" end="(22, 59)" kind="Lean.Parser.Term.paren">
+                                          <AtomNode start="(22, 52)" end="(22, 53)" leading="" trailing="" val="("/>
+                                          <OtherNode start="(22, 53)" end="(22, 58)" kind="«term_+_»">
+                                            <IdentNode start="(22, 53)" end="(22, 54)" leading="" trailing=" " raw_val="i" val="i"/>
+                                            <AtomNode start="(22, 55)" end="(22, 56)" leading="" trailing=" " val="+"/>
+                                            <OtherNode start="(22, 57)" end="(22, 58)" kind="num">
+                                              <AtomNode start="(22, 57)" end="(22, 58)" leading="" trailing="" val="1"/>
+                                            </OtherNode>
+                                          </OtherNode>
+                                          <AtomNode start="(22, 58)" end="(22, 59)" leading="" trailing=" " val=")"/>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(22, 60)" end="(22, 62)" leading="" trailing=" " val="++"/>
+                                <OtherNode start="(22, 63)" end="(22, 95)" kind="«term_::_»">
+                                  <OtherNode start="(22, 63)" end="(22, 72)" kind="«term__[_]»">
+                                    <IdentNode start="(22, 63)" end="(22, 65)" leading="" trailing="" raw_val="as" val="as"/>
+                                    <AtomNode start="(22, 65)" end="(22, 66)" leading="" trailing="" val="["/>
+                                    <OtherNode start="(22, 66)" end="(22, 71)" kind="«term_+_»">
+                                      <IdentNode start="(22, 66)" end="(22, 67)" leading="" trailing=" " raw_val="i" val="i"/>
+                                      <AtomNode start="(22, 68)" end="(22, 69)" leading="" trailing=" " val="+"/>
+                                      <IdentNode start="(22, 70)" end="(22, 71)" leading="" trailing="" raw_val="j" val="j"/>
+                                    </OtherNode>
+                                    <AtomNode start="(22, 71)" end="(22, 72)" leading="" trailing=" " val="]"/>
+                                  </OtherNode>
+                                  <AtomNode start="(22, 73)" end="(22, 75)" leading="" trailing=" " val="::"/>
+                                  <OtherNode start="(22, 76)" end="(22, 95)" kind="Lean.Parser.Term.app">
+                                    <IdentNode start="(22, 76)" end="(22, 83)" leading="" trailing=" " raw_val="as.drop" val="as.drop"/>
+                                    <NullNode start="(22, 84)" end="(22, 95)">
+                                      <OtherNode start="(22, 84)" end="(22, 95)" kind="Lean.Parser.Term.paren">
+                                        <AtomNode start="(22, 84)" end="(22, 85)" leading="" trailing="" val="("/>
+                                        <OtherNode start="(22, 85)" end="(22, 94)" kind="«term_+_»">
+                                          <OtherNode start="(22, 85)" end="(22, 90)" kind="«term_+_»">
+                                            <IdentNode start="(22, 85)" end="(22, 86)" leading="" trailing=" " raw_val="i" val="i"/>
+                                            <AtomNode start="(22, 87)" end="(22, 88)" leading="" trailing=" " val="+"/>
+                                            <IdentNode start="(22, 89)" end="(22, 90)" leading="" trailing=" " raw_val="j" val="j"/>
+                                          </OtherNode>
+                                          <AtomNode start="(22, 91)" end="(22, 92)" leading="" trailing=" " val="+"/>
+                                          <OtherNode start="(22, 93)" end="(22, 94)" kind="num">
+                                            <AtomNode start="(22, 93)" end="(22, 94)" leading="" trailing="" val="1"/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                        <AtomNode start="(22, 94)" end="(22, 95)" leading="" trailing=" " val=")"/>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </OtherNode>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                          </TermTypespecNode>
+                        </NullNode>
+                        <AtomNode start="(22, 96)" end="(22, 98)" leading="" trailing=" " val=":="/>
+                        <TermBytacticNode start="(22, 99)" end="(26, 18)">
+                          <AtomNode start="(22, 99)" end="(22, 101)" leading="" trailing="&#10;    " val="by"/>
+                          <TacticTacticseqNode start="(23, 5)" end="(26, 18)">
+                            <TacticTacticseq1IndentedNode start="(23, 5)" end="(26, 18)">
+                              <NullNode start="(23, 5)" end="(26, 18)">
+                                <OtherNode start="(23, 5)" end="(23, 61)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: (drop (i + 1) (take (i + j) as) ++ drop (i + j) as)" tactic="simp only [getElem_cons_drop, append_assoc, cons_append]">
+                                  <AtomNode start="(23, 5)" end="(23, 9)" leading="" trailing=" " val="simp"/>
+                                  <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                    <NullNode/>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <NullNode start="(23, 10)" end="(23, 14)">
+                                    <AtomNode start="(23, 10)" end="(23, 14)" leading="" trailing=" " val="only"/>
+                                  </NullNode>
+                                  <NullNode start="(23, 15)" end="(23, 61)">
+                                    <AtomNode start="(23, 15)" end="(23, 16)" leading="" trailing="" val="["/>
+                                    <NullNode start="(23, 16)" end="(23, 60)">
+                                      <OtherNode start="(23, 16)" end="(23, 33)" kind="Lean.Parser.Tactic.simpLemma">
+                                        <NullNode/>
+                                        <NullNode/>
+                                        <IdentNode start="(23, 16)" end="(23, 33)" leading="" trailing="" raw_val="getElem_cons_drop" val="getElem_cons_drop" full_name="List.getElem_cons_drop" mod_name="Init.Data.List.TakeDrop" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/TakeDrop.lean"/>
+                                      </OtherNode>
+                                      <AtomNode start="(23, 33)" end="(23, 34)" leading="" trailing=" " val=","/>
+                                      <OtherNode start="(23, 35)" end="(23, 47)" kind="Lean.Parser.Tactic.simpLemma">
+                                        <NullNode/>
+                                        <NullNode/>
+                                        <IdentNode start="(23, 35)" end="(23, 47)" leading="" trailing="" raw_val="append_assoc" val="append_assoc" full_name="List.append_assoc" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                      </OtherNode>
+                                      <AtomNode start="(23, 47)" end="(23, 48)" leading="" trailing=" " val=","/>
+                                      <OtherNode start="(23, 49)" end="(23, 60)" kind="Lean.Parser.Tactic.simpLemma">
+                                        <NullNode/>
+                                        <NullNode/>
+                                        <IdentNode start="(23, 49)" end="(23, 60)" leading="" trailing="" raw_val="cons_append" val="cons_append" full_name="List.cons_append" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                      </OtherNode>
+                                    </NullNode>
+                                    <AtomNode start="(23, 60)" end="(23, 61)" leading="" trailing="&#10;    " val="]"/>
+                                  </NullNode>
+                                  <NullNode/>
+                                </OtherNode>
+                                <NullNode/>
+                                <OtherNode start="(24, 5)" end="(24, 36)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: (drop (i + 1) (take (i + j) as) ++ drop (i + j) as)" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as ++ drop (i + j) as)&#10;&#10;α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ (take (i + j) as).length" tactic="rw [← drop_append_of_le_length]">
+                                  <AtomNode start="(24, 5)" end="(24, 7)" leading="" trailing=" " val="rw"/>
+                                  <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                    <NullNode/>
+                                  </OtherNode>
+                                  <OtherNode start="(24, 8)" end="(24, 36)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                                    <AtomNode start="(24, 8)" end="(24, 9)" leading="" trailing="" val="["/>
+                                    <NullNode start="(24, 9)" end="(24, 35)">
+                                      <OtherNode start="(24, 9)" end="(24, 35)" kind="Lean.Parser.Tactic.rwRule">
+                                        <NullNode start="(24, 9)" end="(24, 10)">
+                                          <OtherNode start="(24, 9)" end="(24, 10)" kind="patternIgnore">
+                                            <OtherNode start="(24, 9)" end="(24, 10)" kind="token.«← »">
+                                              <AtomNode start="(24, 9)" end="(24, 10)" leading="" trailing=" " val="←"/>
+                                            </OtherNode>
+                                          </OtherNode>
+                                        </NullNode>
+                                        <IdentNode start="(24, 11)" end="(24, 35)" leading="" trailing="" raw_val="drop_append_of_le_length" val="drop_append_of_le_length" full_name="List.drop_append_of_le_length" mod_name="Init.Data.List.Nat.TakeDrop" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Nat/TakeDrop.lean"/>
+                                      </OtherNode>
+                                    </NullNode>
+                                    <AtomNode start="(24, 35)" end="(24, 36)" leading="" trailing="&#10;    " val="]"/>
+                                  </OtherNode>
+                                  <NullNode/>
+                                </OtherNode>
+                                <NullNode/>
+                                <OtherNode start="(25, 5)" end="(25, 11)" kind="Lean.cdot" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as ++ drop (i + j) as)&#10;&#10;α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ (take (i + j) as).length" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ (take (i + j) as).length" tactic="· simp">
+                                  <OtherNode start="(25, 5)" end="(25, 6)" kind="Lean.cdotTk">
+                                    <OtherNode start="(25, 5)" end="(25, 6)" kind="patternIgnore">
+                                      <OtherNode start="(25, 5)" end="(25, 6)" kind="token.«· »">
+                                        <AtomNode start="(25, 5)" end="(25, 6)" leading="" trailing=" " val="·"/>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <TacticTacticseqNode start="(25, 7)" end="(25, 11)">
+                                    <TacticTacticseq1IndentedNode start="(25, 7)" end="(25, 11)">
+                                      <NullNode start="(25, 7)" end="(25, 11)">
+                                        <OtherNode start="(25, 7)" end="(25, 11)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as ++ drop (i + j) as)" state_after="no goals" tactic="simp">
+                                          <AtomNode start="(25, 7)" end="(25, 11)" leading="" trailing="&#10;    " val="simp"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </TacticTacticseq1IndentedNode>
+                                  </TacticTacticseqNode>
+                                </OtherNode>
+                                <NullNode/>
+                                <OtherNode start="(26, 5)" end="(26, 18)" kind="Lean.cdot" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ (take (i + j) as).length" state_after="no goals" tactic="· simp; omega">
+                                  <OtherNode start="(26, 5)" end="(26, 6)" kind="Lean.cdotTk">
+                                    <OtherNode start="(26, 5)" end="(26, 6)" kind="patternIgnore">
+                                      <OtherNode start="(26, 5)" end="(26, 6)" kind="token.«· »">
+                                        <AtomNode start="(26, 5)" end="(26, 6)" leading="" trailing=" " val="·"/>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <TacticTacticseqNode start="(26, 7)" end="(26, 18)">
+                                    <TacticTacticseq1IndentedNode start="(26, 7)" end="(26, 18)">
+                                      <NullNode start="(26, 7)" end="(26, 18)">
+                                        <OtherNode start="(26, 7)" end="(26, 11)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ (take (i + j) as).length" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ min (i + j) as.length" tactic="simp">
+                                          <AtomNode start="(26, 7)" end="(26, 11)" leading="" trailing="" val="simp"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                        </OtherNode>
+                                        <AtomNode start="(26, 11)" end="(26, 12)" leading="" trailing=" " val=";"/>
+                                        <OtherNode start="(26, 13)" end="(26, 18)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;⊢ i + 1 ≤ min (i + j) as.length" state_after="no goals" tactic="omega">
+                                          <AtomNode start="(26, 13)" end="(26, 18)" leading="" trailing="&#10;  " val="omega"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </TacticTacticseq1IndentedNode>
+                                  </TacticTacticseqNode>
+                                </OtherNode>
+                              </NullNode>
+                            </TacticTacticseq1IndentedNode>
+                          </TacticTacticseqNode>
+                        </TermBytacticNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(27, 3)" end="(27, 39)" kind="Lean.Parser.Tactic.Conv.conv" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ (as.set i as[i + j]).set (i + j) as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as).set i as[i + j]).set&#10;      (i + j) as[i] ~&#10;    as" tactic="conv =&amp;gt; lhs; congr; congr; rw [this]">
+                    <AtomNode start="(27, 3)" end="(27, 7)" leading="" trailing=" " val="conv"/>
+                    <NullNode/>
+                    <NullNode/>
+                    <AtomNode start="(27, 8)" end="(27, 10)" leading="" trailing=" " val="=&amp;gt;"/>
+                    <OtherNode start="(27, 11)" end="(27, 39)" kind="Lean.Parser.Tactic.Conv.convSeq">
+                      <OtherNode start="(27, 11)" end="(27, 39)" kind="Lean.Parser.Tactic.Conv.convSeq1Indented">
+                        <NullNode start="(27, 11)" end="(27, 39)">
+                          <OtherNode start="(27, 11)" end="(27, 14)" kind="Lean.Parser.Tactic.Conv.lhs">
+                            <AtomNode start="(27, 11)" end="(27, 14)" leading="" trailing="" val="lhs"/>
+                          </OtherNode>
+                          <AtomNode start="(27, 14)" end="(27, 15)" leading="" trailing=" " val=";"/>
+                          <OtherNode start="(27, 16)" end="(27, 21)" kind="Lean.Parser.Tactic.Conv.congr">
+                            <AtomNode start="(27, 16)" end="(27, 21)" leading="" trailing="" val="congr"/>
+                          </OtherNode>
+                          <AtomNode start="(27, 21)" end="(27, 22)" leading="" trailing=" " val=";"/>
+                          <OtherNode start="(27, 23)" end="(27, 28)" kind="Lean.Parser.Tactic.Conv.congr">
+                            <AtomNode start="(27, 23)" end="(27, 28)" leading="" trailing="" val="congr"/>
+                          </OtherNode>
+                          <AtomNode start="(27, 28)" end="(27, 29)" leading="" trailing=" " val=";"/>
+                          <OtherNode start="(27, 30)" end="(27, 39)" kind="Lean.Parser.Tactic.Conv.convRw__">
+                            <AtomNode start="(27, 30)" end="(27, 32)" leading="" trailing=" " val="rw"/>
+                            <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                              <NullNode/>
+                            </OtherNode>
+                            <OtherNode start="(27, 33)" end="(27, 39)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                              <AtomNode start="(27, 33)" end="(27, 34)" leading="" trailing="" val="["/>
+                              <NullNode start="(27, 34)" end="(27, 38)">
+                                <OtherNode start="(27, 34)" end="(27, 38)" kind="Lean.Parser.Tactic.rwRule">
+                                  <NullNode/>
+                                  <IdentNode start="(27, 34)" end="(27, 38)" leading="" trailing="" raw_val="this" val="this"/>
+                                </OtherNode>
+                              </NullNode>
+                              <AtomNode start="(27, 38)" end="(27, 39)" leading="" trailing="&#10;  " val="]"/>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(28, 3)" end="(28, 25)" kind="Lean.Parser.Tactic.Conv.conv" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as).set i as[i + j]).set&#10;      (i + j) as[i] ~&#10;    as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as).set i as[i + j]).set&#10;      (i + j) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="conv =&amp;gt; rhs; rw [this]">
+                    <AtomNode start="(28, 3)" end="(28, 7)" leading="" trailing=" " val="conv"/>
+                    <NullNode/>
+                    <NullNode/>
+                    <AtomNode start="(28, 8)" end="(28, 10)" leading="" trailing=" " val="=&amp;gt;"/>
+                    <OtherNode start="(28, 11)" end="(28, 25)" kind="Lean.Parser.Tactic.Conv.convSeq">
+                      <OtherNode start="(28, 11)" end="(28, 25)" kind="Lean.Parser.Tactic.Conv.convSeq1Indented">
+                        <NullNode start="(28, 11)" end="(28, 25)">
+                          <OtherNode start="(28, 11)" end="(28, 14)" kind="Lean.Parser.Tactic.Conv.rhs">
+                            <AtomNode start="(28, 11)" end="(28, 14)" leading="" trailing="" val="rhs"/>
+                          </OtherNode>
+                          <AtomNode start="(28, 14)" end="(28, 15)" leading="" trailing=" " val=";"/>
+                          <OtherNode start="(28, 16)" end="(28, 25)" kind="Lean.Parser.Tactic.Conv.convRw__">
+                            <AtomNode start="(28, 16)" end="(28, 18)" leading="" trailing=" " val="rw"/>
+                            <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                              <NullNode/>
+                            </OtherNode>
+                            <OtherNode start="(28, 19)" end="(28, 25)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                              <AtomNode start="(28, 19)" end="(28, 20)" leading="" trailing="" val="["/>
+                              <NullNode start="(28, 20)" end="(28, 24)">
+                                <OtherNode start="(28, 20)" end="(28, 24)" kind="Lean.Parser.Tactic.rwRule">
+                                  <NullNode/>
+                                  <IdentNode start="(28, 20)" end="(28, 24)" leading="" trailing="" raw_val="this" val="this"/>
+                                </OtherNode>
+                              </NullNode>
+                              <AtomNode start="(28, 24)" end="(28, 25)" leading="" trailing="&#10;  " val="]"/>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(29, 3)" end="(29, 44)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as).set i as[i + j]).set&#10;      (i + j) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j] ++ as[i + j] :: drop (i + j + 1) as).set&#10;      (i + j) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="rw [set_append_left _ _ (by simp; omega)]">
+                    <AtomNode start="(29, 3)" end="(29, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(29, 6)" end="(29, 44)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(29, 6)" end="(29, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(29, 7)" end="(29, 43)">
+                        <OtherNode start="(29, 7)" end="(29, 43)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <OtherNode start="(29, 7)" end="(29, 43)" kind="Lean.Parser.Term.app">
+                            <IdentNode start="(29, 7)" end="(29, 22)" leading="" trailing=" " raw_val="set_append_left" val="set_append_left" full_name="List.set_append_left" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                            <NullNode start="(29, 23)" end="(29, 43)">
+                              <TermHoleNode start="(29, 23)" end="(29, 24)">
+                                <AtomNode start="(29, 23)" end="(29, 24)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <TermHoleNode start="(29, 25)" end="(29, 26)">
+                                <AtomNode start="(29, 25)" end="(29, 26)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <OtherNode start="(29, 27)" end="(29, 43)" kind="Lean.Parser.Term.paren">
+                                <AtomNode start="(29, 27)" end="(29, 28)" leading="" trailing="" val="("/>
+                                <TermBytacticNode start="(29, 28)" end="(29, 42)">
+                                  <AtomNode start="(29, 28)" end="(29, 30)" leading="" trailing=" " val="by"/>
+                                  <TacticTacticseqNode start="(29, 31)" end="(29, 42)">
+                                    <TacticTacticseq1IndentedNode start="(29, 31)" end="(29, 42)">
+                                      <NullNode start="(29, 31)" end="(29, 42)">
+                                        <OtherNode start="(29, 31)" end="(29, 35)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ i &amp;lt; (take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).length" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ i &amp;lt; min i as.length + (min (i + j) as.length - (i + 1) + 1)" tactic="simp">
+                                          <AtomNode start="(29, 31)" end="(29, 35)" leading="" trailing="" val="simp"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                        </OtherNode>
+                                        <AtomNode start="(29, 35)" end="(29, 36)" leading="" trailing=" " val=";"/>
+                                        <OtherNode start="(29, 37)" end="(29, 42)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ i &amp;lt; min i as.length + (min (i + j) as.length - (i + 1) + 1)" state_after="no goals" tactic="omega">
+                                          <AtomNode start="(29, 37)" end="(29, 42)" leading="" trailing="" val="omega"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </TacticTacticseq1IndentedNode>
+                                  </TacticTacticseqNode>
+                                </TermBytacticNode>
+                                <AtomNode start="(29, 42)" end="(29, 43)" leading="" trailing="" val=")"/>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(29, 43)" end="(29, 44)" leading="" trailing="&#10;  " val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(30, 3)" end="(30, 45)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j] ++ as[i + j] :: drop (i + j + 1) as).set&#10;      (i + j) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ (take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set&#10;        (i + j - ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j]).length) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="rw [set_append_right _ _ (by simp; omega)]">
+                    <AtomNode start="(30, 3)" end="(30, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(30, 6)" end="(30, 45)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(30, 6)" end="(30, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(30, 7)" end="(30, 44)">
+                        <OtherNode start="(30, 7)" end="(30, 44)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <OtherNode start="(30, 7)" end="(30, 44)" kind="Lean.Parser.Term.app">
+                            <IdentNode start="(30, 7)" end="(30, 23)" leading="" trailing=" " raw_val="set_append_right" val="set_append_right" full_name="List.set_append_right" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                            <NullNode start="(30, 24)" end="(30, 44)">
+                              <TermHoleNode start="(30, 24)" end="(30, 25)">
+                                <AtomNode start="(30, 24)" end="(30, 25)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <TermHoleNode start="(30, 26)" end="(30, 27)">
+                                <AtomNode start="(30, 26)" end="(30, 27)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <OtherNode start="(30, 28)" end="(30, 44)" kind="Lean.Parser.Term.paren">
+                                <AtomNode start="(30, 28)" end="(30, 29)" leading="" trailing="" val="("/>
+                                <TermBytacticNode start="(30, 29)" end="(30, 43)">
+                                  <AtomNode start="(30, 29)" end="(30, 31)" leading="" trailing=" " val="by"/>
+                                  <TacticTacticseqNode start="(30, 32)" end="(30, 43)">
+                                    <TacticTacticseq1IndentedNode start="(30, 32)" end="(30, 43)">
+                                      <NullNode start="(30, 32)" end="(30, 43)">
+                                        <OtherNode start="(30, 32)" end="(30, 36)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j]).length ≤ i + j" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ min i as.length + (min (i + j) as.length - (i + 1) + 1) ≤ i + j" tactic="simp">
+                                          <AtomNode start="(30, 32)" end="(30, 36)" leading="" trailing="" val="simp"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                        </OtherNode>
+                                        <AtomNode start="(30, 36)" end="(30, 37)" leading="" trailing=" " val=";"/>
+                                        <OtherNode start="(30, 38)" end="(30, 43)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ min i as.length + (min (i + j) as.length - (i + 1) + 1) ≤ i + j" state_after="no goals" tactic="omega">
+                                          <AtomNode start="(30, 38)" end="(30, 43)" leading="" trailing="" val="omega"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </TacticTacticseq1IndentedNode>
+                                  </TacticTacticseqNode>
+                                </TermBytacticNode>
+                                <AtomNode start="(30, 43)" end="(30, 44)" leading="" trailing="" val=")"/>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(30, 44)" end="(30, 45)" leading="" trailing="&#10;  " val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(31, 3)" end="(31, 45)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ (take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set&#10;        (i + j - ((take i as ++ as[i] :: drop (i + 1) (take (i + j) as)).set i as[i + j]).length) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - (take i as).length) as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set&#10;        (i + j - (take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - (take i as).length) as[i + j]).length)&#10;        as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="rw [set_append_right _ _ (by simp; omega)]">
+                    <AtomNode start="(31, 3)" end="(31, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(31, 6)" end="(31, 45)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(31, 6)" end="(31, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(31, 7)" end="(31, 44)">
+                        <OtherNode start="(31, 7)" end="(31, 44)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <OtherNode start="(31, 7)" end="(31, 44)" kind="Lean.Parser.Term.app">
+                            <IdentNode start="(31, 7)" end="(31, 23)" leading="" trailing=" " raw_val="set_append_right" val="set_append_right" full_name="List.set_append_right" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                            <NullNode start="(31, 24)" end="(31, 44)">
+                              <TermHoleNode start="(31, 24)" end="(31, 25)">
+                                <AtomNode start="(31, 24)" end="(31, 25)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <TermHoleNode start="(31, 26)" end="(31, 27)">
+                                <AtomNode start="(31, 26)" end="(31, 27)" leading="" trailing=" " val="_"/>
+                              </TermHoleNode>
+                              <OtherNode start="(31, 28)" end="(31, 44)" kind="Lean.Parser.Term.paren">
+                                <AtomNode start="(31, 28)" end="(31, 29)" leading="" trailing="" val="("/>
+                                <TermBytacticNode start="(31, 29)" end="(31, 43)">
+                                  <AtomNode start="(31, 29)" end="(31, 31)" leading="" trailing=" " val="by"/>
+                                  <TacticTacticseqNode start="(31, 32)" end="(31, 43)">
+                                    <TacticTacticseq1IndentedNode start="(31, 32)" end="(31, 43)">
+                                      <NullNode start="(31, 32)" end="(31, 43)">
+                                        <OtherNode start="(31, 32)" end="(31, 36)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ (take i as).length ≤ i" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ min i as.length ≤ i" tactic="simp">
+                                          <AtomNode start="(31, 32)" end="(31, 36)" leading="" trailing="" val="simp"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                          <NullNode/>
+                                        </OtherNode>
+                                        <AtomNode start="(31, 36)" end="(31, 37)" leading="" trailing=" " val=";"/>
+                                        <OtherNode start="(31, 38)" end="(31, 43)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ min i as.length ≤ i" state_after="no goals" tactic="omega">
+                                          <AtomNode start="(31, 38)" end="(31, 43)" leading="" trailing="" val="omega"/>
+                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                            <NullNode/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </TacticTacticseq1IndentedNode>
+                                  </TacticTacticseqNode>
+                                </TermBytacticNode>
+                                <AtomNode start="(31, 43)" end="(31, 44)" leading="" trailing="" val=")"/>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(31, 44)" end="(31, 45)" leading="" trailing="&#10;  " val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(32, 3)" end="(32, 79)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - (take i as).length) as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set&#10;        (i + j - (take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - (take i as).length) as[i + j]).length)&#10;        as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - min i as.length) as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set (i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1))) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="simp only [length_append, length_take, length_set, length_cons, length_drop]">
+                    <AtomNode start="(32, 3)" end="(32, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode start="(32, 8)" end="(32, 12)">
+                      <AtomNode start="(32, 8)" end="(32, 12)" leading="" trailing=" " val="only"/>
+                    </NullNode>
+                    <NullNode start="(32, 13)" end="(32, 79)">
+                      <AtomNode start="(32, 13)" end="(32, 14)" leading="" trailing="" val="["/>
+                      <NullNode start="(32, 14)" end="(32, 78)">
+                        <OtherNode start="(32, 14)" end="(32, 27)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 14)" end="(32, 27)" leading="" trailing="" raw_val="length_append" val="length_append" full_name="List.length_append" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(32, 27)" end="(32, 28)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(32, 29)" end="(32, 40)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 29)" end="(32, 40)" leading="" trailing="" raw_val="length_take" val="length_take" full_name="List.length_take" mod_name="Init.Data.List.Nat.TakeDrop" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Nat/TakeDrop.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(32, 40)" end="(32, 41)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(32, 42)" end="(32, 52)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 42)" end="(32, 52)" leading="" trailing="" raw_val="length_set" val="length_set" full_name="List.length_set" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(32, 52)" end="(32, 53)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(32, 54)" end="(32, 65)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 54)" end="(32, 65)" leading="" trailing="" raw_val="length_cons" val="length_cons" full_name="List.length_cons" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(32, 65)" end="(32, 66)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(32, 67)" end="(32, 78)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 67)" end="(32, 78)" leading="" trailing="" raw_val="length_drop" val="length_drop" full_name="List.length_drop" mod_name="Init.Data.List.TakeDrop" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/TakeDrop.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(32, 78)" end="(32, 79)" leading="" trailing="&#10;  " val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(33, 3)" end="(33, 47)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set (i - min i as.length) as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set (i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1))) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set 0 as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set (i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1))) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="rw [(show i - min i as.length = 0 by omega)]">
+                    <AtomNode start="(33, 3)" end="(33, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(33, 6)" end="(33, 47)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(33, 6)" end="(33, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(33, 7)" end="(33, 46)">
+                        <OtherNode start="(33, 7)" end="(33, 46)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <OtherNode start="(33, 7)" end="(33, 46)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(33, 7)" end="(33, 8)" leading="" trailing="" val="("/>
+                            <OtherNode start="(33, 8)" end="(33, 45)" kind="Lean.Parser.Term.show">
+                              <AtomNode start="(33, 8)" end="(33, 12)" leading="" trailing=" " val="show"/>
+                              <OtherNode start="(33, 13)" end="(33, 36)" kind="«term_=_»">
+                                <OtherNode start="(33, 13)" end="(33, 32)" kind="«term_-_»">
+                                  <IdentNode start="(33, 13)" end="(33, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                                  <AtomNode start="(33, 15)" end="(33, 16)" leading="" trailing=" " val="-"/>
+                                  <OtherNode start="(33, 17)" end="(33, 32)" kind="Lean.Parser.Term.app">
+                                    <IdentNode start="(33, 17)" end="(33, 20)" leading="" trailing=" " raw_val="min" val="min" full_name="Min.min" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                                    <NullNode start="(33, 21)" end="(33, 32)">
+                                      <IdentNode start="(33, 21)" end="(33, 22)" leading="" trailing=" " raw_val="i" val="i"/>
+                                      <IdentNode start="(33, 23)" end="(33, 32)" leading="" trailing=" " raw_val="as.length" val="as.length"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(33, 33)" end="(33, 34)" leading="" trailing=" " val="="/>
+                                <OtherNode start="(33, 35)" end="(33, 36)" kind="num">
+                                  <AtomNode start="(33, 35)" end="(33, 36)" leading="" trailing=" " val="0"/>
+                                </OtherNode>
+                              </OtherNode>
+                              <OtherNode start="(33, 37)" end="(33, 45)" kind="Lean.Parser.Term.byTactic'">
+                                <AtomNode start="(33, 37)" end="(33, 39)" leading="" trailing=" " val="by"/>
+                                <TacticTacticseqNode start="(33, 40)" end="(33, 45)">
+                                  <TacticTacticseq1IndentedNode start="(33, 40)" end="(33, 45)">
+                                    <NullNode start="(33, 40)" end="(33, 45)">
+                                      <OtherNode start="(33, 40)" end="(33, 45)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ i - min i as.length = 0" state_after="no goals" tactic="omega">
+                                        <AtomNode start="(33, 40)" end="(33, 45)" leading="" trailing="" val="omega"/>
+                                        <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                          <NullNode/>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </TacticTacticseq1IndentedNode>
+                                </TacticTacticseqNode>
+                              </OtherNode>
+                            </OtherNode>
+                            <AtomNode start="(33, 45)" end="(33, 46)" leading="" trailing="" val=")"/>
+                          </OtherNode>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(33, 46)" end="(33, 47)" leading="" trailing="&#10;  " val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(34, 3)" end="(34, 93)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set 0 as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set (i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1))) as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set 0 as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set 0 as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="rw [(show i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1)) = 0 by omega)]">
+                    <AtomNode start="(34, 3)" end="(34, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(34, 6)" end="(34, 93)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(34, 6)" end="(34, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(34, 7)" end="(34, 92)">
+                        <OtherNode start="(34, 7)" end="(34, 92)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <OtherNode start="(34, 7)" end="(34, 92)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(34, 7)" end="(34, 8)" leading="" trailing="" val="("/>
+                            <OtherNode start="(34, 8)" end="(34, 91)" kind="Lean.Parser.Term.show">
+                              <AtomNode start="(34, 8)" end="(34, 12)" leading="" trailing=" " val="show"/>
+                              <OtherNode start="(34, 13)" end="(34, 82)" kind="«term_=_»">
+                                <OtherNode start="(34, 13)" end="(34, 78)" kind="«term_-_»">
+                                  <OtherNode start="(34, 13)" end="(34, 18)" kind="«term_+_»">
+                                    <IdentNode start="(34, 13)" end="(34, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                                    <AtomNode start="(34, 15)" end="(34, 16)" leading="" trailing=" " val="+"/>
+                                    <IdentNode start="(34, 17)" end="(34, 18)" leading="" trailing=" " raw_val="j" val="j"/>
+                                  </OtherNode>
+                                  <AtomNode start="(34, 19)" end="(34, 20)" leading="" trailing=" " val="-"/>
+                                  <OtherNode start="(34, 21)" end="(34, 78)" kind="Lean.Parser.Term.paren">
+                                    <AtomNode start="(34, 21)" end="(34, 22)" leading="" trailing="" val="("/>
+                                    <OtherNode start="(34, 22)" end="(34, 77)" kind="«term_+_»">
+                                      <OtherNode start="(34, 22)" end="(34, 37)" kind="Lean.Parser.Term.app">
+                                        <IdentNode start="(34, 22)" end="(34, 25)" leading="" trailing=" " raw_val="min" val="min" full_name="Min.min" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                                        <NullNode start="(34, 26)" end="(34, 37)">
+                                          <IdentNode start="(34, 26)" end="(34, 27)" leading="" trailing=" " raw_val="i" val="i"/>
+                                          <IdentNode start="(34, 28)" end="(34, 37)" leading="" trailing=" " raw_val="as.length" val="as.length"/>
+                                        </NullNode>
+                                      </OtherNode>
+                                      <AtomNode start="(34, 38)" end="(34, 39)" leading="" trailing=" " val="+"/>
+                                      <OtherNode start="(34, 40)" end="(34, 77)" kind="Lean.Parser.Term.paren">
+                                        <AtomNode start="(34, 40)" end="(34, 41)" leading="" trailing="" val="("/>
+                                        <OtherNode start="(34, 41)" end="(34, 76)" kind="«term_+_»">
+                                          <OtherNode start="(34, 41)" end="(34, 72)" kind="«term_-_»">
+                                            <OtherNode start="(34, 41)" end="(34, 62)" kind="Lean.Parser.Term.app">
+                                              <IdentNode start="(34, 41)" end="(34, 44)" leading="" trailing=" " raw_val="min" val="min" full_name="Min.min" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                                              <NullNode start="(34, 45)" end="(34, 62)">
+                                                <OtherNode start="(34, 45)" end="(34, 52)" kind="Lean.Parser.Term.paren">
+                                                  <AtomNode start="(34, 45)" end="(34, 46)" leading="" trailing="" val="("/>
+                                                  <OtherNode start="(34, 46)" end="(34, 51)" kind="«term_+_»">
+                                                    <IdentNode start="(34, 46)" end="(34, 47)" leading="" trailing=" " raw_val="i" val="i"/>
+                                                    <AtomNode start="(34, 48)" end="(34, 49)" leading="" trailing=" " val="+"/>
+                                                    <IdentNode start="(34, 50)" end="(34, 51)" leading="" trailing="" raw_val="j" val="j"/>
+                                                  </OtherNode>
+                                                  <AtomNode start="(34, 51)" end="(34, 52)" leading="" trailing=" " val=")"/>
+                                                </OtherNode>
+                                                <IdentNode start="(34, 53)" end="(34, 62)" leading="" trailing=" " raw_val="as.length" val="as.length"/>
+                                              </NullNode>
+                                            </OtherNode>
+                                            <AtomNode start="(34, 63)" end="(34, 64)" leading="" trailing=" " val="-"/>
+                                            <OtherNode start="(34, 65)" end="(34, 72)" kind="Lean.Parser.Term.paren">
+                                              <AtomNode start="(34, 65)" end="(34, 66)" leading="" trailing="" val="("/>
+                                              <OtherNode start="(34, 66)" end="(34, 71)" kind="«term_+_»">
+                                                <IdentNode start="(34, 66)" end="(34, 67)" leading="" trailing=" " raw_val="i" val="i"/>
+                                                <AtomNode start="(34, 68)" end="(34, 69)" leading="" trailing=" " val="+"/>
+                                                <OtherNode start="(34, 70)" end="(34, 71)" kind="num">
+                                                  <AtomNode start="(34, 70)" end="(34, 71)" leading="" trailing="" val="1"/>
+                                                </OtherNode>
+                                              </OtherNode>
+                                              <AtomNode start="(34, 71)" end="(34, 72)" leading="" trailing=" " val=")"/>
+                                            </OtherNode>
+                                          </OtherNode>
+                                          <AtomNode start="(34, 73)" end="(34, 74)" leading="" trailing=" " val="+"/>
+                                          <OtherNode start="(34, 75)" end="(34, 76)" kind="num">
+                                            <AtomNode start="(34, 75)" end="(34, 76)" leading="" trailing="" val="1"/>
+                                          </OtherNode>
+                                        </OtherNode>
+                                        <AtomNode start="(34, 76)" end="(34, 77)" leading="" trailing="" val=")"/>
+                                      </OtherNode>
+                                    </OtherNode>
+                                    <AtomNode start="(34, 77)" end="(34, 78)" leading="" trailing=" " val=")"/>
+                                  </OtherNode>
+                                </OtherNode>
+                                <AtomNode start="(34, 79)" end="(34, 80)" leading="" trailing=" " val="="/>
+                                <OtherNode start="(34, 81)" end="(34, 82)" kind="num">
+                                  <AtomNode start="(34, 81)" end="(34, 82)" leading="" trailing=" " val="0"/>
+                                </OtherNode>
+                              </OtherNode>
+                              <OtherNode start="(34, 83)" end="(34, 91)" kind="Lean.Parser.Term.byTactic'">
+                                <AtomNode start="(34, 83)" end="(34, 85)" leading="" trailing=" " val="by"/>
+                                <TacticTacticseqNode start="(34, 86)" end="(34, 91)">
+                                  <TacticTacticseq1IndentedNode start="(34, 86)" end="(34, 91)">
+                                    <NullNode start="(34, 86)" end="(34, 91)">
+                                      <OtherNode start="(34, 86)" end="(34, 91)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ i + j - (min i as.length + (min (i + j) as.length - (i + 1) + 1)) = 0" state_after="no goals" tactic="omega">
+                                        <AtomNode start="(34, 86)" end="(34, 91)" leading="" trailing="" val="omega"/>
+                                        <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                          <NullNode/>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </TacticTacticseq1IndentedNode>
+                                </TacticTacticseqNode>
+                              </OtherNode>
+                            </OtherNode>
+                            <AtomNode start="(34, 91)" end="(34, 92)" leading="" trailing="" val=")"/>
+                          </OtherNode>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(34, 92)" end="(34, 93)" leading="" trailing="&#10;  " val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(35, 3)" end="(35, 28)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i] :: drop (i + 1) (take (i + j) as)).set 0 as[i + j] ++&#10;      (as[i + j] :: drop (i + j + 1) as).set 0 as[i] ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="simp only [set_cons_zero]">
+                    <AtomNode start="(35, 3)" end="(35, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode start="(35, 8)" end="(35, 12)">
+                      <AtomNode start="(35, 8)" end="(35, 12)" leading="" trailing=" " val="only"/>
+                    </NullNode>
+                    <NullNode start="(35, 13)" end="(35, 28)">
+                      <AtomNode start="(35, 13)" end="(35, 14)" leading="" trailing="" val="["/>
+                      <NullNode start="(35, 14)" end="(35, 27)">
+                        <OtherNode start="(35, 14)" end="(35, 27)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(35, 14)" end="(35, 27)" leading="" trailing="" raw_val="set_cons_zero" val="set_cons_zero" full_name="List.set_cons_zero" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(35, 27)" end="(35, 28)" leading="" trailing="&#10;  " val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(36, 3)" end="(36, 27)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as ~&#10;    take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as) ~&#10;    take i as ++ (as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as)" tactic="simp only [append_assoc]">
+                    <AtomNode start="(36, 3)" end="(36, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode start="(36, 8)" end="(36, 12)">
+                      <AtomNode start="(36, 8)" end="(36, 12)" leading="" trailing=" " val="only"/>
+                    </NullNode>
+                    <NullNode start="(36, 13)" end="(36, 27)">
+                      <AtomNode start="(36, 13)" end="(36, 14)" leading="" trailing="" val="["/>
+                      <NullNode start="(36, 14)" end="(36, 26)">
+                        <OtherNode start="(36, 14)" end="(36, 26)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(36, 14)" end="(36, 26)" leading="" trailing="" raw_val="append_assoc" val="append_assoc" full_name="List.append_assoc" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(36, 26)" end="(36, 27)" leading="" trailing="&#10;  " val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(37, 3)" end="(37, 25)" kind="Lean.Parser.Tactic.apply" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ take i as ++ (as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as) ~&#10;    take i as ++ (as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as)" state_after="case a&#10;α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as ~&#10;    as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" tactic="apply Perm.append_left">
+                    <AtomNode start="(37, 3)" end="(37, 8)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(37, 9)" end="(37, 25)" leading="" trailing="&#10;  " raw_val="Perm.append_left" val="Perm.append_left" full_name="List.Perm.append_left" mod_name="Init.Data.List.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Perm.lean"/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(38, 3)" end="(38, 30)" kind="Lean.Parser.Tactic.apply" state_before="case a&#10;α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : i + j &amp;lt; as.length&#10;hj : 0 &amp;lt; j&#10;this : as = take i as ++ as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as&#10;⊢ as[i + j] :: drop (i + 1) (take (i + j) as) ++ as[i] :: drop (i + j + 1) as ~&#10;    as[i] :: drop (i + 1) (take (i + j) as) ++ as[i + j] :: drop (i + j + 1) as" state_after="no goals" tactic="apply cons_append_cons_perm">
+                    <AtomNode start="(38, 3)" end="(38, 8)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(38, 9)" end="(38, 30)" leading="" trailing="&#10;&#10;" raw_val="cons_append_cons_perm" val="cons_append_cons_perm" full_name="List.cons_append_cons_perm" mod_name="Init.Data.List.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Perm.lean"/>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(40, 1)" end="(57, 41)" name="set_set_perm" full_name="List.set_set_perm">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(40, 1)" end="(57, 41)" name="set_set_perm" full_name="List.set_set_perm" _is_private_decl="False">
+        <AtomNode start="(40, 1)" end="(40, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(40, 9)" end="(40, 21)">
+          <IdentNode start="(40, 9)" end="(40, 21)" leading="" trailing=" " raw_val="set_set_perm" val="set_set_perm"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(40, 22)" end="(41, 38)">
+          <NullNode start="(40, 22)" end="(40, 89)">
+            <OtherNode start="(40, 22)" end="(40, 35)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(40, 22)" end="(40, 23)" leading="" trailing="" val="{"/>
+              <NullNode start="(40, 23)" end="(40, 25)">
+                <IdentNode start="(40, 23)" end="(40, 25)" leading="" trailing=" " raw_val="as" val="as"/>
+              </NullNode>
+              <NullNode start="(40, 26)" end="(40, 34)">
+                <AtomNode start="(40, 26)" end="(40, 27)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(40, 28)" end="(40, 34)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(40, 28)" end="(40, 32)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(40, 33)" end="(40, 34)">
+                    <IdentNode start="(40, 33)" end="(40, 34)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(40, 34)" end="(40, 35)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(40, 36)" end="(40, 47)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(40, 36)" end="(40, 37)" leading="" trailing="" val="{"/>
+              <NullNode start="(40, 37)" end="(40, 40)">
+                <IdentNode start="(40, 37)" end="(40, 38)" leading="" trailing=" " raw_val="i" val="i"/>
+                <IdentNode start="(40, 39)" end="(40, 40)" leading="" trailing=" " raw_val="j" val="j"/>
+              </NullNode>
+              <NullNode start="(40, 41)" end="(40, 46)">
+                <AtomNode start="(40, 41)" end="(40, 42)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(40, 43)" end="(40, 46)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(40, 46)" end="(40, 47)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(40, 48)" end="(40, 68)">
+              <AtomNode start="(40, 48)" end="(40, 49)" leading="" trailing="" val="("/>
+              <NullNode start="(40, 49)" end="(40, 51)">
+                <IdentNode start="(40, 49)" end="(40, 51)" leading="" trailing=" " raw_val="h₁" val="h₁"/>
+              </NullNode>
+              <NullNode start="(40, 52)" end="(40, 67)">
+                <AtomNode start="(40, 52)" end="(40, 53)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(40, 54)" end="(40, 67)" kind="«term_&amp;lt;_»">
+                  <IdentNode start="(40, 54)" end="(40, 55)" leading="" trailing=" " raw_val="i" val="i"/>
+                  <AtomNode start="(40, 56)" end="(40, 57)" leading="" trailing=" " val="&amp;lt;"/>
+                  <IdentNode start="(40, 58)" end="(40, 67)" leading="" trailing="" raw_val="as.length" val="as.length"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(40, 67)" end="(40, 68)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <TermExplicitbinderNode start="(40, 69)" end="(40, 89)">
+              <AtomNode start="(40, 69)" end="(40, 70)" leading="" trailing="" val="("/>
+              <NullNode start="(40, 70)" end="(40, 72)">
+                <IdentNode start="(40, 70)" end="(40, 72)" leading="" trailing=" " raw_val="h₂" val="h₂"/>
+              </NullNode>
+              <NullNode start="(40, 73)" end="(40, 88)">
+                <AtomNode start="(40, 73)" end="(40, 74)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(40, 75)" end="(40, 88)" kind="«term_&amp;lt;_»">
+                  <IdentNode start="(40, 75)" end="(40, 76)" leading="" trailing=" " raw_val="j" val="j"/>
+                  <AtomNode start="(40, 77)" end="(40, 78)" leading="" trailing=" " val="&amp;lt;"/>
+                  <IdentNode start="(40, 79)" end="(40, 88)" leading="" trailing="" raw_val="as.length" val="as.length"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(40, 88)" end="(40, 89)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(40, 90)" end="(41, 38)">
+            <AtomNode start="(40, 90)" end="(40, 91)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(41, 5)" end="(41, 38)" kind="List.«term_~_»">
+              <OtherNode start="(41, 5)" end="(41, 33)" kind="Lean.Parser.Term.app">
+                <OtherNode start="(41, 5)" end="(41, 25)" kind="Lean.Parser.Term.proj">
+                  <OtherNode start="(41, 5)" end="(41, 21)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(41, 5)" end="(41, 6)" leading="" trailing="" val="("/>
+                    <OtherNode start="(41, 6)" end="(41, 20)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(41, 6)" end="(41, 12)" leading="" trailing=" " raw_val="as.set" val="as.set"/>
+                      <NullNode start="(41, 13)" end="(41, 20)">
+                        <IdentNode start="(41, 13)" end="(41, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                        <OtherNode start="(41, 15)" end="(41, 20)" kind="«term__[_]»">
+                          <IdentNode start="(41, 15)" end="(41, 17)" leading="" trailing="" raw_val="as" val="as"/>
+                          <AtomNode start="(41, 17)" end="(41, 18)" leading="" trailing="" val="["/>
+                          <IdentNode start="(41, 18)" end="(41, 19)" leading="" trailing="" raw_val="j" val="j"/>
+                          <AtomNode start="(41, 19)" end="(41, 20)" leading="" trailing="" val="]"/>
+                        </OtherNode>
+                      </NullNode>
+                    </OtherNode>
+                    <AtomNode start="(41, 20)" end="(41, 21)" leading="" trailing="" val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(41, 21)" end="(41, 22)" leading="" trailing="" val="."/>
+                  <IdentNode start="(41, 22)" end="(41, 25)" leading="" trailing=" " raw_val="set" val="set" full_name="List.set" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+                <NullNode start="(41, 26)" end="(41, 33)">
+                  <IdentNode start="(41, 26)" end="(41, 27)" leading="" trailing=" " raw_val="j" val="j"/>
+                  <OtherNode start="(41, 28)" end="(41, 33)" kind="«term__[_]»">
+                    <IdentNode start="(41, 28)" end="(41, 30)" leading="" trailing="" raw_val="as" val="as"/>
+                    <AtomNode start="(41, 30)" end="(41, 31)" leading="" trailing="" val="["/>
+                    <IdentNode start="(41, 31)" end="(41, 32)" leading="" trailing="" raw_val="i" val="i"/>
+                    <AtomNode start="(41, 32)" end="(41, 33)" leading="" trailing=" " val="]"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(41, 34)" end="(41, 35)" leading="" trailing=" " val="~"/>
+              <IdentNode start="(41, 36)" end="(41, 38)" leading="" trailing=" " raw_val="as" val="as"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(41, 39)" end="(57, 41)">
+          <AtomNode start="(41, 39)" end="(41, 41)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(41, 42)" end="(57, 41)">
+            <AtomNode start="(41, 42)" end="(41, 44)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(42, 3)" end="(57, 41)">
+              <TacticTacticseq1IndentedNode start="(42, 3)" end="(57, 41)">
+                <NullNode start="(42, 3)" end="(57, 41)">
+                  <OtherNode start="(42, 3)" end="(57, 41)" kind="Lean.Parser.Tactic.tacDepIfThenElse" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="no goals" tactic="if h₃ : i = j then&#10;  simp [h₃]&#10;else&#10;  if h₃ : i &amp;lt; j then&#10;    let j' := j - i&#10;    have t : j = i + j' := by omega&#10;    generalize j' = j' at t&#10;    subst t&#10;    exact set_set_perm' _ _ (by omega)&#10;  else&#10;    rw [set_comm _ _ (by omega)]&#10;    let i' := i - j&#10;    have t : i = j + i' := by omega&#10;    generalize i' = i' at t&#10;    subst t&#10;    apply set_set_perm' _ _ (by omega)">
+                    <AtomNode start="(42, 3)" end="(42, 5)" leading="" trailing=" " val="if"/>
+                    <LeanBinderidentNode start="(42, 6)" end="(42, 8)">
+                      <IdentNode start="(42, 6)" end="(42, 8)" leading="" trailing=" " raw_val="h₃" val="h₃"/>
+                    </LeanBinderidentNode>
+                    <AtomNode start="(42, 9)" end="(42, 10)" leading="" trailing=" " val=":"/>
+                    <OtherNode start="(42, 11)" end="(42, 16)" kind="«term_=_»">
+                      <IdentNode start="(42, 11)" end="(42, 12)" leading="" trailing=" " raw_val="i" val="i"/>
+                      <AtomNode start="(42, 13)" end="(42, 14)" leading="" trailing=" " val="="/>
+                      <IdentNode start="(42, 15)" end="(42, 16)" leading="" trailing=" " raw_val="j" val="j"/>
+                    </OtherNode>
+                    <AtomNode start="(42, 17)" end="(42, 21)" leading="" trailing="&#10;    " val="then"/>
+                    <TacticTacticseqNode start="(43, 5)" end="(43, 14)">
+                      <TacticTacticseq1IndentedNode start="(43, 5)" end="(43, 14)">
+                        <NullNode start="(43, 5)" end="(43, 14)">
+                          <OtherNode start="(43, 5)" end="(43, 14)" kind="Lean.Parser.Tactic.simp" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃ : i = j&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="no goals" tactic="simp [h₃]">
+                            <AtomNode start="(43, 5)" end="(43, 9)" leading="" trailing=" " val="simp"/>
+                            <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                              <NullNode/>
+                            </OtherNode>
+                            <NullNode/>
+                            <NullNode/>
+                            <NullNode start="(43, 10)" end="(43, 14)">
+                              <AtomNode start="(43, 10)" end="(43, 11)" leading="" trailing="" val="["/>
+                              <NullNode start="(43, 11)" end="(43, 13)">
+                                <OtherNode start="(43, 11)" end="(43, 13)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(43, 11)" end="(43, 13)" leading="" trailing="" raw_val="h₃" val="h₃"/>
+                                </OtherNode>
+                              </NullNode>
+                              <AtomNode start="(43, 13)" end="(43, 14)" leading="" trailing="&#10;  " val="]"/>
+                            </NullNode>
+                            <NullNode/>
+                          </OtherNode>
+                        </NullNode>
+                      </TacticTacticseq1IndentedNode>
+                    </TacticTacticseqNode>
+                    <AtomNode start="(44, 3)" end="(44, 7)" leading="" trailing="&#10;    " val="else"/>
+                    <TacticTacticseqNode start="(45, 5)" end="(57, 41)">
+                      <TacticTacticseq1IndentedNode start="(45, 5)" end="(57, 41)">
+                        <NullNode start="(45, 5)" end="(57, 41)">
+                          <OtherNode start="(45, 5)" end="(57, 41)" kind="Lean.Parser.Tactic.tacDepIfThenElse" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃ : ¬i = j&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="no goals" tactic="if h₃ : i &amp;lt; j then&#10;  let j' := j - i&#10;  have t : j = i + j' := by omega&#10;  generalize j' = j' at t&#10;  subst t&#10;  exact set_set_perm' _ _ (by omega)&#10;else&#10;  rw [set_comm _ _ (by omega)]&#10;  let i' := i - j&#10;  have t : i = j + i' := by omega&#10;  generalize i' = i' at t&#10;  subst t&#10;  apply set_set_perm' _ _ (by omega)">
+                            <AtomNode start="(45, 5)" end="(45, 7)" leading="" trailing=" " val="if"/>
+                            <LeanBinderidentNode start="(45, 8)" end="(45, 10)">
+                              <IdentNode start="(45, 8)" end="(45, 10)" leading="" trailing=" " raw_val="h₃" val="h₃"/>
+                            </LeanBinderidentNode>
+                            <AtomNode start="(45, 11)" end="(45, 12)" leading="" trailing=" " val=":"/>
+                            <OtherNode start="(45, 13)" end="(45, 18)" kind="«term_&amp;lt;_»">
+                              <IdentNode start="(45, 13)" end="(45, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                              <AtomNode start="(45, 15)" end="(45, 16)" leading="" trailing=" " val="&amp;lt;"/>
+                              <IdentNode start="(45, 17)" end="(45, 18)" leading="" trailing=" " raw_val="j" val="j"/>
+                            </OtherNode>
+                            <AtomNode start="(45, 19)" end="(45, 23)" leading="" trailing="&#10;      " val="then"/>
+                            <TacticTacticseqNode start="(46, 7)" end="(50, 41)">
+                              <TacticTacticseq1IndentedNode start="(46, 7)" end="(50, 41)">
+                                <NullNode start="(46, 7)" end="(50, 41)">
+                                  <OtherNode start="(46, 7)" end="(46, 22)" kind="Lean.Parser.Tactic.tacticLet_" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j' : Nat := j - i&#10;⊢ (as.set i as[j]).set j as[i] ~ as" tactic="let j' := j - i">
+                                    <AtomNode start="(46, 7)" end="(46, 10)" leading="" trailing=" " val="let"/>
+                                    <OtherNode start="(46, 11)" end="(46, 22)" kind="Lean.Parser.Term.letDecl">
+                                      <OtherNode start="(46, 11)" end="(46, 22)" kind="Lean.Parser.Term.letIdDecl">
+                                        <IdentNode start="(46, 11)" end="(46, 13)" leading="" trailing=" " raw_val="j'" val="j'"/>
+                                        <NullNode/>
+                                        <NullNode/>
+                                        <AtomNode start="(46, 14)" end="(46, 16)" leading="" trailing=" " val=":="/>
+                                        <OtherNode start="(46, 17)" end="(46, 22)" kind="«term_-_»">
+                                          <IdentNode start="(46, 17)" end="(46, 18)" leading="" trailing=" " raw_val="j" val="j"/>
+                                          <AtomNode start="(46, 19)" end="(46, 20)" leading="" trailing=" " val="-"/>
+                                          <IdentNode start="(46, 21)" end="(46, 22)" leading="" trailing="&#10;      " raw_val="i" val="i"/>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(47, 7)" end="(47, 38)" kind="Lean.Parser.Tactic.tacticHave_" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j' : Nat := j - i&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j' : Nat := j - i&#10;t : j = i + j'&#10;⊢ (as.set i as[j]).set j as[i] ~ as" tactic="have t : j = i + j' := by omega">
+                                    <AtomNode start="(47, 7)" end="(47, 11)" leading="" trailing=" " val="have"/>
+                                    <OtherNode start="(47, 12)" end="(47, 38)" kind="Lean.Parser.Term.haveDecl">
+                                      <OtherNode start="(47, 12)" end="(47, 38)" kind="Lean.Parser.Term.haveIdDecl">
+                                        <OtherNode start="(47, 12)" end="(47, 13)" kind="Lean.Parser.Term.haveId">
+                                          <IdentNode start="(47, 12)" end="(47, 13)" leading="" trailing=" " raw_val="t" val="t"/>
+                                        </OtherNode>
+                                        <NullNode/>
+                                        <NullNode start="(47, 14)" end="(47, 26)">
+                                          <TermTypespecNode start="(47, 14)" end="(47, 26)">
+                                            <AtomNode start="(47, 14)" end="(47, 15)" leading="" trailing=" " val=":"/>
+                                            <OtherNode start="(47, 16)" end="(47, 26)" kind="«term_=_»">
+                                              <IdentNode start="(47, 16)" end="(47, 17)" leading="" trailing=" " raw_val="j" val="j"/>
+                                              <AtomNode start="(47, 18)" end="(47, 19)" leading="" trailing=" " val="="/>
+                                              <OtherNode start="(47, 20)" end="(47, 26)" kind="«term_+_»">
+                                                <IdentNode start="(47, 20)" end="(47, 21)" leading="" trailing=" " raw_val="i" val="i"/>
+                                                <AtomNode start="(47, 22)" end="(47, 23)" leading="" trailing=" " val="+"/>
+                                                <IdentNode start="(47, 24)" end="(47, 26)" leading="" trailing=" " raw_val="j'" val="j'"/>
+                                              </OtherNode>
+                                            </OtherNode>
+                                          </TermTypespecNode>
+                                        </NullNode>
+                                        <AtomNode start="(47, 27)" end="(47, 29)" leading="" trailing=" " val=":="/>
+                                        <TermBytacticNode start="(47, 30)" end="(47, 38)">
+                                          <AtomNode start="(47, 30)" end="(47, 32)" leading="" trailing=" " val="by"/>
+                                          <TacticTacticseqNode start="(47, 33)" end="(47, 38)">
+                                            <TacticTacticseq1IndentedNode start="(47, 33)" end="(47, 38)">
+                                              <NullNode start="(47, 33)" end="(47, 38)">
+                                                <OtherNode start="(47, 33)" end="(47, 38)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j' : Nat := j - i&#10;⊢ j = i + j'" state_after="no goals" tactic="omega">
+                                                  <AtomNode start="(47, 33)" end="(47, 38)" leading="" trailing="&#10;      " val="omega"/>
+                                                  <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                    <NullNode/>
+                                                  </OtherNode>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </TermBytacticNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(48, 7)" end="(48, 30)" kind="Lean.Parser.Tactic.generalize" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j' : Nat := j - i&#10;t : j = i + j'&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j'✝ : Nat := j - i&#10;j' : Nat&#10;t : j = i + j'&#10;⊢ (as.set i as[j]).set j as[i] ~ as" tactic="generalize j' = j' at t">
+                                    <AtomNode start="(48, 7)" end="(48, 17)" leading="" trailing=" " val="generalize"/>
+                                    <NullNode start="(48, 18)" end="(48, 25)">
+                                      <OtherNode start="(48, 18)" end="(48, 25)" kind="Lean.Parser.Tactic.generalizeArg">
+                                        <NullNode/>
+                                        <IdentNode start="(48, 18)" end="(48, 20)" leading="" trailing=" " raw_val="j'" val="j'"/>
+                                        <AtomNode start="(48, 21)" end="(48, 22)" leading="" trailing=" " val="="/>
+                                        <IdentNode start="(48, 23)" end="(48, 25)" leading="" trailing=" " raw_val="j'" val="j'"/>
+                                      </OtherNode>
+                                    </NullNode>
+                                    <NullNode start="(48, 26)" end="(48, 30)">
+                                      <OtherNode start="(48, 26)" end="(48, 30)" kind="Lean.Parser.Tactic.location">
+                                        <AtomNode start="(48, 26)" end="(48, 28)" leading="" trailing=" " val="at"/>
+                                        <OtherNode start="(48, 29)" end="(48, 30)" kind="Lean.Parser.Tactic.locationHyp">
+                                          <NullNode start="(48, 29)" end="(48, 30)">
+                                            <IdentNode start="(48, 29)" end="(48, 30)" leading="" trailing="&#10;      " raw_val="t" val="t"/>
+                                          </NullNode>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(49, 7)" end="(49, 14)" kind="Lean.Parser.Tactic.subst" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : i &amp;lt; j&#10;j'✝ : Nat := j - i&#10;j' : Nat&#10;t : j = i + j'&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i : Nat&#10;h₁ : i &amp;lt; as.length&#10;j'✝ : Nat&#10;h₂ : i + j'✝ &amp;lt; as.length&#10;h₃✝ : ¬i = i + j'✝&#10;h₃ : i &amp;lt; i + j'✝&#10;j' : Nat := i + j'✝ - i&#10;⊢ (as.set i as[i + j'✝]).set (i + j'✝) as[i] ~ as" tactic="subst t">
+                                    <AtomNode start="(49, 7)" end="(49, 12)" leading="" trailing=" " val="subst"/>
+                                    <NullNode start="(49, 13)" end="(49, 14)">
+                                      <IdentNode start="(49, 13)" end="(49, 14)" leading="" trailing="&#10;      " raw_val="t" val="t"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(50, 7)" end="(50, 41)" kind="Lean.Parser.Tactic.exact" state_before="α : Type u_1&#10;as : List α&#10;i : Nat&#10;h₁ : i &amp;lt; as.length&#10;j'✝ : Nat&#10;h₂ : i + j'✝ &amp;lt; as.length&#10;h₃✝ : ¬i = i + j'✝&#10;h₃ : i &amp;lt; i + j'✝&#10;j' : Nat := i + j'✝ - i&#10;⊢ (as.set i as[i + j'✝]).set (i + j'✝) as[i] ~ as" state_after="no goals" tactic="exact set_set_perm' _ _ (by omega)">
+                                    <AtomNode start="(50, 7)" end="(50, 12)" leading="" trailing=" " val="exact"/>
+                                    <OtherNode start="(50, 13)" end="(50, 41)" kind="Lean.Parser.Term.app">
+                                      <IdentNode start="(50, 13)" end="(50, 26)" leading="" trailing=" " raw_val="set_set_perm'" val="set_set_perm'" full_name="_private.Init.Data.List.Nat.Perm.0.List.set_set_perm'" mod_name="Init.Data.List.Nat.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Nat/Perm.lean" def_start="(18, 17)" def_end="(18, 30)"/>
+                                      <NullNode start="(50, 27)" end="(50, 41)">
+                                        <TermHoleNode start="(50, 27)" end="(50, 28)">
+                                          <AtomNode start="(50, 27)" end="(50, 28)" leading="" trailing=" " val="_"/>
+                                        </TermHoleNode>
+                                        <TermHoleNode start="(50, 29)" end="(50, 30)">
+                                          <AtomNode start="(50, 29)" end="(50, 30)" leading="" trailing=" " val="_"/>
+                                        </TermHoleNode>
+                                        <OtherNode start="(50, 31)" end="(50, 41)" kind="Lean.Parser.Term.paren">
+                                          <AtomNode start="(50, 31)" end="(50, 32)" leading="" trailing="" val="("/>
+                                          <TermBytacticNode start="(50, 32)" end="(50, 40)">
+                                            <AtomNode start="(50, 32)" end="(50, 34)" leading="" trailing=" " val="by"/>
+                                            <TacticTacticseqNode start="(50, 35)" end="(50, 40)">
+                                              <TacticTacticseq1IndentedNode start="(50, 35)" end="(50, 40)">
+                                                <NullNode start="(50, 35)" end="(50, 40)">
+                                                  <OtherNode start="(50, 35)" end="(50, 40)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i : Nat&#10;h₁ : i &amp;lt; as.length&#10;j'✝ : Nat&#10;h₂ : i + j'✝ &amp;lt; as.length&#10;h₃✝ : ¬i = i + j'✝&#10;h₃ : i &amp;lt; i + j'✝&#10;j' : Nat := i + j'✝ - i&#10;⊢ 0 &amp;lt; j'✝" state_after="no goals" tactic="omega">
+                                                    <AtomNode start="(50, 35)" end="(50, 40)" leading="" trailing="" val="omega"/>
+                                                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                      <NullNode/>
+                                                    </OtherNode>
+                                                  </OtherNode>
+                                                </NullNode>
+                                              </TacticTacticseq1IndentedNode>
+                                            </TacticTacticseqNode>
+                                          </TermBytacticNode>
+                                          <AtomNode start="(50, 40)" end="(50, 41)" leading="" trailing="&#10;    " val=")"/>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                </NullNode>
+                              </TacticTacticseq1IndentedNode>
+                            </TacticTacticseqNode>
+                            <AtomNode start="(51, 5)" end="(51, 9)" leading="" trailing="&#10;      " val="else"/>
+                            <TacticTacticseqNode start="(52, 7)" end="(57, 41)">
+                              <TacticTacticseq1IndentedNode start="(52, 7)" end="(57, 41)">
+                                <NullNode start="(52, 7)" end="(57, 41)">
+                                  <OtherNode start="(52, 7)" end="(52, 35)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;⊢ (as.set i as[j]).set j as[i] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;⊢ (as.set j as[i]).set i as[j] ~ as" tactic="rw [set_comm _ _ (by omega)]">
+                                    <AtomNode start="(52, 7)" end="(52, 9)" leading="" trailing=" " val="rw"/>
+                                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                      <NullNode/>
+                                    </OtherNode>
+                                    <OtherNode start="(52, 10)" end="(52, 35)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                                      <AtomNode start="(52, 10)" end="(52, 11)" leading="" trailing="" val="["/>
+                                      <NullNode start="(52, 11)" end="(52, 34)">
+                                        <OtherNode start="(52, 11)" end="(52, 34)" kind="Lean.Parser.Tactic.rwRule">
+                                          <NullNode/>
+                                          <OtherNode start="(52, 11)" end="(52, 34)" kind="Lean.Parser.Term.app">
+                                            <IdentNode start="(52, 11)" end="(52, 19)" leading="" trailing=" " raw_val="set_comm" val="set_comm" full_name="List.set_comm" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                            <NullNode start="(52, 20)" end="(52, 34)">
+                                              <TermHoleNode start="(52, 20)" end="(52, 21)">
+                                                <AtomNode start="(52, 20)" end="(52, 21)" leading="" trailing=" " val="_"/>
+                                              </TermHoleNode>
+                                              <TermHoleNode start="(52, 22)" end="(52, 23)">
+                                                <AtomNode start="(52, 22)" end="(52, 23)" leading="" trailing=" " val="_"/>
+                                              </TermHoleNode>
+                                              <OtherNode start="(52, 24)" end="(52, 34)" kind="Lean.Parser.Term.paren">
+                                                <AtomNode start="(52, 24)" end="(52, 25)" leading="" trailing="" val="("/>
+                                                <TermBytacticNode start="(52, 25)" end="(52, 33)">
+                                                  <AtomNode start="(52, 25)" end="(52, 27)" leading="" trailing=" " val="by"/>
+                                                  <TacticTacticseqNode start="(52, 28)" end="(52, 33)">
+                                                    <TacticTacticseq1IndentedNode start="(52, 28)" end="(52, 33)">
+                                                      <NullNode start="(52, 28)" end="(52, 33)">
+                                                        <OtherNode start="(52, 28)" end="(52, 33)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;⊢ i ≠ j" state_after="no goals" tactic="omega">
+                                                          <AtomNode start="(52, 28)" end="(52, 33)" leading="" trailing="" val="omega"/>
+                                                          <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                            <NullNode/>
+                                                          </OtherNode>
+                                                        </OtherNode>
+                                                      </NullNode>
+                                                    </TacticTacticseq1IndentedNode>
+                                                  </TacticTacticseqNode>
+                                                </TermBytacticNode>
+                                                <AtomNode start="(52, 33)" end="(52, 34)" leading="" trailing="" val=")"/>
+                                              </OtherNode>
+                                            </NullNode>
+                                          </OtherNode>
+                                        </OtherNode>
+                                      </NullNode>
+                                      <AtomNode start="(52, 34)" end="(52, 35)" leading="" trailing="&#10;      " val="]"/>
+                                    </OtherNode>
+                                    <NullNode/>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(53, 7)" end="(53, 22)" kind="Lean.Parser.Tactic.tacticLet_" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;⊢ (as.set j as[i]).set i as[j] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i' : Nat := i - j&#10;⊢ (as.set j as[i]).set i as[j] ~ as" tactic="let i' := i - j">
+                                    <AtomNode start="(53, 7)" end="(53, 10)" leading="" trailing=" " val="let"/>
+                                    <OtherNode start="(53, 11)" end="(53, 22)" kind="Lean.Parser.Term.letDecl">
+                                      <OtherNode start="(53, 11)" end="(53, 22)" kind="Lean.Parser.Term.letIdDecl">
+                                        <IdentNode start="(53, 11)" end="(53, 13)" leading="" trailing=" " raw_val="i'" val="i'"/>
+                                        <NullNode/>
+                                        <NullNode/>
+                                        <AtomNode start="(53, 14)" end="(53, 16)" leading="" trailing=" " val=":="/>
+                                        <OtherNode start="(53, 17)" end="(53, 22)" kind="«term_-_»">
+                                          <IdentNode start="(53, 17)" end="(53, 18)" leading="" trailing=" " raw_val="i" val="i"/>
+                                          <AtomNode start="(53, 19)" end="(53, 20)" leading="" trailing=" " val="-"/>
+                                          <IdentNode start="(53, 21)" end="(53, 22)" leading="" trailing="&#10;      " raw_val="j" val="j"/>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(54, 7)" end="(54, 38)" kind="Lean.Parser.Tactic.tacticHave_" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i' : Nat := i - j&#10;⊢ (as.set j as[i]).set i as[j] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i' : Nat := i - j&#10;t : i = j + i'&#10;⊢ (as.set j as[i]).set i as[j] ~ as" tactic="have t : i = j + i' := by omega">
+                                    <AtomNode start="(54, 7)" end="(54, 11)" leading="" trailing=" " val="have"/>
+                                    <OtherNode start="(54, 12)" end="(54, 38)" kind="Lean.Parser.Term.haveDecl">
+                                      <OtherNode start="(54, 12)" end="(54, 38)" kind="Lean.Parser.Term.haveIdDecl">
+                                        <OtherNode start="(54, 12)" end="(54, 13)" kind="Lean.Parser.Term.haveId">
+                                          <IdentNode start="(54, 12)" end="(54, 13)" leading="" trailing=" " raw_val="t" val="t"/>
+                                        </OtherNode>
+                                        <NullNode/>
+                                        <NullNode start="(54, 14)" end="(54, 26)">
+                                          <TermTypespecNode start="(54, 14)" end="(54, 26)">
+                                            <AtomNode start="(54, 14)" end="(54, 15)" leading="" trailing=" " val=":"/>
+                                            <OtherNode start="(54, 16)" end="(54, 26)" kind="«term_=_»">
+                                              <IdentNode start="(54, 16)" end="(54, 17)" leading="" trailing=" " raw_val="i" val="i"/>
+                                              <AtomNode start="(54, 18)" end="(54, 19)" leading="" trailing=" " val="="/>
+                                              <OtherNode start="(54, 20)" end="(54, 26)" kind="«term_+_»">
+                                                <IdentNode start="(54, 20)" end="(54, 21)" leading="" trailing=" " raw_val="j" val="j"/>
+                                                <AtomNode start="(54, 22)" end="(54, 23)" leading="" trailing=" " val="+"/>
+                                                <IdentNode start="(54, 24)" end="(54, 26)" leading="" trailing=" " raw_val="i'" val="i'"/>
+                                              </OtherNode>
+                                            </OtherNode>
+                                          </TermTypespecNode>
+                                        </NullNode>
+                                        <AtomNode start="(54, 27)" end="(54, 29)" leading="" trailing=" " val=":="/>
+                                        <TermBytacticNode start="(54, 30)" end="(54, 38)">
+                                          <AtomNode start="(54, 30)" end="(54, 32)" leading="" trailing=" " val="by"/>
+                                          <TacticTacticseqNode start="(54, 33)" end="(54, 38)">
+                                            <TacticTacticseq1IndentedNode start="(54, 33)" end="(54, 38)">
+                                              <NullNode start="(54, 33)" end="(54, 38)">
+                                                <OtherNode start="(54, 33)" end="(54, 38)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i' : Nat := i - j&#10;⊢ i = j + i'" state_after="no goals" tactic="omega">
+                                                  <AtomNode start="(54, 33)" end="(54, 38)" leading="" trailing="&#10;      " val="omega"/>
+                                                  <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                    <NullNode/>
+                                                  </OtherNode>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </TermBytacticNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(55, 7)" end="(55, 30)" kind="Lean.Parser.Tactic.generalize" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i' : Nat := i - j&#10;t : i = j + i'&#10;⊢ (as.set j as[i]).set i as[j] ~ as" state_after="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i'✝ : Nat := i - j&#10;i' : Nat&#10;t : i = j + i'&#10;⊢ (as.set j as[i]).set i as[j] ~ as" tactic="generalize i' = i' at t">
+                                    <AtomNode start="(55, 7)" end="(55, 17)" leading="" trailing=" " val="generalize"/>
+                                    <NullNode start="(55, 18)" end="(55, 25)">
+                                      <OtherNode start="(55, 18)" end="(55, 25)" kind="Lean.Parser.Tactic.generalizeArg">
+                                        <NullNode/>
+                                        <IdentNode start="(55, 18)" end="(55, 20)" leading="" trailing=" " raw_val="i'" val="i'"/>
+                                        <AtomNode start="(55, 21)" end="(55, 22)" leading="" trailing=" " val="="/>
+                                        <IdentNode start="(55, 23)" end="(55, 25)" leading="" trailing=" " raw_val="i'" val="i'"/>
+                                      </OtherNode>
+                                    </NullNode>
+                                    <NullNode start="(55, 26)" end="(55, 30)">
+                                      <OtherNode start="(55, 26)" end="(55, 30)" kind="Lean.Parser.Tactic.location">
+                                        <AtomNode start="(55, 26)" end="(55, 28)" leading="" trailing=" " val="at"/>
+                                        <OtherNode start="(55, 29)" end="(55, 30)" kind="Lean.Parser.Tactic.locationHyp">
+                                          <NullNode start="(55, 29)" end="(55, 30)">
+                                            <IdentNode start="(55, 29)" end="(55, 30)" leading="" trailing="&#10;      " raw_val="t" val="t"/>
+                                          </NullNode>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(56, 7)" end="(56, 14)" kind="Lean.Parser.Tactic.subst" state_before="α : Type u_1&#10;as : List α&#10;i j : Nat&#10;h₁ : i &amp;lt; as.length&#10;h₂ : j &amp;lt; as.length&#10;h₃✝ : ¬i = j&#10;h₃ : ¬i &amp;lt; j&#10;i'✝ : Nat := i - j&#10;i' : Nat&#10;t : i = j + i'&#10;⊢ (as.set j as[i]).set i as[j] ~ as" state_after="α : Type u_1&#10;as : List α&#10;j : Nat&#10;h₂ : j &amp;lt; as.length&#10;i'✝ : Nat&#10;h₁ : j + i'✝ &amp;lt; as.length&#10;h₃✝ : ¬j + i'✝ = j&#10;h₃ : ¬j + i'✝ &amp;lt; j&#10;i' : Nat := j + i'✝ - j&#10;⊢ (as.set j as[j + i'✝]).set (j + i'✝) as[j] ~ as" tactic="subst t">
+                                    <AtomNode start="(56, 7)" end="(56, 12)" leading="" trailing=" " val="subst"/>
+                                    <NullNode start="(56, 13)" end="(56, 14)">
+                                      <IdentNode start="(56, 13)" end="(56, 14)" leading="" trailing="&#10;      " raw_val="t" val="t"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <NullNode/>
+                                  <OtherNode start="(57, 7)" end="(57, 41)" kind="Lean.Parser.Tactic.apply" state_before="α : Type u_1&#10;as : List α&#10;j : Nat&#10;h₂ : j &amp;lt; as.length&#10;i'✝ : Nat&#10;h₁ : j + i'✝ &amp;lt; as.length&#10;h₃✝ : ¬j + i'✝ = j&#10;h₃ : ¬j + i'✝ &amp;lt; j&#10;i' : Nat := j + i'✝ - j&#10;⊢ (as.set j as[j + i'✝]).set (j + i'✝) as[j] ~ as" state_after="no goals" tactic="apply set_set_perm' _ _ (by omega)">
+                                    <AtomNode start="(57, 7)" end="(57, 12)" leading="" trailing=" " val="apply"/>
+                                    <OtherNode start="(57, 13)" end="(57, 41)" kind="Lean.Parser.Term.app">
+                                      <IdentNode start="(57, 13)" end="(57, 26)" leading="" trailing=" " raw_val="set_set_perm'" val="set_set_perm'" full_name="_private.Init.Data.List.Nat.Perm.0.List.set_set_perm'" mod_name="Init.Data.List.Nat.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Nat/Perm.lean" def_start="(18, 17)" def_end="(18, 30)"/>
+                                      <NullNode start="(57, 27)" end="(57, 41)">
+                                        <TermHoleNode start="(57, 27)" end="(57, 28)">
+                                          <AtomNode start="(57, 27)" end="(57, 28)" leading="" trailing=" " val="_"/>
+                                        </TermHoleNode>
+                                        <TermHoleNode start="(57, 29)" end="(57, 30)">
+                                          <AtomNode start="(57, 29)" end="(57, 30)" leading="" trailing=" " val="_"/>
+                                        </TermHoleNode>
+                                        <OtherNode start="(57, 31)" end="(57, 41)" kind="Lean.Parser.Term.paren">
+                                          <AtomNode start="(57, 31)" end="(57, 32)" leading="" trailing="" val="("/>
+                                          <TermBytacticNode start="(57, 32)" end="(57, 40)">
+                                            <AtomNode start="(57, 32)" end="(57, 34)" leading="" trailing=" " val="by"/>
+                                            <TacticTacticseqNode start="(57, 35)" end="(57, 40)">
+                                              <TacticTacticseq1IndentedNode start="(57, 35)" end="(57, 40)">
+                                                <NullNode start="(57, 35)" end="(57, 40)">
+                                                  <OtherNode start="(57, 35)" end="(57, 40)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;as : List α&#10;j : Nat&#10;h₂ : j &amp;lt; as.length&#10;i'✝ : Nat&#10;h₁ : j + i'✝ &amp;lt; as.length&#10;h₃✝ : ¬j + i'✝ = j&#10;h₃ : ¬j + i'✝ &amp;lt; j&#10;i' : Nat := j + i'✝ - j&#10;⊢ 0 &amp;lt; i'✝" state_after="no goals" tactic="omega">
+                                                    <AtomNode start="(57, 35)" end="(57, 40)" leading="" trailing="" val="omega"/>
+                                                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                      <NullNode/>
+                                                    </OtherNode>
+                                                  </OtherNode>
+                                                </NullNode>
+                                              </TacticTacticseq1IndentedNode>
+                                            </TacticTacticseqNode>
+                                          </TermBytacticNode>
+                                          <AtomNode start="(57, 40)" end="(57, 41)" leading="" trailing="&#10;&#10;" val=")"/>
+                                        </OtherNode>
+                                      </NullNode>
+                                    </OtherNode>
+                                  </OtherNode>
+                                </NullNode>
+                              </TacticTacticseq1IndentedNode>
+                            </TacticTacticseqNode>
+                          </OtherNode>
+                        </NullNode>
+                      </TacticTacticseq1IndentedNode>
+                    </TacticTacticseqNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandNamespaceNode start="(59, 1)" end="(59, 15)" name="Perm">
+      <AtomNode start="(59, 1)" end="(59, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(59, 11)" end="(59, 15)" leading="" trailing="&#10;&#10;" raw_val="Perm" val="Perm"/>
+    </CommandNamespaceNode>
+    <CommandDeclarationNode start="(61, 1)" end="(66, 35)" name="take_of_getElem?" full_name="List.Perm.take_of_getElem?">
+      <CommandDeclmodifiersNode start="(61, 1)" end="(61, 101)">
+        <NullNode start="(61, 1)" end="(61, 101)">
+          <CommandDoccommentNode start="(61, 1)" end="(61, 101)" comment="Variant of `List.Perm.take` specifying the the permutation is constant after `i` elementwise. -/">
+            <AtomNode start="(61, 1)" end="(61, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(61, 5)" end="(61, 101)" leading="" trailing="&#10;" val="Variant of `List.Perm.take` specifying the the permutation is constant after `i` elementwise. -/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(62, 1)" end="(66, 35)" name="take_of_getElem?" full_name="List.Perm.take_of_getElem?" _is_private_decl="False">
+        <AtomNode start="(62, 1)" end="(62, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(62, 9)" end="(62, 25)">
+          <IdentNode start="(62, 9)" end="(62, 25)" leading="" trailing=" " raw_val="take_of_getElem?" val="take_of_getElem?"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(62, 26)" end="(63, 26)">
+          <NullNode start="(62, 26)" end="(62, 101)">
+            <OtherNode start="(62, 26)" end="(62, 42)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(62, 26)" end="(62, 27)" leading="" trailing="" val="{"/>
+              <NullNode start="(62, 27)" end="(62, 32)">
+                <IdentNode start="(62, 27)" end="(62, 29)" leading="" trailing=" " raw_val="l₁" val="l₁"/>
+                <IdentNode start="(62, 30)" end="(62, 32)" leading="" trailing=" " raw_val="l₂" val="l₂"/>
+              </NullNode>
+              <NullNode start="(62, 33)" end="(62, 41)">
+                <AtomNode start="(62, 33)" end="(62, 34)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(62, 35)" end="(62, 41)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(62, 35)" end="(62, 39)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(62, 40)" end="(62, 41)">
+                    <IdentNode start="(62, 40)" end="(62, 41)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(62, 41)" end="(62, 42)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(62, 43)" end="(62, 56)">
+              <AtomNode start="(62, 43)" end="(62, 44)" leading="" trailing="" val="("/>
+              <NullNode start="(62, 44)" end="(62, 45)">
+                <IdentNode start="(62, 44)" end="(62, 45)" leading="" trailing=" " raw_val="h" val="h"/>
+              </NullNode>
+              <NullNode start="(62, 46)" end="(62, 55)">
+                <AtomNode start="(62, 46)" end="(62, 47)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(62, 48)" end="(62, 55)" kind="List.«term_~_»">
+                  <IdentNode start="(62, 48)" end="(62, 50)" leading="" trailing=" " raw_val="l₁" val="l₁"/>
+                  <AtomNode start="(62, 51)" end="(62, 52)" leading="" trailing=" " val="~"/>
+                  <IdentNode start="(62, 53)" end="(62, 55)" leading="" trailing="" raw_val="l₂" val="l₂"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(62, 55)" end="(62, 56)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <OtherNode start="(62, 57)" end="(62, 66)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(62, 57)" end="(62, 58)" leading="" trailing="" val="{"/>
+              <NullNode start="(62, 58)" end="(62, 59)">
+                <IdentNode start="(62, 58)" end="(62, 59)" leading="" trailing=" " raw_val="i" val="i"/>
+              </NullNode>
+              <NullNode start="(62, 60)" end="(62, 65)">
+                <AtomNode start="(62, 60)" end="(62, 61)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(62, 62)" end="(62, 65)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(62, 65)" end="(62, 66)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(62, 67)" end="(62, 101)">
+              <AtomNode start="(62, 67)" end="(62, 68)" leading="" trailing="" val="("/>
+              <NullNode start="(62, 68)" end="(62, 69)">
+                <IdentNode start="(62, 68)" end="(62, 69)" leading="" trailing=" " raw_val="w" val="w"/>
+              </NullNode>
+              <NullNode start="(62, 70)" end="(62, 100)">
+                <AtomNode start="(62, 70)" end="(62, 71)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(62, 72)" end="(62, 100)" kind="Lean.Parser.Term.forall">
+                  <AtomNode start="(62, 72)" end="(62, 73)" leading="" trailing=" " val="∀"/>
+                  <NullNode start="(62, 74)" end="(62, 75)">
+                    <IdentNode start="(62, 74)" end="(62, 75)" leading="" trailing="" raw_val="j" val="j"/>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(62, 75)" end="(62, 76)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(62, 77)" end="(62, 100)" kind="Lean.Parser.Term.arrow">
+                    <OtherNode start="(62, 77)" end="(62, 82)" kind="«term_≤_»">
+                      <IdentNode start="(62, 77)" end="(62, 78)" leading="" trailing=" " raw_val="i" val="i"/>
+                      <AtomNode start="(62, 79)" end="(62, 80)" leading="" trailing=" " val="≤"/>
+                      <IdentNode start="(62, 81)" end="(62, 82)" leading="" trailing=" " raw_val="j" val="j"/>
+                    </OtherNode>
+                    <AtomNode start="(62, 83)" end="(62, 84)" leading="" trailing=" " val="→"/>
+                    <OtherNode start="(62, 85)" end="(62, 100)" kind="«term_=_»">
+                      <OtherNode start="(62, 85)" end="(62, 91)" kind="«term__[_]_?»">
+                        <IdentNode start="(62, 85)" end="(62, 87)" leading="" trailing="" raw_val="l₁" val="l₁"/>
+                        <GroupNode/>
+                        <AtomNode start="(62, 87)" end="(62, 88)" leading="" trailing="" val="["/>
+                        <IdentNode start="(62, 88)" end="(62, 89)" leading="" trailing="" raw_val="j" val="j"/>
+                        <AtomNode start="(62, 89)" end="(62, 90)" leading="" trailing="" val="]"/>
+                        <GroupNode/>
+                        <AtomNode start="(62, 90)" end="(62, 91)" leading="" trailing=" " val="?"/>
+                      </OtherNode>
+                      <AtomNode start="(62, 92)" end="(62, 93)" leading="" trailing=" " val="="/>
+                      <OtherNode start="(62, 94)" end="(62, 100)" kind="«term__[_]_?»">
+                        <IdentNode start="(62, 94)" end="(62, 96)" leading="" trailing="" raw_val="l₂" val="l₂"/>
+                        <GroupNode/>
+                        <AtomNode start="(62, 96)" end="(62, 97)" leading="" trailing="" val="["/>
+                        <IdentNode start="(62, 97)" end="(62, 98)" leading="" trailing="" raw_val="j" val="j"/>
+                        <AtomNode start="(62, 98)" end="(62, 99)" leading="" trailing="" val="]"/>
+                        <GroupNode/>
+                        <AtomNode start="(62, 99)" end="(62, 100)" leading="" trailing="" val="?"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(62, 100)" end="(62, 101)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(62, 102)" end="(63, 26)">
+            <AtomNode start="(62, 102)" end="(62, 103)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(63, 5)" end="(63, 26)" kind="List.«term_~_»">
+              <OtherNode start="(63, 5)" end="(63, 14)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(63, 5)" end="(63, 12)" leading="" trailing=" " raw_val="l₁.take" val="l₁.take"/>
+                <NullNode start="(63, 13)" end="(63, 14)">
+                  <IdentNode start="(63, 13)" end="(63, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(63, 15)" end="(63, 16)" leading="" trailing=" " val="~"/>
+              <OtherNode start="(63, 17)" end="(63, 26)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(63, 17)" end="(63, 24)" leading="" trailing=" " raw_val="l₂.take" val="l₂.take"/>
+                <NullNode start="(63, 25)" end="(63, 26)">
+                  <IdentNode start="(63, 25)" end="(63, 26)" leading="" trailing=" " raw_val="i" val="i"/>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(63, 27)" end="(66, 35)">
+          <AtomNode start="(63, 27)" end="(63, 29)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(63, 30)" end="(66, 35)">
+            <AtomNode start="(63, 30)" end="(63, 32)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(64, 3)" end="(66, 35)">
+              <TacticTacticseq1IndentedNode start="(64, 3)" end="(66, 35)">
+                <NullNode start="(64, 3)" end="(66, 35)">
+                  <OtherNode start="(64, 3)" end="(64, 32)" kind="Lean.Parser.Tactic.refine" state_before="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;⊢ List.take i l₁ ~ List.take i l₂" state_after="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;⊢ List.drop i l₁ = List.drop i l₂" tactic="refine h.take (Perm.of_eq ?_)">
+                    <AtomNode start="(64, 3)" end="(64, 9)" leading="" trailing=" " val="refine"/>
+                    <OtherNode start="(64, 10)" end="(64, 32)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(64, 10)" end="(64, 16)" leading="" trailing=" " raw_val="h.take" val="h.take"/>
+                      <NullNode start="(64, 17)" end="(64, 32)">
+                        <OtherNode start="(64, 17)" end="(64, 32)" kind="Lean.Parser.Term.paren">
+                          <AtomNode start="(64, 17)" end="(64, 18)" leading="" trailing="" val="("/>
+                          <OtherNode start="(64, 18)" end="(64, 31)" kind="Lean.Parser.Term.app">
+                            <IdentNode start="(64, 18)" end="(64, 28)" leading="" trailing=" " raw_val="Perm.of_eq" val="Perm.of_eq" full_name="List.Perm.of_eq" mod_name="Init.Data.List.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Perm.lean"/>
+                            <NullNode start="(64, 29)" end="(64, 31)">
+                              <OtherNode start="(64, 29)" end="(64, 31)" kind="Lean.Parser.Term.syntheticHole">
+                                <AtomNode start="(64, 29)" end="(64, 30)" leading="" trailing="" val="?"/>
+                                <AtomNode start="(64, 30)" end="(64, 31)" leading="" trailing="" val="_"/>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                          <AtomNode start="(64, 31)" end="(64, 32)" leading="" trailing="&#10;  " val=")"/>
+                        </OtherNode>
+                      </NullNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(65, 3)" end="(65, 9)" kind="Lean.Elab.Tactic.Ext.tacticExt1___" state_before="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;⊢ List.drop i l₁ = List.drop i l₂" state_after="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;j : Nat&#10;⊢ (List.drop i l₁)[j]? = (List.drop i l₂)[j]?" tactic="ext1 j">
+                    <AtomNode start="(65, 3)" end="(65, 7)" leading="" trailing=" " val="ext1"/>
+                    <NullNode start="(65, 8)" end="(65, 9)">
+                      <OtherNode start="(65, 8)" end="(65, 9)" kind="Lean.Parser.Tactic.rintroPat.one">
+                        <OtherNode start="(65, 8)" end="(65, 9)" kind="Lean.Parser.Tactic.rcasesPat.one">
+                          <IdentNode start="(65, 8)" end="(65, 9)" leading="" trailing="&#10;  " raw_val="j" val="j"/>
+                        </OtherNode>
+                      </OtherNode>
+                    </NullNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(66, 3)" end="(66, 35)" kind="Lean.Parser.Tactic.simpa" state_before="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;j : Nat&#10;⊢ (List.drop i l₁)[j]? = (List.drop i l₂)[j]?" state_after="no goals" tactic="simpa using w (i + j) (by omega)">
+                    <AtomNode start="(66, 3)" end="(66, 8)" leading="" trailing=" " val="simpa"/>
+                    <NullNode/>
+                    <NullNode/>
+                    <OtherNode start="(66, 9)" end="(66, 35)" kind="Lean.Parser.Tactic.simpaArgsRest">
+                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                        <NullNode/>
+                      </OtherNode>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode start="(66, 9)" end="(66, 35)">
+                        <AtomNode start="(66, 9)" end="(66, 14)" leading="" trailing=" " val="using"/>
+                        <OtherNode start="(66, 15)" end="(66, 35)" kind="Lean.Parser.Term.app">
+                          <IdentNode start="(66, 15)" end="(66, 16)" leading="" trailing=" " raw_val="w" val="w"/>
+                          <NullNode start="(66, 17)" end="(66, 35)">
+                            <OtherNode start="(66, 17)" end="(66, 24)" kind="Lean.Parser.Term.paren">
+                              <AtomNode start="(66, 17)" end="(66, 18)" leading="" trailing="" val="("/>
+                              <OtherNode start="(66, 18)" end="(66, 23)" kind="«term_+_»">
+                                <IdentNode start="(66, 18)" end="(66, 19)" leading="" trailing=" " raw_val="i" val="i"/>
+                                <AtomNode start="(66, 20)" end="(66, 21)" leading="" trailing=" " val="+"/>
+                                <IdentNode start="(66, 22)" end="(66, 23)" leading="" trailing="" raw_val="j" val="j"/>
+                              </OtherNode>
+                              <AtomNode start="(66, 23)" end="(66, 24)" leading="" trailing=" " val=")"/>
+                            </OtherNode>
+                            <OtherNode start="(66, 25)" end="(66, 35)" kind="Lean.Parser.Term.paren">
+                              <AtomNode start="(66, 25)" end="(66, 26)" leading="" trailing="" val="("/>
+                              <TermBytacticNode start="(66, 26)" end="(66, 34)">
+                                <AtomNode start="(66, 26)" end="(66, 28)" leading="" trailing=" " val="by"/>
+                                <TacticTacticseqNode start="(66, 29)" end="(66, 34)">
+                                  <TacticTacticseq1IndentedNode start="(66, 29)" end="(66, 34)">
+                                    <NullNode start="(66, 29)" end="(66, 34)">
+                                      <OtherNode start="(66, 29)" end="(66, 34)" kind="Lean.Parser.Tactic.omega" state_before="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), i ≤ j → l₁[j]? = l₂[j]?&#10;j : Nat&#10;⊢ i ≤ i + j" state_after="no goals" tactic="omega">
+                                        <AtomNode start="(66, 29)" end="(66, 34)" leading="" trailing="" val="omega"/>
+                                        <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                          <NullNode/>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </NullNode>
+                                  </TacticTacticseq1IndentedNode>
+                                </TacticTacticseqNode>
+                              </TermBytacticNode>
+                              <AtomNode start="(66, 34)" end="(66, 35)" leading="" trailing="&#10;&#10;" val=")"/>
+                            </OtherNode>
+                          </NullNode>
+                        </OtherNode>
+                      </NullNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(68, 1)" end="(74, 21)" name="drop_of_getElem?" full_name="List.Perm.drop_of_getElem?">
+      <CommandDeclmodifiersNode start="(68, 1)" end="(68, 102)">
+        <NullNode start="(68, 1)" end="(68, 102)">
+          <CommandDoccommentNode start="(68, 1)" end="(68, 102)" comment="Variant of `List.Perm.drop` specifying the the permutation is constant before `i` elementwise. -/">
+            <AtomNode start="(68, 1)" end="(68, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(68, 5)" end="(68, 102)" leading="" trailing="&#10;" val="Variant of `List.Perm.drop` specifying the the permutation is constant before `i` elementwise. -/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(69, 1)" end="(74, 21)" name="drop_of_getElem?" full_name="List.Perm.drop_of_getElem?" _is_private_decl="False">
+        <AtomNode start="(69, 1)" end="(69, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(69, 9)" end="(69, 25)">
+          <IdentNode start="(69, 9)" end="(69, 25)" leading="" trailing=" " raw_val="drop_of_getElem?" val="drop_of_getElem?"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(69, 26)" end="(70, 26)">
+          <NullNode start="(69, 26)" end="(69, 101)">
+            <OtherNode start="(69, 26)" end="(69, 42)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(69, 26)" end="(69, 27)" leading="" trailing="" val="{"/>
+              <NullNode start="(69, 27)" end="(69, 32)">
+                <IdentNode start="(69, 27)" end="(69, 29)" leading="" trailing=" " raw_val="l₁" val="l₁"/>
+                <IdentNode start="(69, 30)" end="(69, 32)" leading="" trailing=" " raw_val="l₂" val="l₂"/>
+              </NullNode>
+              <NullNode start="(69, 33)" end="(69, 41)">
+                <AtomNode start="(69, 33)" end="(69, 34)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(69, 35)" end="(69, 41)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(69, 35)" end="(69, 39)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(69, 40)" end="(69, 41)">
+                    <IdentNode start="(69, 40)" end="(69, 41)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(69, 41)" end="(69, 42)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(69, 43)" end="(69, 56)">
+              <AtomNode start="(69, 43)" end="(69, 44)" leading="" trailing="" val="("/>
+              <NullNode start="(69, 44)" end="(69, 45)">
+                <IdentNode start="(69, 44)" end="(69, 45)" leading="" trailing=" " raw_val="h" val="h"/>
+              </NullNode>
+              <NullNode start="(69, 46)" end="(69, 55)">
+                <AtomNode start="(69, 46)" end="(69, 47)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(69, 48)" end="(69, 55)" kind="List.«term_~_»">
+                  <IdentNode start="(69, 48)" end="(69, 50)" leading="" trailing=" " raw_val="l₁" val="l₁"/>
+                  <AtomNode start="(69, 51)" end="(69, 52)" leading="" trailing=" " val="~"/>
+                  <IdentNode start="(69, 53)" end="(69, 55)" leading="" trailing="" raw_val="l₂" val="l₂"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(69, 55)" end="(69, 56)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+            <OtherNode start="(69, 57)" end="(69, 66)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(69, 57)" end="(69, 58)" leading="" trailing="" val="{"/>
+              <NullNode start="(69, 58)" end="(69, 59)">
+                <IdentNode start="(69, 58)" end="(69, 59)" leading="" trailing=" " raw_val="i" val="i"/>
+              </NullNode>
+              <NullNode start="(69, 60)" end="(69, 65)">
+                <AtomNode start="(69, 60)" end="(69, 61)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(69, 62)" end="(69, 65)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(69, 65)" end="(69, 66)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(69, 67)" end="(69, 101)">
+              <AtomNode start="(69, 67)" end="(69, 68)" leading="" trailing="" val="("/>
+              <NullNode start="(69, 68)" end="(69, 69)">
+                <IdentNode start="(69, 68)" end="(69, 69)" leading="" trailing=" " raw_val="w" val="w"/>
+              </NullNode>
+              <NullNode start="(69, 70)" end="(69, 100)">
+                <AtomNode start="(69, 70)" end="(69, 71)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(69, 72)" end="(69, 100)" kind="Lean.Parser.Term.forall">
+                  <AtomNode start="(69, 72)" end="(69, 73)" leading="" trailing=" " val="∀"/>
+                  <NullNode start="(69, 74)" end="(69, 75)">
+                    <IdentNode start="(69, 74)" end="(69, 75)" leading="" trailing="" raw_val="j" val="j"/>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(69, 75)" end="(69, 76)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(69, 77)" end="(69, 100)" kind="Lean.Parser.Term.arrow">
+                    <OtherNode start="(69, 77)" end="(69, 82)" kind="«term_&amp;lt;_»">
+                      <IdentNode start="(69, 77)" end="(69, 78)" leading="" trailing=" " raw_val="j" val="j"/>
+                      <AtomNode start="(69, 79)" end="(69, 80)" leading="" trailing=" " val="&amp;lt;"/>
+                      <IdentNode start="(69, 81)" end="(69, 82)" leading="" trailing=" " raw_val="i" val="i"/>
+                    </OtherNode>
+                    <AtomNode start="(69, 83)" end="(69, 84)" leading="" trailing=" " val="→"/>
+                    <OtherNode start="(69, 85)" end="(69, 100)" kind="«term_=_»">
+                      <OtherNode start="(69, 85)" end="(69, 91)" kind="«term__[_]_?»">
+                        <IdentNode start="(69, 85)" end="(69, 87)" leading="" trailing="" raw_val="l₁" val="l₁"/>
+                        <GroupNode/>
+                        <AtomNode start="(69, 87)" end="(69, 88)" leading="" trailing="" val="["/>
+                        <IdentNode start="(69, 88)" end="(69, 89)" leading="" trailing="" raw_val="j" val="j"/>
+                        <AtomNode start="(69, 89)" end="(69, 90)" leading="" trailing="" val="]"/>
+                        <GroupNode/>
+                        <AtomNode start="(69, 90)" end="(69, 91)" leading="" trailing=" " val="?"/>
+                      </OtherNode>
+                      <AtomNode start="(69, 92)" end="(69, 93)" leading="" trailing=" " val="="/>
+                      <OtherNode start="(69, 94)" end="(69, 100)" kind="«term__[_]_?»">
+                        <IdentNode start="(69, 94)" end="(69, 96)" leading="" trailing="" raw_val="l₂" val="l₂"/>
+                        <GroupNode/>
+                        <AtomNode start="(69, 96)" end="(69, 97)" leading="" trailing="" val="["/>
+                        <IdentNode start="(69, 97)" end="(69, 98)" leading="" trailing="" raw_val="j" val="j"/>
+                        <AtomNode start="(69, 98)" end="(69, 99)" leading="" trailing="" val="]"/>
+                        <GroupNode/>
+                        <AtomNode start="(69, 99)" end="(69, 100)" leading="" trailing="" val="?"/>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(69, 100)" end="(69, 101)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(69, 102)" end="(70, 26)">
+            <AtomNode start="(69, 102)" end="(69, 103)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(70, 5)" end="(70, 26)" kind="List.«term_~_»">
+              <OtherNode start="(70, 5)" end="(70, 14)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(70, 5)" end="(70, 12)" leading="" trailing=" " raw_val="l₁.drop" val="l₁.drop"/>
+                <NullNode start="(70, 13)" end="(70, 14)">
+                  <IdentNode start="(70, 13)" end="(70, 14)" leading="" trailing=" " raw_val="i" val="i"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(70, 15)" end="(70, 16)" leading="" trailing=" " val="~"/>
+              <OtherNode start="(70, 17)" end="(70, 26)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(70, 17)" end="(70, 24)" leading="" trailing=" " raw_val="l₂.drop" val="l₂.drop"/>
+                <NullNode start="(70, 25)" end="(70, 26)">
+                  <IdentNode start="(70, 25)" end="(70, 26)" leading="" trailing=" " raw_val="i" val="i"/>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(70, 27)" end="(74, 21)">
+          <AtomNode start="(70, 27)" end="(70, 29)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(70, 30)" end="(74, 21)">
+            <AtomNode start="(70, 30)" end="(70, 32)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(71, 3)" end="(74, 21)">
+              <TacticTacticseq1IndentedNode start="(71, 3)" end="(74, 21)">
+                <NullNode start="(71, 3)" end="(74, 21)">
+                  <OtherNode start="(71, 3)" end="(71, 32)" kind="Lean.Parser.Tactic.refine" state_before="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;⊢ List.drop i l₁ ~ List.drop i l₂" state_after="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;⊢ List.take i l₁ = List.take i l₂" tactic="refine h.drop (Perm.of_eq ?_)">
+                    <AtomNode start="(71, 3)" end="(71, 9)" leading="" trailing=" " val="refine"/>
+                    <OtherNode start="(71, 10)" end="(71, 32)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(71, 10)" end="(71, 16)" leading="" trailing=" " raw_val="h.drop" val="h.drop"/>
+                      <NullNode start="(71, 17)" end="(71, 32)">
+                        <OtherNode start="(71, 17)" end="(71, 32)" kind="Lean.Parser.Term.paren">
+                          <AtomNode start="(71, 17)" end="(71, 18)" leading="" trailing="" val="("/>
+                          <OtherNode start="(71, 18)" end="(71, 31)" kind="Lean.Parser.Term.app">
+                            <IdentNode start="(71, 18)" end="(71, 28)" leading="" trailing=" " raw_val="Perm.of_eq" val="Perm.of_eq" full_name="List.Perm.of_eq" mod_name="Init.Data.List.Perm" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Perm.lean"/>
+                            <NullNode start="(71, 29)" end="(71, 31)">
+                              <OtherNode start="(71, 29)" end="(71, 31)" kind="Lean.Parser.Term.syntheticHole">
+                                <AtomNode start="(71, 29)" end="(71, 30)" leading="" trailing="" val="?"/>
+                                <AtomNode start="(71, 30)" end="(71, 31)" leading="" trailing="" val="_"/>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                          <AtomNode start="(71, 31)" end="(71, 32)" leading="" trailing="&#10;  " val=")"/>
+                        </OtherNode>
+                      </NullNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(72, 3)" end="(72, 7)" kind="Lean.Elab.Tactic.Ext.tacticExt1___" state_before="α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;⊢ List.take i l₁ = List.take i l₂" state_after="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;i✝ : Nat&#10;⊢ (List.take i l₁)[i✝]? = (List.take i l₂)[i✝]?" tactic="ext1">
+                    <AtomNode start="(72, 3)" end="(72, 7)" leading="" trailing="&#10;  " val="ext1"/>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(73, 3)" end="(73, 28)" kind="Lean.Parser.Tactic.simp" state_before="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;i✝ : Nat&#10;⊢ (List.take i l₁)[i✝]? = (List.take i l₂)[i✝]?" state_after="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;i✝ : Nat&#10;⊢ (if i✝ &amp;lt; i then l₁[i✝]? else none) = if i✝ &amp;lt; i then l₂[i✝]? else none" tactic="simp only [getElem?_take]">
+                    <AtomNode start="(73, 3)" end="(73, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode start="(73, 8)" end="(73, 12)">
+                      <AtomNode start="(73, 8)" end="(73, 12)" leading="" trailing=" " val="only"/>
+                    </NullNode>
+                    <NullNode start="(73, 13)" end="(73, 28)">
+                      <AtomNode start="(73, 13)" end="(73, 14)" leading="" trailing="" val="["/>
+                      <NullNode start="(73, 14)" end="(73, 27)">
+                        <OtherNode start="(73, 14)" end="(73, 27)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(73, 14)" end="(73, 27)" leading="" trailing="" raw_val="getElem?_take" val="getElem?_take" full_name="List.getElem?_take" mod_name="Init.Data.List.Nat.TakeDrop" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Nat/TakeDrop.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(73, 27)" end="(73, 28)" leading="" trailing="&#10;  " val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(74, 3)" end="(74, 21)" kind="Lean.Parser.Tactic.«tactic_&amp;lt;;&amp;gt;_»" state_before="case h&#10;α : Type u_1&#10;l₁ l₂ : List α&#10;h : l₁ ~ l₂&#10;i : Nat&#10;w : ∀ (j : Nat), j &amp;lt; i → l₁[j]? = l₂[j]?&#10;i✝ : Nat&#10;⊢ (if i✝ &amp;lt; i then l₁[i✝]? else none) = if i✝ &amp;lt; i then l₂[i✝]? else none" state_after="no goals" tactic="split &amp;lt;;&amp;gt; simp_all">
+                    <OtherNode start="(74, 3)" end="(74, 8)" kind="Lean.Parser.Tactic.split">
+                      <AtomNode start="(74, 3)" end="(74, 8)" leading="" trailing=" " val="split"/>
+                      <NullNode/>
+                      <NullNode/>
+                    </OtherNode>
+                    <AtomNode start="(74, 9)" end="(74, 12)" leading="" trailing=" " val="&amp;lt;;&amp;gt;"/>
+                    <OtherNode start="(74, 13)" end="(74, 21)" kind="Lean.Parser.Tactic.simpAll">
+                      <AtomNode start="(74, 13)" end="(74, 21)" leading="" trailing="&#10;&#10;" val="simp_all"/>
+                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                        <NullNode/>
+                      </OtherNode>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode/>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandEndNode start="(76, 1)" end="(76, 9)" name="Perm">
+      <AtomNode start="(76, 1)" end="(76, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(76, 5)" end="(76, 9)">
+        <IdentNode start="(76, 5)" end="(76, 9)" leading="" trailing="&#10;&#10;" raw_val="Perm" val="Perm"/>
+      </NullNode>
+    </CommandEndNode>
+    <CommandEndNode start="(78, 1)" end="(78, 9)" name="List">
+      <AtomNode start="(78, 1)" end="(78, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(78, 5)" end="(78, 9)">
+        <IdentNode start="(78, 5)" end="(78, 9)" leading="" trailing="&#10;" raw_val="List" val="List"/>
+      </NullNode>
+    </CommandEndNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(12, 38)" end="(13, 1)" text="-- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;"/>
+    <Comment start="(13, 39)" end="(15, 1)" text="-- Enforce naming conventions for index variables.&#10;&#10;"/>
+    <Comment start="(17, 1)" end="(17, 38)" text="Helper lemma for `set_set_perm`-/"/>
+    <Comment start="(61, 1)" end="(61, 101)" text="Variant of `List.Perm.take` specifying the the permutation is constant after `i` elementwise. -/"/>
+    <Comment start="(68, 1)" end="(68, 102)" text="Variant of `List.Perm.drop` specifying the the permutation is constant before `i` elementwise. -/"/>
+  </Comments>
+</TracedFile>

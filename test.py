@@ -1,12 +1,14 @@
-from lean4dojo import LeanGitRepo
+from lean4dojo import LeanRepo
 
 from loguru import logger
 import sys
 
 logger.remove()
 logger.add(sys.stderr, level="DEBUG")
-#repo = LeanGitRepo("https://github.com/yangky11/lean4-example", "7b6ecb9ad4829e4e73600a3329baeb3b5df8d23f")
-repo = LeanGitRepo("https://github.com/linfengsong/lean4-example", "main")
+
+#repo = LeanRepo.from_path("traced_lean4-example/lean4-example", "main", "lean4-example")
+repo = LeanRepo.from_path("lean4-example3", "main", "lean4-example")
+#repo = LeanRepo("https://github.com/yangky11/lean4-example", "7b6ecb9ad4829e4e73600a3329baeb3b5df8d23f")
 #trace(repo, dst_dir="traced_lean4-example")
 
 #repo = LeanGitRepo("https://github.com/leanprover-community/mathlib4", "v4.24.0")
@@ -16,7 +18,11 @@ toolchain = repo.get_config("lean-toolchain")
 logger.debug(f"Toolchain: {toolchain}")
 
 #traced_repo = trace(repo, dst_dir="traced_mathlib4")
-traced_repo = repo.get_traced_repo()
+#traced_repo = trace(repo)
+traced_repo = repo.build_traced_repo_to_disk()
+logger.debug(f"traced_repo: {traced_repo}")
+
+traced_repo = repo.load_traced_repo_from_disk()
 logger.debug(f"traced_repo: {traced_repo}")
 
 #files_graph = traced_repo.traced_files_graph()
@@ -61,9 +67,7 @@ logger.debug(f"Proof text: {proof}")
 
 #logger.debug(f"second tactic: {traced_tactics[1]}")
 
-
-
-
+repo.save_to("traced_lean4-example/saved_lean4-example")
 
 
 

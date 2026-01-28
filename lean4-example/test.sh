@@ -1,0 +1,1 @@
+lake env lean --run ExtractData.lean /home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Std/Data/HashSet/Lemmas.lean

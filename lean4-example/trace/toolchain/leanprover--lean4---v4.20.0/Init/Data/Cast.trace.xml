@@ -1,0 +1,430 @@
+<TracedFile path="src/lean/Init/Data/Cast.lean" md5="cb6e791d535761cc0d81e119699b659f">
+  <FileNode start="(1, 1)" end="(75, 59)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 16)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 16)">
+        <ModuleImportNode start="(9, 1)" end="(9, 16)" module="Init.Coe" path="src/lean/Init/Coe.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 16)" leading="" trailing="&#10;&#10;" raw_val="Init.Coe" val="Init.Coe"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <CommandModuledocNode start="(11, 1)" end="(47, 3)" comment="# `NatCast`&#10;&#10;We introduce the typeclass `NatCast R` for a type `R` with a &amp;quot;canonical&#10;homomorphism&amp;quot; `Nat → R`. The typeclass carries the data of the function,&#10;but no required axioms.&#10;&#10;This typeclass was introduced to support a uniform `simp` normal form&#10;for such morphisms.&#10;&#10;Without such a typeclass, we would have specific coercions such as&#10;`Int.ofNat`, but also later the generic coercion from `Nat` into any&#10;Mathlib semiring (including `Int`), and we would need to use `simp` to&#10;move between them. However `simp` lemmas expressed using a non-normal&#10;form on the LHS would then not fire.&#10;&#10;Typically different instances of this class for the same target type `R`&#10;are definitionally equal, and so differences in the instance do not&#10;block `simp` or `rw`.&#10;&#10;This logic also applies to `Int` and so we also introduce `IntCast` alongside&#10;`Int.&#10;&#10;## Note about coercions into arbitrary types:&#10;&#10;Coercions such as `Nat.cast` that go from a concrete structure such as&#10;`Nat` to an arbitrary type `R` should be set up as follows:&#10;```lean&#10;instance : CoeTail Nat R where coe := ...&#10;instance : CoeHTCT Nat R where coe := ...&#10;```&#10;&#10;It needs to be `CoeTail` instead of `Coe` because otherwise type-class&#10;inference would loop when constructing the transitive coercion `Nat →&#10;Nat → Nat → ...`. Sometimes we also need to declare the `CoeHTCT`&#10;instance if we need to shadow another coercion.&#10;-/">
+      <AtomNode start="(11, 1)" end="(11, 4)" leading="" trailing="&#10;" val="/-!"/>
+      <AtomNode start="(12, 1)" end="(47, 3)" leading="" trailing="&#10;&#10;" val="# `NatCast`&#10;&#10;We introduce the typeclass `NatCast R` for a type `R` with a &amp;quot;canonical&#10;homomorphism&amp;quot; `Nat → R`. The typeclass carries the data of the function,&#10;but no required axioms.&#10;&#10;This typeclass was introduced to support a uniform `simp` normal form&#10;for such morphisms.&#10;&#10;Without such a typeclass, we would have specific coercions such as&#10;`Int.ofNat`, but also later the generic coercion from `Nat` into any&#10;Mathlib semiring (including `Int`), and we would need to use `simp` to&#10;move between them. However `simp` lemmas expressed using a non-normal&#10;form on the LHS would then not fire.&#10;&#10;Typically different instances of this class for the same target type `R`&#10;are definitionally equal, and so differences in the instance do not&#10;block `simp` or `rw`.&#10;&#10;This logic also applies to `Int` and so we also introduce `IntCast` alongside&#10;`Int.&#10;&#10;## Note about coercions into arbitrary types:&#10;&#10;Coercions such as `Nat.cast` that go from a concrete structure such as&#10;`Nat` to an arbitrary type `R` should be set up as follows:&#10;```lean&#10;instance : CoeTail Nat R where coe := ...&#10;instance : CoeHTCT Nat R where coe := ...&#10;```&#10;&#10;It needs to be `CoeTail` instead of `Coe` because otherwise type-class&#10;inference would loop when constructing the transitive coercion `Nat →&#10;Nat → Nat → ...`. Sometimes we also need to declare the `CoeHTCT`&#10;instance if we need to shadow another coercion.&#10;-/"/>
+    </CommandModuledocNode>
+    <CommandDeclarationNode start="(49, 1)" end="(63, 30)" name="NatCast" full_name="NatCast">
+      <CommandDeclmodifiersNode start="(49, 1)" end="(60, 3)">
+        <NullNode start="(49, 1)" end="(60, 3)">
+          <CommandDoccommentNode start="(49, 1)" end="(60, 3)" comment="The canonical homomorphism `Nat → R`. In most use cases, the target type will have a (semi)ring&#10;structure, and this homomorphism should be a (semi)ring homomorphism.&#10;&#10;`NatCast` and `IntCast` exist to allow different libraries with their own types that can be notated&#10;as natural numbers to have consistent `simp` normal forms without needing to create coercion&#10;simplification sets that are aware of all combinations. Libraries should make it easy to work with&#10;`NatCast` where possible. For instance, in Mathlib there will be such a homomorphism (and thus a&#10;`NatCast R` instance) whenever `R` is an additive monoid with a `1`.&#10;&#10;The prototypical example is `Int.ofNat`.&#10;-/">
+            <AtomNode start="(49, 1)" end="(49, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(50, 1)" end="(60, 3)" leading="" trailing="&#10;" val="The canonical homomorphism `Nat → R`. In most use cases, the target type will have a (semi)ring&#10;structure, and this homomorphism should be a (semi)ring homomorphism.&#10;&#10;`NatCast` and `IntCast` exist to allow different libraries with their own types that can be notated&#10;as natural numbers to have consistent `simp` normal forms without needing to create coercion&#10;simplification sets that are aware of all combinations. Libraries should make it easy to work with&#10;`NatCast` where possible. For instance, in Mathlib there will be such a homomorphism (and thus a&#10;`NatCast R` instance) whenever `R` is an additive monoid with a `1`.&#10;&#10;The prototypical example is `Int.ofNat`.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandStructureNode start="(61, 1)" end="(63, 30)" name="NatCast">
+        <CommandClasstkNode start="(61, 1)" end="(61, 6)">
+          <AtomNode start="(61, 1)" end="(61, 6)" leading="" trailing=" " val="class"/>
+        </CommandClasstkNode>
+        <CommandDeclidNode start="(61, 7)" end="(61, 14)">
+          <IdentNode start="(61, 7)" end="(61, 14)" leading="" trailing=" " raw_val="NatCast" val="NatCast"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <NullNode start="(61, 15)" end="(61, 27)">
+          <TermExplicitbinderNode start="(61, 15)" end="(61, 27)">
+            <AtomNode start="(61, 15)" end="(61, 16)" leading="" trailing="" val="("/>
+            <NullNode start="(61, 16)" end="(61, 17)">
+              <IdentNode start="(61, 16)" end="(61, 17)" leading="" trailing=" " raw_val="R" val="R"/>
+            </NullNode>
+            <NullNode start="(61, 18)" end="(61, 26)">
+              <AtomNode start="(61, 18)" end="(61, 19)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(61, 20)" end="(61, 26)" kind="Lean.Parser.Term.type">
+                <AtomNode start="(61, 20)" end="(61, 24)" leading="" trailing=" " val="Type"/>
+                <NullNode start="(61, 25)" end="(61, 26)">
+                  <IdentNode start="(61, 25)" end="(61, 26)" leading="" trailing="" raw_val="u" val="u"/>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+            <NullNode/>
+            <AtomNode start="(61, 26)" end="(61, 27)" leading="" trailing=" " val=")"/>
+          </TermExplicitbinderNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode start="(61, 28)" end="(63, 30)">
+          <AtomNode start="(61, 28)" end="(61, 33)" leading="" trailing="&#10;  " val="where"/>
+          <NullNode/>
+          <OtherNode start="(62, 3)" end="(63, 30)" kind="Lean.Parser.Command.structFields">
+            <NullNode start="(62, 3)" end="(63, 30)">
+              <OtherNode start="(62, 3)" end="(63, 30)" kind="Lean.Parser.Command.structSimpleBinder">
+                <CommandDeclmodifiersNode start="(62, 3)" end="(63, 12)">
+                  <NullNode start="(62, 3)" end="(62, 38)">
+                    <CommandDoccommentNode start="(62, 3)" end="(62, 38)" comment="The canonical map `Nat → R`. -/">
+                      <AtomNode start="(62, 3)" end="(62, 6)" leading="" trailing=" " val="/--"/>
+                      <AtomNode start="(62, 7)" end="(62, 38)" leading="" trailing="&#10;  " val="The canonical map `Nat → R`. -/"/>
+                    </CommandDoccommentNode>
+                  </NullNode>
+                  <NullNode/>
+                  <NullNode start="(63, 3)" end="(63, 12)">
+                    <OtherNode start="(63, 3)" end="(63, 12)" kind="Lean.Parser.Command.protected">
+                      <AtomNode start="(63, 3)" end="(63, 12)" leading="" trailing=" " val="protected"/>
+                    </OtherNode>
+                  </NullNode>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </CommandDeclmodifiersNode>
+                <IdentNode start="(63, 13)" end="(63, 20)" leading="" trailing=" " raw_val="natCast" val="natCast"/>
+                <OtherNode start="(63, 21)" end="(63, 30)" kind="Lean.Parser.Command.optDeclSig">
+                  <NullNode/>
+                  <NullNode start="(63, 21)" end="(63, 30)">
+                    <TermTypespecNode start="(63, 21)" end="(63, 30)">
+                      <AtomNode start="(63, 21)" end="(63, 22)" leading="" trailing=" " val=":"/>
+                      <OtherNode start="(63, 23)" end="(63, 30)" kind="Lean.Parser.Term.arrow">
+                        <IdentNode start="(63, 23)" end="(63, 26)" leading="" trailing=" " raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                        <AtomNode start="(63, 27)" end="(63, 28)" leading="" trailing=" " val="→"/>
+                        <IdentNode start="(63, 29)" end="(63, 30)" leading="" trailing="&#10;&#10;" raw_val="R" val="R"/>
+                      </OtherNode>
+                    </TermTypespecNode>
+                  </NullNode>
+                </OtherNode>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+        </NullNode>
+        <OtherNode kind="Lean.Parser.Command.optDeriving">
+          <NullNode/>
+        </OtherNode>
+      </CommandStructureNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(65, 1)" end="(65, 44)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(65, 1)" end="(65, 44)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(65, 1)" end="(65, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(65, 10)" end="(65, 23)">
+          <NullNode/>
+          <TermTypespecNode start="(65, 10)" end="(65, 23)">
+            <AtomNode start="(65, 10)" end="(65, 11)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(65, 12)" end="(65, 23)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(65, 12)" end="(65, 19)" leading="" trailing=" " raw_val="NatCast" val="NatCast" full_name="NatCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(61, 7)" def_end="(61, 14)"/>
+              <NullNode start="(65, 20)" end="(65, 23)">
+                <IdentNode start="(65, 20)" end="(65, 23)" leading="" trailing=" " raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(65, 24)" end="(65, 44)">
+          <AtomNode start="(65, 24)" end="(65, 29)" leading="" trailing=" " val="where"/>
+          <OtherNode start="(65, 30)" end="(65, 44)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(65, 30)" end="(65, 44)">
+              <OtherNode start="(65, 30)" end="(65, 44)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(65, 30)" end="(65, 37)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(65, 30)" end="(65, 37)" leading="" trailing=" " raw_val="natCast" val="natCast"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(65, 38)" end="(65, 44)">
+                  <NullNode start="(65, 38)" end="(65, 39)">
+                    <IdentNode start="(65, 38)" end="(65, 39)" leading="" trailing=" " raw_val="n" val="n"/>
+                  </NullNode>
+                  <NullNode/>
+                  <OtherNode start="(65, 40)" end="(65, 44)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(65, 40)" end="(65, 42)" leading="" trailing=" " val=":="/>
+                    <IdentNode start="(65, 43)" end="(65, 44)" leading="" trailing="&#10;&#10;" raw_val="n" val="n"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(67, 1)" end="(69, 18)" name="Nat.cast" full_name="Nat.cast">
+      <CommandDeclmodifiersNode start="(67, 1)" end="(68, 10)">
+        <NullNode/>
+        <NullNode start="(67, 1)" end="(67, 54)">
+          <OtherNode start="(67, 1)" end="(67, 54)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(67, 1)" end="(67, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(67, 3)" end="(67, 53)">
+              <OtherNode start="(67, 3)" end="(67, 6)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(67, 3)" end="(67, 6)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(67, 3)" end="(67, 6)" leading="" trailing="" raw_val="coe" val="coe"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(67, 6)" end="(67, 7)" leading="" trailing=" " val=","/>
+              <OtherNode start="(67, 8)" end="(67, 17)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(67, 8)" end="(67, 17)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(67, 8)" end="(67, 17)" leading="" trailing="" raw_val="reducible" val="reducible"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(67, 17)" end="(67, 18)" leading="" trailing=" " val=","/>
+              <OtherNode start="(67, 19)" end="(67, 32)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(67, 19)" end="(67, 32)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(67, 19)" end="(67, 32)" leading="" trailing="" raw_val="match_pattern" val="match_pattern"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(67, 32)" end="(67, 33)" leading="" trailing=" " val=","/>
+              <OtherNode start="(67, 34)" end="(67, 53)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(67, 34)" end="(67, 53)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(67, 34)" end="(67, 45)" leading="" trailing=" " raw_val="inherit_doc" val="inherit_doc"/>
+                  <NullNode start="(67, 46)" end="(67, 53)">
+                    <IdentNode start="(67, 46)" end="(67, 53)" leading="" trailing="" raw_val="NatCast" val="NatCast" full_name="NatCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(61, 7)" def_end="(61, 14)"/>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(67, 53)" end="(67, 54)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode start="(68, 1)" end="(68, 10)">
+          <OtherNode start="(68, 1)" end="(68, 10)" kind="Lean.Parser.Command.protected">
+            <AtomNode start="(68, 1)" end="(68, 10)" leading="" trailing=" " val="protected"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(68, 11)" end="(69, 18)" name="Nat.cast">
+        <AtomNode start="(68, 11)" end="(68, 14)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(68, 15)" end="(68, 23)">
+          <IdentNode start="(68, 15)" end="(68, 23)" leading="" trailing=" " raw_val="Nat.cast" val="Nat.cast"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(68, 24)" end="(68, 58)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(68, 24)" end="(68, 48)">
+            <OtherNode start="(68, 24)" end="(68, 36)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(68, 24)" end="(68, 25)" leading="" trailing="" val="{"/>
+              <NullNode start="(68, 25)" end="(68, 26)">
+                <IdentNode start="(68, 25)" end="(68, 26)" leading="" trailing=" " raw_val="R" val="R"/>
+              </NullNode>
+              <NullNode start="(68, 27)" end="(68, 35)">
+                <AtomNode start="(68, 27)" end="(68, 28)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(68, 29)" end="(68, 35)" kind="Lean.Parser.Term.type">
+                  <AtomNode start="(68, 29)" end="(68, 33)" leading="" trailing=" " val="Type"/>
+                  <NullNode start="(68, 34)" end="(68, 35)">
+                    <IdentNode start="(68, 34)" end="(68, 35)" leading="" trailing="" raw_val="u" val="u"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(68, 35)" end="(68, 36)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <OtherNode start="(68, 37)" end="(68, 48)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(68, 37)" end="(68, 38)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(68, 38)" end="(68, 47)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(68, 38)" end="(68, 45)" leading="" trailing=" " raw_val="NatCast" val="NatCast" full_name="NatCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(61, 7)" def_end="(61, 14)"/>
+                <NullNode start="(68, 46)" end="(68, 47)">
+                  <IdentNode start="(68, 46)" end="(68, 47)" leading="" trailing="" raw_val="R" val="R"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(68, 47)" end="(68, 48)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <NullNode start="(68, 49)" end="(68, 58)">
+            <TermTypespecNode start="(68, 49)" end="(68, 58)">
+              <AtomNode start="(68, 49)" end="(68, 50)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(68, 51)" end="(68, 58)" kind="Lean.Parser.Term.arrow">
+                <IdentNode start="(68, 51)" end="(68, 54)" leading="" trailing=" " raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <AtomNode start="(68, 55)" end="(68, 56)" leading="" trailing=" " val="→"/>
+                <IdentNode start="(68, 57)" end="(68, 58)" leading="" trailing=" " raw_val="R" val="R"/>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(68, 59)" end="(69, 18)">
+          <AtomNode start="(68, 59)" end="(68, 61)" leading="" trailing="&#10;  " val=":="/>
+          <IdentNode start="(69, 3)" end="(69, 18)" leading="" trailing="&#10;&#10;-- see the notes about coercions into arbitrary types in the module doc-string&#10;" raw_val="NatCast.natCast" val="NatCast.natCast" full_name="NatCast.natCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(63, 13)" def_end="(63, 20)"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(72, 1)" end="(72, 59)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(72, 1)" end="(72, 59)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(72, 1)" end="(72, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(72, 10)" end="(72, 37)">
+          <NullNode start="(72, 10)" end="(72, 21)">
+            <OtherNode start="(72, 10)" end="(72, 21)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(72, 10)" end="(72, 11)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(72, 11)" end="(72, 20)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(72, 11)" end="(72, 18)" leading="" trailing=" " raw_val="NatCast" val="NatCast" full_name="NatCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(61, 7)" def_end="(61, 14)"/>
+                <NullNode start="(72, 19)" end="(72, 20)">
+                  <IdentNode start="(72, 19)" end="(72, 20)" leading="" trailing="" raw_val="R" val="R"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(72, 20)" end="(72, 21)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(72, 22)" end="(72, 37)">
+            <AtomNode start="(72, 22)" end="(72, 23)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(72, 24)" end="(72, 37)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(72, 24)" end="(72, 31)" leading="" trailing=" " raw_val="CoeTail" val="CoeTail" full_name="CoeTail" mod_name="Init.Coe" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Coe.lean"/>
+              <NullNode start="(72, 32)" end="(72, 37)">
+                <IdentNode start="(72, 32)" end="(72, 35)" leading="" trailing=" " raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <IdentNode start="(72, 36)" end="(72, 37)" leading="" trailing=" " raw_val="R" val="R"/>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(72, 38)" end="(72, 59)">
+          <AtomNode start="(72, 38)" end="(72, 43)" leading="" trailing=" " val="where"/>
+          <OtherNode start="(72, 44)" end="(72, 59)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(72, 44)" end="(72, 59)">
+              <OtherNode start="(72, 44)" end="(72, 59)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(72, 44)" end="(72, 47)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(72, 44)" end="(72, 47)" leading="" trailing=" " raw_val="coe" val="coe"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(72, 48)" end="(72, 59)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(72, 48)" end="(72, 59)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(72, 48)" end="(72, 50)" leading="" trailing=" " val=":="/>
+                    <IdentNode start="(72, 51)" end="(72, 59)" leading="" trailing="&#10;&#10;-- see the notes about coercions into arbitrary types in the module doc-string&#10;" raw_val="Nat.cast" val="Nat.cast" full_name="Nat.cast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(68, 15)" def_end="(68, 23)"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(75, 1)" end="(75, 59)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(75, 1)" end="(75, 59)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(75, 1)" end="(75, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode/>
+        <NullNode/>
+        <CommandDeclsigNode start="(75, 10)" end="(75, 37)">
+          <NullNode start="(75, 10)" end="(75, 21)">
+            <OtherNode start="(75, 10)" end="(75, 21)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(75, 10)" end="(75, 11)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(75, 11)" end="(75, 20)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(75, 11)" end="(75, 18)" leading="" trailing=" " raw_val="NatCast" val="NatCast" full_name="NatCast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(61, 7)" def_end="(61, 14)"/>
+                <NullNode start="(75, 19)" end="(75, 20)">
+                  <IdentNode start="(75, 19)" end="(75, 20)" leading="" trailing="" raw_val="R" val="R"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(75, 20)" end="(75, 21)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(75, 22)" end="(75, 37)">
+            <AtomNode start="(75, 22)" end="(75, 23)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(75, 24)" end="(75, 37)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(75, 24)" end="(75, 31)" leading="" trailing=" " raw_val="CoeHTCT" val="CoeHTCT" full_name="CoeHTCT" mod_name="Init.Coe" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Coe.lean"/>
+              <NullNode start="(75, 32)" end="(75, 37)">
+                <IdentNode start="(75, 32)" end="(75, 35)" leading="" trailing=" " raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <IdentNode start="(75, 36)" end="(75, 37)" leading="" trailing=" " raw_val="R" val="R"/>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(75, 38)" end="(75, 59)">
+          <AtomNode start="(75, 38)" end="(75, 43)" leading="" trailing=" " val="where"/>
+          <OtherNode start="(75, 44)" end="(75, 59)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(75, 44)" end="(75, 59)">
+              <OtherNode start="(75, 44)" end="(75, 59)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(75, 44)" end="(75, 47)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(75, 44)" end="(75, 47)" leading="" trailing=" " raw_val="coe" val="coe"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(75, 48)" end="(75, 59)">
+                  <NullNode/>
+                  <NullNode/>
+                  <OtherNode start="(75, 48)" end="(75, 59)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(75, 48)" end="(75, 50)" leading="" trailing=" " val=":="/>
+                    <IdentNode start="(75, 51)" end="(75, 59)" leading="" trailing="&#10;" raw_val="Nat.cast" val="Nat.cast" full_name="Nat.cast" mod_name="Init.Data.Cast" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Cast.lean" def_start="(68, 15)" def_end="(68, 23)"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(11, 1)" end="(47, 3)" text="# `NatCast`&#10;&#10;We introduce the typeclass `NatCast R` for a type `R` with a &quot;canonical&#10;homomorphism&quot; `Nat → R`. The typeclass carries the data of the function,&#10;but no required axioms.&#10;&#10;This typeclass was introduced to support a uniform `simp` normal form&#10;for such morphisms.&#10;&#10;Without such a typeclass, we would have specific coercions such as&#10;`Int.ofNat`, but also later the generic coercion from `Nat` into any&#10;Mathlib semiring (including `Int`), and we would need to use `simp` to&#10;move between them. However `simp` lemmas expressed using a non-normal&#10;form on the LHS would then not fire.&#10;&#10;Typically different instances of this class for the same target type `R`&#10;are definitionally equal, and so differences in the instance do not&#10;block `simp` or `rw`.&#10;&#10;This logic also applies to `Int` and so we also introduce `IntCast` alongside&#10;`Int.&#10;&#10;## Note about coercions into arbitrary types:&#10;&#10;Coercions such as `Nat.cast` that go from a concrete structure such as&#10;`Nat` to an arbitrary type `R` should be set up as follows:&#10;```lean&#10;instance : CoeTail Nat R where coe := ...&#10;instance : CoeHTCT Nat R where coe := ...&#10;```&#10;&#10;It needs to be `CoeTail` instead of `Coe` because otherwise type-class&#10;inference would loop when constructing the transitive coercion `Nat →&#10;Nat → Nat → ...`. Sometimes we also need to declare the `CoeHTCT`&#10;instance if we need to shadow another coercion.&#10;-/"/>
+    <Comment start="(49, 1)" end="(60, 3)" text="The canonical homomorphism `Nat → R`. In most use cases, the target type will have a (semi)ring&#10;structure, and this homomorphism should be a (semi)ring homomorphism.&#10;&#10;`NatCast` and `IntCast` exist to allow different libraries with their own types that can be notated&#10;as natural numbers to have consistent `simp` normal forms without needing to create coercion&#10;simplification sets that are aware of all combinations. Libraries should make it easy to work with&#10;`NatCast` where possible. For instance, in Mathlib there will be such a homomorphism (and thus a&#10;`NatCast R` instance) whenever `R` is an additive monoid with a `1`.&#10;&#10;The prototypical example is `Int.ofNat`.&#10;-/"/>
+    <Comment start="(62, 3)" end="(62, 38)" text="The canonical map `Nat → R`. -/"/>
+    <Comment start="(71, 1)" end="(72, 1)" text="-- see the notes about coercions into arbitrary types in the module doc-string&#10;"/>
+    <Comment start="(74, 1)" end="(75, 1)" text="-- see the notes about coercions into arbitrary types in the module doc-string&#10;"/>
+  </Comments>
+</TracedFile>

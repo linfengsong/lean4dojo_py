@@ -4,7 +4,6 @@ A repo has to be traced only once, and the traced repo will be stored in a cache
 """
 
 import os
-import re
 import shutil
 import itertools
 from tqdm import tqdm
@@ -17,9 +16,20 @@ from subprocess import CalledProcessError
 from typing import List, Generator
 
 from ..constants import NUM_PROCS
-from ..utils import working_directory, execute
-
-
+from ..utils import (
+    working_directory,
+    execute,
+    get_packages_path,
+    get_build_path,
+    get_traced_working_path,
+    get_traced_toolchain_path,
+    get_olean_working_path,
+    get_olean_package_paths,
+    get_olean_toolchain_path,
+    get_traced_package_path,
+    get_traced_package_paths,
+    to_trace_file_ext_from_olean,
+)
 LEAN4_DATA_EXTRACTOR_PATH = Path(__file__).with_name("ExtractData.lean")
 LEAN4_REPL_PATH = Path(__file__).parent.parent / "interaction" / "Lean4Repl.lean"
 assert LEAN4_DATA_EXTRACTOR_PATH.exists() and LEAN4_REPL_PATH.exists()
@@ -63,77 +73,120 @@ def launch_progressbar(paths: List[Path]) -> Generator[None, None, None]:
     yield
     p.kill()
 
+def get_traced_files(working_dir: str) -> List:
+    list = [] 
+    r = get_traced_working_path(working_dir)
+    for n in r.glob("**/*.ast.json"):
+        list.append((working_dir, n))
+    paths = get_traced_package_paths(working_dir)
+    for path in paths:
+        for n in path.glob("**/*.ast.json"):
+            list.append((path, n))
+            
+    toolchainPath = get_traced_toolchain_path(working_dir)
+    for n in toolchainPath.glob("**/*.ast.json"):
+        list.append((toolchainPath, n))
+    return list
 
-def get_lean_version() -> str:
-    """Get the version of Lean."""
-    output = execute("lean --version", capture_output=True)[0].strip()
-    m = re.match(r"Lean \(version (?P<version>\S+?),", output)
-    return m["version"]  # type: ignore
+def get_build_traced_files(working_dir: str, ext: str, no_deps: bool) -> dict:
+    d = {}
+    r = get_traced_working_path(working_dir)
+    for p in r.glob("**/*" + ext):
+        p = p.with_suffix("")
+        if ext == ".ast.json":
+            p = p.with_suffix("")
+        relative = p.relative_to(r)
+        d[str(relative)] = (working_dir, relative)
 
+    if not no_deps:
+        paths = get_traced_package_paths(working_dir)
+        for path in paths:
+            for p in path.glob("**/*" + ext):
+                p = p.with_suffix("")
+                if ext == ".ast.json":
+                    p = p.with_suffix("")
+                relative = p.relative_to(path)
+                d[str(relative)] = (path, relative)
 
-def is_new_version(v: str) -> bool:
-    """Check if ``v`` is at least `4.3.0-rc2`."""
-    major, minor, patch = [int(_) for _ in v.split("-")[0].split(".")]
-    if major < 4 or (major == 4 and minor < 3):
-        return False
-    if (
-        major > 4
-        or (major == 4 and minor > 3)
-        or (major == 4 and minor == 3 and patch > 0)
-    ):
-        return True
-    assert major == 4 and minor == 3 and patch == 0
-    if "4.3.0-rc" in v:
-        rc = int(v.split("-")[1][2:])
-        return rc >= 2
-    else:
-        return True
+        toolchainPath = get_traced_toolchain_path(working_dir)
+        for p in toolchainPath.glob("**/*" + ext):
+            p = p.with_suffix("")
+            if ext == ".ast.json":
+                p = p.with_suffix("")
+            relative = p.relative_to(toolchainPath)
+            d[str(relative)] = (toolchainPath, relative)
+    return d
 
+def get_build_olean_files(working_dir: Path, no_deps: bool) -> dict:
+    d = {}
+    r = get_olean_working_path(working_dir)
+    for p in r.glob("**/*.olean"):
+        relative = p.relative_to(r).with_suffix("")
+        d[str(relative)] = (r, relative)
 
-def check_files(packages_path: Path, no_deps: bool) -> None:
+    if not no_deps:
+        for path in get_olean_package_paths(working_dir):
+            for p in path.glob("**/*.olean"):
+                relative = p.relative_to(path).with_suffix("")
+                d[str(relative)] = (path, relative)
+        
+        toolchainPath = get_olean_toolchain_path(working_dir)
+        for p in toolchainPath.glob("**/*.olean"):
+            relative = p.relative_to(toolchainPath).with_suffix("")
+            d[str(relative)] = (toolchainPath, relative)
+
+    return d
+
+def get_build_trace_file_ext_by_olean(working_dir: Path, path: Path, ext: str) -> str:
+    # /home/linfe/math/dojo/lean4dojo_py/lean4-example3/.lake/packages/mathlib/.lake/build/ir/Mathlib/Algebra/EuclideanDomain/Field
+    r = str(working_dir)
+    p = str(path.with_suffix(""))
+    h = str(Path.home())
+    if p.startswith(r + "/"):
+        p = p[len(r) + 1:]
+        #.lake/packages/mathlib/.lake/build/ir/Mathlib/Algebra/EuclideanDomain/Field
+        if p.startswith(".lake/packages/"):
+            p = p[15:]
+            # mathlib/.lake/build/ir/Mathlib/Algebra/EuclideanDomain/Field
+            index = p.index("/")
+            packageName = p[:index]
+            p = p[len(packageName) + 1:]
+            # .lake/build/ir/Mathlib/Algebra/EuclideanDomain/Field
+            if p.startswith(".lake/build/ir/"):
+                p = p[15:]
+                # Mathlib/Algebra/EuclideanDomain/Field
+                p = get_traced_package_path(packageName)
+    return p + ext
+
+def check_files(repo, no_deps: bool) -> None:
     """Check if all :file:`*.lean` files have been processed to produce :file:`*.ast.json` and :file:`*.dep_paths` files."""
-    cwd = Path.cwd()
-    packages_path = cwd / packages_path
-    logger.debug(f"check_files: {packages_path}")
-    jsons = {
-        p.with_suffix("").with_suffix("")
-        for p in cwd.glob("**/build/ir/**/*.ast.json")
-        if not no_deps or not p.is_relative_to(packages_path)
-    }
-    deps = {
-        p.with_suffix("")
-        for p in cwd.glob("**/build/ir/**/*.dep_paths")
-        if not no_deps or not p.is_relative_to(packages_path)
-    }
-    oleans = {
-        Path(str(p.with_suffix("")).replace("/build/lib/lean/", "/build/ir/"))
-        for p in cwd.glob("**/build/lib/lean/**/*.olean")
-        if not no_deps or not p.is_relative_to(packages_path)
-    }
-    logger.debug(f"check_files  jsons:{len(jsons)}, deps: {len(deps)}, oleans: {len(oleans)}")
-    assert len(jsons) <= len(oleans) and len(deps) <= len(oleans)
-    missing_jsons = {p.with_suffix(".ast.json") for p in oleans - jsons}
-    missing_deps = {p.with_suffix(".dep_paths") for p in oleans - deps}
-    if len(missing_jsons) > 0 or len(missing_deps) > 0:
-        for p in missing_jsons.union(missing_deps):
-            logger.warning(f"Missing {p}")
+    logger.debug(f"check_files, path:{repo.working_dir}, no_deps: {no_deps}")
+
+    with working_directory(repo.working_dir):
+        jsons = get_build_traced_files(repo.working_dir, ".ast.json", no_deps)
+        deps = get_build_traced_files(repo.working_dir, ".dep_paths", no_deps)
+        oleans = get_build_olean_files(repo.working_dir, no_deps)
+        logger.debug(f"check_files  jsons:{len(jsons)}, deps: {len(deps)}, oleans: {len(oleans)}")
+        #assert len(jsons) <= len(oleans) and len(deps) <= len(oleans)
+        missing_jsons = {to_trace_file_ext_from_olean(*oleans[k], repo,".ast.json") for k in oleans.keys() - jsons.keys()}
+        missing_deps = {to_trace_file_ext_from_olean(*oleans[k], repo, ".dep_paths") for k in oleans.keys() - deps.keys()}
+        if len(missing_jsons) > 0 or len(missing_deps) > 0:
+            for p in missing_jsons.union(missing_deps):
+                logger.warning(f"Missing {p}")
+        
+        logger.debug(f"missing_jsons:{len(missing_jsons)}, missing_deps: {len(missing_deps)}, oleans: {len(oleans)}, jsons: {len(jsons)}, dep_paths: {len(deps)}")
+    
+    logger.debug(f"check_files end")
 
 def build_trace(path: Path, build_deps: bool) -> None:
     logger.debug(f"build_trace, path:{path}, build_deps: {build_deps}")
-    #if not build_deps and Path(".lake").exists:
-    #    logger.info(f"path:{path} already build")
-    #    return
     with working_directory(path):
         lean_prefix = execute(f"lean --print-prefix", capture_output=True)[0].strip()
         logger.debug(f"lean_prefix: {lean_prefix}")
 
         # Copy the Lean 4 stdlib into the path of packages.
-        if is_new_version(get_lean_version()):
-            packages_path = Path(".lake/packages")
-            build_path = Path(".lake/build")
-        else:
-            packages_path = Path("lake-packages")
-            build_path = Path("build")
+        packages_path = get_packages_path()
+        build_path = get_build_path()
 
         if build_deps and packages_path.exists():
             logger.info(f"delete {packages_path}")
@@ -153,13 +206,6 @@ def build_trace(path: Path, build_deps: bool) -> None:
         execute("lake build")
 
         dirs_to_monitor = [build_path]
-        if not os.path.exists(packages_path / "lean4"):
-            logger.info(f"copy lean4 from: {lean_prefix}, to: {packages_path}/lean4")
-            shutil.copytree(lean_prefix, str(packages_path / "lean4"))
-            build_deps = True
-            dirs_to_monitor.append(packages_path)
-        elif build_deps:
-            dirs_to_monitor.append(packages_path)
 
         # Run ExtractData.lean to extract ASTs, tactic states, and premise information.
         shutil.copyfile(LEAN4_DATA_EXTRACTOR_PATH, LEAN4_DATA_EXTRACTOR_PATH.name)
@@ -169,9 +215,13 @@ def build_trace(path: Path, build_deps: bool) -> None:
             if not build_deps:
                 cmd += " noDeps"
             execute(cmd)
+    logger.debug(f"build_trace end")
 
-        check_files(packages_path, not build_deps)
-        os.remove(LEAN4_DATA_EXTRACTOR_PATH.name)
+def build_repl(path: Path) -> None:
+    logger.debug(f"build_repl, path:{path}")
+        
+    with working_directory(path):
+        #os.remove(LEAN4_DATA_EXTRACTOR_PATH.name)
 
         # Copy Lean4Repl.lean into the repo and build it.
         if os.path.exists(LEAN4_REPL_PATH.name):
@@ -195,4 +245,4 @@ def build_trace(path: Path, build_deps: bool) -> None:
             logger.warning(
                 f"Failed to build Lean4Repl. You may run into issues when interacting with the repo."
             )
-        logger.debug(f"build_trace end")
+    logger.debug(f"build_repl end")

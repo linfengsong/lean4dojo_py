@@ -1,0 +1,923 @@
+<TracedFile path="src/lean/Init/WFTactics.lean" md5="0d31288bf74d59fc61ed634c2efb0efd">
+  <FileNode start="(1, 1)" end="(79, 89)">
+    <ModuleHeaderNode start="(6, 1)" end="(11, 15)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(11, 15)">
+        <ModuleImportNode start="(9, 1)" end="(9, 19)" module="Init.SizeOf" path="src/lean/Init/SizeOf.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 19)" leading="" trailing="&#10;" raw_val="Init.SizeOf" val="Init.SizeOf"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(10, 1)" end="(10, 22)" module="Init.MetaTypes" path="src/lean/Init/MetaTypes.lean">
+          <NullNode/>
+          <AtomNode start="(10, 1)" end="(10, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(10, 8)" end="(10, 22)" leading="" trailing="&#10;" raw_val="Init.MetaTypes" val="Init.MetaTypes"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(11, 1)" end="(11, 15)" module="Init.WF" path="src/lean/Init/WF.lean">
+          <NullNode/>
+          <AtomNode start="(11, 1)" end="(11, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(11, 8)" end="(11, 15)" leading="" trailing="&#10;&#10;" raw_val="Init.WF" val="Init.WF"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(13, 1)" end="(21, 143)" kind="Lean.Parser.Command.macro">
+      <NullNode start="(13, 1)" end="(19, 3)">
+        <CommandDoccommentNode start="(13, 1)" end="(19, 3)" comment="Unfold definitions commonly used in well founded relation definitions.&#10;&#10;Since Lean 4.12, Lean unfolds these definitions automatically before presenting the goal to the&#10;user, and this tactic should no longer be necessary. Calls to `simp_wf` can be removed or replaced&#10;by plain calls to `simp`.&#10;-/">
+          <AtomNode start="(13, 1)" end="(13, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(14, 1)" end="(19, 3)" leading="" trailing="&#10;" val="Unfold definitions commonly used in well founded relation definitions.&#10;&#10;Since Lean 4.12, Lean unfolds these definitions automatically before presenting the goal to the&#10;user, and this tactic should no longer be necessary. Calls to `simp_wf` can be removed or replaced&#10;by plain calls to `simp`.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(20, 1)" end="(20, 6)" leading="" trailing=" " val="macro"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(20, 7)" end="(20, 16)">
+        <OtherNode start="(20, 7)" end="(20, 16)" kind="Lean.Parser.Command.macroArg">
+          <NullNode/>
+          <OtherNode start="(20, 7)" end="(20, 16)" kind="Lean.Parser.Syntax.atom">
+            <OtherNode start="(20, 7)" end="(20, 16)" kind="str">
+              <AtomNode start="(20, 7)" end="(20, 16)" leading="" trailing=" " val="&amp;quot;simp_wf&amp;quot;"/>
+            </OtherNode>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <OtherNode start="(20, 17)" end="(21, 143)" kind="Lean.Parser.Command.macroTail">
+        <AtomNode start="(20, 17)" end="(20, 18)" leading="" trailing=" " val=":"/>
+        <IdentNode start="(20, 19)" end="(20, 25)" leading="" trailing=" " raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+        <AtomNode start="(20, 26)" end="(20, 28)" leading="" trailing="&#10;  " val="=&amp;gt;"/>
+        <OtherNode start="(21, 3)" end="(21, 143)" kind="Lean.Parser.Command.macroRhs">
+          <OtherNode start="(21, 3)" end="(21, 143)" kind="Lean.Parser.Tactic.quot">
+            <AtomNode start="(21, 3)" end="(21, 12)" leading="" trailing=" " val="`(tactic|"/>
+            <OtherNode start="(21, 13)" end="(21, 142)" kind="Lean.Parser.Tactic.tacticTry_">
+              <AtomNode start="(21, 13)" end="(21, 16)" leading="" trailing=" " val="try"/>
+              <TacticTacticseqNode start="(21, 17)" end="(21, 142)">
+                <TacticTacticseq1IndentedNode start="(21, 17)" end="(21, 142)">
+                  <NullNode start="(21, 17)" end="(21, 142)">
+                    <OtherNode start="(21, 17)" end="(21, 142)" kind="Lean.Parser.Tactic.simp">
+                      <AtomNode start="(21, 17)" end="(21, 21)" leading="" trailing=" " val="simp"/>
+                      <OtherNode start="(21, 22)" end="(21, 50)" kind="Lean.Parser.Tactic.optConfig">
+                        <NullNode start="(21, 22)" end="(21, 50)">
+                          <OtherNode start="(21, 22)" end="(21, 39)" kind="Lean.Parser.Tactic.configItem">
+                            <OtherNode start="(21, 22)" end="(21, 39)" kind="Lean.Parser.Tactic.posConfigItem">
+                              <AtomNode start="(21, 22)" end="(21, 23)" leading="" trailing="" val="+"/>
+                              <IdentNode start="(21, 23)" end="(21, 39)" leading="" trailing=" " raw_val="unfoldPartialApp" val="unfoldPartialApp"/>
+                            </OtherNode>
+                          </OtherNode>
+                          <OtherNode start="(21, 40)" end="(21, 50)" kind="Lean.Parser.Tactic.configItem">
+                            <OtherNode start="(21, 40)" end="(21, 50)" kind="Lean.Parser.Tactic.posConfigItem">
+                              <AtomNode start="(21, 40)" end="(21, 41)" leading="" trailing="" val="+"/>
+                              <IdentNode start="(21, 41)" end="(21, 50)" leading="" trailing=" " raw_val="zetaDelta" val="zetaDelta"/>
+                            </OtherNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode start="(21, 51)" end="(21, 142)">
+                        <AtomNode start="(21, 51)" end="(21, 52)" leading="" trailing="" val="["/>
+                        <NullNode start="(21, 52)" end="(21, 141)">
+                          <OtherNode start="(21, 52)" end="(21, 60)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 52)" end="(21, 60)" leading="" trailing="" raw_val="invImage" val="invImage"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 60)" end="(21, 61)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 62)" end="(21, 70)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 62)" end="(21, 70)" leading="" trailing="" raw_val="InvImage" val="InvImage"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 70)" end="(21, 71)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 72)" end="(21, 80)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 72)" end="(21, 80)" leading="" trailing="" raw_val="Prod.lex" val="Prod.lex"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 80)" end="(21, 81)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 82)" end="(21, 93)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 82)" end="(21, 93)" leading="" trailing="" raw_val="sizeOfWFRel" val="sizeOfWFRel"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 93)" end="(21, 94)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 95)" end="(21, 102)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 95)" end="(21, 102)" leading="" trailing="" raw_val="measure" val="measure"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 102)" end="(21, 103)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 104)" end="(21, 116)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 104)" end="(21, 116)" leading="" trailing="" raw_val="Nat.lt_wfRel" val="Nat.lt_wfRel"/>
+                          </OtherNode>
+                          <AtomNode start="(21, 116)" end="(21, 117)" leading="" trailing=" " val=","/>
+                          <OtherNode start="(21, 118)" end="(21, 141)" kind="Lean.Parser.Tactic.simpLemma">
+                            <NullNode/>
+                            <NullNode/>
+                            <IdentNode start="(21, 118)" end="(21, 141)" leading="" trailing="" raw_val="WellFoundedRelation.rel" val="WellFoundedRelation.rel"/>
+                          </OtherNode>
+                        </NullNode>
+                        <AtomNode start="(21, 141)" end="(21, 142)" leading="" trailing="" val="]"/>
+                      </NullNode>
+                      <NullNode/>
+                    </OtherNode>
+                  </NullNode>
+                </TacticTacticseq1IndentedNode>
+              </TacticTacticseqNode>
+            </OtherNode>
+            <AtomNode start="(21, 142)" end="(21, 143)" leading="" trailing="&#10;&#10;" val=")"/>
+          </OtherNode>
+        </OtherNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(23, 1)" end="(30, 63)" kind="Lean.Parser.Command.macro">
+      <NullNode start="(23, 1)" end="(26, 3)">
+        <CommandDoccommentNode start="(23, 1)" end="(26, 3)" comment="This tactic is used internally by lean before presenting the proof obligations from a well-founded&#10;definition to the user via `decreasing_by`. It is not necessary to use this tactic manually.&#10;-/">
+          <AtomNode start="(23, 1)" end="(23, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(24, 1)" end="(26, 3)" leading="" trailing="&#10;" val="This tactic is used internally by lean before presenting the proof obligations from a well-founded&#10;definition to the user via `decreasing_by`. It is not necessary to use this tactic manually.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(27, 1)" end="(27, 6)" leading="" trailing=" " val="macro"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(27, 7)" end="(27, 17)">
+        <OtherNode start="(27, 7)" end="(27, 17)" kind="Lean.Parser.Command.macroArg">
+          <NullNode/>
+          <OtherNode start="(27, 7)" end="(27, 17)" kind="Lean.Parser.Syntax.atom">
+            <OtherNode start="(27, 7)" end="(27, 17)" kind="str">
+              <AtomNode start="(27, 7)" end="(27, 17)" leading="" trailing=" " val="&amp;quot;clean_wf&amp;quot;"/>
+            </OtherNode>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <OtherNode start="(27, 18)" end="(30, 63)" kind="Lean.Parser.Command.macroTail">
+        <AtomNode start="(27, 18)" end="(27, 19)" leading="" trailing=" " val=":"/>
+        <IdentNode start="(27, 20)" end="(27, 26)" leading="" trailing=" " raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+        <AtomNode start="(27, 27)" end="(27, 29)" leading="" trailing="&#10;  " val="=&amp;gt;"/>
+        <OtherNode start="(28, 3)" end="(30, 63)" kind="Lean.Parser.Command.macroRhs">
+          <OtherNode start="(28, 3)" end="(30, 63)" kind="Lean.Parser.Tactic.quot">
+            <AtomNode start="(28, 3)" end="(28, 12)" leading="" trailing=" " val="`(tactic|"/>
+            <OtherNode start="(28, 13)" end="(30, 62)" kind="Lean.Parser.Tactic.simp">
+              <AtomNode start="(28, 13)" end="(28, 17)" leading="" trailing=" " val="simp"/>
+              <OtherNode start="(28, 18)" end="(28, 63)" kind="Lean.Parser.Tactic.optConfig">
+                <NullNode start="(28, 18)" end="(28, 63)">
+                  <OtherNode start="(28, 18)" end="(28, 35)" kind="Lean.Parser.Tactic.configItem">
+                    <OtherNode start="(28, 18)" end="(28, 35)" kind="Lean.Parser.Tactic.posConfigItem">
+                      <AtomNode start="(28, 18)" end="(28, 19)" leading="" trailing="" val="+"/>
+                      <IdentNode start="(28, 19)" end="(28, 35)" leading="" trailing=" " raw_val="unfoldPartialApp" val="unfoldPartialApp"/>
+                    </OtherNode>
+                  </OtherNode>
+                  <OtherNode start="(28, 36)" end="(28, 46)" kind="Lean.Parser.Tactic.configItem">
+                    <OtherNode start="(28, 36)" end="(28, 46)" kind="Lean.Parser.Tactic.posConfigItem">
+                      <AtomNode start="(28, 36)" end="(28, 37)" leading="" trailing="" val="+"/>
+                      <IdentNode start="(28, 37)" end="(28, 46)" leading="" trailing=" " raw_val="zetaDelta" val="zetaDelta"/>
+                    </OtherNode>
+                  </OtherNode>
+                  <OtherNode start="(28, 47)" end="(28, 63)" kind="Lean.Parser.Tactic.configItem">
+                    <OtherNode start="(28, 47)" end="(28, 63)" kind="Lean.Parser.Tactic.negConfigItem">
+                      <AtomNode start="(28, 47)" end="(28, 48)" leading="" trailing="" val="-"/>
+                      <IdentNode start="(28, 48)" end="(28, 63)" leading="" trailing="&#10;     " raw_val="failIfUnchanged" val="failIfUnchanged"/>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <NullNode/>
+              <NullNode start="(29, 6)" end="(29, 10)">
+                <AtomNode start="(29, 6)" end="(29, 10)" leading="" trailing=" " val="only"/>
+              </NullNode>
+              <NullNode start="(29, 11)" end="(30, 62)">
+                <AtomNode start="(29, 11)" end="(29, 12)" leading="" trailing="" val="["/>
+                <NullNode start="(29, 12)" end="(30, 61)">
+                  <OtherNode start="(29, 12)" end="(29, 20)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 12)" end="(29, 20)" leading="" trailing="" raw_val="invImage" val="invImage"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 20)" end="(29, 21)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(29, 22)" end="(29, 30)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 22)" end="(29, 30)" leading="" trailing="" raw_val="InvImage" val="InvImage"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 30)" end="(29, 31)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(29, 32)" end="(29, 40)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 32)" end="(29, 40)" leading="" trailing="" raw_val="Prod.lex" val="Prod.lex"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 40)" end="(29, 41)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(29, 42)" end="(29, 53)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 42)" end="(29, 53)" leading="" trailing="" raw_val="sizeOfWFRel" val="sizeOfWFRel"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 53)" end="(29, 54)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(29, 55)" end="(29, 62)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 55)" end="(29, 62)" leading="" trailing="" raw_val="measure" val="measure"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 62)" end="(29, 63)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(29, 64)" end="(29, 76)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(29, 64)" end="(29, 76)" leading="" trailing="" raw_val="Nat.lt_wfRel" val="Nat.lt_wfRel"/>
+                  </OtherNode>
+                  <AtomNode start="(29, 76)" end="(29, 77)" leading="" trailing="&#10;           " val=","/>
+                  <OtherNode start="(30, 12)" end="(30, 35)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(30, 12)" end="(30, 35)" leading="" trailing="" raw_val="WellFoundedRelation.rel" val="WellFoundedRelation.rel"/>
+                  </OtherNode>
+                  <AtomNode start="(30, 35)" end="(30, 36)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(30, 37)" end="(30, 47)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(30, 37)" end="(30, 47)" leading="" trailing="" raw_val="sizeOf_nat" val="sizeOf_nat"/>
+                  </OtherNode>
+                  <AtomNode start="(30, 47)" end="(30, 48)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(30, 49)" end="(30, 61)" kind="Lean.Parser.Tactic.simpLemma">
+                    <NullNode/>
+                    <NullNode/>
+                    <IdentNode start="(30, 49)" end="(30, 61)" leading="" trailing="" raw_val="reduceCtorEq" val="reduceCtorEq"/>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(30, 61)" end="(30, 62)" leading="" trailing="" val="]"/>
+              </NullNode>
+              <NullNode/>
+            </OtherNode>
+            <AtomNode start="(30, 62)" end="(30, 63)" leading="" trailing="&#10;&#10;" val=")"/>
+          </OtherNode>
+        </OtherNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(32, 1)" end="(39, 37)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(32, 1)" end="(38, 3)">
+        <CommandDoccommentNode start="(32, 1)" end="(38, 3)" comment="Extensible helper tactic for `decreasing_tactic`. This handles the &amp;quot;base case&amp;quot;&#10;reasoning after applying lexicographic order lemmas.&#10;It can be extended by adding more macro definitions, e.g.&#10;```&#10;macro_rules | `(tactic| decreasing_trivial) =&amp;gt; `(tactic| linarith)&#10;```&#10;-/">
+          <AtomNode start="(32, 1)" end="(32, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(32, 5)" end="(38, 3)" leading="" trailing="&#10;" val="Extensible helper tactic for `decreasing_tactic`. This handles the &amp;quot;base case&amp;quot;&#10;reasoning after applying lexicographic order lemmas.&#10;It can be extended by adding more macro definitions, e.g.&#10;```&#10;macro_rules | `(tactic| decreasing_trivial) =&amp;gt; `(tactic| linarith)&#10;```&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(39, 1)" end="(39, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(39, 8)" end="(39, 28)">
+        <OtherNode start="(39, 8)" end="(39, 28)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(39, 8)" end="(39, 28)" kind="str">
+            <AtomNode start="(39, 8)" end="(39, 28)" leading="" trailing=" " val="&amp;quot;decreasing_trivial&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(39, 29)" end="(39, 30)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(39, 31)" end="(39, 37)" leading="" trailing="&#10;&#10;" raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+    </OtherNode>
+    <OtherNode start="(41, 1)" end="(41, 98)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(41, 1)" end="(41, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(41, 13)" end="(41, 98)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(41, 13)" end="(41, 98)">
+          <OtherNode start="(41, 13)" end="(41, 98)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(41, 13)" end="(41, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(41, 15)" end="(41, 44)">
+              <NullNode start="(41, 15)" end="(41, 44)">
+                <OtherNode start="(41, 15)" end="(41, 44)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(41, 15)" end="(41, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(41, 25)" end="(41, 43)" kind="tacticDecreasing_trivial">
+                    <AtomNode start="(41, 25)" end="(41, 43)" leading="" trailing="" val="decreasing_trivial"/>
+                  </OtherNode>
+                  <AtomNode start="(41, 43)" end="(41, 44)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(41, 45)" end="(41, 47)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(41, 48)" end="(41, 98)" kind="Lean.Parser.Tactic.quot">
+              <AtomNode start="(41, 48)" end="(41, 57)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(41, 58)" end="(41, 97)" kind="Lean.Parser.Tactic.«tactic_&amp;lt;;&amp;gt;_»">
+                <OtherNode start="(41, 58)" end="(41, 88)" kind="Lean.Parser.Tactic.paren">
+                  <AtomNode start="(41, 58)" end="(41, 59)" leading="" trailing="" val="("/>
+                  <TacticTacticseqNode start="(41, 59)" end="(41, 87)">
+                    <TacticTacticseq1IndentedNode start="(41, 59)" end="(41, 87)">
+                      <NullNode start="(41, 59)" end="(41, 87)">
+                        <OtherNode start="(41, 59)" end="(41, 87)" kind="Lean.Parser.Tactic.simp">
+                          <AtomNode start="(41, 59)" end="(41, 63)" leading="" trailing=" " val="simp"/>
+                          <OtherNode start="(41, 64)" end="(41, 87)" kind="Lean.Parser.Tactic.optConfig">
+                            <NullNode start="(41, 64)" end="(41, 87)">
+                              <OtherNode start="(41, 64)" end="(41, 70)" kind="Lean.Parser.Tactic.configItem">
+                                <OtherNode start="(41, 64)" end="(41, 70)" kind="Lean.Parser.Tactic.posConfigItem">
+                                  <AtomNode start="(41, 64)" end="(41, 65)" leading="" trailing="" val="+"/>
+                                  <IdentNode start="(41, 65)" end="(41, 70)" leading="" trailing=" " raw_val="arith" val="arith"/>
+                                </OtherNode>
+                              </OtherNode>
+                              <OtherNode start="(41, 71)" end="(41, 87)" kind="Lean.Parser.Tactic.configItem">
+                                <OtherNode start="(41, 71)" end="(41, 87)" kind="Lean.Parser.Tactic.negConfigItem">
+                                  <AtomNode start="(41, 71)" end="(41, 72)" leading="" trailing="" val="-"/>
+                                  <IdentNode start="(41, 72)" end="(41, 87)" leading="" trailing="" raw_val="failIfUnchanged" val="failIfUnchanged"/>
+                                </OtherNode>
+                              </OtherNode>
+                            </NullNode>
+                          </OtherNode>
+                          <NullNode/>
+                          <NullNode/>
+                          <NullNode/>
+                          <NullNode/>
+                        </OtherNode>
+                      </NullNode>
+                    </TacticTacticseq1IndentedNode>
+                  </TacticTacticseqNode>
+                  <AtomNode start="(41, 87)" end="(41, 88)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+                <AtomNode start="(41, 89)" end="(41, 92)" leading="" trailing=" " val="&amp;lt;;&amp;gt;"/>
+                <OtherNode start="(41, 93)" end="(41, 97)" kind="Lean.Parser.Tactic.done">
+                  <AtomNode start="(41, 93)" end="(41, 97)" leading="" trailing="" val="done"/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(41, 97)" end="(41, 98)" leading="" trailing="&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(42, 1)" end="(42, 64)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(42, 1)" end="(42, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(42, 13)" end="(42, 64)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(42, 13)" end="(42, 64)">
+          <OtherNode start="(42, 13)" end="(42, 64)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(42, 13)" end="(42, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(42, 15)" end="(42, 44)">
+              <NullNode start="(42, 15)" end="(42, 44)">
+                <OtherNode start="(42, 15)" end="(42, 44)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(42, 15)" end="(42, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(42, 25)" end="(42, 43)" kind="tacticDecreasing_trivial">
+                    <AtomNode start="(42, 25)" end="(42, 43)" leading="" trailing="" val="decreasing_trivial"/>
+                  </OtherNode>
+                  <AtomNode start="(42, 43)" end="(42, 44)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(42, 45)" end="(42, 47)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(42, 48)" end="(42, 64)" kind="Lean.Parser.Tactic.quot">
+              <AtomNode start="(42, 48)" end="(42, 57)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(42, 58)" end="(42, 63)" kind="Lean.Parser.Tactic.omega">
+                <AtomNode start="(42, 58)" end="(42, 63)" leading="" trailing="" val="omega"/>
+                <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(42, 63)" end="(42, 64)" leading="" trailing="&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(43, 1)" end="(43, 69)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(43, 1)" end="(43, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(43, 13)" end="(43, 69)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(43, 13)" end="(43, 69)">
+          <OtherNode start="(43, 13)" end="(43, 69)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(43, 13)" end="(43, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(43, 15)" end="(43, 44)">
+              <NullNode start="(43, 15)" end="(43, 44)">
+                <OtherNode start="(43, 15)" end="(43, 44)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(43, 15)" end="(43, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(43, 25)" end="(43, 43)" kind="tacticDecreasing_trivial">
+                    <AtomNode start="(43, 25)" end="(43, 43)" leading="" trailing="" val="decreasing_trivial"/>
+                  </OtherNode>
+                  <AtomNode start="(43, 43)" end="(43, 44)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(43, 45)" end="(43, 47)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(43, 48)" end="(43, 69)" kind="Lean.Parser.Tactic.quot">
+              <AtomNode start="(43, 48)" end="(43, 57)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(43, 58)" end="(43, 68)" kind="Lean.Parser.Tactic.assumption">
+                <AtomNode start="(43, 58)" end="(43, 68)" leading="" trailing="" val="assumption"/>
+              </OtherNode>
+              <AtomNode start="(43, 68)" end="(43, 69)" leading="" trailing="&#10;&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(45, 1)" end="(49, 47)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(45, 1)" end="(48, 3)">
+        <CommandDoccommentNode start="(45, 1)" end="(48, 3)" comment="Variant of `decreasing_trivial` that does not use `omega`, intended to be used in core modules&#10;before `omega` is available.&#10;-/">
+          <AtomNode start="(45, 1)" end="(45, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(46, 1)" end="(48, 3)" leading="" trailing="&#10;" val="Variant of `decreasing_trivial` that does not use `omega`, intended to be used in core modules&#10;before `omega` is available.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(49, 1)" end="(49, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(49, 8)" end="(49, 38)">
+        <OtherNode start="(49, 8)" end="(49, 38)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(49, 8)" end="(49, 38)" kind="str">
+            <AtomNode start="(49, 8)" end="(49, 38)" leading="" trailing=" " val="&amp;quot;decreasing_trivial_pre_omega&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(49, 39)" end="(49, 40)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(49, 41)" end="(49, 47)" leading="" trailing="&#10;" raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+    </OtherNode>
+    <OtherNode start="(50, 1)" end="(50, 107)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(50, 1)" end="(50, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(50, 13)" end="(50, 107)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(50, 13)" end="(50, 107)">
+          <OtherNode start="(50, 13)" end="(50, 107)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(50, 13)" end="(50, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(50, 15)" end="(50, 54)">
+              <NullNode start="(50, 15)" end="(50, 54)">
+                <OtherNode start="(50, 15)" end="(50, 54)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(50, 15)" end="(50, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(50, 25)" end="(50, 53)" kind="tacticDecreasing_trivial_pre_omega">
+                    <AtomNode start="(50, 25)" end="(50, 53)" leading="" trailing="" val="decreasing_trivial_pre_omega"/>
+                  </OtherNode>
+                  <AtomNode start="(50, 53)" end="(50, 54)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(50, 55)" end="(50, 57)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(50, 58)" end="(50, 107)" kind="Lean.Parser.Tactic.quotSeq">
+              <AtomNode start="(50, 58)" end="(50, 67)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(50, 68)" end="(50, 106)" kind="Lean.Parser.Tactic.seq1">
+                <NullNode start="(50, 68)" end="(50, 106)">
+                  <OtherNode start="(50, 68)" end="(50, 94)" kind="Lean.Parser.Tactic.apply">
+                    <AtomNode start="(50, 68)" end="(50, 73)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(50, 74)" end="(50, 94)" leading="" trailing="" raw_val="Nat.sub_succ_lt_self" val="Nat.sub_succ_lt_self"/>
+                  </OtherNode>
+                  <AtomNode start="(50, 94)" end="(50, 95)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(50, 96)" end="(50, 106)" kind="Lean.Parser.Tactic.assumption">
+                    <AtomNode start="(50, 96)" end="(50, 106)" leading="" trailing="" val="assumption"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(50, 106)" end="(50, 107)" leading="" trailing=" -- a - (i+1) &amp;lt; a - i if i &amp;lt; a&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(51, 1)" end="(51, 104)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(51, 1)" end="(51, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(51, 13)" end="(51, 104)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(51, 13)" end="(51, 104)">
+          <OtherNode start="(51, 13)" end="(51, 104)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(51, 13)" end="(51, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(51, 15)" end="(51, 54)">
+              <NullNode start="(51, 15)" end="(51, 54)">
+                <OtherNode start="(51, 15)" end="(51, 54)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(51, 15)" end="(51, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(51, 25)" end="(51, 53)" kind="tacticDecreasing_trivial_pre_omega">
+                    <AtomNode start="(51, 25)" end="(51, 53)" leading="" trailing="" val="decreasing_trivial_pre_omega"/>
+                  </OtherNode>
+                  <AtomNode start="(51, 53)" end="(51, 54)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(51, 55)" end="(51, 57)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(51, 58)" end="(51, 104)" kind="Lean.Parser.Tactic.quotSeq">
+              <AtomNode start="(51, 58)" end="(51, 67)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(51, 68)" end="(51, 103)" kind="Lean.Parser.Tactic.seq1">
+                <NullNode start="(51, 68)" end="(51, 103)">
+                  <OtherNode start="(51, 68)" end="(51, 91)" kind="Lean.Parser.Tactic.apply">
+                    <AtomNode start="(51, 68)" end="(51, 73)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(51, 74)" end="(51, 91)" leading="" trailing="" raw_val="Nat.pred_lt_of_lt" val="Nat.pred_lt_of_lt"/>
+                  </OtherNode>
+                  <AtomNode start="(51, 91)" end="(51, 92)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(51, 93)" end="(51, 103)" kind="Lean.Parser.Tactic.assumption">
+                    <AtomNode start="(51, 93)" end="(51, 103)" leading="" trailing="" val="assumption"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(51, 103)" end="(51, 104)" leading="" trailing=" -- i-1 &amp;lt; i if j &amp;lt; i&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(52, 1)" end="(52, 98)" kind="Lean.Parser.Command.macro_rules">
+      <NullNode/>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(52, 1)" end="(52, 12)" leading="" trailing=" " val="macro_rules"/>
+      <NullNode/>
+      <OtherNode start="(52, 13)" end="(52, 98)" kind="Lean.Parser.Term.matchAlts">
+        <NullNode start="(52, 13)" end="(52, 98)">
+          <OtherNode start="(52, 13)" end="(52, 98)" kind="Lean.Parser.Term.matchAlt">
+            <AtomNode start="(52, 13)" end="(52, 14)" leading="" trailing=" " val="|"/>
+            <NullNode start="(52, 15)" end="(52, 54)">
+              <NullNode start="(52, 15)" end="(52, 54)">
+                <OtherNode start="(52, 15)" end="(52, 54)" kind="Lean.Parser.Tactic.quot">
+                  <AtomNode start="(52, 15)" end="(52, 24)" leading="" trailing=" " val="`(tactic|"/>
+                  <OtherNode start="(52, 25)" end="(52, 53)" kind="tacticDecreasing_trivial_pre_omega">
+                    <AtomNode start="(52, 25)" end="(52, 53)" leading="" trailing="" val="decreasing_trivial_pre_omega"/>
+                  </OtherNode>
+                  <AtomNode start="(52, 53)" end="(52, 54)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </NullNode>
+            <AtomNode start="(52, 55)" end="(52, 57)" leading="" trailing=" " val="=&amp;gt;"/>
+            <OtherNode start="(52, 58)" end="(52, 98)" kind="Lean.Parser.Tactic.quotSeq">
+              <AtomNode start="(52, 58)" end="(52, 67)" leading="" trailing=" " val="`(tactic|"/>
+              <OtherNode start="(52, 68)" end="(52, 97)" kind="Lean.Parser.Tactic.seq1">
+                <NullNode start="(52, 68)" end="(52, 97)">
+                  <OtherNode start="(52, 68)" end="(52, 85)" kind="Lean.Parser.Tactic.apply">
+                    <AtomNode start="(52, 68)" end="(52, 73)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(52, 74)" end="(52, 85)" leading="" trailing="" raw_val="Nat.pred_lt" val="Nat.pred_lt"/>
+                  </OtherNode>
+                  <AtomNode start="(52, 85)" end="(52, 86)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(52, 87)" end="(52, 97)" kind="Lean.Parser.Tactic.assumption">
+                    <AtomNode start="(52, 87)" end="(52, 97)" leading="" trailing="" val="assumption"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(52, 97)" end="(52, 98)" leading="" trailing="  -- i-1 &amp;lt; i if i ≠ 0&#10;&#10;&#10;" val=")"/>
+            </OtherNode>
+          </OtherNode>
+        </NullNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(55, 1)" end="(70, 88)" kind="Lean.Parser.Command.macro">
+      <NullNode start="(55, 1)" end="(57, 86)">
+        <CommandDoccommentNode start="(55, 1)" end="(57, 86)" comment="Constructs a proof of decreasing along a well founded relation, by simplifying, then applying&#10;lexicographic order lemmas and finally using `ts` to solve the base case. If it fails,&#10;it prints a message to help the user diagnose an ill-founded recursive definition. -/">
+          <AtomNode start="(55, 1)" end="(55, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(55, 5)" end="(57, 86)" leading="" trailing="&#10;" val="Constructs a proof of decreasing along a well founded relation, by simplifying, then applying&#10;lexicographic order lemmas and finally using `ts` to solve the base case. If it fails,&#10;it prints a message to help the user diagnose an ill-founded recursive definition. -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(58, 1)" end="(58, 6)" leading="" trailing=" " val="macro"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(58, 7)" end="(58, 38)">
+        <OtherNode start="(58, 7)" end="(58, 25)" kind="Lean.Parser.Command.macroArg">
+          <NullNode/>
+          <OtherNode start="(58, 7)" end="(58, 25)" kind="Lean.Parser.Syntax.atom">
+            <OtherNode start="(58, 7)" end="(58, 25)" kind="str">
+              <AtomNode start="(58, 7)" end="(58, 25)" leading="" trailing=" " val="&amp;quot;decreasing_with &amp;quot;"/>
+            </OtherNode>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(58, 26)" end="(58, 38)" kind="Lean.Parser.Command.macroArg">
+          <NullNode start="(58, 26)" end="(58, 29)">
+            <IdentNode start="(58, 26)" end="(58, 28)" leading="" trailing="" raw_val="ts" val="ts"/>
+            <AtomNode start="(58, 28)" end="(58, 29)" leading="" trailing="" val=":"/>
+          </NullNode>
+          <OtherNode start="(58, 29)" end="(58, 38)" kind="Lean.Parser.Syntax.cat">
+            <IdentNode start="(58, 29)" end="(58, 38)" leading="" trailing=" " raw_val="tacticSeq" val="tacticSeq" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            <NullNode/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <OtherNode start="(58, 39)" end="(70, 88)" kind="Lean.Parser.Command.macroTail">
+        <AtomNode start="(58, 39)" end="(58, 40)" leading="" trailing=" " val=":"/>
+        <IdentNode start="(58, 41)" end="(58, 47)" leading="" trailing=" " raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+        <AtomNode start="(58, 48)" end="(58, 50)" leading="" trailing="&#10; " val="=&amp;gt;"/>
+        <OtherNode start="(59, 2)" end="(70, 88)" kind="Lean.Parser.Command.macroRhs">
+          <OtherNode start="(59, 2)" end="(70, 88)" kind="Lean.Parser.Tactic.quot">
+            <AtomNode start="(59, 2)" end="(59, 11)" leading="" trailing="&#10;   " val="`(tactic|"/>
+            <OtherNode start="(60, 4)" end="(70, 87)" kind="Lean.Parser.Tactic.paren">
+              <AtomNode start="(60, 4)" end="(60, 5)" leading="" trailing="" val="("/>
+              <TacticTacticseqNode start="(60, 5)" end="(70, 86)">
+                <TacticTacticseq1IndentedNode start="(60, 5)" end="(70, 86)">
+                  <NullNode start="(60, 5)" end="(70, 86)">
+                    <OtherNode start="(60, 5)" end="(60, 13)" kind="tacticClean_wf">
+                      <AtomNode start="(60, 5)" end="(60, 13)" leading="" trailing=" -- remove after next stage0 update&#10;    " val="clean_wf"/>
+                    </OtherNode>
+                    <NullNode/>
+                    <OtherNode start="(61, 5)" end="(61, 13)" kind="Lean.Parser.Tactic.tacticTry_">
+                      <AtomNode start="(61, 5)" end="(61, 8)" leading="" trailing=" " val="try"/>
+                      <TacticTacticseqNode start="(61, 9)" end="(61, 13)">
+                        <TacticTacticseq1IndentedNode start="(61, 9)" end="(61, 13)">
+                          <NullNode start="(61, 9)" end="(61, 13)">
+                            <OtherNode start="(61, 9)" end="(61, 13)" kind="Lean.Parser.Tactic.simp">
+                              <AtomNode start="(61, 9)" end="(61, 13)" leading="" trailing="&#10;    " val="simp"/>
+                              <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                <NullNode/>
+                              </OtherNode>
+                              <NullNode/>
+                              <NullNode/>
+                              <NullNode/>
+                              <NullNode/>
+                            </OtherNode>
+                          </NullNode>
+                        </TacticTacticseq1IndentedNode>
+                      </TacticTacticseqNode>
+                    </OtherNode>
+                    <NullNode/>
+                    <OtherNode start="(62, 5)" end="(62, 64)" kind="Lean.Parser.Tactic.tacticRepeat_">
+                      <AtomNode start="(62, 5)" end="(62, 11)" leading="" trailing=" " val="repeat"/>
+                      <TacticTacticseqNode start="(62, 12)" end="(62, 64)">
+                        <TacticTacticseq1IndentedNode start="(62, 12)" end="(62, 64)">
+                          <NullNode start="(62, 12)" end="(62, 64)">
+                            <OtherNode start="(62, 12)" end="(62, 64)" kind="Lean.Parser.Tactic.paren">
+                              <AtomNode start="(62, 12)" end="(62, 13)" leading="" trailing="" val="("/>
+                              <TacticTacticseqNode start="(62, 13)" end="(62, 63)">
+                                <TacticTacticseq1IndentedNode start="(62, 13)" end="(62, 63)">
+                                  <NullNode start="(62, 13)" end="(62, 63)">
+                                    <OtherNode start="(62, 13)" end="(62, 63)" kind="Lean.Parser.Tactic.first">
+                                      <AtomNode start="(62, 13)" end="(62, 18)" leading="" trailing=" " val="first"/>
+                                      <NullNode start="(62, 19)" end="(62, 63)">
+                                        <GroupNode start="(62, 19)" end="(62, 41)">
+                                          <AtomNode start="(62, 19)" end="(62, 20)" leading="" trailing=" " val="|"/>
+                                          <TacticTacticseqNode start="(62, 21)" end="(62, 41)">
+                                            <TacticTacticseq1IndentedNode start="(62, 21)" end="(62, 41)">
+                                              <NullNode start="(62, 21)" end="(62, 41)">
+                                                <OtherNode start="(62, 21)" end="(62, 41)" kind="Lean.Parser.Tactic.apply">
+                                                  <AtomNode start="(62, 21)" end="(62, 26)" leading="" trailing=" " val="apply"/>
+                                                  <IdentNode start="(62, 27)" end="(62, 41)" leading="" trailing=" " raw_val="Prod.Lex.right" val="Prod.Lex.right"/>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </GroupNode>
+                                        <GroupNode start="(62, 42)" end="(62, 63)">
+                                          <AtomNode start="(62, 42)" end="(62, 43)" leading="" trailing=" " val="|"/>
+                                          <TacticTacticseqNode start="(62, 44)" end="(62, 63)">
+                                            <TacticTacticseq1IndentedNode start="(62, 44)" end="(62, 63)">
+                                              <NullNode start="(62, 44)" end="(62, 63)">
+                                                <OtherNode start="(62, 44)" end="(62, 63)" kind="Lean.Parser.Tactic.apply">
+                                                  <AtomNode start="(62, 44)" end="(62, 49)" leading="" trailing=" " val="apply"/>
+                                                  <IdentNode start="(62, 50)" end="(62, 63)" leading="" trailing="" raw_val="Prod.Lex.left" val="Prod.Lex.left"/>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </GroupNode>
+                                      </NullNode>
+                                    </OtherNode>
+                                  </NullNode>
+                                </TacticTacticseq1IndentedNode>
+                              </TacticTacticseqNode>
+                              <AtomNode start="(62, 63)" end="(62, 64)" leading="" trailing="&#10;    " val=")"/>
+                            </OtherNode>
+                          </NullNode>
+                        </TacticTacticseq1IndentedNode>
+                      </TacticTacticseqNode>
+                    </OtherNode>
+                    <NullNode/>
+                    <OtherNode start="(63, 5)" end="(63, 68)" kind="Lean.Parser.Tactic.tacticRepeat_">
+                      <AtomNode start="(63, 5)" end="(63, 11)" leading="" trailing=" " val="repeat"/>
+                      <TacticTacticseqNode start="(63, 12)" end="(63, 68)">
+                        <TacticTacticseq1IndentedNode start="(63, 12)" end="(63, 68)">
+                          <NullNode start="(63, 12)" end="(63, 68)">
+                            <OtherNode start="(63, 12)" end="(63, 68)" kind="Lean.Parser.Tactic.paren">
+                              <AtomNode start="(63, 12)" end="(63, 13)" leading="" trailing="" val="("/>
+                              <TacticTacticseqNode start="(63, 13)" end="(63, 67)">
+                                <TacticTacticseq1IndentedNode start="(63, 13)" end="(63, 67)">
+                                  <NullNode start="(63, 13)" end="(63, 67)">
+                                    <OtherNode start="(63, 13)" end="(63, 67)" kind="Lean.Parser.Tactic.first">
+                                      <AtomNode start="(63, 13)" end="(63, 18)" leading="" trailing=" " val="first"/>
+                                      <NullNode start="(63, 19)" end="(63, 67)">
+                                        <GroupNode start="(63, 19)" end="(63, 43)">
+                                          <AtomNode start="(63, 19)" end="(63, 20)" leading="" trailing=" " val="|"/>
+                                          <TacticTacticseqNode start="(63, 21)" end="(63, 43)">
+                                            <TacticTacticseq1IndentedNode start="(63, 21)" end="(63, 43)">
+                                              <NullNode start="(63, 21)" end="(63, 43)">
+                                                <OtherNode start="(63, 21)" end="(63, 43)" kind="Lean.Parser.Tactic.apply">
+                                                  <AtomNode start="(63, 21)" end="(63, 26)" leading="" trailing=" " val="apply"/>
+                                                  <IdentNode start="(63, 27)" end="(63, 43)" leading="" trailing=" " raw_val="PSigma.Lex.right" val="PSigma.Lex.right"/>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </GroupNode>
+                                        <GroupNode start="(63, 44)" end="(63, 67)">
+                                          <AtomNode start="(63, 44)" end="(63, 45)" leading="" trailing=" " val="|"/>
+                                          <TacticTacticseqNode start="(63, 46)" end="(63, 67)">
+                                            <TacticTacticseq1IndentedNode start="(63, 46)" end="(63, 67)">
+                                              <NullNode start="(63, 46)" end="(63, 67)">
+                                                <OtherNode start="(63, 46)" end="(63, 67)" kind="Lean.Parser.Tactic.apply">
+                                                  <AtomNode start="(63, 46)" end="(63, 51)" leading="" trailing=" " val="apply"/>
+                                                  <IdentNode start="(63, 52)" end="(63, 67)" leading="" trailing="" raw_val="PSigma.Lex.left" val="PSigma.Lex.left"/>
+                                                </OtherNode>
+                                              </NullNode>
+                                            </TacticTacticseq1IndentedNode>
+                                          </TacticTacticseqNode>
+                                        </GroupNode>
+                                      </NullNode>
+                                    </OtherNode>
+                                  </NullNode>
+                                </TacticTacticseq1IndentedNode>
+                              </TacticTacticseqNode>
+                              <AtomNode start="(63, 67)" end="(63, 68)" leading="" trailing="&#10;    " val=")"/>
+                            </OtherNode>
+                          </NullNode>
+                        </TacticTacticseq1IndentedNode>
+                      </TacticTacticseqNode>
+                    </OtherNode>
+                    <NullNode/>
+                    <OtherNode start="(64, 5)" end="(70, 86)" kind="Lean.Parser.Tactic.first">
+                      <AtomNode start="(64, 5)" end="(64, 10)" leading="" trailing="&#10;    " val="first"/>
+                      <NullNode start="(65, 5)" end="(70, 86)">
+                        <GroupNode start="(65, 5)" end="(65, 11)">
+                          <AtomNode start="(65, 5)" end="(65, 6)" leading="" trailing=" " val="|"/>
+                          <TacticTacticseqNode start="(65, 7)" end="(65, 11)">
+                            <TacticTacticseq1IndentedNode start="(65, 7)" end="(65, 11)">
+                              <NullNode start="(65, 7)" end="(65, 11)">
+                                <OtherNode start="(65, 7)" end="(65, 11)" kind="Lean.Parser.Tactic.done">
+                                  <AtomNode start="(65, 7)" end="(65, 11)" leading="" trailing="&#10;    " val="done"/>
+                                </OtherNode>
+                              </NullNode>
+                            </TacticTacticseq1IndentedNode>
+                          </TacticTacticseqNode>
+                        </GroupNode>
+                        <GroupNode start="(66, 5)" end="(66, 10)">
+                          <AtomNode start="(66, 5)" end="(66, 6)" leading="" trailing=" " val="|"/>
+                          <OtherNode start="(66, 7)" end="(66, 10)" kind="Lean.Parser.Tactic.tacticSeq.antiquot">
+                            <AtomNode start="(66, 7)" end="(66, 8)" leading="" trailing="" val="$"/>
+                            <NullNode/>
+                            <IdentNode start="(66, 8)" end="(66, 10)" leading="" trailing="&#10;    " raw_val="ts" val="ts"/>
+                            <NullNode/>
+                          </OtherNode>
+                        </GroupNode>
+                        <GroupNode start="(67, 5)" end="(70, 86)">
+                          <AtomNode start="(67, 5)" end="(67, 6)" leading="" trailing=" " val="|"/>
+                          <TacticTacticseqNode start="(67, 7)" end="(70, 86)">
+                            <TacticTacticseq1IndentedNode start="(67, 7)" end="(70, 86)">
+                              <NullNode start="(67, 7)" end="(70, 86)">
+                                <OtherNode start="(67, 7)" end="(70, 86)" kind="Lean.Parser.Tactic.fail">
+                                  <AtomNode start="(67, 7)" end="(67, 11)" leading="" trailing=" " val="fail"/>
+                                  <NullNode start="(67, 12)" end="(70, 86)">
+                                    <OtherNode start="(67, 12)" end="(70, 86)" kind="str">
+                                      <AtomNode start="(67, 12)" end="(70, 86)" leading="" trailing="" val="&amp;quot;failed to prove termination, possible solutions:&#10;  - Use `have`-expressions to prove the remaining goals&#10;  - Use `termination_by` to specify a different well-founded relation&#10;  - Use `decreasing_by` to specify your own tactic for discharging this kind of goal&amp;quot;"/>
+                                    </OtherNode>
+                                  </NullNode>
+                                </OtherNode>
+                              </NullNode>
+                            </TacticTacticseq1IndentedNode>
+                          </TacticTacticseqNode>
+                        </GroupNode>
+                      </NullNode>
+                    </OtherNode>
+                  </NullNode>
+                </TacticTacticseq1IndentedNode>
+              </TacticTacticseqNode>
+              <AtomNode start="(70, 86)" end="(70, 87)" leading="" trailing="" val=")"/>
+            </OtherNode>
+            <AtomNode start="(70, 87)" end="(70, 88)" leading="" trailing="&#10;&#10;" val=")"/>
+          </OtherNode>
+        </OtherNode>
+      </OtherNode>
+    </OtherNode>
+    <OtherNode start="(72, 1)" end="(79, 89)" kind="Lean.Parser.Command.macro">
+      <NullNode start="(72, 1)" end="(77, 29)">
+        <CommandDoccommentNode start="(72, 1)" end="(77, 29)" comment="`decreasing_tactic` is called by default on well-founded recursions in order&#10;to synthesize a proof that recursive calls decrease along the selected&#10;well founded relation. It can be locally overridden by using `decreasing_by tac`&#10;on the recursive definition, and it can also be globally extended by adding&#10;more definitions for `decreasing_tactic` (or `decreasing_trivial`,&#10;which this tactic calls). -/">
+          <AtomNode start="(72, 1)" end="(72, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(72, 5)" end="(77, 29)" leading="" trailing="&#10;" val="`decreasing_tactic` is called by default on well-founded recursions in order&#10;to synthesize a proof that recursive calls decrease along the selected&#10;well founded relation. It can be locally overridden by using `decreasing_by tac`&#10;on the recursive definition, and it can also be globally extended by adding&#10;more definitions for `decreasing_tactic` (or `decreasing_trivial`,&#10;which this tactic calls). -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(78, 1)" end="(78, 6)" leading="" trailing=" " val="macro"/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode/>
+      <NullNode start="(78, 7)" end="(78, 26)">
+        <OtherNode start="(78, 7)" end="(78, 26)" kind="Lean.Parser.Command.macroArg">
+          <NullNode/>
+          <OtherNode start="(78, 7)" end="(78, 26)" kind="Lean.Parser.Syntax.atom">
+            <OtherNode start="(78, 7)" end="(78, 26)" kind="str">
+              <AtomNode start="(78, 7)" end="(78, 26)" leading="" trailing=" " val="&amp;quot;decreasing_tactic&amp;quot;"/>
+            </OtherNode>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <OtherNode start="(78, 27)" end="(79, 89)" kind="Lean.Parser.Command.macroTail">
+        <AtomNode start="(78, 27)" end="(78, 28)" leading="" trailing=" " val=":"/>
+        <IdentNode start="(78, 29)" end="(78, 35)" leading="" trailing=" " raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+        <AtomNode start="(78, 36)" end="(78, 38)" leading="" trailing="&#10;  " val="=&amp;gt;"/>
+        <OtherNode start="(79, 3)" end="(79, 89)" kind="Lean.Parser.Command.macroRhs">
+          <OtherNode start="(79, 3)" end="(79, 89)" kind="Lean.Parser.Tactic.quot">
+            <AtomNode start="(79, 3)" end="(79, 12)" leading="" trailing=" " val="`(tactic|"/>
+            <OtherNode start="(79, 13)" end="(79, 88)" kind="tacticDecreasing_with_">
+              <AtomNode start="(79, 13)" end="(79, 28)" leading="" trailing=" " val="decreasing_with"/>
+              <TacticTacticseqNode start="(79, 29)" end="(79, 88)">
+                <TacticTacticseq1IndentedNode start="(79, 29)" end="(79, 88)">
+                  <NullNode start="(79, 29)" end="(79, 88)">
+                    <OtherNode start="(79, 29)" end="(79, 88)" kind="Lean.Parser.Tactic.first">
+                      <AtomNode start="(79, 29)" end="(79, 34)" leading="" trailing=" " val="first"/>
+                      <NullNode start="(79, 35)" end="(79, 88)">
+                        <GroupNode start="(79, 35)" end="(79, 55)">
+                          <AtomNode start="(79, 35)" end="(79, 36)" leading="" trailing=" " val="|"/>
+                          <TacticTacticseqNode start="(79, 37)" end="(79, 55)">
+                            <TacticTacticseq1IndentedNode start="(79, 37)" end="(79, 55)">
+                              <NullNode start="(79, 37)" end="(79, 55)">
+                                <OtherNode start="(79, 37)" end="(79, 55)" kind="tacticDecreasing_trivial">
+                                  <AtomNode start="(79, 37)" end="(79, 55)" leading="" trailing=" " val="decreasing_trivial"/>
+                                </OtherNode>
+                              </NullNode>
+                            </TacticTacticseq1IndentedNode>
+                          </TacticTacticseqNode>
+                        </GroupNode>
+                        <GroupNode start="(79, 56)" end="(79, 88)">
+                          <AtomNode start="(79, 56)" end="(79, 57)" leading="" trailing=" " val="|"/>
+                          <TacticTacticseqNode start="(79, 58)" end="(79, 88)">
+                            <TacticTacticseq1IndentedNode start="(79, 58)" end="(79, 88)">
+                              <NullNode start="(79, 58)" end="(79, 88)">
+                                <OtherNode start="(79, 58)" end="(79, 68)" kind="Lean.Parser.Tactic.substVars">
+                                  <AtomNode start="(79, 58)" end="(79, 68)" leading="" trailing="" val="subst_vars"/>
+                                </OtherNode>
+                                <AtomNode start="(79, 68)" end="(79, 69)" leading="" trailing=" " val=";"/>
+                                <OtherNode start="(79, 70)" end="(79, 88)" kind="tacticDecreasing_trivial">
+                                  <AtomNode start="(79, 70)" end="(79, 88)" leading="" trailing="" val="decreasing_trivial"/>
+                                </OtherNode>
+                              </NullNode>
+                            </TacticTacticseq1IndentedNode>
+                          </TacticTacticseqNode>
+                        </GroupNode>
+                      </NullNode>
+                    </OtherNode>
+                  </NullNode>
+                </TacticTacticseq1IndentedNode>
+              </TacticTacticseqNode>
+            </OtherNode>
+            <AtomNode start="(79, 88)" end="(79, 89)" leading="" trailing="&#10;" val=")"/>
+          </OtherNode>
+        </OtherNode>
+      </OtherNode>
+    </OtherNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(13, 1)" end="(19, 3)" text="Unfold definitions commonly used in well founded relation definitions.&#10;&#10;Since Lean 4.12, Lean unfolds these definitions automatically before presenting the goal to the&#10;user, and this tactic should no longer be necessary. Calls to `simp_wf` can be removed or replaced&#10;by plain calls to `simp`.&#10;-/"/>
+    <Comment start="(23, 1)" end="(26, 3)" text="This tactic is used internally by lean before presenting the proof obligations from a well-founded&#10;definition to the user via `decreasing_by`. It is not necessary to use this tactic manually.&#10;-/"/>
+    <Comment start="(32, 1)" end="(38, 3)" text="Extensible helper tactic for `decreasing_tactic`. This handles the &quot;base case&quot;&#10;reasoning after applying lexicographic order lemmas.&#10;It can be extended by adding more macro definitions, e.g.&#10;```&#10;macro_rules | `(tactic| decreasing_trivial) =&gt; `(tactic| linarith)&#10;```&#10;-/"/>
+    <Comment start="(45, 1)" end="(48, 3)" text="Variant of `decreasing_trivial` that does not use `omega`, intended to be used in core modules&#10;before `omega` is available.&#10;-/"/>
+    <Comment start="(50, 108)" end="(51, 1)" text="-- a - (i+1) &lt; a - i if i &lt; a&#10;"/>
+    <Comment start="(51, 105)" end="(52, 1)" text="-- i-1 &lt; i if j &lt; i&#10;"/>
+    <Comment start="(52, 100)" end="(55, 1)" text="-- i-1 &lt; i if i ≠ 0&#10;&#10;&#10;"/>
+    <Comment start="(55, 1)" end="(57, 86)" text="Constructs a proof of decreasing along a well founded relation, by simplifying, then applying&#10;lexicographic order lemmas and finally using `ts` to solve the base case. If it fails,&#10;it prints a message to help the user diagnose an ill-founded recursive definition. -/"/>
+    <Comment start="(60, 14)" end="(61, 5)" text="-- remove after next stage0 update&#10;    "/>
+    <Comment start="(72, 1)" end="(77, 29)" text="`decreasing_tactic` is called by default on well-founded recursions in order&#10;to synthesize a proof that recursive calls decrease along the selected&#10;well founded relation. It can be locally overridden by using `decreasing_by tac`&#10;on the recursive definition, and it can also be globally extended by adding&#10;more definitions for `decreasing_tactic` (or `decreasing_trivial`,&#10;which this tactic calls). -/"/>
+  </Comments>
+</TracedFile>

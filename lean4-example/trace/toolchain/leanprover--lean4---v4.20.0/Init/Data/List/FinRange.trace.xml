@@ -1,0 +1,1241 @@
+<TracedFile path="src/lean/Init/Data/List/FinRange.lean" md5="df7b605edc379a24f728e919ad0a04d6">
+  <FileNode start="(1, 1)" end="(59, 9)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 27)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 27)">
+        <ModuleImportNode start="(9, 1)" end="(9, 27)" module="Init.Data.List.OfFn" path="src/lean/Init/Data/List/OfFn.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 27)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.List.OfFn" val="Init.Data.List.OfFn"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(11, 1)" end="(11, 37)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(11, 1)" end="(11, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(11, 12)" end="(11, 32)" leading="" trailing=" " raw_val="linter.listVariables" val="linter.listVariables"/>
+      <NullNode/>
+      <AtomNode start="(11, 33)" end="(11, 37)" leading="" trailing=" -- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;" val="true"/>
+    </OtherNode>
+    <OtherNode start="(12, 1)" end="(12, 38)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(12, 1)" end="(12, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(12, 12)" end="(12, 33)" leading="" trailing=" " raw_val="linter.indexVariables" val="linter.indexVariables"/>
+      <NullNode/>
+      <AtomNode start="(12, 34)" end="(12, 38)" leading="" trailing=" -- Enforce naming conventions for index variables.&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandNamespaceNode start="(14, 1)" end="(14, 15)" name="List">
+      <AtomNode start="(14, 1)" end="(14, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(14, 11)" end="(14, 15)" leading="" trailing="&#10;&#10;" raw_val="List" val="List"/>
+    </CommandNamespaceNode>
+    <CommandDeclarationNode start="(16, 1)" end="(23, 57)" name="finRange" full_name="List.finRange">
+      <CommandDeclmodifiersNode start="(16, 1)" end="(22, 3)">
+        <NullNode start="(16, 1)" end="(22, 3)">
+          <CommandDoccommentNode start="(16, 1)" end="(22, 3)" comment="Lists all elements of `Fin n` in order, starting at `0`.&#10;&#10;Examples:&#10; * `List.finRange 0 = ([] : List (Fin 0))`&#10; * `List.finRange 2 = ([0, 1] : List (Fin 2))`&#10;-/">
+            <AtomNode start="(16, 1)" end="(16, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(17, 1)" end="(22, 3)" leading="" trailing="&#10;" val="Lists all elements of `Fin n` in order, starting at `0`.&#10;&#10;Examples:&#10; * `List.finRange 0 = ([] : List (Fin 0))`&#10; * `List.finRange 2 = ([0, 1] : List (Fin 2))`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(23, 1)" end="(23, 57)" name="finRange">
+        <AtomNode start="(23, 1)" end="(23, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(23, 5)" end="(23, 13)">
+          <IdentNode start="(23, 5)" end="(23, 13)" leading="" trailing=" " raw_val="finRange" val="finRange"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(23, 14)" end="(23, 38)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(23, 14)" end="(23, 23)">
+            <TermExplicitbinderNode start="(23, 14)" end="(23, 23)">
+              <AtomNode start="(23, 14)" end="(23, 15)" leading="" trailing="" val="("/>
+              <NullNode start="(23, 15)" end="(23, 16)">
+                <IdentNode start="(23, 15)" end="(23, 16)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(23, 17)" end="(23, 22)">
+                <AtomNode start="(23, 17)" end="(23, 18)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(23, 19)" end="(23, 22)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(23, 22)" end="(23, 23)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(23, 24)" end="(23, 38)">
+            <TermTypespecNode start="(23, 24)" end="(23, 38)">
+              <AtomNode start="(23, 24)" end="(23, 25)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(23, 26)" end="(23, 38)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(23, 26)" end="(23, 30)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(23, 31)" end="(23, 38)">
+                  <OtherNode start="(23, 31)" end="(23, 38)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(23, 31)" end="(23, 32)" leading="" trailing="" val="("/>
+                    <OtherNode start="(23, 32)" end="(23, 37)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(23, 32)" end="(23, 35)" leading="" trailing=" " raw_val="Fin" val="Fin" full_name="Fin" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                      <NullNode start="(23, 36)" end="(23, 37)">
+                        <IdentNode start="(23, 36)" end="(23, 37)" leading="" trailing="" raw_val="n" val="n"/>
+                      </NullNode>
+                    </OtherNode>
+                    <AtomNode start="(23, 37)" end="(23, 38)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(23, 39)" end="(23, 57)">
+          <AtomNode start="(23, 39)" end="(23, 41)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(23, 42)" end="(23, 57)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(23, 42)" end="(23, 46)" leading="" trailing=" " raw_val="ofFn" val="ofFn" full_name="List.ofFn" mod_name="Init.Data.List.OfFn" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/OfFn.lean"/>
+            <NullNode start="(23, 47)" end="(23, 57)">
+              <OtherNode start="(23, 47)" end="(23, 57)" kind="Lean.Parser.Term.fun">
+                <AtomNode start="(23, 47)" end="(23, 50)" leading="" trailing=" " val="fun"/>
+                <OtherNode start="(23, 51)" end="(23, 57)" kind="Lean.Parser.Term.basicFun">
+                  <NullNode start="(23, 51)" end="(23, 52)">
+                    <IdentNode start="(23, 51)" end="(23, 52)" leading="" trailing=" " raw_val="i" val="i"/>
+                  </NullNode>
+                  <NullNode/>
+                  <AtomNode start="(23, 53)" end="(23, 55)" leading="" trailing=" " val="=&amp;gt;"/>
+                  <IdentNode start="(23, 56)" end="(23, 57)" leading="" trailing="&#10;&#10;" raw_val="i" val="i"/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(25, 1)" end="(26, 23)" name="length_finRange" full_name="List.length_finRange">
+      <CommandDeclmodifiersNode start="(25, 1)" end="(25, 8)">
+        <NullNode/>
+        <NullNode start="(25, 1)" end="(25, 8)">
+          <OtherNode start="(25, 1)" end="(25, 8)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(25, 1)" end="(25, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(25, 3)" end="(25, 7)">
+              <OtherNode start="(25, 3)" end="(25, 7)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(25, 3)" end="(25, 7)" kind="Lean.Parser.Attr.simp">
+                  <AtomNode start="(25, 3)" end="(25, 7)" leading="" trailing="" val="simp"/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(25, 7)" end="(25, 8)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(25, 9)" end="(26, 23)" name="length_finRange" full_name="List.length_finRange" _is_private_decl="False">
+        <AtomNode start="(25, 9)" end="(25, 16)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(25, 17)" end="(25, 32)">
+          <IdentNode start="(25, 17)" end="(25, 32)" leading="" trailing=" " raw_val="length_finRange" val="length_finRange"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(25, 33)" end="(25, 73)">
+          <NullNode start="(25, 33)" end="(25, 42)">
+            <OtherNode start="(25, 33)" end="(25, 42)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(25, 33)" end="(25, 34)" leading="" trailing="" val="{"/>
+              <NullNode start="(25, 34)" end="(25, 35)">
+                <IdentNode start="(25, 34)" end="(25, 35)" leading="" trailing=" " raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode start="(25, 36)" end="(25, 41)">
+                <AtomNode start="(25, 36)" end="(25, 37)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(25, 38)" end="(25, 41)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(25, 41)" end="(25, 42)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(25, 43)" end="(25, 73)">
+            <AtomNode start="(25, 43)" end="(25, 44)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(25, 45)" end="(25, 73)" kind="«term_=_»">
+              <OtherNode start="(25, 45)" end="(25, 69)" kind="Lean.Parser.Term.proj">
+                <OtherNode start="(25, 45)" end="(25, 62)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(25, 45)" end="(25, 46)" leading="" trailing="" val="("/>
+                  <OtherNode start="(25, 46)" end="(25, 61)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(25, 46)" end="(25, 59)" leading="" trailing=" " raw_val="List.finRange" val="List.finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                    <NullNode start="(25, 60)" end="(25, 61)">
+                      <IdentNode start="(25, 60)" end="(25, 61)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(25, 61)" end="(25, 62)" leading="" trailing="" val=")"/>
+                </OtherNode>
+                <AtomNode start="(25, 62)" end="(25, 63)" leading="" trailing="" val="."/>
+                <IdentNode start="(25, 63)" end="(25, 69)" leading="" trailing=" " raw_val="length" val="length" full_name="List.length" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </OtherNode>
+              <AtomNode start="(25, 70)" end="(25, 71)" leading="" trailing=" " val="="/>
+              <IdentNode start="(25, 72)" end="(25, 73)" leading="" trailing=" " raw_val="n" val="n"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(25, 74)" end="(26, 23)">
+          <AtomNode start="(25, 74)" end="(25, 76)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(25, 77)" end="(26, 23)">
+            <AtomNode start="(25, 77)" end="(25, 79)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(26, 3)" end="(26, 23)">
+              <TacticTacticseq1IndentedNode start="(26, 3)" end="(26, 23)">
+                <NullNode start="(26, 3)" end="(26, 23)">
+                  <OtherNode start="(26, 3)" end="(26, 23)" kind="Lean.Parser.Tactic.simp" state_before="n : Nat&#10;⊢ (finRange n).length = n" state_after="no goals" tactic="simp [List.finRange]">
+                    <AtomNode start="(26, 3)" end="(26, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode start="(26, 8)" end="(26, 23)">
+                      <AtomNode start="(26, 8)" end="(26, 9)" leading="" trailing="" val="["/>
+                      <NullNode start="(26, 9)" end="(26, 22)">
+                        <OtherNode start="(26, 9)" end="(26, 22)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(26, 9)" end="(26, 22)" leading="" trailing="" raw_val="List.finRange" val="List.finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(26, 22)" end="(26, 23)" leading="" trailing="&#10;&#10;" val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(28, 1)" end="(30, 23)" name="getElem_finRange" full_name="List.getElem_finRange">
+      <CommandDeclmodifiersNode start="(28, 1)" end="(28, 8)">
+        <NullNode/>
+        <NullNode start="(28, 1)" end="(28, 8)">
+          <OtherNode start="(28, 1)" end="(28, 8)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(28, 1)" end="(28, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(28, 3)" end="(28, 7)">
+              <OtherNode start="(28, 3)" end="(28, 7)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(28, 3)" end="(28, 7)" kind="Lean.Parser.Attr.simp">
+                  <AtomNode start="(28, 3)" end="(28, 7)" leading="" trailing="" val="simp"/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(28, 7)" end="(28, 8)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(28, 9)" end="(30, 23)" name="getElem_finRange" full_name="List.getElem_finRange" _is_private_decl="False">
+        <AtomNode start="(28, 9)" end="(28, 16)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(28, 17)" end="(28, 33)">
+          <IdentNode start="(28, 17)" end="(28, 33)" leading="" trailing=" " raw_val="getElem_finRange" val="getElem_finRange"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(28, 34)" end="(29, 54)">
+          <NullNode start="(28, 34)" end="(28, 78)">
+            <OtherNode start="(28, 34)" end="(28, 43)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(28, 34)" end="(28, 35)" leading="" trailing="" val="{"/>
+              <NullNode start="(28, 35)" end="(28, 36)">
+                <IdentNode start="(28, 35)" end="(28, 36)" leading="" trailing=" " raw_val="i" val="i"/>
+              </NullNode>
+              <NullNode start="(28, 37)" end="(28, 42)">
+                <AtomNode start="(28, 37)" end="(28, 38)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(28, 39)" end="(28, 42)" leading="" trailing="" raw_val="Nat" val="Nat" full_name="Nat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </NullNode>
+              <AtomNode start="(28, 42)" end="(28, 43)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(28, 44)" end="(28, 78)">
+              <AtomNode start="(28, 44)" end="(28, 45)" leading="" trailing="" val="("/>
+              <NullNode start="(28, 45)" end="(28, 46)">
+                <IdentNode start="(28, 45)" end="(28, 46)" leading="" trailing=" " raw_val="h" val="h"/>
+              </NullNode>
+              <NullNode start="(28, 47)" end="(28, 77)">
+                <AtomNode start="(28, 47)" end="(28, 48)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(28, 49)" end="(28, 77)" kind="«term_&amp;lt;_»">
+                  <IdentNode start="(28, 49)" end="(28, 50)" leading="" trailing=" " raw_val="i" val="i"/>
+                  <AtomNode start="(28, 51)" end="(28, 52)" leading="" trailing=" " val="&amp;lt;"/>
+                  <OtherNode start="(28, 53)" end="(28, 77)" kind="Lean.Parser.Term.proj">
+                    <OtherNode start="(28, 53)" end="(28, 70)" kind="Lean.Parser.Term.paren">
+                      <AtomNode start="(28, 53)" end="(28, 54)" leading="" trailing="" val="("/>
+                      <OtherNode start="(28, 54)" end="(28, 69)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(28, 54)" end="(28, 67)" leading="" trailing=" " raw_val="List.finRange" val="List.finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        <NullNode start="(28, 68)" end="(28, 69)">
+                          <IdentNode start="(28, 68)" end="(28, 69)" leading="" trailing="" raw_val="n" val="n"/>
+                        </NullNode>
+                      </OtherNode>
+                      <AtomNode start="(28, 69)" end="(28, 70)" leading="" trailing="" val=")"/>
+                    </OtherNode>
+                    <AtomNode start="(28, 70)" end="(28, 71)" leading="" trailing="" val="."/>
+                    <IdentNode start="(28, 71)" end="(28, 77)" leading="" trailing="" raw_val="length" val="length" full_name="List.length" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(28, 77)" end="(28, 78)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(28, 79)" end="(29, 54)">
+            <AtomNode start="(28, 79)" end="(28, 80)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(29, 5)" end="(29, 54)" kind="«term_=_»">
+              <OtherNode start="(29, 5)" end="(29, 20)" kind="«term__[_]»">
+                <OtherNode start="(29, 5)" end="(29, 17)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(29, 5)" end="(29, 6)" leading="" trailing="" val="("/>
+                  <OtherNode start="(29, 6)" end="(29, 16)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(29, 6)" end="(29, 14)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                    <NullNode start="(29, 15)" end="(29, 16)">
+                      <IdentNode start="(29, 15)" end="(29, 16)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(29, 16)" end="(29, 17)" leading="" trailing="" val=")"/>
+                </OtherNode>
+                <AtomNode start="(29, 17)" end="(29, 18)" leading="" trailing="" val="["/>
+                <IdentNode start="(29, 18)" end="(29, 19)" leading="" trailing="" raw_val="i" val="i"/>
+                <AtomNode start="(29, 19)" end="(29, 20)" leading="" trailing=" " val="]"/>
+              </OtherNode>
+              <AtomNode start="(29, 21)" end="(29, 22)" leading="" trailing=" " val="="/>
+              <OtherNode start="(29, 23)" end="(29, 54)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(29, 23)" end="(29, 31)" leading="" trailing=" " raw_val="Fin.cast" val="Fin.cast" full_name="Fin.cast" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                <NullNode start="(29, 32)" end="(29, 54)">
+                  <IdentNode start="(29, 32)" end="(29, 47)" leading="" trailing=" " raw_val="length_finRange" val="length_finRange" full_name="List.length_finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(25, 17)" def_end="(25, 32)"/>
+                  <OtherNode start="(29, 48)" end="(29, 54)" kind="Lean.Parser.Term.anonymousCtor">
+                    <AtomNode start="(29, 48)" end="(29, 49)" leading="" trailing="" val="⟨"/>
+                    <NullNode start="(29, 49)" end="(29, 53)">
+                      <IdentNode start="(29, 49)" end="(29, 50)" leading="" trailing="" raw_val="i" val="i"/>
+                      <AtomNode start="(29, 50)" end="(29, 51)" leading="" trailing=" " val=","/>
+                      <IdentNode start="(29, 52)" end="(29, 53)" leading="" trailing="" raw_val="h" val="h"/>
+                    </NullNode>
+                    <AtomNode start="(29, 53)" end="(29, 54)" leading="" trailing=" " val="⟩"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(29, 55)" end="(30, 23)">
+          <AtomNode start="(29, 55)" end="(29, 57)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(29, 58)" end="(30, 23)">
+            <AtomNode start="(29, 58)" end="(29, 60)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(30, 3)" end="(30, 23)">
+              <TacticTacticseq1IndentedNode start="(30, 3)" end="(30, 23)">
+                <NullNode start="(30, 3)" end="(30, 23)">
+                  <OtherNode start="(30, 3)" end="(30, 23)" kind="Lean.Parser.Tactic.simp" state_before="n i : Nat&#10;h : i &amp;lt; (finRange n).length&#10;⊢ (finRange n)[i] = Fin.cast ⋯ ⟨i, h⟩" state_after="no goals" tactic="simp [List.finRange]">
+                    <AtomNode start="(30, 3)" end="(30, 7)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode start="(30, 8)" end="(30, 23)">
+                      <AtomNode start="(30, 8)" end="(30, 9)" leading="" trailing="" val="["/>
+                      <NullNode start="(30, 9)" end="(30, 22)">
+                        <OtherNode start="(30, 9)" end="(30, 22)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(30, 9)" end="(30, 22)" leading="" trailing="" raw_val="List.finRange" val="List.finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(30, 22)" end="(30, 23)" leading="" trailing="&#10;&#10;" val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(32, 1)" end="(32, 76)" name="finRange_zero" full_name="List.finRange_zero">
+      <CommandDeclmodifiersNode start="(32, 1)" end="(32, 8)">
+        <NullNode/>
+        <NullNode start="(32, 1)" end="(32, 8)">
+          <OtherNode start="(32, 1)" end="(32, 8)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(32, 1)" end="(32, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(32, 3)" end="(32, 7)">
+              <OtherNode start="(32, 3)" end="(32, 7)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(32, 3)" end="(32, 7)" kind="Lean.Parser.Attr.simp">
+                  <AtomNode start="(32, 3)" end="(32, 7)" leading="" trailing="" val="simp"/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(32, 7)" end="(32, 8)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(32, 9)" end="(32, 76)" name="finRange_zero" full_name="List.finRange_zero" _is_private_decl="False">
+        <AtomNode start="(32, 9)" end="(32, 16)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(32, 17)" end="(32, 30)">
+          <IdentNode start="(32, 17)" end="(32, 30)" leading="" trailing=" " raw_val="finRange_zero" val="finRange_zero"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(32, 31)" end="(32, 48)">
+          <NullNode/>
+          <TermTypespecNode start="(32, 31)" end="(32, 48)">
+            <AtomNode start="(32, 31)" end="(32, 32)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(32, 33)" end="(32, 48)" kind="«term_=_»">
+              <OtherNode start="(32, 33)" end="(32, 43)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(32, 33)" end="(32, 41)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                <NullNode start="(32, 42)" end="(32, 43)">
+                  <OtherNode start="(32, 42)" end="(32, 43)" kind="num">
+                    <AtomNode start="(32, 42)" end="(32, 43)" leading="" trailing=" " val="0"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(32, 44)" end="(32, 45)" leading="" trailing=" " val="="/>
+              <OtherNode start="(32, 46)" end="(32, 48)" kind="«term[_]»">
+                <AtomNode start="(32, 46)" end="(32, 47)" leading="" trailing="" val="["/>
+                <NullNode/>
+                <AtomNode start="(32, 47)" end="(32, 48)" leading="" trailing=" " val="]"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(32, 49)" end="(32, 76)">
+          <AtomNode start="(32, 49)" end="(32, 51)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(32, 52)" end="(32, 76)">
+            <AtomNode start="(32, 52)" end="(32, 54)" leading="" trailing=" " val="by"/>
+            <TacticTacticseqNode start="(32, 55)" end="(32, 76)">
+              <TacticTacticseq1IndentedNode start="(32, 55)" end="(32, 76)">
+                <NullNode start="(32, 55)" end="(32, 76)">
+                  <OtherNode start="(32, 55)" end="(32, 76)" kind="Lean.Parser.Tactic.simp" state_before="⊢ finRange 0 = []" state_after="no goals" tactic="simp [finRange, ofFn]">
+                    <AtomNode start="(32, 55)" end="(32, 59)" leading="" trailing=" " val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode start="(32, 60)" end="(32, 76)">
+                      <AtomNode start="(32, 60)" end="(32, 61)" leading="" trailing="" val="["/>
+                      <NullNode start="(32, 61)" end="(32, 75)">
+                        <OtherNode start="(32, 61)" end="(32, 69)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 61)" end="(32, 69)" leading="" trailing="" raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        </OtherNode>
+                        <AtomNode start="(32, 69)" end="(32, 70)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(32, 71)" end="(32, 75)" kind="Lean.Parser.Tactic.simpLemma">
+                          <NullNode/>
+                          <NullNode/>
+                          <IdentNode start="(32, 71)" end="(32, 75)" leading="" trailing="" raw_val="ofFn" val="ofFn" full_name="List.ofFn" mod_name="Init.Data.List.OfFn" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/OfFn.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(32, 75)" end="(32, 76)" leading="" trailing="&#10;&#10;" val="]"/>
+                    </NullNode>
+                    <NullNode/>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(34, 1)" end="(35, 58)" name="finRange_succ" full_name="List.finRange_succ">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(34, 1)" end="(35, 58)" name="finRange_succ" full_name="List.finRange_succ" _is_private_decl="False">
+        <AtomNode start="(34, 1)" end="(34, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(34, 9)" end="(34, 22)">
+          <IdentNode start="(34, 9)" end="(34, 22)" leading="" trailing=" " raw_val="finRange_succ" val="finRange_succ"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(34, 23)" end="(34, 76)">
+          <NullNode start="(34, 23)" end="(34, 26)">
+            <OtherNode start="(34, 23)" end="(34, 26)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(34, 23)" end="(34, 24)" leading="" trailing="" val="{"/>
+              <NullNode start="(34, 24)" end="(34, 25)">
+                <IdentNode start="(34, 24)" end="(34, 25)" leading="" trailing="" raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(34, 25)" end="(34, 26)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(34, 27)" end="(34, 76)">
+            <AtomNode start="(34, 27)" end="(34, 28)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(34, 29)" end="(34, 76)" kind="«term_=_»">
+              <OtherNode start="(34, 29)" end="(34, 43)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(34, 29)" end="(34, 37)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                <NullNode start="(34, 38)" end="(34, 43)">
+                  <OtherNode start="(34, 38)" end="(34, 43)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(34, 38)" end="(34, 39)" leading="" trailing="" val="("/>
+                    <OtherNode start="(34, 39)" end="(34, 42)" kind="«term_+_»">
+                      <IdentNode start="(34, 39)" end="(34, 40)" leading="" trailing="" raw_val="n" val="n"/>
+                      <AtomNode start="(34, 40)" end="(34, 41)" leading="" trailing="" val="+"/>
+                      <OtherNode start="(34, 41)" end="(34, 42)" kind="num">
+                        <AtomNode start="(34, 41)" end="(34, 42)" leading="" trailing="" val="1"/>
+                      </OtherNode>
+                    </OtherNode>
+                    <AtomNode start="(34, 42)" end="(34, 43)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(34, 44)" end="(34, 45)" leading="" trailing=" " val="="/>
+              <OtherNode start="(34, 46)" end="(34, 76)" kind="«term_::_»">
+                <OtherNode start="(34, 46)" end="(34, 47)" kind="num">
+                  <AtomNode start="(34, 46)" end="(34, 47)" leading="" trailing=" " val="0"/>
+                </OtherNode>
+                <AtomNode start="(34, 48)" end="(34, 50)" leading="" trailing=" " val="::"/>
+                <OtherNode start="(34, 51)" end="(34, 76)" kind="Lean.Parser.Term.app">
+                  <OtherNode start="(34, 51)" end="(34, 67)" kind="Lean.Parser.Term.proj">
+                    <OtherNode start="(34, 51)" end="(34, 63)" kind="Lean.Parser.Term.paren">
+                      <AtomNode start="(34, 51)" end="(34, 52)" leading="" trailing="" val="("/>
+                      <OtherNode start="(34, 52)" end="(34, 62)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(34, 52)" end="(34, 60)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        <NullNode start="(34, 61)" end="(34, 62)">
+                          <IdentNode start="(34, 61)" end="(34, 62)" leading="" trailing="" raw_val="n" val="n"/>
+                        </NullNode>
+                      </OtherNode>
+                      <AtomNode start="(34, 62)" end="(34, 63)" leading="" trailing="" val=")"/>
+                    </OtherNode>
+                    <AtomNode start="(34, 63)" end="(34, 64)" leading="" trailing="" val="."/>
+                    <IdentNode start="(34, 64)" end="(34, 67)" leading="" trailing=" " raw_val="map" val="map" full_name="List.map" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                  </OtherNode>
+                  <NullNode start="(34, 68)" end="(34, 76)">
+                    <IdentNode start="(34, 68)" end="(34, 76)" leading="" trailing=" " raw_val="Fin.succ" val="Fin.succ" full_name="Fin.succ" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(34, 77)" end="(35, 58)">
+          <AtomNode start="(34, 77)" end="(34, 79)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(34, 80)" end="(35, 58)">
+            <AtomNode start="(34, 80)" end="(34, 82)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(35, 3)" end="(35, 58)">
+              <TacticTacticseq1IndentedNode start="(35, 3)" end="(35, 58)">
+                <NullNode start="(35, 3)" end="(35, 58)">
+                  <OtherNode start="(35, 3)" end="(35, 25)" kind="Lean.Parser.Tactic.apply" state_before="n : Nat&#10;⊢ finRange (n + 1) = 0 :: map Fin.succ (finRange n)" state_after="case hl&#10;n : Nat&#10;⊢ (finRange (n + 1)).length = (0 :: map Fin.succ (finRange n)).length&#10;&#10;case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" tactic="apply List.ext_getElem">
+                    <AtomNode start="(35, 3)" end="(35, 8)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(35, 9)" end="(35, 25)" leading="" trailing="" raw_val="List.ext_getElem" val="List.ext_getElem" full_name="List.ext_getElem" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                  </OtherNode>
+                  <AtomNode start="(35, 25)" end="(35, 26)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(35, 27)" end="(35, 31)" kind="Lean.Parser.Tactic.simp" state_before="case hl&#10;n : Nat&#10;⊢ (finRange (n + 1)).length = (0 :: map Fin.succ (finRange n)).length&#10;&#10;case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" state_after="case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" tactic="simp">
+                    <AtomNode start="(35, 27)" end="(35, 31)" leading="" trailing="" val="simp"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode/>
+                  </OtherNode>
+                  <AtomNode start="(35, 31)" end="(35, 32)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(35, 33)" end="(35, 40)" kind="Lean.Parser.Tactic.intro" state_before="case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" state_after="case h&#10;n i : Nat&#10;⊢ ∀ (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" tactic="intro i">
+                    <AtomNode start="(35, 33)" end="(35, 38)" leading="" trailing=" " val="intro"/>
+                    <NullNode start="(35, 39)" end="(35, 40)">
+                      <IdentNode start="(35, 39)" end="(35, 40)" leading="" trailing="" raw_val="i" val="i"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(35, 40)" end="(35, 41)" leading="" trailing=" " val=";"/>
+                  <OtherNode start="(35, 42)" end="(35, 58)" kind="Lean.Parser.Tactic.«tactic_&amp;lt;;&amp;gt;_»" state_before="case h&#10;n i : Nat&#10;⊢ ∀ (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (0 :: map Fin.succ (finRange n)).length),&#10;    (finRange (n + 1))[i] = (0 :: map Fin.succ (finRange n))[i]" state_after="no goals" tactic="cases i &amp;lt;;&amp;gt; simp">
+                    <OtherNode start="(35, 42)" end="(35, 49)" kind="Lean.Parser.Tactic.cases">
+                      <AtomNode start="(35, 42)" end="(35, 47)" leading="" trailing=" " val="cases"/>
+                      <NullNode start="(35, 48)" end="(35, 49)">
+                        <OtherNode start="(35, 48)" end="(35, 49)" kind="Lean.Parser.Tactic.elimTarget">
+                          <NullNode/>
+                          <IdentNode start="(35, 48)" end="(35, 49)" leading="" trailing=" " raw_val="i" val="i"/>
+                        </OtherNode>
+                      </NullNode>
+                      <NullNode/>
+                      <NullNode/>
+                    </OtherNode>
+                    <AtomNode start="(35, 50)" end="(35, 53)" leading="" trailing=" " val="&amp;lt;;&amp;gt;"/>
+                    <OtherNode start="(35, 54)" end="(35, 58)" kind="Lean.Parser.Tactic.simp">
+                      <AtomNode start="(35, 54)" end="(35, 58)" leading="" trailing="&#10;&#10;" val="simp"/>
+                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                        <NullNode/>
+                      </OtherNode>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode/>
+                      <NullNode/>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(37, 1)" end="(46, 46)" name="finRange_succ_last" full_name="List.finRange_succ_last">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(37, 1)" end="(46, 46)" name="finRange_succ_last" full_name="List.finRange_succ_last" _is_private_decl="False">
+        <AtomNode start="(37, 1)" end="(37, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(37, 9)" end="(37, 27)">
+          <IdentNode start="(37, 9)" end="(37, 27)" leading="" trailing=" " raw_val="finRange_succ_last" val="finRange_succ_last"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(37, 28)" end="(38, 67)">
+          <NullNode start="(37, 28)" end="(37, 31)">
+            <OtherNode start="(37, 28)" end="(37, 31)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(37, 28)" end="(37, 29)" leading="" trailing="" val="{"/>
+              <NullNode start="(37, 29)" end="(37, 30)">
+                <IdentNode start="(37, 29)" end="(37, 30)" leading="" trailing="" raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(37, 30)" end="(37, 31)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(37, 32)" end="(38, 67)">
+            <AtomNode start="(37, 32)" end="(37, 33)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(38, 5)" end="(38, 67)" kind="«term_=_»">
+              <OtherNode start="(38, 5)" end="(38, 19)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(38, 5)" end="(38, 13)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                <NullNode start="(38, 14)" end="(38, 19)">
+                  <OtherNode start="(38, 14)" end="(38, 19)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(38, 14)" end="(38, 15)" leading="" trailing="" val="("/>
+                    <OtherNode start="(38, 15)" end="(38, 18)" kind="«term_+_»">
+                      <IdentNode start="(38, 15)" end="(38, 16)" leading="" trailing="" raw_val="n" val="n"/>
+                      <AtomNode start="(38, 16)" end="(38, 17)" leading="" trailing="" val="+"/>
+                      <OtherNode start="(38, 17)" end="(38, 18)" kind="num">
+                        <AtomNode start="(38, 17)" end="(38, 18)" leading="" trailing="" val="1"/>
+                      </OtherNode>
+                    </OtherNode>
+                    <AtomNode start="(38, 18)" end="(38, 19)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(38, 20)" end="(38, 21)" leading="" trailing=" " val="="/>
+              <OtherNode start="(38, 22)" end="(38, 67)" kind="«term_++_»">
+                <OtherNode start="(38, 22)" end="(38, 51)" kind="Lean.Parser.Term.app">
+                  <OtherNode start="(38, 22)" end="(38, 38)" kind="Lean.Parser.Term.proj">
+                    <OtherNode start="(38, 22)" end="(38, 34)" kind="Lean.Parser.Term.paren">
+                      <AtomNode start="(38, 22)" end="(38, 23)" leading="" trailing="" val="("/>
+                      <OtherNode start="(38, 23)" end="(38, 33)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(38, 23)" end="(38, 31)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                        <NullNode start="(38, 32)" end="(38, 33)">
+                          <IdentNode start="(38, 32)" end="(38, 33)" leading="" trailing="" raw_val="n" val="n"/>
+                        </NullNode>
+                      </OtherNode>
+                      <AtomNode start="(38, 33)" end="(38, 34)" leading="" trailing="" val=")"/>
+                    </OtherNode>
+                    <AtomNode start="(38, 34)" end="(38, 35)" leading="" trailing="" val="."/>
+                    <IdentNode start="(38, 35)" end="(38, 38)" leading="" trailing=" " raw_val="map" val="map" full_name="List.map" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                  </OtherNode>
+                  <NullNode start="(38, 39)" end="(38, 51)">
+                    <IdentNode start="(38, 39)" end="(38, 51)" leading="" trailing=" " raw_val="Fin.castSucc" val="Fin.castSucc" full_name="Fin.castSucc" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                  </NullNode>
+                </OtherNode>
+                <AtomNode start="(38, 52)" end="(38, 54)" leading="" trailing=" " val="++"/>
+                <OtherNode start="(38, 55)" end="(38, 67)" kind="«term[_]»">
+                  <AtomNode start="(38, 55)" end="(38, 56)" leading="" trailing="" val="["/>
+                  <NullNode start="(38, 56)" end="(38, 66)">
+                    <OtherNode start="(38, 56)" end="(38, 66)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(38, 56)" end="(38, 64)" leading="" trailing=" " raw_val="Fin.last" val="Fin.last" full_name="Fin.last" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                      <NullNode start="(38, 65)" end="(38, 66)">
+                        <IdentNode start="(38, 65)" end="(38, 66)" leading="" trailing="" raw_val="n" val="n"/>
+                      </NullNode>
+                    </OtherNode>
+                  </NullNode>
+                  <AtomNode start="(38, 66)" end="(38, 67)" leading="" trailing=" " val="]"/>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(38, 68)" end="(46, 46)">
+          <AtomNode start="(38, 68)" end="(38, 70)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(38, 71)" end="(46, 46)">
+            <AtomNode start="(38, 71)" end="(38, 73)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(39, 3)" end="(46, 46)">
+              <TacticTacticseq1IndentedNode start="(39, 3)" end="(46, 46)">
+                <NullNode start="(39, 3)" end="(46, 46)">
+                  <OtherNode start="(39, 3)" end="(39, 25)" kind="Lean.Parser.Tactic.apply" state_before="n : Nat&#10;⊢ finRange (n + 1) = map Fin.castSucc (finRange n) ++ [Fin.last n]" state_after="case hl&#10;n : Nat&#10;⊢ (finRange (n + 1)).length = (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;&#10;case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length),&#10;    (finRange (n + 1))[i] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i]" tactic="apply List.ext_getElem">
+                    <AtomNode start="(39, 3)" end="(39, 8)" leading="" trailing=" " val="apply"/>
+                    <IdentNode start="(39, 9)" end="(39, 25)" leading="" trailing="&#10;  " raw_val="List.ext_getElem" val="List.ext_getElem" full_name="List.ext_getElem" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(40, 3)" end="(40, 9)" kind="Lean.cdot" state_before="case hl&#10;n : Nat&#10;⊢ (finRange (n + 1)).length = (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;&#10;case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length),&#10;    (finRange (n + 1))[i] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i]" state_after="case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length),&#10;    (finRange (n + 1))[i] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i]" tactic="· simp">
+                    <OtherNode start="(40, 3)" end="(40, 4)" kind="Lean.cdotTk">
+                      <OtherNode start="(40, 3)" end="(40, 4)" kind="patternIgnore">
+                        <OtherNode start="(40, 3)" end="(40, 4)" kind="token.«· »">
+                          <AtomNode start="(40, 3)" end="(40, 4)" leading="" trailing=" " val="·"/>
+                        </OtherNode>
+                      </OtherNode>
+                    </OtherNode>
+                    <TacticTacticseqNode start="(40, 5)" end="(40, 9)">
+                      <TacticTacticseq1IndentedNode start="(40, 5)" end="(40, 9)">
+                        <NullNode start="(40, 5)" end="(40, 9)">
+                          <OtherNode start="(40, 5)" end="(40, 9)" kind="Lean.Parser.Tactic.simp" state_before="case hl&#10;n : Nat&#10;⊢ (finRange (n + 1)).length = (map Fin.castSucc (finRange n) ++ [Fin.last n]).length" state_after="no goals" tactic="simp">
+                            <AtomNode start="(40, 5)" end="(40, 9)" leading="" trailing="&#10;  " val="simp"/>
+                            <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                              <NullNode/>
+                            </OtherNode>
+                            <NullNode/>
+                            <NullNode/>
+                            <NullNode/>
+                            <NullNode/>
+                          </OtherNode>
+                        </NullNode>
+                      </TacticTacticseq1IndentedNode>
+                    </TacticTacticseqNode>
+                  </OtherNode>
+                  <NullNode/>
+                  <OtherNode start="(41, 3)" end="(46, 46)" kind="Lean.cdot" state_before="case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length),&#10;    (finRange (n + 1))[i] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i]" state_after="no goals" tactic="· intros&#10;  simp only [List.finRange, List.getElem_ofFn, getElem_append, length_map, length_ofFn,&#10;    getElem_map, Fin.castSucc_mk, getElem_singleton]&#10;  split&#10;  · rfl&#10;  · next h =&amp;gt; exact Fin.eq_last_of_not_lt h">
+                    <OtherNode start="(41, 3)" end="(41, 4)" kind="Lean.cdotTk">
+                      <OtherNode start="(41, 3)" end="(41, 4)" kind="patternIgnore">
+                        <OtherNode start="(41, 3)" end="(41, 4)" kind="token.«· »">
+                          <AtomNode start="(41, 3)" end="(41, 4)" leading="" trailing=" " val="·"/>
+                        </OtherNode>
+                      </OtherNode>
+                    </OtherNode>
+                    <TacticTacticseqNode start="(41, 5)" end="(46, 46)">
+                      <TacticTacticseq1IndentedNode start="(41, 5)" end="(46, 46)">
+                        <NullNode start="(41, 5)" end="(46, 46)">
+                          <OtherNode start="(41, 5)" end="(41, 11)" kind="Lean.Parser.Tactic.intros" state_before="case h&#10;n : Nat&#10;⊢ ∀ (i : Nat) (h₁ : i &amp;lt; (finRange (n + 1)).length) (h₂ : i &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length),&#10;    (finRange (n + 1))[i] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i]" state_after="case h&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;⊢ (finRange (n + 1))[i✝] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i✝]" tactic="intros">
+                            <AtomNode start="(41, 5)" end="(41, 11)" leading="" trailing="&#10;    " val="intros"/>
+                            <NullNode/>
+                          </OtherNode>
+                          <NullNode/>
+                          <OtherNode start="(42, 5)" end="(43, 55)" kind="Lean.Parser.Tactic.simp" state_before="case h&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;⊢ (finRange (n + 1))[i✝] = (map Fin.castSucc (finRange n) ++ [Fin.last n])[i✝]" state_after="case h&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;⊢ ⟨i✝, ⋯⟩ = if h : i✝ &amp;lt; n then ⟨i✝, ⋯⟩ else Fin.last n" tactic="simp only [List.finRange, List.getElem_ofFn, getElem_append, length_map, length_ofFn,&#10;  getElem_map, Fin.castSucc_mk, getElem_singleton]">
+                            <AtomNode start="(42, 5)" end="(42, 9)" leading="" trailing=" " val="simp"/>
+                            <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                              <NullNode/>
+                            </OtherNode>
+                            <NullNode/>
+                            <NullNode start="(42, 10)" end="(42, 14)">
+                              <AtomNode start="(42, 10)" end="(42, 14)" leading="" trailing=" " val="only"/>
+                            </NullNode>
+                            <NullNode start="(42, 15)" end="(43, 55)">
+                              <AtomNode start="(42, 15)" end="(42, 16)" leading="" trailing="" val="["/>
+                              <NullNode start="(42, 16)" end="(43, 54)">
+                                <OtherNode start="(42, 16)" end="(42, 29)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(42, 16)" end="(42, 29)" leading="" trailing="" raw_val="List.finRange" val="List.finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                                </OtherNode>
+                                <AtomNode start="(42, 29)" end="(42, 30)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(42, 31)" end="(42, 48)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(42, 31)" end="(42, 48)" leading="" trailing="" raw_val="List.getElem_ofFn" val="List.getElem_ofFn" full_name="List.getElem_ofFn" mod_name="Init.Data.List.OfFn" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/OfFn.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(42, 48)" end="(42, 49)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(42, 50)" end="(42, 64)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(42, 50)" end="(42, 64)" leading="" trailing="" raw_val="getElem_append" val="getElem_append" full_name="List.getElem_append" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(42, 64)" end="(42, 65)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(42, 66)" end="(42, 76)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(42, 66)" end="(42, 76)" leading="" trailing="" raw_val="length_map" val="length_map" full_name="List.length_map" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(42, 76)" end="(42, 77)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(42, 78)" end="(42, 89)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(42, 78)" end="(42, 89)" leading="" trailing="" raw_val="length_ofFn" val="length_ofFn" full_name="List.length_ofFn" mod_name="Init.Data.List.OfFn" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/OfFn.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(42, 89)" end="(42, 90)" leading="" trailing="&#10;      " val=","/>
+                                <OtherNode start="(43, 7)" end="(43, 18)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(43, 7)" end="(43, 18)" leading="" trailing="" raw_val="getElem_map" val="getElem_map" full_name="List.getElem_map" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(43, 18)" end="(43, 19)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(43, 20)" end="(43, 35)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(43, 20)" end="(43, 35)" leading="" trailing="" raw_val="Fin.castSucc_mk" val="Fin.castSucc_mk" full_name="Fin.castSucc_mk" mod_name="Init.Data.Fin.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Lemmas.lean"/>
+                                </OtherNode>
+                                <AtomNode start="(43, 35)" end="(43, 36)" leading="" trailing=" " val=","/>
+                                <OtherNode start="(43, 37)" end="(43, 54)" kind="Lean.Parser.Tactic.simpLemma">
+                                  <NullNode/>
+                                  <NullNode/>
+                                  <IdentNode start="(43, 37)" end="(43, 54)" leading="" trailing="" raw_val="getElem_singleton" val="getElem_singleton" full_name="List.getElem_singleton" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                </OtherNode>
+                              </NullNode>
+                              <AtomNode start="(43, 54)" end="(43, 55)" leading="" trailing="&#10;    " val="]"/>
+                            </NullNode>
+                            <NullNode/>
+                          </OtherNode>
+                          <NullNode/>
+                          <OtherNode start="(44, 5)" end="(44, 10)" kind="Lean.Parser.Tactic.split" state_before="case h&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;⊢ ⟨i✝, ⋯⟩ = if h : i✝ &amp;lt; n then ⟨i✝, ⋯⟩ else Fin.last n" state_after="case h.isTrue&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = ⟨i✝, ⋯⟩&#10;&#10;case h.isFalse&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" tactic="split">
+                            <AtomNode start="(44, 5)" end="(44, 10)" leading="" trailing="&#10;    " val="split"/>
+                            <NullNode/>
+                            <NullNode/>
+                          </OtherNode>
+                          <NullNode/>
+                          <OtherNode start="(45, 5)" end="(45, 10)" kind="Lean.cdot" state_before="case h.isTrue&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = ⟨i✝, ⋯⟩&#10;&#10;case h.isFalse&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" state_after="case h.isFalse&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" tactic="· rfl">
+                            <OtherNode start="(45, 5)" end="(45, 6)" kind="Lean.cdotTk">
+                              <OtherNode start="(45, 5)" end="(45, 6)" kind="patternIgnore">
+                                <OtherNode start="(45, 5)" end="(45, 6)" kind="token.«· »">
+                                  <AtomNode start="(45, 5)" end="(45, 6)" leading="" trailing=" " val="·"/>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                            <TacticTacticseqNode start="(45, 7)" end="(45, 10)">
+                              <TacticTacticseq1IndentedNode start="(45, 7)" end="(45, 10)">
+                                <NullNode start="(45, 7)" end="(45, 10)">
+                                  <OtherNode start="(45, 7)" end="(45, 10)" kind="Lean.Parser.Tactic.tacticRfl" state_before="case h.isTrue&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = ⟨i✝, ⋯⟩" state_after="no goals" tactic="rfl">
+                                    <AtomNode start="(45, 7)" end="(45, 10)" leading="" trailing="&#10;    " val="rfl"/>
+                                  </OtherNode>
+                                </NullNode>
+                              </TacticTacticseq1IndentedNode>
+                            </TacticTacticseqNode>
+                          </OtherNode>
+                          <NullNode/>
+                          <OtherNode start="(46, 5)" end="(46, 46)" kind="Lean.cdot" state_before="case h.isFalse&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" state_after="no goals" tactic="· next h =&amp;gt; exact Fin.eq_last_of_not_lt h">
+                            <OtherNode start="(46, 5)" end="(46, 6)" kind="Lean.cdotTk">
+                              <OtherNode start="(46, 5)" end="(46, 6)" kind="patternIgnore">
+                                <OtherNode start="(46, 5)" end="(46, 6)" kind="token.«· »">
+                                  <AtomNode start="(46, 5)" end="(46, 6)" leading="" trailing=" " val="·"/>
+                                </OtherNode>
+                              </OtherNode>
+                            </OtherNode>
+                            <TacticTacticseqNode start="(46, 7)" end="(46, 46)">
+                              <TacticTacticseq1IndentedNode start="(46, 7)" end="(46, 46)">
+                                <NullNode start="(46, 7)" end="(46, 46)">
+                                  <OtherNode start="(46, 7)" end="(46, 46)" kind="Lean.Parser.Tactic.«tacticNext_=&amp;gt;_»" state_before="case h.isFalse&#10;n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h✝ : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" state_after="no goals" tactic="next h =&amp;gt; exact Fin.eq_last_of_not_lt h">
+                                    <AtomNode start="(46, 7)" end="(46, 11)" leading="" trailing=" " val="next"/>
+                                    <NullNode start="(46, 12)" end="(46, 13)">
+                                      <LeanBinderidentNode start="(46, 12)" end="(46, 13)">
+                                        <IdentNode start="(46, 12)" end="(46, 13)" leading="" trailing=" " raw_val="h" val="h"/>
+                                      </LeanBinderidentNode>
+                                    </NullNode>
+                                    <AtomNode start="(46, 14)" end="(46, 16)" leading="" trailing=" " val="=&amp;gt;"/>
+                                    <TacticTacticseqNode start="(46, 17)" end="(46, 46)">
+                                      <TacticTacticseq1IndentedNode start="(46, 17)" end="(46, 46)">
+                                        <NullNode start="(46, 17)" end="(46, 46)">
+                                          <OtherNode start="(46, 17)" end="(46, 46)" kind="Lean.Parser.Tactic.exact" state_before="n i✝ : Nat&#10;h₁✝ : i✝ &amp;lt; (finRange (n + 1)).length&#10;h₂✝ : i✝ &amp;lt; (map Fin.castSucc (finRange n) ++ [Fin.last n]).length&#10;h : ¬i✝ &amp;lt; n&#10;⊢ ⟨i✝, ⋯⟩ = Fin.last n" state_after="no goals" tactic="exact Fin.eq_last_of_not_lt h">
+                                            <AtomNode start="(46, 17)" end="(46, 22)" leading="" trailing=" " val="exact"/>
+                                            <OtherNode start="(46, 23)" end="(46, 46)" kind="Lean.Parser.Term.app">
+                                              <IdentNode start="(46, 23)" end="(46, 44)" leading="" trailing=" " raw_val="Fin.eq_last_of_not_lt" val="Fin.eq_last_of_not_lt" full_name="Fin.eq_last_of_not_lt" mod_name="Init.Data.Fin.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Lemmas.lean"/>
+                                              <NullNode start="(46, 45)" end="(46, 46)">
+                                                <IdentNode start="(46, 45)" end="(46, 46)" leading="" trailing="&#10;&#10;" raw_val="h" val="h"/>
+                                              </NullNode>
+                                            </OtherNode>
+                                          </OtherNode>
+                                        </NullNode>
+                                      </TacticTacticseq1IndentedNode>
+                                    </TacticTacticseqNode>
+                                  </OtherNode>
+                                </NullNode>
+                              </TacticTacticseq1IndentedNode>
+                            </TacticTacticseqNode>
+                          </OtherNode>
+                        </NullNode>
+                      </TacticTacticseq1IndentedNode>
+                    </TacticTacticseqNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(48, 1)" end="(57, 24)" name="finRange_reverse" full_name="List.finRange_reverse">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(48, 1)" end="(57, 24)" name="finRange_reverse" full_name="List.finRange_reverse" _is_private_decl="False">
+        <AtomNode start="(48, 1)" end="(48, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(48, 9)" end="(48, 25)">
+          <IdentNode start="(48, 9)" end="(48, 25)" leading="" trailing=" " raw_val="finRange_reverse" val="finRange_reverse"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(48, 26)" end="(48, 79)">
+          <NullNode start="(48, 26)" end="(48, 29)">
+            <OtherNode start="(48, 26)" end="(48, 29)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(48, 26)" end="(48, 27)" leading="" trailing="" val="{"/>
+              <NullNode start="(48, 27)" end="(48, 28)">
+                <IdentNode start="(48, 27)" end="(48, 28)" leading="" trailing="" raw_val="n" val="n"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(48, 28)" end="(48, 29)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(48, 30)" end="(48, 79)">
+            <AtomNode start="(48, 30)" end="(48, 31)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(48, 32)" end="(48, 79)" kind="«term_=_»">
+              <OtherNode start="(48, 32)" end="(48, 52)" kind="Lean.Parser.Term.proj">
+                <OtherNode start="(48, 32)" end="(48, 44)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(48, 32)" end="(48, 33)" leading="" trailing="" val="("/>
+                  <OtherNode start="(48, 33)" end="(48, 43)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(48, 33)" end="(48, 41)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                    <NullNode start="(48, 42)" end="(48, 43)">
+                      <IdentNode start="(48, 42)" end="(48, 43)" leading="" trailing="" raw_val="n" val="n"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(48, 43)" end="(48, 44)" leading="" trailing="" val=")"/>
+                </OtherNode>
+                <AtomNode start="(48, 44)" end="(48, 45)" leading="" trailing="" val="."/>
+                <IdentNode start="(48, 45)" end="(48, 52)" leading="" trailing=" " raw_val="reverse" val="reverse" full_name="List.reverse" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+              </OtherNode>
+              <AtomNode start="(48, 53)" end="(48, 54)" leading="" trailing=" " val="="/>
+              <OtherNode start="(48, 55)" end="(48, 79)" kind="Lean.Parser.Term.app">
+                <OtherNode start="(48, 55)" end="(48, 71)" kind="Lean.Parser.Term.proj">
+                  <OtherNode start="(48, 55)" end="(48, 67)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(48, 55)" end="(48, 56)" leading="" trailing="" val="("/>
+                    <OtherNode start="(48, 56)" end="(48, 66)" kind="Lean.Parser.Term.app">
+                      <IdentNode start="(48, 56)" end="(48, 64)" leading="" trailing=" " raw_val="finRange" val="finRange" full_name="List.finRange" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(23, 5)" def_end="(23, 13)"/>
+                      <NullNode start="(48, 65)" end="(48, 66)">
+                        <IdentNode start="(48, 65)" end="(48, 66)" leading="" trailing="" raw_val="n" val="n"/>
+                      </NullNode>
+                    </OtherNode>
+                    <AtomNode start="(48, 66)" end="(48, 67)" leading="" trailing="" val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(48, 67)" end="(48, 68)" leading="" trailing="" val="."/>
+                  <IdentNode start="(48, 68)" end="(48, 71)" leading="" trailing=" " raw_val="map" val="map" full_name="List.map" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                </OtherNode>
+                <NullNode start="(48, 72)" end="(48, 79)">
+                  <IdentNode start="(48, 72)" end="(48, 79)" leading="" trailing=" " raw_val="Fin.rev" val="Fin.rev" full_name="Fin.rev" mod_name="Init.Data.Fin.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Basic.lean"/>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(48, 80)" end="(57, 24)">
+          <AtomNode start="(48, 80)" end="(48, 82)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(48, 83)" end="(57, 24)">
+            <AtomNode start="(48, 83)" end="(48, 85)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(49, 3)" end="(57, 24)">
+              <TacticTacticseq1IndentedNode start="(49, 3)" end="(57, 24)">
+                <NullNode start="(49, 3)" end="(57, 24)">
+                  <OtherNode start="(49, 3)" end="(57, 24)" kind="Lean.Parser.Tactic.induction" state_before="n : Nat&#10;⊢ (finRange n).reverse = map Fin.rev (finRange n)" state_after="no goals" tactic="induction n with&#10;| zero =&amp;gt; simp&#10;| succ n ih =&amp;gt;&#10;  conv =&amp;gt; lhs; rw [finRange_succ_last]&#10;  conv =&amp;gt; rhs; rw [finRange_succ]&#10;  rw [reverse_append, reverse_cons, reverse_nil, nil_append, singleton_append, ← map_reverse,&#10;    map_cons, ih, map_map, map_map]&#10;  congr; funext&#10;  simp [Fin.rev_succ]">
+                    <AtomNode start="(49, 3)" end="(49, 12)" leading="" trailing=" " val="induction"/>
+                    <NullNode start="(49, 13)" end="(49, 14)">
+                      <OtherNode start="(49, 13)" end="(49, 14)" kind="Lean.Parser.Tactic.elimTarget">
+                        <NullNode/>
+                        <IdentNode start="(49, 13)" end="(49, 14)" leading="" trailing=" " raw_val="n" val="n"/>
+                      </OtherNode>
+                    </NullNode>
+                    <NullNode/>
+                    <NullNode/>
+                    <NullNode start="(49, 15)" end="(57, 24)">
+                      <OtherNode start="(49, 15)" end="(57, 24)" kind="Lean.Parser.Tactic.inductionAlts">
+                        <AtomNode start="(49, 15)" end="(49, 19)" leading="" trailing="&#10;  " val="with"/>
+                        <NullNode/>
+                        <NullNode start="(50, 3)" end="(57, 24)">
+                          <OtherNode start="(50, 3)" end="(50, 17)" kind="Lean.Parser.Tactic.inductionAlt">
+                            <NullNode start="(50, 3)" end="(50, 9)">
+                              <OtherNode start="(50, 3)" end="(50, 9)" kind="Lean.Parser.Tactic.inductionAltLHS">
+                                <AtomNode start="(50, 3)" end="(50, 4)" leading="" trailing=" " val="|"/>
+                                <GroupNode start="(50, 5)" end="(50, 9)">
+                                  <NullNode/>
+                                  <IdentNode start="(50, 5)" end="(50, 9)" leading="" trailing=" " raw_val="zero" val="zero"/>
+                                </GroupNode>
+                                <NullNode/>
+                              </OtherNode>
+                            </NullNode>
+                            <NullNode start="(50, 10)" end="(50, 17)">
+                              <AtomNode start="(50, 10)" end="(50, 12)" leading="" trailing=" " val="=&amp;gt;"/>
+                              <TacticTacticseqNode start="(50, 13)" end="(50, 17)">
+                                <TacticTacticseq1IndentedNode start="(50, 13)" end="(50, 17)">
+                                  <NullNode start="(50, 13)" end="(50, 17)">
+                                    <OtherNode start="(50, 13)" end="(50, 17)" kind="Lean.Parser.Tactic.simp" state_before="case zero&#10;&#10;⊢ (finRange 0).reverse = map Fin.rev (finRange 0)" state_after="no goals" tactic="simp">
+                                      <AtomNode start="(50, 13)" end="(50, 17)" leading="" trailing="&#10;  " val="simp"/>
+                                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                        <NullNode/>
+                                      </OtherNode>
+                                      <NullNode/>
+                                      <NullNode/>
+                                      <NullNode/>
+                                      <NullNode/>
+                                    </OtherNode>
+                                  </NullNode>
+                                </TacticTacticseq1IndentedNode>
+                              </TacticTacticseqNode>
+                            </NullNode>
+                          </OtherNode>
+                          <OtherNode start="(51, 3)" end="(57, 24)" kind="Lean.Parser.Tactic.inductionAlt">
+                            <NullNode start="(51, 3)" end="(51, 14)">
+                              <OtherNode start="(51, 3)" end="(51, 14)" kind="Lean.Parser.Tactic.inductionAltLHS">
+                                <AtomNode start="(51, 3)" end="(51, 4)" leading="" trailing=" " val="|"/>
+                                <GroupNode start="(51, 5)" end="(51, 9)">
+                                  <NullNode/>
+                                  <IdentNode start="(51, 5)" end="(51, 9)" leading="" trailing=" " raw_val="succ" val="succ"/>
+                                </GroupNode>
+                                <NullNode start="(51, 10)" end="(51, 14)">
+                                  <IdentNode start="(51, 10)" end="(51, 11)" leading="" trailing=" " raw_val="n" val="n"/>
+                                  <IdentNode start="(51, 12)" end="(51, 14)" leading="" trailing=" " raw_val="ih" val="ih"/>
+                                </NullNode>
+                              </OtherNode>
+                            </NullNode>
+                            <NullNode start="(51, 15)" end="(57, 24)">
+                              <AtomNode start="(51, 15)" end="(51, 17)" leading="" trailing="&#10;    " val="=&amp;gt;"/>
+                              <TacticTacticseqNode start="(52, 5)" end="(57, 24)">
+                                <TacticTacticseq1IndentedNode start="(52, 5)" end="(57, 24)">
+                                  <NullNode start="(52, 5)" end="(57, 24)">
+                                    <OtherNode start="(52, 5)" end="(52, 41)" kind="Lean.Parser.Tactic.Conv.conv" state_before="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ (finRange (n + 1)).reverse = map Fin.rev (finRange (n + 1))" state_after="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ (map Fin.castSucc (finRange n) ++ [Fin.last n]).reverse = map Fin.rev (finRange (n + 1))" tactic="conv =&amp;gt; lhs; rw [finRange_succ_last]">
+                                      <AtomNode start="(52, 5)" end="(52, 9)" leading="" trailing=" " val="conv"/>
+                                      <NullNode/>
+                                      <NullNode/>
+                                      <AtomNode start="(52, 10)" end="(52, 12)" leading="" trailing=" " val="=&amp;gt;"/>
+                                      <OtherNode start="(52, 13)" end="(52, 41)" kind="Lean.Parser.Tactic.Conv.convSeq">
+                                        <OtherNode start="(52, 13)" end="(52, 41)" kind="Lean.Parser.Tactic.Conv.convSeq1Indented">
+                                          <NullNode start="(52, 13)" end="(52, 41)">
+                                            <OtherNode start="(52, 13)" end="(52, 16)" kind="Lean.Parser.Tactic.Conv.lhs">
+                                              <AtomNode start="(52, 13)" end="(52, 16)" leading="" trailing="" val="lhs"/>
+                                            </OtherNode>
+                                            <AtomNode start="(52, 16)" end="(52, 17)" leading="" trailing=" " val=";"/>
+                                            <OtherNode start="(52, 18)" end="(52, 41)" kind="Lean.Parser.Tactic.Conv.convRw__">
+                                              <AtomNode start="(52, 18)" end="(52, 20)" leading="" trailing=" " val="rw"/>
+                                              <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                <NullNode/>
+                                              </OtherNode>
+                                              <OtherNode start="(52, 21)" end="(52, 41)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                                                <AtomNode start="(52, 21)" end="(52, 22)" leading="" trailing="" val="["/>
+                                                <NullNode start="(52, 22)" end="(52, 40)">
+                                                  <OtherNode start="(52, 22)" end="(52, 40)" kind="Lean.Parser.Tactic.rwRule">
+                                                    <NullNode/>
+                                                    <IdentNode start="(52, 22)" end="(52, 40)" leading="" trailing="" raw_val="finRange_succ_last" val="finRange_succ_last" full_name="List.finRange_succ_last" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(37, 9)" def_end="(37, 27)"/>
+                                                  </OtherNode>
+                                                </NullNode>
+                                                <AtomNode start="(52, 40)" end="(52, 41)" leading="" trailing="&#10;    " val="]"/>
+                                              </OtherNode>
+                                            </OtherNode>
+                                          </NullNode>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                    <NullNode/>
+                                    <OtherNode start="(53, 5)" end="(53, 36)" kind="Lean.Parser.Tactic.Conv.conv" state_before="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ (map Fin.castSucc (finRange n) ++ [Fin.last n]).reverse = map Fin.rev (finRange (n + 1))" state_after="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ (map Fin.castSucc (finRange n) ++ [Fin.last n]).reverse = map Fin.rev (0 :: map Fin.succ (finRange n))" tactic="conv =&amp;gt; rhs; rw [finRange_succ]">
+                                      <AtomNode start="(53, 5)" end="(53, 9)" leading="" trailing=" " val="conv"/>
+                                      <NullNode/>
+                                      <NullNode/>
+                                      <AtomNode start="(53, 10)" end="(53, 12)" leading="" trailing=" " val="=&amp;gt;"/>
+                                      <OtherNode start="(53, 13)" end="(53, 36)" kind="Lean.Parser.Tactic.Conv.convSeq">
+                                        <OtherNode start="(53, 13)" end="(53, 36)" kind="Lean.Parser.Tactic.Conv.convSeq1Indented">
+                                          <NullNode start="(53, 13)" end="(53, 36)">
+                                            <OtherNode start="(53, 13)" end="(53, 16)" kind="Lean.Parser.Tactic.Conv.rhs">
+                                              <AtomNode start="(53, 13)" end="(53, 16)" leading="" trailing="" val="rhs"/>
+                                            </OtherNode>
+                                            <AtomNode start="(53, 16)" end="(53, 17)" leading="" trailing=" " val=";"/>
+                                            <OtherNode start="(53, 18)" end="(53, 36)" kind="Lean.Parser.Tactic.Conv.convRw__">
+                                              <AtomNode start="(53, 18)" end="(53, 20)" leading="" trailing=" " val="rw"/>
+                                              <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                                <NullNode/>
+                                              </OtherNode>
+                                              <OtherNode start="(53, 21)" end="(53, 36)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                                                <AtomNode start="(53, 21)" end="(53, 22)" leading="" trailing="" val="["/>
+                                                <NullNode start="(53, 22)" end="(53, 35)">
+                                                  <OtherNode start="(53, 22)" end="(53, 35)" kind="Lean.Parser.Tactic.rwRule">
+                                                    <NullNode/>
+                                                    <IdentNode start="(53, 22)" end="(53, 35)" leading="" trailing="" raw_val="finRange_succ" val="finRange_succ" full_name="List.finRange_succ" mod_name="Init.Data.List.FinRange" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/FinRange.lean" def_start="(34, 9)" def_end="(34, 22)"/>
+                                                  </OtherNode>
+                                                </NullNode>
+                                                <AtomNode start="(53, 35)" end="(53, 36)" leading="" trailing="&#10;    " val="]"/>
+                                              </OtherNode>
+                                            </OtherNode>
+                                          </NullNode>
+                                        </OtherNode>
+                                      </OtherNode>
+                                    </OtherNode>
+                                    <NullNode/>
+                                    <OtherNode start="(54, 5)" end="(55, 38)" kind="Lean.Parser.Tactic.rwSeq" state_before="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ (map Fin.castSucc (finRange n) ++ [Fin.last n]).reverse = map Fin.rev (0 :: map Fin.succ (finRange n))" state_after="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ Fin.last n :: map (Fin.castSucc ∘ Fin.rev) (finRange n) = Fin.rev 0 :: map (Fin.rev ∘ Fin.succ) (finRange n)" tactic="rw [reverse_append, reverse_cons, reverse_nil, nil_append, singleton_append, ← map_reverse,&#10;  map_cons, ih, map_map, map_map]">
+                                      <AtomNode start="(54, 5)" end="(54, 7)" leading="" trailing=" " val="rw"/>
+                                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                        <NullNode/>
+                                      </OtherNode>
+                                      <OtherNode start="(54, 8)" end="(55, 38)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                                        <AtomNode start="(54, 8)" end="(54, 9)" leading="" trailing="" val="["/>
+                                        <NullNode start="(54, 9)" end="(55, 37)">
+                                          <OtherNode start="(54, 9)" end="(54, 23)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(54, 9)" end="(54, 23)" leading="" trailing="" raw_val="reverse_append" val="reverse_append" full_name="List.reverse_append" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 23)" end="(54, 24)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(54, 25)" end="(54, 37)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(54, 25)" end="(54, 37)" leading="" trailing="" raw_val="reverse_cons" val="reverse_cons" full_name="List.reverse_cons" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 37)" end="(54, 38)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(54, 39)" end="(54, 50)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(54, 39)" end="(54, 50)" leading="" trailing="" raw_val="reverse_nil" val="reverse_nil" full_name="List.reverse_nil" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 50)" end="(54, 51)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(54, 52)" end="(54, 62)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(54, 52)" end="(54, 62)" leading="" trailing="" raw_val="nil_append" val="nil_append" full_name="List.nil_append" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 62)" end="(54, 63)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(54, 64)" end="(54, 80)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(54, 64)" end="(54, 80)" leading="" trailing="" raw_val="singleton_append" val="singleton_append" full_name="List.singleton_append" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 80)" end="(54, 81)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(54, 82)" end="(54, 95)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode start="(54, 82)" end="(54, 83)">
+                                              <OtherNode start="(54, 82)" end="(54, 83)" kind="patternIgnore">
+                                                <OtherNode start="(54, 82)" end="(54, 83)" kind="token.«← »">
+                                                  <AtomNode start="(54, 82)" end="(54, 83)" leading="" trailing=" " val="←"/>
+                                                </OtherNode>
+                                              </OtherNode>
+                                            </NullNode>
+                                            <IdentNode start="(54, 84)" end="(54, 95)" leading="" trailing="" raw_val="map_reverse" val="map_reverse" full_name="List.map_reverse" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(54, 95)" end="(54, 96)" leading="" trailing="&#10;      " val=","/>
+                                          <OtherNode start="(55, 7)" end="(55, 15)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(55, 7)" end="(55, 15)" leading="" trailing="" raw_val="map_cons" val="map_cons" full_name="List.map_cons" mod_name="Init.Data.List.Basic" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Basic.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(55, 15)" end="(55, 16)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(55, 17)" end="(55, 19)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(55, 17)" end="(55, 19)" leading="" trailing="" raw_val="ih" val="ih"/>
+                                          </OtherNode>
+                                          <AtomNode start="(55, 19)" end="(55, 20)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(55, 21)" end="(55, 28)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(55, 21)" end="(55, 28)" leading="" trailing="" raw_val="map_map" val="map_map" full_name="List.map_map" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                          </OtherNode>
+                                          <AtomNode start="(55, 28)" end="(55, 29)" leading="" trailing=" " val=","/>
+                                          <OtherNode start="(55, 30)" end="(55, 37)" kind="Lean.Parser.Tactic.rwRule">
+                                            <NullNode/>
+                                            <IdentNode start="(55, 30)" end="(55, 37)" leading="" trailing="" raw_val="map_map" val="map_map" full_name="List.map_map" mod_name="Init.Data.List.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/List/Lemmas.lean"/>
+                                          </OtherNode>
+                                        </NullNode>
+                                        <AtomNode start="(55, 37)" end="(55, 38)" leading="" trailing="&#10;    " val="]"/>
+                                      </OtherNode>
+                                      <NullNode/>
+                                    </OtherNode>
+                                    <NullNode/>
+                                    <OtherNode start="(56, 5)" end="(56, 10)" kind="Lean.Parser.Tactic.congr" state_before="case succ&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ Fin.last n :: map (Fin.castSucc ∘ Fin.rev) (finRange n) = Fin.rev 0 :: map (Fin.rev ∘ Fin.succ) (finRange n)" state_after="case succ.e_tail.e_f&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ Fin.castSucc ∘ Fin.rev = Fin.rev ∘ Fin.succ" tactic="congr">
+                                      <AtomNode start="(56, 5)" end="(56, 10)" leading="" trailing="" val="congr"/>
+                                      <NullNode/>
+                                    </OtherNode>
+                                    <AtomNode start="(56, 10)" end="(56, 11)" leading="" trailing=" " val=";"/>
+                                    <OtherNode start="(56, 12)" end="(56, 18)" kind="tacticFunext___" state_before="case succ.e_tail.e_f&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;⊢ Fin.castSucc ∘ Fin.rev = Fin.rev ∘ Fin.succ" state_after="case succ.e_tail.e_f.h&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;x✝ : Fin n&#10;⊢ (Fin.castSucc ∘ Fin.rev) x✝ = (Fin.rev ∘ Fin.succ) x✝" tactic="funext">
+                                      <AtomNode start="(56, 12)" end="(56, 18)" leading="" trailing="&#10;    " val="funext"/>
+                                      <NullNode/>
+                                    </OtherNode>
+                                    <NullNode/>
+                                    <OtherNode start="(57, 5)" end="(57, 24)" kind="Lean.Parser.Tactic.simp" state_before="case succ.e_tail.e_f.h&#10;n : Nat&#10;ih : (finRange n).reverse = map Fin.rev (finRange n)&#10;x✝ : Fin n&#10;⊢ (Fin.castSucc ∘ Fin.rev) x✝ = (Fin.rev ∘ Fin.succ) x✝" state_after="no goals" tactic="simp [Fin.rev_succ]">
+                                      <AtomNode start="(57, 5)" end="(57, 9)" leading="" trailing=" " val="simp"/>
+                                      <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                                        <NullNode/>
+                                      </OtherNode>
+                                      <NullNode/>
+                                      <NullNode/>
+                                      <NullNode start="(57, 10)" end="(57, 24)">
+                                        <AtomNode start="(57, 10)" end="(57, 11)" leading="" trailing="" val="["/>
+                                        <NullNode start="(57, 11)" end="(57, 23)">
+                                          <OtherNode start="(57, 11)" end="(57, 23)" kind="Lean.Parser.Tactic.simpLemma">
+                                            <NullNode/>
+                                            <NullNode/>
+                                            <IdentNode start="(57, 11)" end="(57, 23)" leading="" trailing="" raw_val="Fin.rev_succ" val="Fin.rev_succ" full_name="Fin.rev_succ" mod_name="Init.Data.Fin.Lemmas" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Fin/Lemmas.lean"/>
+                                          </OtherNode>
+                                        </NullNode>
+                                        <AtomNode start="(57, 23)" end="(57, 24)" leading="" trailing="&#10;&#10;" val="]"/>
+                                      </NullNode>
+                                      <NullNode/>
+                                    </OtherNode>
+                                  </NullNode>
+                                </TacticTacticseq1IndentedNode>
+                              </TacticTacticseqNode>
+                            </NullNode>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandEndNode start="(59, 1)" end="(59, 9)" name="List">
+      <AtomNode start="(59, 1)" end="(59, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(59, 5)" end="(59, 9)">
+        <IdentNode start="(59, 5)" end="(59, 9)" leading="" trailing="&#10;" raw_val="List" val="List"/>
+      </NullNode>
+    </CommandEndNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(11, 38)" end="(12, 1)" text="-- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;"/>
+    <Comment start="(12, 39)" end="(14, 1)" text="-- Enforce naming conventions for index variables.&#10;&#10;"/>
+    <Comment start="(16, 1)" end="(22, 3)" text="Lists all elements of `Fin n` in order, starting at `0`.&#10;&#10;Examples:&#10; * `List.finRange 0 = ([] : List (Fin 0))`&#10; * `List.finRange 2 = ([0, 1] : List (Fin 2))`&#10;-/"/>
+  </Comments>
+</TracedFile>

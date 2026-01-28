@@ -244,6 +244,7 @@ def get_lean4_version_from_config(toolchain: str) -> str:
         v = "v" + v
     return v
 
+
 def get_lean4_commit_from_config(config_dict: Dict[str, Any]) -> str:
     """Return the required Lean commit given a ``lean-toolchain`` config."""
     global LEAN4_REPO
@@ -307,7 +308,7 @@ class LeanGitRepo(LeanRepo):
 
     commit: str
     """The repo's commit hash.
-
+    
     You can also use tags such as ``v3.5.0``. They will be converted to commit hashes.
     """
 
@@ -315,12 +316,12 @@ class LeanGitRepo(LeanRepo):
     """ Optional to specify the cache directory name.
     """
 
-    repo: Union[Repository, Repo]
+    repo: Union[Repository, Repo] = field(init=False, repr=False)
     """A :class:`github.Repository` object for GitHub repos or
     a :class:`git.Repo` object for local or remote Git repos.
     """
 
-    repo_type: RepoType
+    repo_type: RepoType = field(init=False, repr=False)
     """Type of the repo. It can be ``GITHUB``, ``LOCAL`` or ``REMOTE``.
     """
 
@@ -456,7 +457,7 @@ class LeanGitRepo(LeanRepo):
                     commit = get_latest_commit(url)
                 assert _COMMIT_REGEX.fullmatch(commit)
 
-            deps.append(cls(url, commit, m["name"]))  # type: ignore
+            deps.append((m["name"], cls(url, commit, m["name"])))  # type: ignore
 
         return deps
     
@@ -509,7 +510,7 @@ class LeanGitRepo(LeanRepo):
         else:
             return super().uses_lakefile_toml()
         
-    def get_traced_repo(self, build_deps: bool = False):
+    def get_traced_repo(self, build_deps: bool = True):
         """
         The function will trace a repo if it is not available in the cache. See :ref:`caching` for details.
         Args:

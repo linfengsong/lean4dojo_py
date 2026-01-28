@@ -1,0 +1,1606 @@
+<TracedFile path="src/lean/Init/Data/BEq.lean" md5="64d1364731f4a1830084dee40894f79e">
+  <FileNode start="(1, 1)" end="(60, 80)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 22)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 22)">
+        <ModuleImportNode start="(9, 1)" end="(9, 22)" module="Init.Data.Bool" path="src/lean/Init/Data/Bool.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 22)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.Bool" val="Init.Data.Bool"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(11, 1)" end="(11, 35)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(11, 1)" end="(11, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(11, 12)" end="(11, 30)" leading="" trailing=" " raw_val="linter.missingDocs" val="linter.missingDocs"/>
+      <NullNode/>
+      <AtomNode start="(11, 31)" end="(11, 35)" leading="" trailing="&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandDeclarationNode start="(13, 1)" end="(22, 41)" name="PartialEquivBEq" full_name="PartialEquivBEq">
+      <CommandDeclmodifiersNode start="(13, 1)" end="(17, 3)">
+        <NullNode start="(13, 1)" end="(17, 3)">
+          <CommandDoccommentNode start="(13, 1)" end="(17, 3)" comment="`PartialEquivBEq α` says that the `BEq` implementation is a&#10;partial equivalence relation, that is:&#10;* it is symmetric: `a == b → b == a`&#10;* it is transitive: `a == b → b == c → a == c`.&#10;-/">
+            <AtomNode start="(13, 1)" end="(13, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(13, 5)" end="(17, 3)" leading="" trailing="&#10;" val="`PartialEquivBEq α` says that the `BEq` implementation is a&#10;partial equivalence relation, that is:&#10;* it is symmetric: `a == b → b == a`&#10;* it is transitive: `a == b → b == c → a == c`.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandStructureNode start="(18, 1)" end="(22, 41)" name="PartialEquivBEq">
+        <CommandClasstkNode start="(18, 1)" end="(18, 6)">
+          <AtomNode start="(18, 1)" end="(18, 6)" leading="" trailing=" " val="class"/>
+        </CommandClasstkNode>
+        <CommandDeclidNode start="(18, 7)" end="(18, 22)">
+          <IdentNode start="(18, 7)" end="(18, 22)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <NullNode start="(18, 23)" end="(18, 34)">
+          <TermExplicitbinderNode start="(18, 23)" end="(18, 26)">
+            <AtomNode start="(18, 23)" end="(18, 24)" leading="" trailing="" val="("/>
+            <NullNode start="(18, 24)" end="(18, 25)">
+              <IdentNode start="(18, 24)" end="(18, 25)" leading="" trailing="" raw_val="α" val="α"/>
+            </NullNode>
+            <NullNode/>
+            <NullNode/>
+            <AtomNode start="(18, 25)" end="(18, 26)" leading="" trailing=" " val=")"/>
+          </TermExplicitbinderNode>
+          <OtherNode start="(18, 27)" end="(18, 34)" kind="Lean.Parser.Term.instBinder">
+            <AtomNode start="(18, 27)" end="(18, 28)" leading="" trailing="" val="["/>
+            <NullNode/>
+            <OtherNode start="(18, 28)" end="(18, 33)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(18, 28)" end="(18, 31)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode start="(18, 32)" end="(18, 33)">
+                <IdentNode start="(18, 32)" end="(18, 33)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+            </OtherNode>
+            <AtomNode start="(18, 33)" end="(18, 34)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode start="(18, 35)" end="(18, 41)">
+          <TermTypespecNode start="(18, 35)" end="(18, 41)">
+            <AtomNode start="(18, 35)" end="(18, 36)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(18, 37)" end="(18, 41)" kind="Lean.Parser.Term.prop">
+              <AtomNode start="(18, 37)" end="(18, 41)" leading="" trailing=" " val="Prop"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode start="(18, 42)" end="(22, 41)">
+          <AtomNode start="(18, 42)" end="(18, 47)" leading="" trailing="&#10;  " val="where"/>
+          <NullNode/>
+          <OtherNode start="(19, 3)" end="(22, 41)" kind="Lean.Parser.Command.structFields">
+            <NullNode start="(19, 3)" end="(22, 41)">
+              <OtherNode start="(19, 3)" end="(20, 31)" kind="Lean.Parser.Command.structSimpleBinder">
+                <CommandDeclmodifiersNode start="(19, 3)" end="(19, 56)">
+                  <NullNode start="(19, 3)" end="(19, 56)">
+                    <CommandDoccommentNode start="(19, 3)" end="(19, 56)" comment="Symmetry for `BEq`. If `a == b` then `b == a`. -/">
+                      <AtomNode start="(19, 3)" end="(19, 6)" leading="" trailing=" " val="/--"/>
+                      <AtomNode start="(19, 7)" end="(19, 56)" leading="" trailing="&#10;  " val="Symmetry for `BEq`. If `a == b` then `b == a`. -/"/>
+                    </CommandDoccommentNode>
+                  </NullNode>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </CommandDeclmodifiersNode>
+                <IdentNode start="(20, 3)" end="(20, 7)" leading="" trailing=" " raw_val="symm" val="symm"/>
+                <OtherNode start="(20, 8)" end="(20, 31)" kind="Lean.Parser.Command.optDeclSig">
+                  <NullNode/>
+                  <NullNode start="(20, 8)" end="(20, 31)">
+                    <TermTypespecNode start="(20, 8)" end="(20, 31)">
+                      <AtomNode start="(20, 8)" end="(20, 9)" leading="" trailing=" " val=":"/>
+                      <OtherNode start="(20, 10)" end="(20, 31)" kind="Lean.Parser.Term.arrow">
+                        <OtherNode start="(20, 10)" end="(20, 22)" kind="«term_==_»">
+                          <OtherNode start="(20, 10)" end="(20, 17)" kind="Lean.Parser.Term.typeAscription">
+                            <AtomNode start="(20, 10)" end="(20, 11)" leading="" trailing="" val="("/>
+                            <IdentNode start="(20, 11)" end="(20, 12)" leading="" trailing=" " raw_val="a" val="a"/>
+                            <AtomNode start="(20, 13)" end="(20, 14)" leading="" trailing=" " val=":"/>
+                            <NullNode start="(20, 15)" end="(20, 16)">
+                              <IdentNode start="(20, 15)" end="(20, 16)" leading="" trailing="" raw_val="α" val="α"/>
+                            </NullNode>
+                            <AtomNode start="(20, 16)" end="(20, 17)" leading="" trailing=" " val=")"/>
+                          </OtherNode>
+                          <AtomNode start="(20, 18)" end="(20, 20)" leading="" trailing=" " val="=="/>
+                          <IdentNode start="(20, 21)" end="(20, 22)" leading="" trailing=" " raw_val="b" val="b"/>
+                        </OtherNode>
+                        <AtomNode start="(20, 23)" end="(20, 24)" leading="" trailing=" " val="→"/>
+                        <OtherNode start="(20, 25)" end="(20, 31)" kind="«term_==_»">
+                          <IdentNode start="(20, 25)" end="(20, 26)" leading="" trailing=" " raw_val="b" val="b"/>
+                          <AtomNode start="(20, 27)" end="(20, 29)" leading="" trailing=" " val="=="/>
+                          <IdentNode start="(20, 30)" end="(20, 31)" leading="" trailing="&#10;  " raw_val="a" val="a"/>
+                        </OtherNode>
+                      </OtherNode>
+                    </TermTypespecNode>
+                  </NullNode>
+                </OtherNode>
+                <NullNode/>
+              </OtherNode>
+              <OtherNode start="(21, 3)" end="(22, 41)" kind="Lean.Parser.Command.structSimpleBinder">
+                <CommandDeclmodifiersNode start="(21, 3)" end="(21, 73)">
+                  <NullNode start="(21, 3)" end="(21, 73)">
+                    <CommandDoccommentNode start="(21, 3)" end="(21, 73)" comment="Transitivity for `BEq`. If `a == b` and `b == c` then `a == c`. -/">
+                      <AtomNode start="(21, 3)" end="(21, 6)" leading="" trailing=" " val="/--"/>
+                      <AtomNode start="(21, 7)" end="(21, 73)" leading="" trailing="&#10;  " val="Transitivity for `BEq`. If `a == b` and `b == c` then `a == c`. -/"/>
+                    </CommandDoccommentNode>
+                  </NullNode>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                  <NullNode/>
+                </CommandDeclmodifiersNode>
+                <IdentNode start="(22, 3)" end="(22, 8)" leading="" trailing=" " raw_val="trans" val="trans"/>
+                <OtherNode start="(22, 9)" end="(22, 41)" kind="Lean.Parser.Command.optDeclSig">
+                  <NullNode/>
+                  <NullNode start="(22, 9)" end="(22, 41)">
+                    <TermTypespecNode start="(22, 9)" end="(22, 41)">
+                      <AtomNode start="(22, 9)" end="(22, 10)" leading="" trailing=" " val=":"/>
+                      <OtherNode start="(22, 11)" end="(22, 41)" kind="Lean.Parser.Term.arrow">
+                        <OtherNode start="(22, 11)" end="(22, 23)" kind="«term_==_»">
+                          <OtherNode start="(22, 11)" end="(22, 18)" kind="Lean.Parser.Term.typeAscription">
+                            <AtomNode start="(22, 11)" end="(22, 12)" leading="" trailing="" val="("/>
+                            <IdentNode start="(22, 12)" end="(22, 13)" leading="" trailing=" " raw_val="a" val="a"/>
+                            <AtomNode start="(22, 14)" end="(22, 15)" leading="" trailing=" " val=":"/>
+                            <NullNode start="(22, 16)" end="(22, 17)">
+                              <IdentNode start="(22, 16)" end="(22, 17)" leading="" trailing="" raw_val="α" val="α"/>
+                            </NullNode>
+                            <AtomNode start="(22, 17)" end="(22, 18)" leading="" trailing=" " val=")"/>
+                          </OtherNode>
+                          <AtomNode start="(22, 19)" end="(22, 21)" leading="" trailing=" " val="=="/>
+                          <IdentNode start="(22, 22)" end="(22, 23)" leading="" trailing=" " raw_val="b" val="b"/>
+                        </OtherNode>
+                        <AtomNode start="(22, 24)" end="(22, 25)" leading="" trailing=" " val="→"/>
+                        <OtherNode start="(22, 26)" end="(22, 41)" kind="Lean.Parser.Term.arrow">
+                          <OtherNode start="(22, 26)" end="(22, 32)" kind="«term_==_»">
+                            <IdentNode start="(22, 26)" end="(22, 27)" leading="" trailing=" " raw_val="b" val="b"/>
+                            <AtomNode start="(22, 28)" end="(22, 30)" leading="" trailing=" " val="=="/>
+                            <IdentNode start="(22, 31)" end="(22, 32)" leading="" trailing=" " raw_val="c" val="c"/>
+                          </OtherNode>
+                          <AtomNode start="(22, 33)" end="(22, 34)" leading="" trailing=" " val="→"/>
+                          <OtherNode start="(22, 35)" end="(22, 41)" kind="«term_==_»">
+                            <IdentNode start="(22, 35)" end="(22, 36)" leading="" trailing=" " raw_val="a" val="a"/>
+                            <AtomNode start="(22, 37)" end="(22, 39)" leading="" trailing=" " val="=="/>
+                            <IdentNode start="(22, 40)" end="(22, 41)" leading="" trailing="&#10;&#10;" raw_val="c" val="c"/>
+                          </OtherNode>
+                        </OtherNode>
+                      </OtherNode>
+                    </TermTypespecNode>
+                  </NullNode>
+                </OtherNode>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+        </NullNode>
+        <OtherNode kind="Lean.Parser.Command.optDeriving">
+          <NullNode/>
+        </OtherNode>
+      </CommandStructureNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(24, 1)" end="(25, 71)" name="EquivBEq" full_name="EquivBEq">
+      <CommandDeclmodifiersNode start="(24, 1)" end="(24, 81)">
+        <NullNode start="(24, 1)" end="(24, 81)">
+          <CommandDoccommentNode start="(24, 1)" end="(24, 81)" comment="`EquivBEq` says that the `BEq` implementation is an equivalence relation. -/">
+            <AtomNode start="(24, 1)" end="(24, 4)" leading="" trailing=" " val="/--"/>
+            <AtomNode start="(24, 5)" end="(24, 81)" leading="" trailing="&#10;" val="`EquivBEq` says that the `BEq` implementation is an equivalence relation. -/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandStructureNode start="(25, 1)" end="(25, 71)" name="EquivBEq">
+        <CommandClasstkNode start="(25, 1)" end="(25, 6)">
+          <AtomNode start="(25, 1)" end="(25, 6)" leading="" trailing=" " val="class"/>
+        </CommandClasstkNode>
+        <CommandDeclidNode start="(25, 7)" end="(25, 15)">
+          <IdentNode start="(25, 7)" end="(25, 15)" leading="" trailing=" " raw_val="EquivBEq" val="EquivBEq"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <NullNode start="(25, 16)" end="(25, 27)">
+          <TermExplicitbinderNode start="(25, 16)" end="(25, 19)">
+            <AtomNode start="(25, 16)" end="(25, 17)" leading="" trailing="" val="("/>
+            <NullNode start="(25, 17)" end="(25, 18)">
+              <IdentNode start="(25, 17)" end="(25, 18)" leading="" trailing="" raw_val="α" val="α"/>
+            </NullNode>
+            <NullNode/>
+            <NullNode/>
+            <AtomNode start="(25, 18)" end="(25, 19)" leading="" trailing=" " val=")"/>
+          </TermExplicitbinderNode>
+          <OtherNode start="(25, 20)" end="(25, 27)" kind="Lean.Parser.Term.instBinder">
+            <AtomNode start="(25, 20)" end="(25, 21)" leading="" trailing="" val="["/>
+            <NullNode/>
+            <OtherNode start="(25, 21)" end="(25, 26)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(25, 21)" end="(25, 24)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode start="(25, 25)" end="(25, 26)">
+                <IdentNode start="(25, 25)" end="(25, 26)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+            </OtherNode>
+            <AtomNode start="(25, 26)" end="(25, 27)" leading="" trailing=" " val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode start="(25, 28)" end="(25, 34)">
+          <TermTypespecNode start="(25, 28)" end="(25, 34)">
+            <AtomNode start="(25, 28)" end="(25, 29)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(25, 30)" end="(25, 34)" kind="Lean.Parser.Term.prop">
+              <AtomNode start="(25, 30)" end="(25, 34)" leading="" trailing=" " val="Prop"/>
+            </OtherNode>
+          </TermTypespecNode>
+        </NullNode>
+        <NullNode start="(25, 35)" end="(25, 71)">
+          <OtherNode start="(25, 35)" end="(25, 71)" kind="Lean.Parser.Command.extends">
+            <AtomNode start="(25, 35)" end="(25, 42)" leading="" trailing=" " val="extends"/>
+            <NullNode start="(25, 43)" end="(25, 71)">
+              <OtherNode start="(25, 43)" end="(25, 60)" kind="Lean.Parser.Command.structParent">
+                <NullNode/>
+                <OtherNode start="(25, 43)" end="(25, 60)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(25, 43)" end="(25, 58)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                  <NullNode start="(25, 59)" end="(25, 60)">
+                    <IdentNode start="(25, 59)" end="(25, 60)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(25, 60)" end="(25, 61)" leading="" trailing=" " val=","/>
+              <OtherNode start="(25, 62)" end="(25, 71)" kind="Lean.Parser.Command.structParent">
+                <NullNode/>
+                <OtherNode start="(25, 62)" end="(25, 71)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(25, 62)" end="(25, 69)" leading="" trailing=" " raw_val="ReflBEq" val="ReflBEq" full_name="ReflBEq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                  <NullNode start="(25, 70)" end="(25, 71)">
+                    <IdentNode start="(25, 70)" end="(25, 71)" leading="" trailing="&#10;&#10;" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <NullNode/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <OtherNode kind="Lean.Parser.Command.optDeriving">
+          <NullNode/>
+        </OtherNode>
+      </CommandStructureNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(27, 1)" end="(28, 23)" name="BEq.symm" full_name="BEq.symm">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(27, 1)" end="(28, 23)" name="BEq.symm" full_name="BEq.symm" _is_private_decl="False">
+        <AtomNode start="(27, 1)" end="(27, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(27, 9)" end="(27, 17)">
+          <IdentNode start="(27, 9)" end="(27, 17)" leading="" trailing=" " raw_val="BEq.symm" val="BEq.symm"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(27, 18)" end="(27, 73)">
+          <NullNode start="(27, 18)" end="(27, 55)">
+            <OtherNode start="(27, 18)" end="(27, 25)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(27, 18)" end="(27, 19)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(27, 19)" end="(27, 24)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(27, 19)" end="(27, 22)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(27, 23)" end="(27, 24)">
+                  <IdentNode start="(27, 23)" end="(27, 24)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(27, 24)" end="(27, 25)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(27, 26)" end="(27, 45)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(27, 26)" end="(27, 27)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(27, 27)" end="(27, 44)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(27, 27)" end="(27, 42)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(27, 43)" end="(27, 44)">
+                  <IdentNode start="(27, 43)" end="(27, 44)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(27, 44)" end="(27, 45)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(27, 46)" end="(27, 55)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(27, 46)" end="(27, 47)" leading="" trailing="" val="{"/>
+              <NullNode start="(27, 47)" end="(27, 50)">
+                <IdentNode start="(27, 47)" end="(27, 48)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(27, 49)" end="(27, 50)" leading="" trailing=" " raw_val="b" val="b"/>
+              </NullNode>
+              <NullNode start="(27, 51)" end="(27, 54)">
+                <AtomNode start="(27, 51)" end="(27, 52)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(27, 53)" end="(27, 54)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(27, 54)" end="(27, 55)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(27, 56)" end="(27, 73)">
+            <AtomNode start="(27, 56)" end="(27, 57)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(27, 58)" end="(27, 73)" kind="Lean.Parser.Term.arrow">
+              <OtherNode start="(27, 58)" end="(27, 64)" kind="«term_==_»">
+                <IdentNode start="(27, 58)" end="(27, 59)" leading="" trailing=" " raw_val="a" val="a"/>
+                <AtomNode start="(27, 60)" end="(27, 62)" leading="" trailing=" " val="=="/>
+                <IdentNode start="(27, 63)" end="(27, 64)" leading="" trailing=" " raw_val="b" val="b"/>
+              </OtherNode>
+              <AtomNode start="(27, 65)" end="(27, 66)" leading="" trailing=" " val="→"/>
+              <OtherNode start="(27, 67)" end="(27, 73)" kind="«term_==_»">
+                <IdentNode start="(27, 67)" end="(27, 68)" leading="" trailing=" " raw_val="b" val="b"/>
+                <AtomNode start="(27, 69)" end="(27, 71)" leading="" trailing=" " val="=="/>
+                <IdentNode start="(27, 72)" end="(27, 73)" leading="" trailing=" " raw_val="a" val="a"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(27, 74)" end="(28, 23)">
+          <AtomNode start="(27, 74)" end="(27, 76)" leading="" trailing="&#10;  " val=":="/>
+          <IdentNode start="(28, 3)" end="(28, 23)" leading="" trailing="&#10;&#10;" raw_val="PartialEquivBEq.symm" val="PartialEquivBEq.symm" full_name="PartialEquivBEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(20, 3)" def_end="(20, 7)"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(30, 1)" end="(31, 41)" name="BEq.comm" full_name="BEq.comm">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(30, 1)" end="(31, 41)" name="BEq.comm" full_name="BEq.comm" _is_private_decl="False">
+        <AtomNode start="(30, 1)" end="(30, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(30, 9)" end="(30, 17)">
+          <IdentNode start="(30, 9)" end="(30, 17)" leading="" trailing=" " raw_val="BEq.comm" val="BEq.comm"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(30, 18)" end="(30, 77)">
+          <NullNode start="(30, 18)" end="(30, 55)">
+            <OtherNode start="(30, 18)" end="(30, 25)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(30, 18)" end="(30, 19)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(30, 19)" end="(30, 24)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(30, 19)" end="(30, 22)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(30, 23)" end="(30, 24)">
+                  <IdentNode start="(30, 23)" end="(30, 24)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(30, 24)" end="(30, 25)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(30, 26)" end="(30, 45)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(30, 26)" end="(30, 27)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(30, 27)" end="(30, 44)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(30, 27)" end="(30, 42)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(30, 43)" end="(30, 44)">
+                  <IdentNode start="(30, 43)" end="(30, 44)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(30, 44)" end="(30, 45)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(30, 46)" end="(30, 55)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(30, 46)" end="(30, 47)" leading="" trailing="" val="{"/>
+              <NullNode start="(30, 47)" end="(30, 50)">
+                <IdentNode start="(30, 47)" end="(30, 48)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(30, 49)" end="(30, 50)" leading="" trailing=" " raw_val="b" val="b"/>
+              </NullNode>
+              <NullNode start="(30, 51)" end="(30, 54)">
+                <AtomNode start="(30, 51)" end="(30, 52)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(30, 53)" end="(30, 54)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(30, 54)" end="(30, 55)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(30, 56)" end="(30, 77)">
+            <AtomNode start="(30, 56)" end="(30, 57)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(30, 58)" end="(30, 77)" kind="«term_=_»">
+              <OtherNode start="(30, 58)" end="(30, 66)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(30, 58)" end="(30, 59)" leading="" trailing="" val="("/>
+                <OtherNode start="(30, 59)" end="(30, 65)" kind="«term_==_»">
+                  <IdentNode start="(30, 59)" end="(30, 60)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(30, 61)" end="(30, 63)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(30, 64)" end="(30, 65)" leading="" trailing="" raw_val="b" val="b"/>
+                </OtherNode>
+                <AtomNode start="(30, 65)" end="(30, 66)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+              <AtomNode start="(30, 67)" end="(30, 68)" leading="" trailing=" " val="="/>
+              <OtherNode start="(30, 69)" end="(30, 77)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(30, 69)" end="(30, 70)" leading="" trailing="" val="("/>
+                <OtherNode start="(30, 70)" end="(30, 76)" kind="«term_==_»">
+                  <IdentNode start="(30, 70)" end="(30, 71)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(30, 72)" end="(30, 74)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(30, 75)" end="(30, 76)" leading="" trailing="" raw_val="a" val="a"/>
+                </OtherNode>
+                <AtomNode start="(30, 76)" end="(30, 77)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(30, 78)" end="(31, 41)">
+          <AtomNode start="(30, 78)" end="(30, 80)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(31, 3)" end="(31, 41)" kind="Lean.Parser.Term.app">
+            <OtherNode start="(31, 3)" end="(31, 20)" kind="Lean.Parser.Term.proj">
+              <IdentNode start="(31, 3)" end="(31, 18)" leading="" trailing="" raw_val="Bool.eq_iff_iff" val="Bool.eq_iff_iff" full_name="Bool.eq_iff_iff" mod_name="Init.Data.Bool" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Bool.lean"/>
+              <AtomNode start="(31, 18)" end="(31, 19)" leading="" trailing="" val="."/>
+              <OtherNode start="(31, 19)" end="(31, 20)" kind="fieldIdx">
+                <AtomNode start="(31, 19)" end="(31, 20)" leading="" trailing=" " val="2"/>
+              </OtherNode>
+            </OtherNode>
+            <NullNode start="(31, 21)" end="(31, 41)">
+              <OtherNode start="(31, 21)" end="(31, 41)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(31, 21)" end="(31, 22)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(31, 22)" end="(31, 40)">
+                  <IdentNode start="(31, 22)" end="(31, 30)" leading="" trailing="" raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                  <AtomNode start="(31, 30)" end="(31, 31)" leading="" trailing=" " val=","/>
+                  <IdentNode start="(31, 32)" end="(31, 40)" leading="" trailing="" raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                </NullNode>
+                <AtomNode start="(31, 40)" end="(31, 41)" leading="" trailing="&#10;&#10;" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(33, 1)" end="(34, 26)" name="bne_comm" full_name="bne_comm">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(33, 1)" end="(34, 26)" name="bne_comm" full_name="bne_comm" _is_private_decl="False">
+        <AtomNode start="(33, 1)" end="(33, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(33, 9)" end="(33, 17)">
+          <IdentNode start="(33, 9)" end="(33, 17)" leading="" trailing=" " raw_val="bne_comm" val="bne_comm"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(33, 18)" end="(33, 77)">
+          <NullNode start="(33, 18)" end="(33, 55)">
+            <OtherNode start="(33, 18)" end="(33, 25)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(33, 18)" end="(33, 19)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(33, 19)" end="(33, 24)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(33, 19)" end="(33, 22)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(33, 23)" end="(33, 24)">
+                  <IdentNode start="(33, 23)" end="(33, 24)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(33, 24)" end="(33, 25)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(33, 26)" end="(33, 45)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(33, 26)" end="(33, 27)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(33, 27)" end="(33, 44)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(33, 27)" end="(33, 42)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(33, 43)" end="(33, 44)">
+                  <IdentNode start="(33, 43)" end="(33, 44)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(33, 44)" end="(33, 45)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(33, 46)" end="(33, 55)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(33, 46)" end="(33, 47)" leading="" trailing="" val="{"/>
+              <NullNode start="(33, 47)" end="(33, 50)">
+                <IdentNode start="(33, 47)" end="(33, 48)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(33, 49)" end="(33, 50)" leading="" trailing=" " raw_val="b" val="b"/>
+              </NullNode>
+              <NullNode start="(33, 51)" end="(33, 54)">
+                <AtomNode start="(33, 51)" end="(33, 52)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(33, 53)" end="(33, 54)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(33, 54)" end="(33, 55)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(33, 56)" end="(33, 77)">
+            <AtomNode start="(33, 56)" end="(33, 57)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(33, 58)" end="(33, 77)" kind="«term_=_»">
+              <OtherNode start="(33, 58)" end="(33, 66)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(33, 58)" end="(33, 59)" leading="" trailing="" val="("/>
+                <OtherNode start="(33, 59)" end="(33, 65)" kind="«term_!=_»">
+                  <IdentNode start="(33, 59)" end="(33, 60)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(33, 61)" end="(33, 63)" leading="" trailing=" " val="!="/>
+                  <IdentNode start="(33, 64)" end="(33, 65)" leading="" trailing="" raw_val="b" val="b"/>
+                </OtherNode>
+                <AtomNode start="(33, 65)" end="(33, 66)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+              <AtomNode start="(33, 67)" end="(33, 68)" leading="" trailing=" " val="="/>
+              <OtherNode start="(33, 69)" end="(33, 77)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(33, 69)" end="(33, 70)" leading="" trailing="" val="("/>
+                <OtherNode start="(33, 70)" end="(33, 76)" kind="«term_!=_»">
+                  <IdentNode start="(33, 70)" end="(33, 71)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(33, 72)" end="(33, 74)" leading="" trailing=" " val="!="/>
+                  <IdentNode start="(33, 75)" end="(33, 76)" leading="" trailing="" raw_val="a" val="a"/>
+                </OtherNode>
+                <AtomNode start="(33, 76)" end="(33, 77)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(33, 78)" end="(34, 26)">
+          <AtomNode start="(33, 78)" end="(33, 80)" leading="" trailing=" " val=":="/>
+          <TermBytacticNode start="(33, 81)" end="(34, 26)">
+            <AtomNode start="(33, 81)" end="(33, 83)" leading="" trailing="&#10;  " val="by"/>
+            <TacticTacticseqNode start="(34, 3)" end="(34, 26)">
+              <TacticTacticseq1IndentedNode start="(34, 3)" end="(34, 26)">
+                <NullNode start="(34, 3)" end="(34, 26)">
+                  <OtherNode start="(34, 3)" end="(34, 26)" kind="Lean.Parser.Tactic.rwSeq" state_before="α : Type u_1&#10;inst✝¹ : BEq α&#10;inst✝ : PartialEquivBEq α&#10;a b : α&#10;⊢ (a != b) = (b != a)" state_after="no goals" tactic="rw [bne, BEq.comm, bne]">
+                    <AtomNode start="(34, 3)" end="(34, 5)" leading="" trailing=" " val="rw"/>
+                    <OtherNode kind="Lean.Parser.Tactic.optConfig">
+                      <NullNode/>
+                    </OtherNode>
+                    <OtherNode start="(34, 6)" end="(34, 26)" kind="Lean.Parser.Tactic.rwRuleSeq">
+                      <AtomNode start="(34, 6)" end="(34, 7)" leading="" trailing="" val="["/>
+                      <NullNode start="(34, 7)" end="(34, 25)">
+                        <OtherNode start="(34, 7)" end="(34, 10)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <IdentNode start="(34, 7)" end="(34, 10)" leading="" trailing="" raw_val="bne" val="bne" full_name="bne" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(34, 10)" end="(34, 11)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(34, 12)" end="(34, 20)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <IdentNode start="(34, 12)" end="(34, 20)" leading="" trailing="" raw_val="BEq.comm" val="BEq.comm" full_name="BEq.comm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(30, 9)" def_end="(30, 17)"/>
+                        </OtherNode>
+                        <AtomNode start="(34, 20)" end="(34, 21)" leading="" trailing=" " val=","/>
+                        <OtherNode start="(34, 22)" end="(34, 25)" kind="Lean.Parser.Tactic.rwRule">
+                          <NullNode/>
+                          <IdentNode start="(34, 22)" end="(34, 25)" leading="" trailing="" raw_val="bne" val="bne" full_name="bne" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                        </OtherNode>
+                      </NullNode>
+                      <AtomNode start="(34, 25)" end="(34, 26)" leading="" trailing="&#10;&#10;" val="]"/>
+                    </OtherNode>
+                    <NullNode/>
+                  </OtherNode>
+                </NullNode>
+              </TacticTacticseq1IndentedNode>
+            </TacticTacticseqNode>
+          </TermBytacticNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(36, 1)" end="(37, 25)" name="BEq.symm_false" full_name="BEq.symm_false">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(36, 1)" end="(37, 25)" name="BEq.symm_false" full_name="BEq.symm_false" _is_private_decl="False">
+        <AtomNode start="(36, 1)" end="(36, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(36, 9)" end="(36, 23)">
+          <IdentNode start="(36, 9)" end="(36, 23)" leading="" trailing=" " raw_val="BEq.symm_false" val="BEq.symm_false"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(36, 24)" end="(36, 99)">
+          <NullNode start="(36, 24)" end="(36, 61)">
+            <OtherNode start="(36, 24)" end="(36, 31)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(36, 24)" end="(36, 25)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(36, 25)" end="(36, 30)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(36, 25)" end="(36, 28)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(36, 29)" end="(36, 30)">
+                  <IdentNode start="(36, 29)" end="(36, 30)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(36, 30)" end="(36, 31)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(36, 32)" end="(36, 51)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(36, 32)" end="(36, 33)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(36, 33)" end="(36, 50)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(36, 33)" end="(36, 48)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(36, 49)" end="(36, 50)">
+                  <IdentNode start="(36, 49)" end="(36, 50)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(36, 50)" end="(36, 51)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(36, 52)" end="(36, 61)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(36, 52)" end="(36, 53)" leading="" trailing="" val="{"/>
+              <NullNode start="(36, 53)" end="(36, 56)">
+                <IdentNode start="(36, 53)" end="(36, 54)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(36, 55)" end="(36, 56)" leading="" trailing=" " raw_val="b" val="b"/>
+              </NullNode>
+              <NullNode start="(36, 57)" end="(36, 60)">
+                <AtomNode start="(36, 57)" end="(36, 58)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(36, 59)" end="(36, 60)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(36, 60)" end="(36, 61)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(36, 62)" end="(36, 99)">
+            <AtomNode start="(36, 62)" end="(36, 63)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(36, 64)" end="(36, 99)" kind="Lean.Parser.Term.arrow">
+              <OtherNode start="(36, 64)" end="(36, 80)" kind="«term_=_»">
+                <OtherNode start="(36, 64)" end="(36, 72)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(36, 64)" end="(36, 65)" leading="" trailing="" val="("/>
+                  <OtherNode start="(36, 65)" end="(36, 71)" kind="«term_==_»">
+                    <IdentNode start="(36, 65)" end="(36, 66)" leading="" trailing=" " raw_val="a" val="a"/>
+                    <AtomNode start="(36, 67)" end="(36, 69)" leading="" trailing=" " val="=="/>
+                    <IdentNode start="(36, 70)" end="(36, 71)" leading="" trailing="" raw_val="b" val="b"/>
+                  </OtherNode>
+                  <AtomNode start="(36, 71)" end="(36, 72)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+                <AtomNode start="(36, 73)" end="(36, 74)" leading="" trailing=" " val="="/>
+                <IdentNode start="(36, 75)" end="(36, 80)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </OtherNode>
+              <AtomNode start="(36, 81)" end="(36, 82)" leading="" trailing=" " val="→"/>
+              <OtherNode start="(36, 83)" end="(36, 99)" kind="«term_=_»">
+                <OtherNode start="(36, 83)" end="(36, 91)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(36, 83)" end="(36, 84)" leading="" trailing="" val="("/>
+                  <OtherNode start="(36, 84)" end="(36, 90)" kind="«term_==_»">
+                    <IdentNode start="(36, 84)" end="(36, 85)" leading="" trailing=" " raw_val="b" val="b"/>
+                    <AtomNode start="(36, 86)" end="(36, 88)" leading="" trailing=" " val="=="/>
+                    <IdentNode start="(36, 89)" end="(36, 90)" leading="" trailing="" raw_val="a" val="a"/>
+                  </OtherNode>
+                  <AtomNode start="(36, 90)" end="(36, 91)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+                <AtomNode start="(36, 92)" end="(36, 93)" leading="" trailing=" " val="="/>
+                <IdentNode start="(36, 94)" end="(36, 99)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(36, 100)" end="(37, 25)">
+          <AtomNode start="(36, 100)" end="(36, 102)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(37, 3)" end="(37, 25)" kind="Lean.Parser.Term.subst">
+            <OtherNode start="(37, 3)" end="(37, 20)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(37, 3)" end="(37, 11)" leading="" trailing=" " raw_val="BEq.comm" val="BEq.comm" full_name="BEq.comm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(30, 9)" def_end="(30, 17)"/>
+              <NullNode start="(37, 12)" end="(37, 20)">
+                <OtherNode start="(37, 12)" end="(37, 20)" kind="Lean.Parser.Term.namedArgument">
+                  <AtomNode start="(37, 12)" end="(37, 13)" leading="" trailing="" val="("/>
+                  <IdentNode start="(37, 13)" end="(37, 14)" leading="" trailing=" " raw_val="α" val="α"/>
+                  <AtomNode start="(37, 15)" end="(37, 17)" leading="" trailing=" " val=":="/>
+                  <IdentNode start="(37, 18)" end="(37, 19)" leading="" trailing="" raw_val="α" val="α"/>
+                  <AtomNode start="(37, 19)" end="(37, 20)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+            <AtomNode start="(37, 21)" end="(37, 22)" leading="" trailing=" " val="▸"/>
+            <NullNode start="(37, 23)" end="(37, 25)">
+              <IdentNode start="(37, 23)" end="(37, 25)" leading="" trailing="&#10;&#10;" raw_val="id" val="id" full_name="id" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(39, 1)" end="(40, 24)" name="BEq.trans" full_name="BEq.trans">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(39, 1)" end="(40, 24)" name="BEq.trans" full_name="BEq.trans" _is_private_decl="False">
+        <AtomNode start="(39, 1)" end="(39, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(39, 9)" end="(39, 18)">
+          <IdentNode start="(39, 9)" end="(39, 18)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(39, 19)" end="(39, 85)">
+          <NullNode start="(39, 19)" end="(39, 58)">
+            <OtherNode start="(39, 19)" end="(39, 26)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(39, 19)" end="(39, 20)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(39, 20)" end="(39, 25)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(39, 20)" end="(39, 23)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(39, 24)" end="(39, 25)">
+                  <IdentNode start="(39, 24)" end="(39, 25)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(39, 25)" end="(39, 26)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(39, 27)" end="(39, 46)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(39, 27)" end="(39, 28)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(39, 28)" end="(39, 45)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(39, 28)" end="(39, 43)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(39, 44)" end="(39, 45)">
+                  <IdentNode start="(39, 44)" end="(39, 45)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(39, 45)" end="(39, 46)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(39, 47)" end="(39, 58)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(39, 47)" end="(39, 48)" leading="" trailing="" val="{"/>
+              <NullNode start="(39, 48)" end="(39, 53)">
+                <IdentNode start="(39, 48)" end="(39, 49)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(39, 50)" end="(39, 51)" leading="" trailing=" " raw_val="b" val="b"/>
+                <IdentNode start="(39, 52)" end="(39, 53)" leading="" trailing=" " raw_val="c" val="c"/>
+              </NullNode>
+              <NullNode start="(39, 54)" end="(39, 57)">
+                <AtomNode start="(39, 54)" end="(39, 55)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(39, 56)" end="(39, 57)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(39, 57)" end="(39, 58)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(39, 59)" end="(39, 85)">
+            <AtomNode start="(39, 59)" end="(39, 60)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(39, 61)" end="(39, 85)" kind="Lean.Parser.Term.arrow">
+              <OtherNode start="(39, 61)" end="(39, 67)" kind="«term_==_»">
+                <IdentNode start="(39, 61)" end="(39, 62)" leading="" trailing=" " raw_val="a" val="a"/>
+                <AtomNode start="(39, 63)" end="(39, 65)" leading="" trailing=" " val="=="/>
+                <IdentNode start="(39, 66)" end="(39, 67)" leading="" trailing=" " raw_val="b" val="b"/>
+              </OtherNode>
+              <AtomNode start="(39, 68)" end="(39, 69)" leading="" trailing=" " val="→"/>
+              <OtherNode start="(39, 70)" end="(39, 85)" kind="Lean.Parser.Term.arrow">
+                <OtherNode start="(39, 70)" end="(39, 76)" kind="«term_==_»">
+                  <IdentNode start="(39, 70)" end="(39, 71)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(39, 72)" end="(39, 74)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(39, 75)" end="(39, 76)" leading="" trailing=" " raw_val="c" val="c"/>
+                </OtherNode>
+                <AtomNode start="(39, 77)" end="(39, 78)" leading="" trailing=" " val="→"/>
+                <OtherNode start="(39, 79)" end="(39, 85)" kind="«term_==_»">
+                  <IdentNode start="(39, 79)" end="(39, 80)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(39, 81)" end="(39, 83)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(39, 84)" end="(39, 85)" leading="" trailing=" " raw_val="c" val="c"/>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(39, 86)" end="(40, 24)">
+          <AtomNode start="(39, 86)" end="(39, 88)" leading="" trailing="&#10;  " val=":="/>
+          <IdentNode start="(40, 3)" end="(40, 24)" leading="" trailing="&#10;&#10;" raw_val="PartialEquivBEq.trans" val="PartialEquivBEq.trans" full_name="PartialEquivBEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(22, 3)" def_end="(22, 8)"/>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(42, 1)" end="(44, 60)" name="BEq.congr_left" full_name="BEq.congr_left">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(42, 1)" end="(44, 60)" name="BEq.congr_left" full_name="BEq.congr_left" _is_private_decl="False">
+        <AtomNode start="(42, 1)" end="(42, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(42, 9)" end="(42, 23)">
+          <IdentNode start="(42, 9)" end="(42, 23)" leading="" trailing=" " raw_val="BEq.congr_left" val="BEq.congr_left"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(42, 24)" end="(43, 24)">
+          <NullNode start="(42, 24)" end="(42, 76)">
+            <OtherNode start="(42, 24)" end="(42, 31)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(42, 24)" end="(42, 25)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(42, 25)" end="(42, 30)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(42, 25)" end="(42, 28)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(42, 29)" end="(42, 30)">
+                  <IdentNode start="(42, 29)" end="(42, 30)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(42, 30)" end="(42, 31)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(42, 32)" end="(42, 51)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(42, 32)" end="(42, 33)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(42, 33)" end="(42, 50)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(42, 33)" end="(42, 48)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(42, 49)" end="(42, 50)">
+                  <IdentNode start="(42, 49)" end="(42, 50)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(42, 50)" end="(42, 51)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(42, 52)" end="(42, 63)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(42, 52)" end="(42, 53)" leading="" trailing="" val="{"/>
+              <NullNode start="(42, 53)" end="(42, 58)">
+                <IdentNode start="(42, 53)" end="(42, 54)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(42, 55)" end="(42, 56)" leading="" trailing=" " raw_val="b" val="b"/>
+                <IdentNode start="(42, 57)" end="(42, 58)" leading="" trailing=" " raw_val="c" val="c"/>
+              </NullNode>
+              <NullNode start="(42, 59)" end="(42, 62)">
+                <AtomNode start="(42, 59)" end="(42, 60)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(42, 61)" end="(42, 62)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(42, 62)" end="(42, 63)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(42, 64)" end="(42, 76)">
+              <AtomNode start="(42, 64)" end="(42, 65)" leading="" trailing="" val="("/>
+              <NullNode start="(42, 65)" end="(42, 66)">
+                <IdentNode start="(42, 65)" end="(42, 66)" leading="" trailing=" " raw_val="h" val="h"/>
+              </NullNode>
+              <NullNode start="(42, 67)" end="(42, 75)">
+                <AtomNode start="(42, 67)" end="(42, 68)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(42, 69)" end="(42, 75)" kind="«term_==_»">
+                  <IdentNode start="(42, 69)" end="(42, 70)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(42, 71)" end="(42, 73)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(42, 74)" end="(42, 75)" leading="" trailing="" raw_val="b" val="b"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(42, 75)" end="(42, 76)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(42, 77)" end="(43, 24)">
+            <AtomNode start="(42, 77)" end="(42, 78)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(43, 5)" end="(43, 24)" kind="«term_=_»">
+              <OtherNode start="(43, 5)" end="(43, 13)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(43, 5)" end="(43, 6)" leading="" trailing="" val="("/>
+                <OtherNode start="(43, 6)" end="(43, 12)" kind="«term_==_»">
+                  <IdentNode start="(43, 6)" end="(43, 7)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(43, 8)" end="(43, 10)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(43, 11)" end="(43, 12)" leading="" trailing="" raw_val="c" val="c"/>
+                </OtherNode>
+                <AtomNode start="(43, 12)" end="(43, 13)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+              <AtomNode start="(43, 14)" end="(43, 15)" leading="" trailing=" " val="="/>
+              <OtherNode start="(43, 16)" end="(43, 24)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(43, 16)" end="(43, 17)" leading="" trailing="" val="("/>
+                <OtherNode start="(43, 17)" end="(43, 23)" kind="«term_==_»">
+                  <IdentNode start="(43, 17)" end="(43, 18)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(43, 19)" end="(43, 21)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(43, 22)" end="(43, 23)" leading="" trailing="" raw_val="c" val="c"/>
+                </OtherNode>
+                <AtomNode start="(43, 23)" end="(43, 24)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(43, 25)" end="(44, 60)">
+          <AtomNode start="(43, 25)" end="(43, 27)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(44, 3)" end="(44, 60)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(44, 3)" end="(44, 22)" leading="" trailing=" " raw_val="Bool.eq_iff_iff.mpr" val="Bool.eq_iff_iff.mpr"/>
+            <NullNode start="(44, 23)" end="(44, 60)">
+              <OtherNode start="(44, 23)" end="(44, 60)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(44, 23)" end="(44, 24)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(44, 24)" end="(44, 59)">
+                  <OtherNode start="(44, 24)" end="(44, 46)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(44, 24)" end="(44, 33)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                    <NullNode start="(44, 34)" end="(44, 46)">
+                      <OtherNode start="(44, 34)" end="(44, 46)" kind="Lean.Parser.Term.paren">
+                        <AtomNode start="(44, 34)" end="(44, 35)" leading="" trailing="" val="("/>
+                        <OtherNode start="(44, 35)" end="(44, 45)" kind="Lean.Parser.Term.app">
+                          <IdentNode start="(44, 35)" end="(44, 43)" leading="" trailing=" " raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                          <NullNode start="(44, 44)" end="(44, 45)">
+                            <IdentNode start="(44, 44)" end="(44, 45)" leading="" trailing="" raw_val="h" val="h"/>
+                          </NullNode>
+                        </OtherNode>
+                        <AtomNode start="(44, 45)" end="(44, 46)" leading="" trailing="" val=")"/>
+                      </OtherNode>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(44, 46)" end="(44, 47)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(44, 48)" end="(44, 59)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(44, 48)" end="(44, 57)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                    <NullNode start="(44, 58)" end="(44, 59)">
+                      <IdentNode start="(44, 58)" end="(44, 59)" leading="" trailing="" raw_val="h" val="h"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(44, 59)" end="(44, 60)" leading="" trailing="&#10;&#10;" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(46, 1)" end="(48, 86)" name="BEq.congr_right" full_name="BEq.congr_right">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(46, 1)" end="(48, 86)" name="BEq.congr_right" full_name="BEq.congr_right" _is_private_decl="False">
+        <AtomNode start="(46, 1)" end="(46, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(46, 9)" end="(46, 24)">
+          <IdentNode start="(46, 9)" end="(46, 24)" leading="" trailing=" " raw_val="BEq.congr_right" val="BEq.congr_right"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(46, 25)" end="(47, 24)">
+          <NullNode start="(46, 25)" end="(46, 77)">
+            <OtherNode start="(46, 25)" end="(46, 32)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(46, 25)" end="(46, 26)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(46, 26)" end="(46, 31)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(46, 26)" end="(46, 29)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(46, 30)" end="(46, 31)">
+                  <IdentNode start="(46, 30)" end="(46, 31)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(46, 31)" end="(46, 32)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(46, 33)" end="(46, 52)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(46, 33)" end="(46, 34)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(46, 34)" end="(46, 51)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(46, 34)" end="(46, 49)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(46, 50)" end="(46, 51)">
+                  <IdentNode start="(46, 50)" end="(46, 51)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(46, 51)" end="(46, 52)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(46, 53)" end="(46, 64)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(46, 53)" end="(46, 54)" leading="" trailing="" val="{"/>
+              <NullNode start="(46, 54)" end="(46, 59)">
+                <IdentNode start="(46, 54)" end="(46, 55)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(46, 56)" end="(46, 57)" leading="" trailing=" " raw_val="b" val="b"/>
+                <IdentNode start="(46, 58)" end="(46, 59)" leading="" trailing=" " raw_val="c" val="c"/>
+              </NullNode>
+              <NullNode start="(46, 60)" end="(46, 63)">
+                <AtomNode start="(46, 60)" end="(46, 61)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(46, 62)" end="(46, 63)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(46, 63)" end="(46, 64)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+            <TermExplicitbinderNode start="(46, 65)" end="(46, 77)">
+              <AtomNode start="(46, 65)" end="(46, 66)" leading="" trailing="" val="("/>
+              <NullNode start="(46, 66)" end="(46, 67)">
+                <IdentNode start="(46, 66)" end="(46, 67)" leading="" trailing=" " raw_val="h" val="h"/>
+              </NullNode>
+              <NullNode start="(46, 68)" end="(46, 76)">
+                <AtomNode start="(46, 68)" end="(46, 69)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(46, 70)" end="(46, 76)" kind="«term_==_»">
+                  <IdentNode start="(46, 70)" end="(46, 71)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(46, 72)" end="(46, 74)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(46, 75)" end="(46, 76)" leading="" trailing="" raw_val="c" val="c"/>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(46, 76)" end="(46, 77)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <TermTypespecNode start="(46, 78)" end="(47, 24)">
+            <AtomNode start="(46, 78)" end="(46, 79)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(47, 5)" end="(47, 24)" kind="«term_=_»">
+              <OtherNode start="(47, 5)" end="(47, 13)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(47, 5)" end="(47, 6)" leading="" trailing="" val="("/>
+                <OtherNode start="(47, 6)" end="(47, 12)" kind="«term_==_»">
+                  <IdentNode start="(47, 6)" end="(47, 7)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(47, 8)" end="(47, 10)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(47, 11)" end="(47, 12)" leading="" trailing="" raw_val="b" val="b"/>
+                </OtherNode>
+                <AtomNode start="(47, 12)" end="(47, 13)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+              <AtomNode start="(47, 14)" end="(47, 15)" leading="" trailing=" " val="="/>
+              <OtherNode start="(47, 16)" end="(47, 24)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(47, 16)" end="(47, 17)" leading="" trailing="" val="("/>
+                <OtherNode start="(47, 17)" end="(47, 23)" kind="«term_==_»">
+                  <IdentNode start="(47, 17)" end="(47, 18)" leading="" trailing=" " raw_val="a" val="a"/>
+                  <AtomNode start="(47, 19)" end="(47, 21)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(47, 22)" end="(47, 23)" leading="" trailing="" raw_val="c" val="c"/>
+                </OtherNode>
+                <AtomNode start="(47, 23)" end="(47, 24)" leading="" trailing=" " val=")"/>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(47, 25)" end="(48, 86)">
+          <AtomNode start="(47, 25)" end="(47, 27)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(48, 3)" end="(48, 86)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(48, 3)" end="(48, 22)" leading="" trailing=" " raw_val="Bool.eq_iff_iff.mpr" val="Bool.eq_iff_iff.mpr"/>
+            <NullNode start="(48, 23)" end="(48, 86)">
+              <OtherNode start="(48, 23)" end="(48, 86)" kind="Lean.Parser.Term.anonymousCtor">
+                <AtomNode start="(48, 23)" end="(48, 24)" leading="" trailing="" val="⟨"/>
+                <NullNode start="(48, 24)" end="(48, 85)">
+                  <OtherNode start="(48, 24)" end="(48, 48)" kind="Lean.Parser.Term.fun">
+                    <AtomNode start="(48, 24)" end="(48, 27)" leading="" trailing=" " val="fun"/>
+                    <OtherNode start="(48, 28)" end="(48, 48)" kind="Lean.Parser.Term.basicFun">
+                      <NullNode start="(48, 28)" end="(48, 30)">
+                        <IdentNode start="(48, 28)" end="(48, 30)" leading="" trailing=" " raw_val="h'" val="h'"/>
+                      </NullNode>
+                      <NullNode/>
+                      <AtomNode start="(48, 31)" end="(48, 33)" leading="" trailing=" " val="=&amp;gt;"/>
+                      <OtherNode start="(48, 34)" end="(48, 48)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(48, 34)" end="(48, 43)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                        <NullNode start="(48, 44)" end="(48, 48)">
+                          <IdentNode start="(48, 44)" end="(48, 46)" leading="" trailing=" " raw_val="h'" val="h'"/>
+                          <IdentNode start="(48, 47)" end="(48, 48)" leading="" trailing="" raw_val="h" val="h"/>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                  <AtomNode start="(48, 48)" end="(48, 49)" leading="" trailing=" " val=","/>
+                  <OtherNode start="(48, 50)" end="(48, 85)" kind="Lean.Parser.Term.fun">
+                    <AtomNode start="(48, 50)" end="(48, 53)" leading="" trailing=" " val="fun"/>
+                    <OtherNode start="(48, 54)" end="(48, 85)" kind="Lean.Parser.Term.basicFun">
+                      <NullNode start="(48, 54)" end="(48, 56)">
+                        <IdentNode start="(48, 54)" end="(48, 56)" leading="" trailing=" " raw_val="h'" val="h'"/>
+                      </NullNode>
+                      <NullNode/>
+                      <AtomNode start="(48, 57)" end="(48, 59)" leading="" trailing=" " val="=&amp;gt;"/>
+                      <OtherNode start="(48, 60)" end="(48, 85)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(48, 60)" end="(48, 69)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                        <NullNode start="(48, 70)" end="(48, 85)">
+                          <IdentNode start="(48, 70)" end="(48, 72)" leading="" trailing=" " raw_val="h'" val="h'"/>
+                          <OtherNode start="(48, 73)" end="(48, 85)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(48, 73)" end="(48, 74)" leading="" trailing="" val="("/>
+                            <OtherNode start="(48, 74)" end="(48, 84)" kind="Lean.Parser.Term.app">
+                              <IdentNode start="(48, 74)" end="(48, 82)" leading="" trailing=" " raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                              <NullNode start="(48, 83)" end="(48, 84)">
+                                <IdentNode start="(48, 83)" end="(48, 84)" leading="" trailing="" raw_val="h" val="h"/>
+                              </NullNode>
+                            </OtherNode>
+                            <AtomNode start="(48, 84)" end="(48, 85)" leading="" trailing="" val=")"/>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(48, 85)" end="(48, 86)" leading="" trailing="&#10;&#10;" val="⟩"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(50, 1)" end="(52, 97)" name="BEq.neq_of_neq_of_beq" full_name="BEq.neq_of_neq_of_beq">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(50, 1)" end="(52, 97)" name="BEq.neq_of_neq_of_beq" full_name="BEq.neq_of_neq_of_beq" _is_private_decl="False">
+        <AtomNode start="(50, 1)" end="(50, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(50, 9)" end="(50, 30)">
+          <IdentNode start="(50, 9)" end="(50, 30)" leading="" trailing=" " raw_val="BEq.neq_of_neq_of_beq" val="BEq.neq_of_neq_of_beq"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(50, 31)" end="(51, 49)">
+          <NullNode start="(50, 31)" end="(50, 70)">
+            <OtherNode start="(50, 31)" end="(50, 38)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(50, 31)" end="(50, 32)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(50, 32)" end="(50, 37)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(50, 32)" end="(50, 35)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(50, 36)" end="(50, 37)">
+                  <IdentNode start="(50, 36)" end="(50, 37)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(50, 37)" end="(50, 38)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(50, 39)" end="(50, 58)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(50, 39)" end="(50, 40)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(50, 40)" end="(50, 57)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(50, 40)" end="(50, 55)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(50, 56)" end="(50, 57)">
+                  <IdentNode start="(50, 56)" end="(50, 57)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(50, 57)" end="(50, 58)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(50, 59)" end="(50, 70)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(50, 59)" end="(50, 60)" leading="" trailing="" val="{"/>
+              <NullNode start="(50, 60)" end="(50, 65)">
+                <IdentNode start="(50, 60)" end="(50, 61)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(50, 62)" end="(50, 63)" leading="" trailing=" " raw_val="b" val="b"/>
+                <IdentNode start="(50, 64)" end="(50, 65)" leading="" trailing=" " raw_val="c" val="c"/>
+              </NullNode>
+              <NullNode start="(50, 66)" end="(50, 69)">
+                <AtomNode start="(50, 66)" end="(50, 67)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(50, 68)" end="(50, 69)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(50, 69)" end="(50, 70)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(50, 71)" end="(51, 49)">
+            <AtomNode start="(50, 71)" end="(50, 72)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(51, 5)" end="(51, 49)" kind="Lean.Parser.Term.arrow">
+              <OtherNode start="(51, 5)" end="(51, 21)" kind="«term_=_»">
+                <OtherNode start="(51, 5)" end="(51, 13)" kind="Lean.Parser.Term.paren">
+                  <AtomNode start="(51, 5)" end="(51, 6)" leading="" trailing="" val="("/>
+                  <OtherNode start="(51, 6)" end="(51, 12)" kind="«term_==_»">
+                    <IdentNode start="(51, 6)" end="(51, 7)" leading="" trailing=" " raw_val="a" val="a"/>
+                    <AtomNode start="(51, 8)" end="(51, 10)" leading="" trailing=" " val="=="/>
+                    <IdentNode start="(51, 11)" end="(51, 12)" leading="" trailing="" raw_val="b" val="b"/>
+                  </OtherNode>
+                  <AtomNode start="(51, 12)" end="(51, 13)" leading="" trailing=" " val=")"/>
+                </OtherNode>
+                <AtomNode start="(51, 14)" end="(51, 15)" leading="" trailing=" " val="="/>
+                <IdentNode start="(51, 16)" end="(51, 21)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              </OtherNode>
+              <AtomNode start="(51, 22)" end="(51, 23)" leading="" trailing=" " val="→"/>
+              <OtherNode start="(51, 24)" end="(51, 49)" kind="Lean.Parser.Term.arrow">
+                <OtherNode start="(51, 24)" end="(51, 30)" kind="«term_==_»">
+                  <IdentNode start="(51, 24)" end="(51, 25)" leading="" trailing=" " raw_val="b" val="b"/>
+                  <AtomNode start="(51, 26)" end="(51, 28)" leading="" trailing=" " val="=="/>
+                  <IdentNode start="(51, 29)" end="(51, 30)" leading="" trailing=" " raw_val="c" val="c"/>
+                </OtherNode>
+                <AtomNode start="(51, 31)" end="(51, 32)" leading="" trailing=" " val="→"/>
+                <OtherNode start="(51, 33)" end="(51, 49)" kind="«term_=_»">
+                  <OtherNode start="(51, 33)" end="(51, 41)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(51, 33)" end="(51, 34)" leading="" trailing="" val="("/>
+                    <OtherNode start="(51, 34)" end="(51, 40)" kind="«term_==_»">
+                      <IdentNode start="(51, 34)" end="(51, 35)" leading="" trailing=" " raw_val="a" val="a"/>
+                      <AtomNode start="(51, 36)" end="(51, 38)" leading="" trailing=" " val="=="/>
+                      <IdentNode start="(51, 39)" end="(51, 40)" leading="" trailing="" raw_val="c" val="c"/>
+                    </OtherNode>
+                    <AtomNode start="(51, 40)" end="(51, 41)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(51, 42)" end="(51, 43)" leading="" trailing=" " val="="/>
+                  <IdentNode start="(51, 44)" end="(51, 49)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(51, 50)" end="(52, 97)">
+          <AtomNode start="(51, 50)" end="(51, 52)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(52, 3)" end="(52, 97)" kind="Lean.Parser.Term.fun">
+            <AtomNode start="(52, 3)" end="(52, 6)" leading="" trailing=" " val="fun"/>
+            <OtherNode start="(52, 7)" end="(52, 97)" kind="Lean.Parser.Term.basicFun">
+              <NullNode start="(52, 7)" end="(52, 12)">
+                <IdentNode start="(52, 7)" end="(52, 9)" leading="" trailing=" " raw_val="h₁" val="h₁"/>
+                <IdentNode start="(52, 10)" end="(52, 12)" leading="" trailing=" " raw_val="h₂" val="h₂"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(52, 13)" end="(52, 15)" leading="" trailing=" " val="=&amp;gt;"/>
+              <OtherNode start="(52, 16)" end="(52, 97)" kind="Lean.Parser.Term.app">
+                <OtherNode start="(52, 16)" end="(52, 35)" kind="Lean.Parser.Term.proj">
+                  <IdentNode start="(52, 16)" end="(52, 33)" leading="" trailing="" raw_val="Bool.eq_false_iff" val="Bool.eq_false_iff" full_name="Bool.eq_false_iff" mod_name="Init.Data.Bool" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Bool.lean"/>
+                  <AtomNode start="(52, 33)" end="(52, 34)" leading="" trailing="" val="."/>
+                  <OtherNode start="(52, 34)" end="(52, 35)" kind="fieldIdx">
+                    <AtomNode start="(52, 34)" end="(52, 35)" leading="" trailing=" " val="2"/>
+                  </OtherNode>
+                </OtherNode>
+                <NullNode start="(52, 36)" end="(52, 97)">
+                  <OtherNode start="(52, 36)" end="(52, 97)" kind="Lean.Parser.Term.fun">
+                    <AtomNode start="(52, 36)" end="(52, 39)" leading="" trailing=" " val="fun"/>
+                    <OtherNode start="(52, 40)" end="(52, 97)" kind="Lean.Parser.Term.basicFun">
+                      <NullNode start="(52, 40)" end="(52, 42)">
+                        <IdentNode start="(52, 40)" end="(52, 42)" leading="" trailing=" " raw_val="h₃" val="h₃"/>
+                      </NullNode>
+                      <NullNode/>
+                      <AtomNode start="(52, 43)" end="(52, 45)" leading="" trailing=" " val="=&amp;gt;"/>
+                      <OtherNode start="(52, 46)" end="(52, 97)" kind="Lean.Parser.Term.app">
+                        <OtherNode start="(52, 46)" end="(52, 65)" kind="Lean.Parser.Term.proj">
+                          <IdentNode start="(52, 46)" end="(52, 63)" leading="" trailing="" raw_val="Bool.eq_false_iff" val="Bool.eq_false_iff" full_name="Bool.eq_false_iff" mod_name="Init.Data.Bool" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Bool.lean"/>
+                          <AtomNode start="(52, 63)" end="(52, 64)" leading="" trailing="" val="."/>
+                          <OtherNode start="(52, 64)" end="(52, 65)" kind="fieldIdx">
+                            <AtomNode start="(52, 64)" end="(52, 65)" leading="" trailing=" " val="1"/>
+                          </OtherNode>
+                        </OtherNode>
+                        <NullNode start="(52, 66)" end="(52, 97)">
+                          <IdentNode start="(52, 66)" end="(52, 68)" leading="" trailing=" " raw_val="h₁" val="h₁"/>
+                          <OtherNode start="(52, 69)" end="(52, 97)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(52, 69)" end="(52, 70)" leading="" trailing="" val="("/>
+                            <OtherNode start="(52, 70)" end="(52, 96)" kind="Lean.Parser.Term.app">
+                              <IdentNode start="(52, 70)" end="(52, 79)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                              <NullNode start="(52, 80)" end="(52, 96)">
+                                <IdentNode start="(52, 80)" end="(52, 82)" leading="" trailing=" " raw_val="h₃" val="h₃"/>
+                                <OtherNode start="(52, 83)" end="(52, 96)" kind="Lean.Parser.Term.paren">
+                                  <AtomNode start="(52, 83)" end="(52, 84)" leading="" trailing="" val="("/>
+                                  <OtherNode start="(52, 84)" end="(52, 95)" kind="Lean.Parser.Term.app">
+                                    <IdentNode start="(52, 84)" end="(52, 92)" leading="" trailing=" " raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                                    <NullNode start="(52, 93)" end="(52, 95)">
+                                      <IdentNode start="(52, 93)" end="(52, 95)" leading="" trailing="" raw_val="h₂" val="h₂"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <AtomNode start="(52, 95)" end="(52, 96)" leading="" trailing="" val=")"/>
+                                </OtherNode>
+                              </NullNode>
+                            </OtherNode>
+                            <AtomNode start="(52, 96)" end="(52, 97)" leading="" trailing="&#10;&#10;" val=")"/>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(54, 1)" end="(56, 97)" name="BEq.neq_of_beq_of_neq" full_name="BEq.neq_of_beq_of_neq">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandTheoremNode start="(54, 1)" end="(56, 97)" name="BEq.neq_of_beq_of_neq" full_name="BEq.neq_of_beq_of_neq" _is_private_decl="False">
+        <AtomNode start="(54, 1)" end="(54, 8)" leading="" trailing=" " val="theorem"/>
+        <CommandDeclidNode start="(54, 9)" end="(54, 30)">
+          <IdentNode start="(54, 9)" end="(54, 30)" leading="" trailing=" " raw_val="BEq.neq_of_beq_of_neq" val="BEq.neq_of_beq_of_neq"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <CommandDeclsigNode start="(54, 31)" end="(55, 49)">
+          <NullNode start="(54, 31)" end="(54, 70)">
+            <OtherNode start="(54, 31)" end="(54, 38)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(54, 31)" end="(54, 32)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(54, 32)" end="(54, 37)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(54, 32)" end="(54, 35)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(54, 36)" end="(54, 37)">
+                  <IdentNode start="(54, 36)" end="(54, 37)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(54, 37)" end="(54, 38)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(54, 39)" end="(54, 58)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(54, 39)" end="(54, 40)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(54, 40)" end="(54, 57)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(54, 40)" end="(54, 55)" leading="" trailing=" " raw_val="PartialEquivBEq" val="PartialEquivBEq" full_name="PartialEquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(18, 7)" def_end="(18, 22)"/>
+                <NullNode start="(54, 56)" end="(54, 57)">
+                  <IdentNode start="(54, 56)" end="(54, 57)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(54, 57)" end="(54, 58)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(54, 59)" end="(54, 70)" kind="Lean.Parser.Term.implicitBinder">
+              <AtomNode start="(54, 59)" end="(54, 60)" leading="" trailing="" val="{"/>
+              <NullNode start="(54, 60)" end="(54, 65)">
+                <IdentNode start="(54, 60)" end="(54, 61)" leading="" trailing=" " raw_val="a" val="a"/>
+                <IdentNode start="(54, 62)" end="(54, 63)" leading="" trailing=" " raw_val="b" val="b"/>
+                <IdentNode start="(54, 64)" end="(54, 65)" leading="" trailing=" " raw_val="c" val="c"/>
+              </NullNode>
+              <NullNode start="(54, 66)" end="(54, 69)">
+                <AtomNode start="(54, 66)" end="(54, 67)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(54, 68)" end="(54, 69)" leading="" trailing="" raw_val="α" val="α"/>
+              </NullNode>
+              <AtomNode start="(54, 69)" end="(54, 70)" leading="" trailing=" " val="}"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(54, 71)" end="(55, 49)">
+            <AtomNode start="(54, 71)" end="(54, 72)" leading="" trailing="&#10;    " val=":"/>
+            <OtherNode start="(55, 5)" end="(55, 49)" kind="Lean.Parser.Term.arrow">
+              <OtherNode start="(55, 5)" end="(55, 11)" kind="«term_==_»">
+                <IdentNode start="(55, 5)" end="(55, 6)" leading="" trailing=" " raw_val="a" val="a"/>
+                <AtomNode start="(55, 7)" end="(55, 9)" leading="" trailing=" " val="=="/>
+                <IdentNode start="(55, 10)" end="(55, 11)" leading="" trailing=" " raw_val="b" val="b"/>
+              </OtherNode>
+              <AtomNode start="(55, 12)" end="(55, 13)" leading="" trailing=" " val="→"/>
+              <OtherNode start="(55, 14)" end="(55, 49)" kind="Lean.Parser.Term.arrow">
+                <OtherNode start="(55, 14)" end="(55, 30)" kind="«term_=_»">
+                  <OtherNode start="(55, 14)" end="(55, 22)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(55, 14)" end="(55, 15)" leading="" trailing="" val="("/>
+                    <OtherNode start="(55, 15)" end="(55, 21)" kind="«term_==_»">
+                      <IdentNode start="(55, 15)" end="(55, 16)" leading="" trailing=" " raw_val="b" val="b"/>
+                      <AtomNode start="(55, 17)" end="(55, 19)" leading="" trailing=" " val="=="/>
+                      <IdentNode start="(55, 20)" end="(55, 21)" leading="" trailing="" raw_val="c" val="c"/>
+                    </OtherNode>
+                    <AtomNode start="(55, 21)" end="(55, 22)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(55, 23)" end="(55, 24)" leading="" trailing=" " val="="/>
+                  <IdentNode start="(55, 25)" end="(55, 30)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+                <AtomNode start="(55, 31)" end="(55, 32)" leading="" trailing=" " val="→"/>
+                <OtherNode start="(55, 33)" end="(55, 49)" kind="«term_=_»">
+                  <OtherNode start="(55, 33)" end="(55, 41)" kind="Lean.Parser.Term.paren">
+                    <AtomNode start="(55, 33)" end="(55, 34)" leading="" trailing="" val="("/>
+                    <OtherNode start="(55, 34)" end="(55, 40)" kind="«term_==_»">
+                      <IdentNode start="(55, 34)" end="(55, 35)" leading="" trailing=" " raw_val="a" val="a"/>
+                      <AtomNode start="(55, 36)" end="(55, 38)" leading="" trailing=" " val="=="/>
+                      <IdentNode start="(55, 39)" end="(55, 40)" leading="" trailing="" raw_val="c" val="c"/>
+                    </OtherNode>
+                    <AtomNode start="(55, 40)" end="(55, 41)" leading="" trailing=" " val=")"/>
+                  </OtherNode>
+                  <AtomNode start="(55, 42)" end="(55, 43)" leading="" trailing=" " val="="/>
+                  <IdentNode start="(55, 44)" end="(55, 49)" leading="" trailing=" " raw_val="false" val="false" full_name="Bool.false" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                </OtherNode>
+              </OtherNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandDeclvalsimpleNode start="(55, 50)" end="(56, 97)">
+          <AtomNode start="(55, 50)" end="(55, 52)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(56, 3)" end="(56, 97)" kind="Lean.Parser.Term.fun">
+            <AtomNode start="(56, 3)" end="(56, 6)" leading="" trailing=" " val="fun"/>
+            <OtherNode start="(56, 7)" end="(56, 97)" kind="Lean.Parser.Term.basicFun">
+              <NullNode start="(56, 7)" end="(56, 12)">
+                <IdentNode start="(56, 7)" end="(56, 9)" leading="" trailing=" " raw_val="h₁" val="h₁"/>
+                <IdentNode start="(56, 10)" end="(56, 12)" leading="" trailing=" " raw_val="h₂" val="h₂"/>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(56, 13)" end="(56, 15)" leading="" trailing=" " val="=&amp;gt;"/>
+              <OtherNode start="(56, 16)" end="(56, 97)" kind="Lean.Parser.Term.app">
+                <OtherNode start="(56, 16)" end="(56, 35)" kind="Lean.Parser.Term.proj">
+                  <IdentNode start="(56, 16)" end="(56, 33)" leading="" trailing="" raw_val="Bool.eq_false_iff" val="Bool.eq_false_iff" full_name="Bool.eq_false_iff" mod_name="Init.Data.Bool" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Bool.lean"/>
+                  <AtomNode start="(56, 33)" end="(56, 34)" leading="" trailing="" val="."/>
+                  <OtherNode start="(56, 34)" end="(56, 35)" kind="fieldIdx">
+                    <AtomNode start="(56, 34)" end="(56, 35)" leading="" trailing=" " val="2"/>
+                  </OtherNode>
+                </OtherNode>
+                <NullNode start="(56, 36)" end="(56, 97)">
+                  <OtherNode start="(56, 36)" end="(56, 97)" kind="Lean.Parser.Term.fun">
+                    <AtomNode start="(56, 36)" end="(56, 39)" leading="" trailing=" " val="fun"/>
+                    <OtherNode start="(56, 40)" end="(56, 97)" kind="Lean.Parser.Term.basicFun">
+                      <NullNode start="(56, 40)" end="(56, 42)">
+                        <IdentNode start="(56, 40)" end="(56, 42)" leading="" trailing=" " raw_val="h₃" val="h₃"/>
+                      </NullNode>
+                      <NullNode/>
+                      <AtomNode start="(56, 43)" end="(56, 45)" leading="" trailing=" " val="=&amp;gt;"/>
+                      <OtherNode start="(56, 46)" end="(56, 97)" kind="Lean.Parser.Term.app">
+                        <OtherNode start="(56, 46)" end="(56, 65)" kind="Lean.Parser.Term.proj">
+                          <IdentNode start="(56, 46)" end="(56, 63)" leading="" trailing="" raw_val="Bool.eq_false_iff" val="Bool.eq_false_iff" full_name="Bool.eq_false_iff" mod_name="Init.Data.Bool" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Bool.lean"/>
+                          <AtomNode start="(56, 63)" end="(56, 64)" leading="" trailing="" val="."/>
+                          <OtherNode start="(56, 64)" end="(56, 65)" kind="fieldIdx">
+                            <AtomNode start="(56, 64)" end="(56, 65)" leading="" trailing=" " val="1"/>
+                          </OtherNode>
+                        </OtherNode>
+                        <NullNode start="(56, 66)" end="(56, 97)">
+                          <IdentNode start="(56, 66)" end="(56, 68)" leading="" trailing=" " raw_val="h₂" val="h₂"/>
+                          <OtherNode start="(56, 69)" end="(56, 97)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(56, 69)" end="(56, 70)" leading="" trailing="" val="("/>
+                            <OtherNode start="(56, 70)" end="(56, 96)" kind="Lean.Parser.Term.app">
+                              <IdentNode start="(56, 70)" end="(56, 79)" leading="" trailing=" " raw_val="BEq.trans" val="BEq.trans" full_name="BEq.trans" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(39, 9)" def_end="(39, 18)"/>
+                              <NullNode start="(56, 80)" end="(56, 96)">
+                                <OtherNode start="(56, 80)" end="(56, 93)" kind="Lean.Parser.Term.paren">
+                                  <AtomNode start="(56, 80)" end="(56, 81)" leading="" trailing="" val="("/>
+                                  <OtherNode start="(56, 81)" end="(56, 92)" kind="Lean.Parser.Term.app">
+                                    <IdentNode start="(56, 81)" end="(56, 89)" leading="" trailing=" " raw_val="BEq.symm" val="BEq.symm" full_name="BEq.symm" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(27, 9)" def_end="(27, 17)"/>
+                                    <NullNode start="(56, 90)" end="(56, 92)">
+                                      <IdentNode start="(56, 90)" end="(56, 92)" leading="" trailing="" raw_val="h₁" val="h₁"/>
+                                    </NullNode>
+                                  </OtherNode>
+                                  <AtomNode start="(56, 92)" end="(56, 93)" leading="" trailing=" " val=")"/>
+                                </OtherNode>
+                                <IdentNode start="(56, 94)" end="(56, 96)" leading="" trailing="" raw_val="h₃" val="h₃"/>
+                              </NullNode>
+                            </OtherNode>
+                            <AtomNode start="(56, 96)" end="(56, 97)" leading="" trailing="&#10;&#10;" val=")"/>
+                          </OtherNode>
+                        </NullNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </OtherNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+      </CommandTheoremNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(58, 1)" end="(60, 80)">
+      <CommandDeclmodifiersNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandInstanceNode start="(58, 1)" end="(60, 80)">
+        <TermAttrkindNode>
+          <NullNode/>
+        </TermAttrkindNode>
+        <AtomNode start="(58, 1)" end="(58, 9)" leading="" trailing=" " val="instance"/>
+        <NullNode start="(58, 10)" end="(58, 27)">
+          <OtherNode start="(58, 10)" end="(58, 27)" kind="Lean.Parser.Command.namedPrio">
+            <AtomNode start="(58, 10)" end="(58, 11)" leading="" trailing="" val="("/>
+            <AtomNode start="(58, 11)" end="(58, 19)" leading="" trailing=" " val="priority"/>
+            <AtomNode start="(58, 20)" end="(58, 22)" leading="" trailing=" " val=":="/>
+            <OtherNode start="(58, 23)" end="(58, 26)" kind="prioLow">
+              <AtomNode start="(58, 23)" end="(58, 26)" leading="" trailing="" val="low"/>
+            </OtherNode>
+            <AtomNode start="(58, 26)" end="(58, 27)" leading="" trailing=" " val=")"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <CommandDeclsigNode start="(58, 28)" end="(58, 62)">
+          <NullNode start="(58, 28)" end="(58, 49)">
+            <OtherNode start="(58, 28)" end="(58, 35)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(58, 28)" end="(58, 29)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(58, 29)" end="(58, 34)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(58, 29)" end="(58, 32)" leading="" trailing=" " raw_val="BEq" val="BEq" full_name="BEq" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(58, 33)" end="(58, 34)">
+                  <IdentNode start="(58, 33)" end="(58, 34)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(58, 34)" end="(58, 35)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+            <OtherNode start="(58, 36)" end="(58, 49)" kind="Lean.Parser.Term.instBinder">
+              <AtomNode start="(58, 36)" end="(58, 37)" leading="" trailing="" val="["/>
+              <NullNode/>
+              <OtherNode start="(58, 37)" end="(58, 48)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(58, 37)" end="(58, 46)" leading="" trailing=" " raw_val="LawfulBEq" val="LawfulBEq" full_name="LawfulBEq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                <NullNode start="(58, 47)" end="(58, 48)">
+                  <IdentNode start="(58, 47)" end="(58, 48)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+              <AtomNode start="(58, 48)" end="(58, 49)" leading="" trailing=" " val="]"/>
+            </OtherNode>
+          </NullNode>
+          <TermTypespecNode start="(58, 50)" end="(58, 62)">
+            <AtomNode start="(58, 50)" end="(58, 51)" leading="" trailing=" " val=":"/>
+            <OtherNode start="(58, 52)" end="(58, 62)" kind="Lean.Parser.Term.app">
+              <IdentNode start="(58, 52)" end="(58, 60)" leading="" trailing=" " raw_val="EquivBEq" val="EquivBEq" full_name="EquivBEq" mod_name="Init.Data.BEq" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/BEq.lean" def_start="(25, 7)" def_end="(25, 15)"/>
+              <NullNode start="(58, 61)" end="(58, 62)">
+                <IdentNode start="(58, 61)" end="(58, 62)" leading="" trailing=" " raw_val="α" val="α"/>
+              </NullNode>
+            </OtherNode>
+          </TermTypespecNode>
+        </CommandDeclsigNode>
+        <CommandWherestructinstNode start="(58, 63)" end="(60, 80)">
+          <AtomNode start="(58, 63)" end="(58, 68)" leading="" trailing="&#10;  " val="where"/>
+          <OtherNode start="(59, 3)" end="(60, 80)" kind="Lean.Parser.Term.structInstFields">
+            <NullNode start="(59, 3)" end="(60, 80)">
+              <OtherNode start="(59, 3)" end="(59, 54)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(59, 3)" end="(59, 7)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(59, 3)" end="(59, 7)" leading="" trailing=" " raw_val="symm" val="symm"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(59, 8)" end="(59, 54)">
+                  <NullNode start="(59, 8)" end="(59, 9)">
+                    <IdentNode start="(59, 8)" end="(59, 9)" leading="" trailing=" " raw_val="h" val="h"/>
+                  </NullNode>
+                  <NullNode/>
+                  <OtherNode start="(59, 10)" end="(59, 54)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(59, 10)" end="(59, 12)" leading="" trailing=" " val=":="/>
+                    <OtherNode start="(59, 13)" end="(59, 54)" kind="«term_&amp;lt;|_»">
+                      <OtherNode start="(59, 13)" end="(59, 25)" kind="Lean.Parser.Term.proj">
+                        <IdentNode start="(59, 13)" end="(59, 23)" leading="" trailing="" raw_val="beq_iff_eq" val="beq_iff_eq" full_name="beq_iff_eq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                        <AtomNode start="(59, 23)" end="(59, 24)" leading="" trailing="" val="."/>
+                        <OtherNode start="(59, 24)" end="(59, 25)" kind="fieldIdx">
+                          <AtomNode start="(59, 24)" end="(59, 25)" leading="" trailing=" " val="2"/>
+                        </OtherNode>
+                      </OtherNode>
+                      <AtomNode start="(59, 26)" end="(59, 28)" leading="" trailing=" " val="&amp;lt;|"/>
+                      <OtherNode start="(59, 29)" end="(59, 54)" kind="«term_&amp;lt;|_»">
+                        <IdentNode start="(59, 29)" end="(59, 36)" leading="" trailing=" " raw_val="Eq.symm" val="Eq.symm" full_name="Eq.symm" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                        <AtomNode start="(59, 37)" end="(59, 39)" leading="" trailing=" " val="&amp;lt;|"/>
+                        <OtherNode start="(59, 40)" end="(59, 54)" kind="Lean.Parser.Term.app">
+                          <OtherNode start="(59, 40)" end="(59, 52)" kind="Lean.Parser.Term.proj">
+                            <IdentNode start="(59, 40)" end="(59, 50)" leading="" trailing="" raw_val="beq_iff_eq" val="beq_iff_eq" full_name="beq_iff_eq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                            <AtomNode start="(59, 50)" end="(59, 51)" leading="" trailing="" val="."/>
+                            <OtherNode start="(59, 51)" end="(59, 52)" kind="fieldIdx">
+                              <AtomNode start="(59, 51)" end="(59, 52)" leading="" trailing=" " val="1"/>
+                            </OtherNode>
+                          </OtherNode>
+                          <NullNode start="(59, 53)" end="(59, 54)">
+                            <IdentNode start="(59, 53)" end="(59, 54)" leading="" trailing="&#10;  " raw_val="h" val="h"/>
+                          </NullNode>
+                        </OtherNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+              <NullNode/>
+              <OtherNode start="(60, 3)" end="(60, 80)" kind="Lean.Parser.Term.structInstField">
+                <OtherNode start="(60, 3)" end="(60, 8)" kind="Lean.Parser.Term.structInstLVal">
+                  <IdentNode start="(60, 3)" end="(60, 8)" leading="" trailing=" " raw_val="trans" val="trans"/>
+                  <NullNode/>
+                </OtherNode>
+                <NullNode start="(60, 9)" end="(60, 80)">
+                  <NullNode start="(60, 9)" end="(60, 16)">
+                    <IdentNode start="(60, 9)" end="(60, 12)" leading="" trailing=" " raw_val="hab" val="hab"/>
+                    <IdentNode start="(60, 13)" end="(60, 16)" leading="" trailing=" " raw_val="hbc" val="hbc"/>
+                  </NullNode>
+                  <NullNode/>
+                  <OtherNode start="(60, 17)" end="(60, 80)" kind="Lean.Parser.Term.structInstFieldDef">
+                    <AtomNode start="(60, 17)" end="(60, 19)" leading="" trailing=" " val=":="/>
+                    <OtherNode start="(60, 20)" end="(60, 80)" kind="«term_&amp;lt;|_»">
+                      <OtherNode start="(60, 20)" end="(60, 32)" kind="Lean.Parser.Term.proj">
+                        <IdentNode start="(60, 20)" end="(60, 30)" leading="" trailing="" raw_val="beq_iff_eq" val="beq_iff_eq" full_name="beq_iff_eq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                        <AtomNode start="(60, 30)" end="(60, 31)" leading="" trailing="" val="."/>
+                        <OtherNode start="(60, 31)" end="(60, 32)" kind="fieldIdx">
+                          <AtomNode start="(60, 31)" end="(60, 32)" leading="" trailing=" " val="2"/>
+                        </OtherNode>
+                      </OtherNode>
+                      <AtomNode start="(60, 33)" end="(60, 35)" leading="" trailing=" " val="&amp;lt;|"/>
+                      <OtherNode start="(60, 36)" end="(60, 80)" kind="«term_&amp;lt;|_»">
+                        <OtherNode start="(60, 36)" end="(60, 60)" kind="Lean.Parser.Term.proj">
+                          <OtherNode start="(60, 36)" end="(60, 54)" kind="Lean.Parser.Term.paren">
+                            <AtomNode start="(60, 36)" end="(60, 37)" leading="" trailing="" val="("/>
+                            <OtherNode start="(60, 37)" end="(60, 53)" kind="Lean.Parser.Term.app">
+                              <OtherNode start="(60, 37)" end="(60, 49)" kind="Lean.Parser.Term.proj">
+                                <IdentNode start="(60, 37)" end="(60, 47)" leading="" trailing="" raw_val="beq_iff_eq" val="beq_iff_eq" full_name="beq_iff_eq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                                <AtomNode start="(60, 47)" end="(60, 48)" leading="" trailing="" val="."/>
+                                <OtherNode start="(60, 48)" end="(60, 49)" kind="fieldIdx">
+                                  <AtomNode start="(60, 48)" end="(60, 49)" leading="" trailing=" " val="1"/>
+                                </OtherNode>
+                              </OtherNode>
+                              <NullNode start="(60, 50)" end="(60, 53)">
+                                <IdentNode start="(60, 50)" end="(60, 53)" leading="" trailing="" raw_val="hab" val="hab"/>
+                              </NullNode>
+                            </OtherNode>
+                            <AtomNode start="(60, 53)" end="(60, 54)" leading="" trailing="" val=")"/>
+                          </OtherNode>
+                          <AtomNode start="(60, 54)" end="(60, 55)" leading="" trailing="" val="."/>
+                          <IdentNode start="(60, 55)" end="(60, 60)" leading="" trailing=" " raw_val="trans" val="trans" full_name="Eq.trans" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                        </OtherNode>
+                        <AtomNode start="(60, 61)" end="(60, 63)" leading="" trailing=" " val="&amp;lt;|"/>
+                        <OtherNode start="(60, 64)" end="(60, 80)" kind="Lean.Parser.Term.app">
+                          <OtherNode start="(60, 64)" end="(60, 76)" kind="Lean.Parser.Term.proj">
+                            <IdentNode start="(60, 64)" end="(60, 74)" leading="" trailing="" raw_val="beq_iff_eq" val="beq_iff_eq" full_name="beq_iff_eq" mod_name="Init.Core" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Core.lean"/>
+                            <AtomNode start="(60, 74)" end="(60, 75)" leading="" trailing="" val="."/>
+                            <OtherNode start="(60, 75)" end="(60, 76)" kind="fieldIdx">
+                              <AtomNode start="(60, 75)" end="(60, 76)" leading="" trailing=" " val="1"/>
+                            </OtherNode>
+                          </OtherNode>
+                          <NullNode start="(60, 77)" end="(60, 80)">
+                            <IdentNode start="(60, 77)" end="(60, 80)" leading="" trailing="&#10;" raw_val="hbc" val="hbc"/>
+                          </NullNode>
+                        </OtherNode>
+                      </OtherNode>
+                    </OtherNode>
+                  </OtherNode>
+                </NullNode>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <NullNode/>
+        </CommandWherestructinstNode>
+      </CommandInstanceNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(13, 1)" end="(17, 3)" text="`PartialEquivBEq α` says that the `BEq` implementation is a&#10;partial equivalence relation, that is:&#10;* it is symmetric: `a == b → b == a`&#10;* it is transitive: `a == b → b == c → a == c`.&#10;-/"/>
+    <Comment start="(19, 3)" end="(19, 56)" text="Symmetry for `BEq`. If `a == b` then `b == a`. -/"/>
+    <Comment start="(21, 3)" end="(21, 73)" text="Transitivity for `BEq`. If `a == b` and `b == c` then `a == c`. -/"/>
+    <Comment start="(24, 1)" end="(24, 81)" text="`EquivBEq` says that the `BEq` implementation is an equivalence relation. -/"/>
+  </Comments>
+</TracedFile>

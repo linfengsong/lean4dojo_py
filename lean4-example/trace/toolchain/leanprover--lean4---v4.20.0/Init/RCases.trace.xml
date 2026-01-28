@@ -1,0 +1,707 @@
+<TracedFile path="src/lean/Init/RCases.lean" md5="6e10499dcf2b73d8f8b8b0a82e8343f5">
+  <FileNode start="(1, 1)" end="(195, 23)">
+    <ModuleHeaderNode start="(6, 1)" end="(10, 17)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(10, 17)">
+        <ModuleImportNode start="(9, 1)" end="(9, 20)" module="Init.Tactics" path="src/lean/Init/Tactics.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 20)" leading="" trailing="&#10;" raw_val="Init.Tactics" val="Init.Tactics"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(10, 1)" end="(10, 17)" module="Init.Meta" path="src/lean/Init/Meta.lean">
+          <NullNode/>
+          <AtomNode start="(10, 1)" end="(10, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(10, 8)" end="(10, 17)" leading="" trailing="&#10;&#10;&#10;" raw_val="Init.Meta" val="Init.Meta"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <CommandModuledocNode start="(13, 1)" end="(61, 3)" comment="# Recursive cases (`rcases`) tactic and related tactics&#10;&#10;`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;The patterns are fairly liberal about the exact shape of the constructors, and will insert&#10;additional alternation branches and tuple arguments if there are not enough arguments provided, and&#10;reuse the tail for further matches if there are too many arguments provided to alternation and&#10;tuple patterns.&#10;&#10;This file also contains the `obtain` and `rintro` tactics, which use the same syntax of `rcases`&#10;patterns but with a slightly different use case:&#10;&#10;* `rintro` (or `rintros`) is used like `rintro x ⟨y, z⟩` and is the same as `intros` followed by&#10;  `rcases` on the newly introduced arguments.&#10;* `obtain` is the same as `rcases` but with a syntax styled after `have` rather than `cases`.&#10;  `obtain ⟨hx, hy⟩ | hz := foo` is equivalent to `rcases foo with ⟨hx, hy⟩ | hz`. Unlike `rcases`,&#10;  `obtain` also allows one to omit `:= foo`, although a type must be provided in this case,&#10;  as in `obtain ⟨hx, hy⟩ | hz : a ∧ b ∨ c`, in which case it produces a subgoal for proving&#10;  `a ∧ b ∨ c` in addition to the subgoals `hx : a, hy : b |- goal` and `hz : c |- goal`.&#10;&#10;## Tags&#10;&#10;rcases, rintro, obtain, destructuring, cases, pattern matching, match&#10;-/">
+      <AtomNode start="(13, 1)" end="(13, 4)" leading="" trailing="&#10;" val="/-!"/>
+      <AtomNode start="(14, 1)" end="(61, 3)" leading="" trailing="&#10;" val="# Recursive cases (`rcases`) tactic and related tactics&#10;&#10;`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;The patterns are fairly liberal about the exact shape of the constructors, and will insert&#10;additional alternation branches and tuple arguments if there are not enough arguments provided, and&#10;reuse the tail for further matches if there are too many arguments provided to alternation and&#10;tuple patterns.&#10;&#10;This file also contains the `obtain` and `rintro` tactics, which use the same syntax of `rcases`&#10;patterns but with a slightly different use case:&#10;&#10;* `rintro` (or `rintros`) is used like `rintro x ⟨y, z⟩` and is the same as `intros` followed by&#10;  `rcases` on the newly introduced arguments.&#10;* `obtain` is the same as `rcases` but with a syntax styled after `have` rather than `cases`.&#10;  `obtain ⟨hx, hy⟩ | hz := foo` is equivalent to `rcases foo with ⟨hx, hy⟩ | hz`. Unlike `rcases`,&#10;  `obtain` also allows one to omit `:= foo`, although a type must be provided in this case,&#10;  as in `obtain ⟨hx, hy⟩ | hz : a ∧ b ∨ c`, in which case it produces a subgoal for proving&#10;  `a ∧ b ∨ c` in addition to the subgoals `hx : a, hy : b |- goal` and `hz : c |- goal`.&#10;&#10;## Tags&#10;&#10;rcases, rintro, obtain, destructuring, cases, pattern matching, match&#10;-/"/>
+    </CommandModuledocNode>
+    <CommandNamespaceNode start="(62, 1)" end="(62, 29)" name="Lean.Parser.Tactic">
+      <AtomNode start="(62, 1)" end="(62, 10)" leading="" trailing=" " val="namespace"/>
+      <IdentNode start="(62, 11)" end="(62, 29)" leading="" trailing="&#10;&#10;" raw_val="Lean.Parser.Tactic" val="Lean.Parser.Tactic"/>
+    </CommandNamespaceNode>
+    <OtherNode start="(64, 1)" end="(65, 29)" kind="Lean.Parser.Command.syntaxCat">
+      <NullNode start="(64, 1)" end="(64, 49)">
+        <CommandDoccommentNode start="(64, 1)" end="(64, 49)" comment="The syntax category of `rcases` patterns. -/">
+          <AtomNode start="(64, 1)" end="(64, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(64, 5)" end="(64, 49)" leading="" trailing="&#10;" val="The syntax category of `rcases` patterns. -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <AtomNode start="(65, 1)" end="(65, 19)" leading="" trailing=" " val="declare_syntax_cat"/>
+      <IdentNode start="(65, 20)" end="(65, 29)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat"/>
+      <NullNode/>
+    </OtherNode>
+    <OtherNode start="(66, 1)" end="(67, 48)" kind="Lean.Parser.Command.syntaxAbbrev">
+      <NullNode start="(66, 1)" end="(66, 86)">
+        <CommandDoccommentNode start="(66, 1)" end="(66, 86)" comment="A medium precedence `rcases` pattern is a list of `rcasesPat` separated by `|` -/">
+          <AtomNode start="(66, 1)" end="(66, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(66, 5)" end="(66, 86)" leading="" trailing="&#10;" val="A medium precedence `rcases` pattern is a list of `rcasesPat` separated by `|` -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <AtomNode start="(67, 1)" end="(67, 7)" leading="" trailing=" " val="syntax"/>
+      <IdentNode start="(67, 8)" end="(67, 20)" leading="" trailing=" " raw_val="rcasesPatMed" val="rcasesPatMed"/>
+      <AtomNode start="(67, 21)" end="(67, 23)" leading="" trailing=" " val=":="/>
+      <NullNode start="(67, 24)" end="(67, 48)">
+        <OtherNode start="(67, 24)" end="(67, 48)" kind="Lean.Parser.Syntax.sepBy1">
+          <AtomNode start="(67, 24)" end="(67, 31)" leading="" trailing="" val="sepBy1("/>
+          <NullNode start="(67, 31)" end="(67, 40)">
+            <OtherNode start="(67, 31)" end="(67, 40)" kind="Lean.Parser.Syntax.cat">
+              <IdentNode start="(67, 31)" end="(67, 40)" leading="" trailing="" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+              <NullNode/>
+            </OtherNode>
+          </NullNode>
+          <AtomNode start="(67, 40)" end="(67, 41)" leading="" trailing=" " val=","/>
+          <OtherNode start="(67, 42)" end="(67, 47)" kind="str">
+            <AtomNode start="(67, 42)" end="(67, 47)" leading="" trailing="" val="&amp;quot; | &amp;quot;"/>
+          </OtherNode>
+          <NullNode/>
+          <NullNode/>
+          <AtomNode start="(67, 47)" end="(67, 48)" leading="" trailing="&#10;" val=")"/>
+        </OtherNode>
+      </NullNode>
+    </OtherNode>
+    <OtherNode start="(68, 1)" end="(69, 49)" kind="Lean.Parser.Command.syntaxAbbrev">
+      <NullNode start="(68, 1)" end="(68, 91)">
+        <CommandDoccommentNode start="(68, 1)" end="(68, 91)" comment="A low precedence `rcases` pattern is a `rcasesPatMed` optionally followed by `: ty` -/">
+          <AtomNode start="(68, 1)" end="(68, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(68, 5)" end="(68, 91)" leading="" trailing="&#10;" val="A low precedence `rcases` pattern is a `rcasesPatMed` optionally followed by `: ty` -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <AtomNode start="(69, 1)" end="(69, 7)" leading="" trailing=" " val="syntax"/>
+      <IdentNode start="(69, 8)" end="(69, 19)" leading="" trailing=" " raw_val="rcasesPatLo" val="rcasesPatLo"/>
+      <AtomNode start="(69, 20)" end="(69, 22)" leading="" trailing=" " val=":="/>
+      <NullNode start="(69, 23)" end="(69, 49)">
+        <OtherNode start="(69, 23)" end="(69, 35)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(69, 23)" end="(69, 35)" leading="" trailing=" " raw_val="rcasesPatMed" val="rcasesPatMed" full_name="Lean.Parser.Tactic.rcasesPatMed" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(67, 8)" def_end="(67, 20)"/>
+          <NullNode/>
+        </OtherNode>
+        <OtherNode start="(69, 36)" end="(69, 49)" kind="stx_?">
+          <OtherNode start="(69, 36)" end="(69, 48)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(69, 36)" end="(69, 37)" leading="" trailing="" val="("/>
+            <NullNode start="(69, 37)" end="(69, 47)">
+              <OtherNode start="(69, 37)" end="(69, 42)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(69, 37)" end="(69, 42)" kind="str">
+                  <AtomNode start="(69, 37)" end="(69, 42)" leading="" trailing=" " val="&amp;quot; : &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(69, 43)" end="(69, 47)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(69, 43)" end="(69, 47)" leading="" trailing="" raw_val="term" val="term" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(69, 47)" end="(69, 48)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(69, 48)" end="(69, 49)" leading="" trailing="&#10;" val="?"/>
+        </OtherNode>
+      </NullNode>
+    </OtherNode>
+    <OtherNode start="(70, 1)" end="(71, 49)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(70, 1)" end="(70, 40)">
+        <CommandDoccommentNode start="(70, 1)" end="(70, 40)" comment="`x` is a pattern which binds `x` -/">
+          <AtomNode start="(70, 1)" end="(70, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(70, 5)" end="(70, 40)" leading="" trailing="&#10;" val="`x` is a pattern which binds `x` -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(71, 1)" end="(71, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(71, 8)" end="(71, 31)">
+        <OtherNode start="(71, 8)" end="(71, 31)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(71, 8)" end="(71, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(71, 9)" end="(71, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(71, 14)" end="(71, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(71, 17)" end="(71, 30)" leading="" trailing="" raw_val="rcasesPat.one" val="rcasesPat.one"/>
+          <AtomNode start="(71, 30)" end="(71, 31)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(71, 32)" end="(71, 37)">
+        <OtherNode start="(71, 32)" end="(71, 37)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(71, 32)" end="(71, 37)" leading="" trailing=" " raw_val="ident" val="ident" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+          <NullNode/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(71, 38)" end="(71, 39)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(71, 40)" end="(71, 49)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(72, 1)" end="(73, 50)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(72, 1)" end="(72, 82)">
+        <CommandDoccommentNode start="(72, 1)" end="(72, 82)" comment="`_` is a pattern which ignores the value and gives it an inaccessible name -/">
+          <AtomNode start="(72, 1)" end="(72, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(72, 5)" end="(72, 82)" leading="" trailing="&#10;" val="`_` is a pattern which ignores the value and gives it an inaccessible name -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(73, 1)" end="(73, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(73, 8)" end="(73, 34)">
+        <OtherNode start="(73, 8)" end="(73, 34)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(73, 8)" end="(73, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(73, 9)" end="(73, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(73, 14)" end="(73, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(73, 17)" end="(73, 33)" leading="" trailing="" raw_val="rcasesPat.ignore" val="rcasesPat.ignore"/>
+          <AtomNode start="(73, 33)" end="(73, 34)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(73, 35)" end="(73, 38)">
+        <OtherNode start="(73, 35)" end="(73, 38)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(73, 35)" end="(73, 38)" kind="str">
+            <AtomNode start="(73, 35)" end="(73, 38)" leading="" trailing=" " val="&amp;quot;_&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(73, 39)" end="(73, 40)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(73, 41)" end="(73, 50)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(74, 1)" end="(75, 49)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(74, 1)" end="(74, 65)">
+        <CommandDoccommentNode start="(74, 1)" end="(74, 65)" comment="`-` is a pattern which removes the value from the context -/">
+          <AtomNode start="(74, 1)" end="(74, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(74, 5)" end="(74, 65)" leading="" trailing="&#10;" val="`-` is a pattern which removes the value from the context -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(75, 1)" end="(75, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(75, 8)" end="(75, 33)">
+        <OtherNode start="(75, 8)" end="(75, 33)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(75, 8)" end="(75, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(75, 9)" end="(75, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(75, 14)" end="(75, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(75, 17)" end="(75, 32)" leading="" trailing="" raw_val="rcasesPat.clear" val="rcasesPat.clear"/>
+          <AtomNode start="(75, 32)" end="(75, 33)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(75, 34)" end="(75, 37)">
+        <OtherNode start="(75, 34)" end="(75, 37)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(75, 34)" end="(75, 37)" kind="str">
+            <AtomNode start="(75, 34)" end="(75, 37)" leading="" trailing=" " val="&amp;quot;-&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(75, 38)" end="(75, 39)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(75, 40)" end="(75, 49)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(76, 1)" end="(80, 67)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(76, 1)" end="(79, 3)">
+        <CommandDoccommentNode start="(76, 1)" end="(79, 3)" comment="A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;while leaving the `@` off will only use the patterns on the explicit arguments.&#10;-/">
+          <AtomNode start="(76, 1)" end="(76, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(77, 1)" end="(79, 3)" leading="" trailing="&#10;" val="A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;while leaving the `@` off will only use the patterns on the explicit arguments.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(80, 1)" end="(80, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(80, 8)" end="(80, 36)">
+        <OtherNode start="(80, 8)" end="(80, 36)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(80, 8)" end="(80, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(80, 9)" end="(80, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(80, 14)" end="(80, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(80, 17)" end="(80, 35)" leading="" trailing="" raw_val="rcasesPat.explicit" val="rcasesPat.explicit"/>
+          <AtomNode start="(80, 35)" end="(80, 36)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(80, 37)" end="(80, 55)">
+        <OtherNode start="(80, 37)" end="(80, 40)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(80, 37)" end="(80, 40)" kind="str">
+            <AtomNode start="(80, 37)" end="(80, 40)" leading="" trailing=" " val="&amp;quot;@&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(80, 41)" end="(80, 45)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(80, 41)" end="(80, 45)" leading="" trailing=" " raw_val="noWs" val="noWs" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+          <NullNode/>
+        </OtherNode>
+        <OtherNode start="(80, 46)" end="(80, 55)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(80, 46)" end="(80, 55)" leading="" trailing=" " raw_val="rcasesPat" val="rcasesPat" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+          <NullNode/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(80, 56)" end="(80, 57)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(80, 58)" end="(80, 67)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(81, 1)" end="(85, 67)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(81, 1)" end="(84, 3)">
+        <CommandDoccommentNode start="(81, 1)" end="(84, 3)" comment="`⟨pat, ...⟩` is a pattern which matches on a tuple-like constructor&#10;or multi-argument inductive constructor&#10;-/">
+          <AtomNode start="(81, 1)" end="(81, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(82, 1)" end="(84, 3)" leading="" trailing="&#10;" val="`⟨pat, ...⟩` is a pattern which matches on a tuple-like constructor&#10;or multi-argument inductive constructor&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(85, 1)" end="(85, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(85, 8)" end="(85, 33)">
+        <OtherNode start="(85, 8)" end="(85, 33)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(85, 8)" end="(85, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(85, 9)" end="(85, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(85, 14)" end="(85, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(85, 17)" end="(85, 32)" leading="" trailing="" raw_val="rcasesPat.tuple" val="rcasesPat.tuple"/>
+          <AtomNode start="(85, 32)" end="(85, 33)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(85, 34)" end="(85, 55)">
+        <OtherNode start="(85, 34)" end="(85, 37)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(85, 34)" end="(85, 37)" kind="str">
+            <AtomNode start="(85, 34)" end="(85, 37)" leading="" trailing=" " val="&amp;quot;⟨&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(85, 38)" end="(85, 51)" kind="«stx_,*»">
+          <OtherNode start="(85, 38)" end="(85, 49)" kind="Lean.Parser.Syntax.cat">
+            <IdentNode start="(85, 38)" end="(85, 49)" leading="" trailing="" raw_val="rcasesPatLo" val="rcasesPatLo" full_name="Lean.Parser.Tactic.rcasesPatLo" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(69, 8)" def_end="(69, 19)"/>
+            <NullNode/>
+          </OtherNode>
+          <AtomNode start="(85, 49)" end="(85, 51)" leading="" trailing=" " val=",*"/>
+        </OtherNode>
+        <OtherNode start="(85, 52)" end="(85, 55)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(85, 52)" end="(85, 55)" kind="str">
+            <AtomNode start="(85, 52)" end="(85, 55)" leading="" trailing=" " val="&amp;quot;⟩&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(85, 56)" end="(85, 57)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(85, 58)" end="(85, 67)" leading="" trailing="&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(86, 1)" end="(87, 65)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(86, 1)" end="(86, 63)">
+        <CommandDoccommentNode start="(86, 1)" end="(86, 63)" comment="`(pat)` is a pattern which resets the precedence to low -/">
+          <AtomNode start="(86, 1)" end="(86, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(86, 5)" end="(86, 63)" leading="" trailing="&#10;" val="`(pat)` is a pattern which resets the precedence to low -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(87, 1)" end="(87, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(87, 8)" end="(87, 33)">
+        <OtherNode start="(87, 8)" end="(87, 33)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(87, 8)" end="(87, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(87, 9)" end="(87, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(87, 14)" end="(87, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(87, 17)" end="(87, 32)" leading="" trailing="" raw_val="rcasesPat.paren" val="rcasesPat.paren"/>
+          <AtomNode start="(87, 32)" end="(87, 33)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(87, 34)" end="(87, 53)">
+        <OtherNode start="(87, 34)" end="(87, 37)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(87, 34)" end="(87, 37)" kind="str">
+            <AtomNode start="(87, 34)" end="(87, 37)" leading="" trailing=" " val="&amp;quot;(&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(87, 38)" end="(87, 49)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(87, 38)" end="(87, 49)" leading="" trailing=" " raw_val="rcasesPatLo" val="rcasesPatLo" full_name="Lean.Parser.Tactic.rcasesPatLo" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(69, 8)" def_end="(69, 19)"/>
+          <NullNode/>
+        </OtherNode>
+        <OtherNode start="(87, 50)" end="(87, 53)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(87, 50)" end="(87, 53)" kind="str">
+            <AtomNode start="(87, 50)" end="(87, 53)" leading="" trailing=" " val="&amp;quot;)&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(87, 54)" end="(87, 55)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(87, 56)" end="(87, 65)" leading="" trailing="&#10;&#10;" raw_val="rcasesPat" val="rcasesPat" full_name="Lean.Parser.Category.rcasesPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(65, 20)" def_end="(65, 29)"/>
+    </OtherNode>
+    <OtherNode start="(89, 1)" end="(90, 29)" kind="Lean.Parser.Command.syntaxCat">
+      <NullNode start="(89, 1)" end="(89, 49)">
+        <CommandDoccommentNode start="(89, 1)" end="(89, 49)" comment="The syntax category of `rintro` patterns. -/">
+          <AtomNode start="(89, 1)" end="(89, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(89, 5)" end="(89, 49)" leading="" trailing="&#10;" val="The syntax category of `rintro` patterns. -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <AtomNode start="(90, 1)" end="(90, 19)" leading="" trailing=" " val="declare_syntax_cat"/>
+      <IdentNode start="(90, 20)" end="(90, 29)" leading="" trailing="&#10;" raw_val="rintroPat" val="rintroPat"/>
+      <NullNode/>
+    </OtherNode>
+    <OtherNode start="(91, 1)" end="(92, 53)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(91, 1)" end="(91, 50)">
+        <CommandDoccommentNode start="(91, 1)" end="(91, 50)" comment="An `rcases` pattern is an `rintro` pattern -/">
+          <AtomNode start="(91, 1)" end="(91, 4)" leading="" trailing=" " val="/--"/>
+          <AtomNode start="(91, 5)" end="(91, 50)" leading="" trailing="&#10;" val="An `rcases` pattern is an `rintro` pattern -/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(92, 1)" end="(92, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(92, 8)" end="(92, 31)">
+        <OtherNode start="(92, 8)" end="(92, 31)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(92, 8)" end="(92, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(92, 9)" end="(92, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(92, 14)" end="(92, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(92, 17)" end="(92, 30)" leading="" trailing="" raw_val="rintroPat.one" val="rintroPat.one"/>
+          <AtomNode start="(92, 30)" end="(92, 31)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(92, 32)" end="(92, 41)">
+        <OtherNode start="(92, 32)" end="(92, 41)" kind="Lean.Parser.Syntax.cat">
+          <IdentNode start="(92, 32)" end="(92, 41)" leading="" trailing=" " raw_val="rcasesPat" val="rcasesPat" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+          <NullNode/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(92, 42)" end="(92, 43)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(92, 44)" end="(92, 53)" leading="" trailing="&#10;" raw_val="rintroPat" val="rintroPat" full_name="Lean.Parser.Category.rintroPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(90, 20)" def_end="(90, 29)"/>
+    </OtherNode>
+    <OtherNode start="(93, 1)" end="(97, 47)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(93, 1)" end="(95, 3)">
+        <CommandDoccommentNode start="(93, 1)" end="(95, 3)" comment="A multi argument binder `(pat1 pat2 : ty)` binds a list of patterns and gives them all type `ty`.&#10;-/">
+          <AtomNode start="(93, 1)" end="(93, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(94, 1)" end="(95, 3)" leading="" trailing="&#10;" val="A multi argument binder `(pat1 pat2 : ty)` binds a list of patterns and gives them all type `ty`.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(96, 1)" end="(96, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(96, 8)" end="(96, 34)">
+        <OtherNode start="(96, 8)" end="(96, 34)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(96, 8)" end="(96, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(96, 9)" end="(96, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(96, 14)" end="(96, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(96, 17)" end="(96, 33)" leading="" trailing="" raw_val="rintroPat.binder" val="rintroPat.binder"/>
+          <AtomNode start="(96, 33)" end="(96, 34)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(96, 35)" end="(96, 58)">
+        <OtherNode start="(96, 35)" end="(96, 58)" kind="Lean.Parser.Command.namedPrio">
+          <AtomNode start="(96, 35)" end="(96, 36)" leading="" trailing="" val="("/>
+          <AtomNode start="(96, 36)" end="(96, 44)" leading="" trailing=" " val="priority"/>
+          <AtomNode start="(96, 45)" end="(96, 47)" leading="" trailing=" " val=":="/>
+          <OtherNode start="(96, 48)" end="(96, 57)" kind="Lean.Parser.Syntax.addPrio">
+            <OtherNode start="(96, 48)" end="(96, 55)" kind="prioDefault">
+              <AtomNode start="(96, 48)" end="(96, 55)" leading="" trailing="" val="default"/>
+            </OtherNode>
+            <AtomNode start="(96, 55)" end="(96, 56)" leading="" trailing="" val="+"/>
+            <OtherNode start="(96, 56)" end="(96, 57)" kind="num">
+              <AtomNode start="(96, 56)" end="(96, 57)" leading="" trailing="" val="1"/>
+            </OtherNode>
+          </OtherNode>
+          <AtomNode start="(96, 57)" end="(96, 58)" leading="" trailing=" -- to override rcasesPat.paren&#10;  " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(97, 3)" end="(97, 35)">
+        <OtherNode start="(97, 3)" end="(97, 6)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(97, 3)" end="(97, 6)" kind="str">
+            <AtomNode start="(97, 3)" end="(97, 6)" leading="" trailing=" " val="&amp;quot;(&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(97, 7)" end="(97, 17)" kind="«stx_+»">
+          <OtherNode start="(97, 7)" end="(97, 16)" kind="Lean.Parser.Syntax.cat">
+            <IdentNode start="(97, 7)" end="(97, 16)" leading="" trailing="" raw_val="rintroPat" val="rintroPat" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+            <NullNode/>
+          </OtherNode>
+          <AtomNode start="(97, 16)" end="(97, 17)" leading="" trailing=" " val="+"/>
+        </OtherNode>
+        <OtherNode start="(97, 18)" end="(97, 31)" kind="stx_?">
+          <OtherNode start="(97, 18)" end="(97, 30)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(97, 18)" end="(97, 19)" leading="" trailing="" val="("/>
+            <NullNode start="(97, 19)" end="(97, 29)">
+              <OtherNode start="(97, 19)" end="(97, 24)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(97, 19)" end="(97, 24)" kind="str">
+                  <AtomNode start="(97, 19)" end="(97, 24)" leading="" trailing=" " val="&amp;quot; : &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(97, 25)" end="(97, 29)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(97, 25)" end="(97, 29)" leading="" trailing="" raw_val="term" val="term" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(97, 29)" end="(97, 30)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(97, 30)" end="(97, 31)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+        <OtherNode start="(97, 32)" end="(97, 35)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(97, 32)" end="(97, 35)" kind="str">
+            <AtomNode start="(97, 32)" end="(97, 35)" leading="" trailing=" " val="&amp;quot;)&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(97, 36)" end="(97, 37)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(97, 38)" end="(97, 47)" leading="" trailing="&#10;&#10;/- TODO&#10;/--&#10;`rcases? e` will perform case splits on `e` in the same way as `rcases e`,&#10;but rather than accepting a pattern, it does a maximal cases and prints the&#10;pattern that would produce this case splitting. The default maximum depth is 5,&#10;but this can be modified with `rcases? e : n`.&#10;-/&#10;syntax (name := rcases?) &amp;quot;rcases?&amp;quot; elimTarget,* (&amp;quot; : &amp;quot; num)? : tactic&#10;-/&#10;&#10;" raw_val="rintroPat" val="rintroPat" full_name="Lean.Parser.Category.rintroPat" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(90, 20)" def_end="(90, 29)"/>
+    </OtherNode>
+    <OtherNode start="(109, 1)" end="(152, 79)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(109, 1)" end="(151, 3)">
+        <CommandDoccommentNode start="(109, 1)" end="(151, 3)" comment="`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;A pattern like `⟨a, b, c⟩ | ⟨d, e⟩` will do a split over the inductive datatype,&#10;naming the first three parameters of the first constructor as `a,b,c` and the&#10;first two of the second constructor `d,e`. If the list is not as long as the&#10;number of arguments to the constructor or the number of constructors, the&#10;remaining variables will be automatically named. If there are nested brackets&#10;such as `⟨⟨a⟩, b | c⟩ | d` then these will cause more case splits as necessary.&#10;If there are too many arguments, such as `⟨a, b, c⟩` for splitting on&#10;`∃ x, ∃ y, p x`, then it will be treated as `⟨a, ⟨b, c⟩⟩`, splitting the last&#10;parameter as necessary.&#10;&#10;`rcases` also has special support for quotient types: quotient induction into Prop works like&#10;matching on the constructor `quot.mk`.&#10;&#10;`rcases h : e with PAT` will do the same as `rcases e with PAT` with the exception that an&#10;assumption `h : e = PAT` will be added to the context.&#10;-/">
+          <AtomNode start="(109, 1)" end="(109, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(110, 1)" end="(151, 3)" leading="" trailing="&#10;" val="`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;A pattern like `⟨a, b, c⟩ | ⟨d, e⟩` will do a split over the inductive datatype,&#10;naming the first three parameters of the first constructor as `a,b,c` and the&#10;first two of the second constructor `d,e`. If the list is not as long as the&#10;number of arguments to the constructor or the number of constructors, the&#10;remaining variables will be automatically named. If there are nested brackets&#10;such as `⟨⟨a⟩, b | c⟩ | d` then these will cause more case splits as necessary.&#10;If there are too many arguments, such as `⟨a, b, c⟩` for splitting on&#10;`∃ x, ∃ y, p x`, then it will be treated as `⟨a, ⟨b, c⟩⟩`, splitting the last&#10;parameter as necessary.&#10;&#10;`rcases` also has special support for quotient types: quotient induction into Prop works like&#10;matching on the constructor `quot.mk`.&#10;&#10;`rcases h : e with PAT` will do the same as `rcases e with PAT` with the exception that an&#10;assumption `h : e = PAT` will be added to the context.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(152, 1)" end="(152, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(152, 8)" end="(152, 24)">
+        <OtherNode start="(152, 8)" end="(152, 24)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(152, 8)" end="(152, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(152, 9)" end="(152, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(152, 14)" end="(152, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(152, 17)" end="(152, 23)" leading="" trailing="" raw_val="rcases" val="rcases"/>
+          <AtomNode start="(152, 23)" end="(152, 24)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(152, 25)" end="(152, 70)">
+        <OtherNode start="(152, 25)" end="(152, 33)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(152, 25)" end="(152, 33)" kind="str">
+            <AtomNode start="(152, 25)" end="(152, 33)" leading="" trailing=" " val="&amp;quot;rcases&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(152, 34)" end="(152, 46)" kind="«stx_,*»">
+          <OtherNode start="(152, 34)" end="(152, 44)" kind="Lean.Parser.Syntax.cat">
+            <IdentNode start="(152, 34)" end="(152, 44)" leading="" trailing="" raw_val="elimTarget" val="elimTarget" full_name="Lean.Parser.Tactic.elimTarget" mod_name="Init.Tactics" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Tactics.lean"/>
+            <NullNode/>
+          </OtherNode>
+          <AtomNode start="(152, 44)" end="(152, 46)" leading="" trailing=" " val=",*"/>
+        </OtherNode>
+        <OtherNode start="(152, 47)" end="(152, 70)" kind="stx_?">
+          <OtherNode start="(152, 47)" end="(152, 69)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(152, 47)" end="(152, 48)" leading="" trailing="" val="("/>
+            <NullNode start="(152, 48)" end="(152, 68)">
+              <OtherNode start="(152, 48)" end="(152, 56)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(152, 48)" end="(152, 56)" kind="str">
+                  <AtomNode start="(152, 48)" end="(152, 56)" leading="" trailing=" " val="&amp;quot; with &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(152, 57)" end="(152, 68)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(152, 57)" end="(152, 68)" leading="" trailing="" raw_val="rcasesPatLo" val="rcasesPatLo" full_name="Lean.Parser.Tactic.rcasesPatLo" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(69, 8)" def_end="(69, 19)"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(152, 68)" end="(152, 69)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(152, 69)" end="(152, 70)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(152, 71)" end="(152, 72)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(152, 73)" end="(152, 79)" leading="" trailing="&#10;&#10;" raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+    </OtherNode>
+    <OtherNode start="(154, 1)" end="(171, 97)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(154, 1)" end="(170, 3)">
+        <CommandDoccommentNode start="(154, 1)" end="(170, 3)" comment="The `obtain` tactic is a combination of `have` and `rcases`. See `rcases` for&#10;a description of supported patterns.&#10;&#10;```lean&#10;obtain ⟨patt⟩ : type := proof&#10;```&#10;is equivalent to&#10;```lean&#10;have h : type := proof&#10;rcases h with ⟨patt⟩&#10;```&#10;&#10;If `⟨patt⟩` is omitted, `rcases` will try to infer the pattern.&#10;&#10;If `type` is omitted, `:= proof` is required.&#10;-/">
+          <AtomNode start="(154, 1)" end="(154, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(155, 1)" end="(170, 3)" leading="" trailing="&#10;" val="The `obtain` tactic is a combination of `have` and `rcases`. See `rcases` for&#10;a description of supported patterns.&#10;&#10;```lean&#10;obtain ⟨patt⟩ : type := proof&#10;```&#10;is equivalent to&#10;```lean&#10;have h : type := proof&#10;rcases h with ⟨patt⟩&#10;```&#10;&#10;If `⟨patt⟩` is omitted, `rcases` will try to infer the pattern.&#10;&#10;If `type` is omitted, `:= proof` is required.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(171, 1)" end="(171, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(171, 8)" end="(171, 24)">
+        <OtherNode start="(171, 8)" end="(171, 24)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(171, 8)" end="(171, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(171, 9)" end="(171, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(171, 14)" end="(171, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(171, 17)" end="(171, 23)" leading="" trailing="" raw_val="obtain" val="obtain"/>
+          <AtomNode start="(171, 23)" end="(171, 24)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(171, 25)" end="(171, 88)">
+        <OtherNode start="(171, 25)" end="(171, 33)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(171, 25)" end="(171, 33)" kind="str">
+            <AtomNode start="(171, 25)" end="(171, 33)" leading="" trailing=" " val="&amp;quot;obtain&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(171, 34)" end="(171, 57)" kind="stx_?">
+          <OtherNode start="(171, 34)" end="(171, 56)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(171, 34)" end="(171, 35)" leading="" trailing="" val="("/>
+            <NullNode start="(171, 35)" end="(171, 55)">
+              <OtherNode start="(171, 35)" end="(171, 42)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(171, 35)" end="(171, 42)" leading="" trailing=" " raw_val="ppSpace" val="ppSpace" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+              <OtherNode start="(171, 43)" end="(171, 55)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(171, 43)" end="(171, 55)" leading="" trailing="" raw_val="rcasesPatMed" val="rcasesPatMed" full_name="Lean.Parser.Tactic.rcasesPatMed" mod_name="Init.RCases" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/RCases.lean" def_start="(67, 8)" def_end="(67, 20)"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(171, 55)" end="(171, 56)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(171, 56)" end="(171, 57)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+        <OtherNode start="(171, 58)" end="(171, 71)" kind="stx_?">
+          <OtherNode start="(171, 58)" end="(171, 70)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(171, 58)" end="(171, 59)" leading="" trailing="" val="("/>
+            <NullNode start="(171, 59)" end="(171, 69)">
+              <OtherNode start="(171, 59)" end="(171, 64)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(171, 59)" end="(171, 64)" kind="str">
+                  <AtomNode start="(171, 59)" end="(171, 64)" leading="" trailing=" " val="&amp;quot; : &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(171, 65)" end="(171, 69)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(171, 65)" end="(171, 69)" leading="" trailing="" raw_val="term" val="term" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(171, 69)" end="(171, 70)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(171, 70)" end="(171, 71)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+        <OtherNode start="(171, 72)" end="(171, 88)" kind="stx_?">
+          <OtherNode start="(171, 72)" end="(171, 87)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(171, 72)" end="(171, 73)" leading="" trailing="" val="("/>
+            <NullNode start="(171, 73)" end="(171, 86)">
+              <OtherNode start="(171, 73)" end="(171, 79)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(171, 73)" end="(171, 79)" kind="str">
+                  <AtomNode start="(171, 73)" end="(171, 79)" leading="" trailing=" " val="&amp;quot; := &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(171, 80)" end="(171, 86)" kind="«stx_,+»">
+                <OtherNode start="(171, 80)" end="(171, 84)" kind="Lean.Parser.Syntax.cat">
+                  <IdentNode start="(171, 80)" end="(171, 84)" leading="" trailing="" raw_val="term" val="term" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode/>
+                </OtherNode>
+                <AtomNode start="(171, 84)" end="(171, 86)" leading="" trailing="" val=",+"/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(171, 86)" end="(171, 87)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(171, 87)" end="(171, 88)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(171, 89)" end="(171, 90)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(171, 91)" end="(171, 97)" leading="" trailing="&#10;&#10;/- TODO&#10;/--&#10;`rintro?` will introduce and case split on variables in the same way as&#10;`rintro`, but will also print the `rintro` invocation that would have the same&#10;result. Like `rcases?`, `rintro? : n` allows for modifying the&#10;depth of splitting; the default is 5.&#10;-/&#10;syntax (name := rintro?) &amp;quot;rintro?&amp;quot; (&amp;quot; : &amp;quot; num)? : tactic&#10;-/&#10;&#10;" raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+    </OtherNode>
+    <OtherNode start="(183, 1)" end="(193, 83)" kind="Lean.Parser.Command.syntax">
+      <NullNode start="(183, 1)" end="(192, 3)">
+        <CommandDoccommentNode start="(183, 1)" end="(192, 3)" comment="The `rintro` tactic is a combination of the `intros` tactic with `rcases` to&#10;allow for destructuring patterns while introducing variables. See `rcases` for&#10;a description of supported patterns. For example, `rintro (a | ⟨b, c⟩) ⟨d, e⟩`&#10;will introduce two variables, and then do case splits on both of them producing&#10;two subgoals, one with variables `a d e` and the other with `b c d e`.&#10;&#10;`rintro`, unlike `rcases`, also supports the form `(x y : ty)` for introducing&#10;and type-ascripting multiple variables at once, similar to binders.&#10;-/">
+          <AtomNode start="(183, 1)" end="(183, 4)" leading="" trailing="&#10;" val="/--"/>
+          <AtomNode start="(184, 1)" end="(192, 3)" leading="" trailing="&#10;" val="The `rintro` tactic is a combination of the `intros` tactic with `rcases` to&#10;allow for destructuring patterns while introducing variables. See `rcases` for&#10;a description of supported patterns. For example, `rintro (a | ⟨b, c⟩) ⟨d, e⟩`&#10;will introduce two variables, and then do case splits on both of them producing&#10;two subgoals, one with variables `a d e` and the other with `b c d e`.&#10;&#10;`rintro`, unlike `rcases`, also supports the form `(x y : ty)` for introducing&#10;and type-ascripting multiple variables at once, similar to binders.&#10;-/"/>
+        </CommandDoccommentNode>
+      </NullNode>
+      <NullNode/>
+      <TermAttrkindNode>
+        <NullNode/>
+      </TermAttrkindNode>
+      <AtomNode start="(193, 1)" end="(193, 7)" leading="" trailing=" " val="syntax"/>
+      <NullNode/>
+      <NullNode start="(193, 8)" end="(193, 24)">
+        <OtherNode start="(193, 8)" end="(193, 24)" kind="Lean.Parser.Command.namedName">
+          <AtomNode start="(193, 8)" end="(193, 9)" leading="" trailing="" val="("/>
+          <AtomNode start="(193, 9)" end="(193, 13)" leading="" trailing=" " val="name"/>
+          <AtomNode start="(193, 14)" end="(193, 16)" leading="" trailing=" " val=":="/>
+          <IdentNode start="(193, 17)" end="(193, 23)" leading="" trailing="" raw_val="rintro" val="rintro"/>
+          <AtomNode start="(193, 23)" end="(193, 24)" leading="" trailing=" " val=")"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode/>
+      <NullNode start="(193, 25)" end="(193, 74)">
+        <OtherNode start="(193, 25)" end="(193, 33)" kind="Lean.Parser.Syntax.atom">
+          <OtherNode start="(193, 25)" end="(193, 33)" kind="str">
+            <AtomNode start="(193, 25)" end="(193, 33)" leading="" trailing=" " val="&amp;quot;rintro&amp;quot;"/>
+          </OtherNode>
+        </OtherNode>
+        <OtherNode start="(193, 34)" end="(193, 60)" kind="«stx_+»">
+          <OtherNode start="(193, 34)" end="(193, 59)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(193, 34)" end="(193, 35)" leading="" trailing="" val="("/>
+            <NullNode start="(193, 35)" end="(193, 58)">
+              <OtherNode start="(193, 35)" end="(193, 42)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(193, 35)" end="(193, 42)" leading="" trailing=" " raw_val="ppSpace" val="ppSpace" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+              <OtherNode start="(193, 43)" end="(193, 48)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(193, 43)" end="(193, 48)" leading="" trailing=" " raw_val="colGt" val="colGt" full_name="Lean.ParserDescr.const" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+              <OtherNode start="(193, 49)" end="(193, 58)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(193, 49)" end="(193, 58)" leading="" trailing="" raw_val="rintroPat" val="rintroPat" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(193, 58)" end="(193, 59)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(193, 59)" end="(193, 60)" leading="" trailing=" " val="+"/>
+        </OtherNode>
+        <OtherNode start="(193, 61)" end="(193, 74)" kind="stx_?">
+          <OtherNode start="(193, 61)" end="(193, 73)" kind="Lean.Parser.Syntax.paren">
+            <AtomNode start="(193, 61)" end="(193, 62)" leading="" trailing="" val="("/>
+            <NullNode start="(193, 62)" end="(193, 72)">
+              <OtherNode start="(193, 62)" end="(193, 67)" kind="Lean.Parser.Syntax.atom">
+                <OtherNode start="(193, 62)" end="(193, 67)" kind="str">
+                  <AtomNode start="(193, 62)" end="(193, 67)" leading="" trailing=" " val="&amp;quot; : &amp;quot;"/>
+                </OtherNode>
+              </OtherNode>
+              <OtherNode start="(193, 68)" end="(193, 72)" kind="Lean.Parser.Syntax.cat">
+                <IdentNode start="(193, 68)" end="(193, 72)" leading="" trailing="" raw_val="term" val="term" full_name="Lean.ParserDescr.cat" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode/>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(193, 72)" end="(193, 73)" leading="" trailing="" val=")"/>
+          </OtherNode>
+          <AtomNode start="(193, 73)" end="(193, 74)" leading="" trailing=" " val="?"/>
+        </OtherNode>
+      </NullNode>
+      <AtomNode start="(193, 75)" end="(193, 76)" leading="" trailing=" " val=":"/>
+      <IdentNode start="(193, 77)" end="(193, 83)" leading="" trailing="&#10;&#10;" raw_val="tactic" val="tactic" full_name="Lean.Parser.Category.tactic" mod_name="Init.Notation" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Notation.lean"/>
+    </OtherNode>
+    <CommandEndNode start="(195, 1)" end="(195, 23)" name="Lean.Parser.Tactic">
+      <AtomNode start="(195, 1)" end="(195, 4)" leading="" trailing=" " val="end"/>
+      <NullNode start="(195, 5)" end="(195, 23)">
+        <IdentNode start="(195, 5)" end="(195, 23)" leading="" trailing="&#10;" raw_val="Lean.Parser.Tactic" val="Lean.Parser.Tactic"/>
+      </NullNode>
+    </CommandEndNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(13, 1)" end="(61, 3)" text="# Recursive cases (`rcases`) tactic and related tactics&#10;&#10;`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;The patterns are fairly liberal about the exact shape of the constructors, and will insert&#10;additional alternation branches and tuple arguments if there are not enough arguments provided, and&#10;reuse the tail for further matches if there are too many arguments provided to alternation and&#10;tuple patterns.&#10;&#10;This file also contains the `obtain` and `rintro` tactics, which use the same syntax of `rcases`&#10;patterns but with a slightly different use case:&#10;&#10;* `rintro` (or `rintros`) is used like `rintro x ⟨y, z⟩` and is the same as `intros` followed by&#10;  `rcases` on the newly introduced arguments.&#10;* `obtain` is the same as `rcases` but with a syntax styled after `have` rather than `cases`.&#10;  `obtain ⟨hx, hy⟩ | hz := foo` is equivalent to `rcases foo with ⟨hx, hy⟩ | hz`. Unlike `rcases`,&#10;  `obtain` also allows one to omit `:= foo`, although a type must be provided in this case,&#10;  as in `obtain ⟨hx, hy⟩ | hz : a ∧ b ∨ c`, in which case it produces a subgoal for proving&#10;  `a ∧ b ∨ c` in addition to the subgoals `hx : a, hy : b |- goal` and `hz : c |- goal`.&#10;&#10;## Tags&#10;&#10;rcases, rintro, obtain, destructuring, cases, pattern matching, match&#10;-/"/>
+    <Comment start="(64, 1)" end="(64, 49)" text="The syntax category of `rcases` patterns. -/"/>
+    <Comment start="(66, 1)" end="(66, 86)" text="A medium precedence `rcases` pattern is a list of `rcasesPat` separated by `|` -/"/>
+    <Comment start="(68, 1)" end="(68, 91)" text="A low precedence `rcases` pattern is a `rcasesPatMed` optionally followed by `: ty` -/"/>
+    <Comment start="(70, 1)" end="(70, 40)" text="`x` is a pattern which binds `x` -/"/>
+    <Comment start="(72, 1)" end="(72, 82)" text="`_` is a pattern which ignores the value and gives it an inaccessible name -/"/>
+    <Comment start="(74, 1)" end="(74, 65)" text="`-` is a pattern which removes the value from the context -/"/>
+    <Comment start="(76, 1)" end="(79, 3)" text="A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;while leaving the `@` off will only use the patterns on the explicit arguments.&#10;-/"/>
+    <Comment start="(81, 1)" end="(84, 3)" text="`⟨pat, ...⟩` is a pattern which matches on a tuple-like constructor&#10;or multi-argument inductive constructor&#10;-/"/>
+    <Comment start="(86, 1)" end="(86, 63)" text="`(pat)` is a pattern which resets the precedence to low -/"/>
+    <Comment start="(89, 1)" end="(89, 49)" text="The syntax category of `rintro` patterns. -/"/>
+    <Comment start="(91, 1)" end="(91, 50)" text="An `rcases` pattern is an `rintro` pattern -/"/>
+    <Comment start="(93, 1)" end="(95, 3)" text="A multi argument binder `(pat1 pat2 : ty)` binds a list of patterns and gives them all type `ty`.&#10;-/"/>
+    <Comment start="(96, 59)" end="(97, 3)" text="-- to override rcasesPat.paren&#10;  "/>
+    <Comment start="(109, 1)" end="(151, 3)" text="`rcases` is a tactic that will perform `cases` recursively, according to a pattern. It is used to&#10;destructure hypotheses or expressions composed of inductive types like `h1 : a ∧ b ∧ c ∨ d` or&#10;`h2 : ∃ x y, trans_rel R x y`. Usual usage might be `rcases h1 with ⟨ha, hb, hc⟩ | hd` or&#10;`rcases h2 with ⟨x, y, _ | ⟨z, hxz, hzy⟩⟩` for these examples.&#10;&#10;Each element of an `rcases` pattern is matched against a particular local hypothesis (most of which&#10;are generated during the execution of `rcases` and represent individual elements destructured from&#10;the input expression). An `rcases` pattern has the following grammar:&#10;&#10;* A name like `x`, which names the active hypothesis as `x`.&#10;* A blank `_`, which does nothing (letting the automatic naming system used by `cases` name the&#10;  hypothesis).&#10;* A hyphen `-`, which clears the active hypothesis and any dependents.&#10;* The keyword `rfl`, which expects the hypothesis to be `h : a = b`, and calls `subst` on the&#10;  hypothesis (which has the effect of replacing `b` with `a` everywhere or vice versa).&#10;* A type ascription `p : ty`, which sets the type of the hypothesis to `ty` and then matches it&#10;  against `p`. (Of course, `ty` must unify with the actual type of `h` for this to work.)&#10;* A tuple pattern `⟨p1, p2, p3⟩`, which matches a constructor with many arguments, or a series&#10;  of nested conjunctions or existentials. For example if the active hypothesis is `a ∧ b ∧ c`,&#10;  then the conjunction will be destructured, and `p1` will be matched against `a`, `p2` against `b`&#10;  and so on.&#10;* A `@` before a tuple pattern as in `@⟨p1, p2, p3⟩` will bind all arguments in the constructor,&#10;  while leaving the `@` off will only use the patterns on the explicit arguments.&#10;* An alternation pattern `p1 | p2 | p3`, which matches an inductive type with multiple constructors,&#10;  or a nested disjunction like `a ∨ b ∨ c`.&#10;&#10;A pattern like `⟨a, b, c⟩ | ⟨d, e⟩` will do a split over the inductive datatype,&#10;naming the first three parameters of the first constructor as `a,b,c` and the&#10;first two of the second constructor `d,e`. If the list is not as long as the&#10;number of arguments to the constructor or the number of constructors, the&#10;remaining variables will be automatically named. If there are nested brackets&#10;such as `⟨⟨a⟩, b | c⟩ | d` then these will cause more case splits as necessary.&#10;If there are too many arguments, such as `⟨a, b, c⟩` for splitting on&#10;`∃ x, ∃ y, p x`, then it will be treated as `⟨a, ⟨b, c⟩⟩`, splitting the last&#10;parameter as necessary.&#10;&#10;`rcases` also has special support for quotient types: quotient induction into Prop works like&#10;matching on the constructor `quot.mk`.&#10;&#10;`rcases h : e with PAT` will do the same as `rcases e with PAT` with the exception that an&#10;assumption `h : e = PAT` will be added to the context.&#10;-/"/>
+    <Comment start="(154, 1)" end="(170, 3)" text="The `obtain` tactic is a combination of `have` and `rcases`. See `rcases` for&#10;a description of supported patterns.&#10;&#10;```lean&#10;obtain ⟨patt⟩ : type := proof&#10;```&#10;is equivalent to&#10;```lean&#10;have h : type := proof&#10;rcases h with ⟨patt⟩&#10;```&#10;&#10;If `⟨patt⟩` is omitted, `rcases` will try to infer the pattern.&#10;&#10;If `type` is omitted, `:= proof` is required.&#10;-/"/>
+    <Comment start="(183, 1)" end="(192, 3)" text="The `rintro` tactic is a combination of the `intros` tactic with `rcases` to&#10;allow for destructuring patterns while introducing variables. See `rcases` for&#10;a description of supported patterns. For example, `rintro (a | ⟨b, c⟩) ⟨d, e⟩`&#10;will introduce two variables, and then do case splits on both of them producing&#10;two subgoals, one with variables `a d e` and the other with `b c d e`.&#10;&#10;`rintro`, unlike `rcases`, also supports the form `(x y : ty)` for introducing&#10;and type-ascripting multiple variables at once, similar to binders.&#10;-/"/>
+  </Comments>
+</TracedFile>

@@ -54,10 +54,22 @@ LEAN4_URL = "https://github.com/leanprover/lean4"
 LEAN4_PACKAGES_DIR = Path(".lake/packages")
 """The directory where Lean 4 dependencies are stored (since v4.3.0-rc2)."""
 
+LEAN4_TOOLCHAINS_DIR = Path(".elan/toolchains")
+"""The directory where Lean 4 are stored"""
+
 LOAD_USED_PACKAGES_ONLY = "LOAD_USED_PACKAGES_ONLY" in os.environ
 """Only load depdendency files that are actually used by the target repo."""
 
 LEAN4_BUILD_DIR = Path(".lake/build")
+
+LEAN4_SRC_LEAN_DIR = Path("src/lean")
+LEAN4_LIB_LEAN_DIR = Path("lib/lean")
+LEAN4_SRC_LEAN_LAKE_DIR = Path("lake")
+LEAN4_LEAN_LAKE_NAME_PREFIX = "Lake"
+
+LEAN4_TRACED_DIR = Path(".alean")
+LEAN4_TRACED_PACKAGES_DIR = LEAN4_TRACED_DIR / Path("packages")
+LEAN4_TRACED_TOOLCHAINS_DIR = LEAN4_TRACED_DIR / Path("toolchains")
 
 TACTIC_CPU_LIMIT = int(os.getenv("TACTIC_CPU_LIMIT", 1))
 """Number of CPUs for executing tactics when interacting with Lean.

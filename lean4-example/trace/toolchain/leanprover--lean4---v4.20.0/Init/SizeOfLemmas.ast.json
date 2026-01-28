@@ -1,0 +1,4913 @@
+{"tactics":
+ [{"stateBefore": "n : Nat\na : Fin n\n⊢ sizeOf a = ↑a + 1",
+   "stateAfter":
+   "case mk\nn val✝ : Nat\nisLt✝ : val✝ < n\n⊢ sizeOf ⟨val✝, isLt✝⟩ = ↑⟨val✝, isLt✝⟩ + 1",
+   "pos": 325,
+   "endPos": 332},
+  {"stateBefore":
+   "case mk\nn val✝ : Nat\nisLt✝ : val✝ < n\n⊢ sizeOf ⟨val✝, isLt✝⟩ = ↑⟨val✝, isLt✝⟩ + 1",
+   "stateAfter": "no goals",
+   "pos": 334,
+   "endPos": 345},
+  {"stateBefore": "w : Nat\na : BitVec w\n⊢ sizeOf a = sizeOf a.toFin + 1",
+   "stateAfter":
+   "case ofFin\nw : Nat\ntoFin✝ : Fin (2 ^ w)\n⊢ sizeOf { toFin := toFin✝ } = sizeOf { toFin := toFin✝ }.toFin + 1",
+   "pos": 442,
+   "endPos": 449},
+  {"stateBefore":
+   "case ofFin\nw : Nat\ntoFin✝ : Fin (2 ^ w)\n⊢ sizeOf { toFin := toFin✝ } = sizeOf { toFin := toFin✝ }.toFin + 1",
+   "stateAfter": "no goals",
+   "pos": 451,
+   "endPos": 462},
+  {"stateBefore": "a : UInt8\n⊢ sizeOf a = a.toNat + 3",
+   "stateAfter":
+   "case ofBitVec\ntoBitVec✝ : BitVec 8\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "pos": 548,
+   "endPos": 555},
+  {"stateBefore":
+   "case ofBitVec\ntoBitVec✝ : BitVec 8\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "stateAfter": "no goals",
+   "pos": 557,
+   "endPos": 596},
+  {"stateBefore": "a : UInt16\n⊢ sizeOf a = a.toNat + 3",
+   "stateAfter":
+   "case ofBitVec\ntoBitVec✝ : BitVec 16\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "pos": 684,
+   "endPos": 691},
+  {"stateBefore":
+   "case ofBitVec\ntoBitVec✝ : BitVec 16\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "stateAfter": "no goals",
+   "pos": 693,
+   "endPos": 733},
+  {"stateBefore": "a : UInt32\n⊢ sizeOf a = a.toNat + 3",
+   "stateAfter":
+   "case ofBitVec\ntoBitVec✝ : BitVec 32\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "pos": 821,
+   "endPos": 828},
+  {"stateBefore":
+   "case ofBitVec\ntoBitVec✝ : BitVec 32\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "stateAfter": "no goals",
+   "pos": 830,
+   "endPos": 870},
+  {"stateBefore": "a : UInt64\n⊢ sizeOf a = a.toNat + 3",
+   "stateAfter":
+   "case ofBitVec\ntoBitVec✝ : BitVec 64\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "pos": 958,
+   "endPos": 965},
+  {"stateBefore":
+   "case ofBitVec\ntoBitVec✝ : BitVec 64\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "stateAfter": "no goals",
+   "pos": 967,
+   "endPos": 1007},
+  {"stateBefore": "a : USize\n⊢ sizeOf a = a.toNat + 3",
+   "stateAfter":
+   "case ofBitVec\ntoBitVec✝ : BitVec System.Platform.numBits\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "pos": 1093,
+   "endPos": 1100},
+  {"stateBefore":
+   "case ofBitVec\ntoBitVec✝ : BitVec System.Platform.numBits\n⊢ sizeOf { toBitVec := toBitVec✝ } = { toBitVec := toBitVec✝ }.toNat + 3",
+   "stateAfter": "no goals",
+   "pos": 1102,
+   "endPos": 1141},
+  {"stateBefore": "a : Char\n⊢ sizeOf a = a.toNat + 4",
+   "stateAfter":
+   "case mk\nval✝ : UInt32\nvalid✝ : val✝.isValidChar\n⊢ sizeOf { val := val✝, valid := valid✝ } = { val := val✝, valid := valid✝ }.toNat + 4",
+   "pos": 1225,
+   "endPos": 1232},
+  {"stateBefore":
+   "case mk\nval✝ : UInt32\nvalid✝ : val✝.isValidChar\n⊢ sizeOf { val := val✝, valid := valid✝ } = { val := val✝, valid := valid✝ }.toNat + 4",
+   "stateAfter": "no goals",
+   "pos": 1234,
+   "endPos": 1258},
+  {"stateBefore":
+   "α : Sort u_1\np : α → Prop\ns : Subtype p\n⊢ sizeOf s = sizeOf s.val + 1",
+   "stateAfter":
+   "case mk\nα : Sort u_1\np : α → Prop\nval✝ : α\nproperty✝ : p val✝\n⊢ sizeOf ⟨val✝, property✝⟩ = sizeOf ⟨val✝, property✝⟩.val + 1",
+   "pos": 1389,
+   "endPos": 1396},
+  {"stateBefore":
+   "case mk\nα : Sort u_1\np : α → Prop\nval✝ : α\nproperty✝ : p val✝\n⊢ sizeOf ⟨val✝, property✝⟩ = sizeOf ⟨val✝, property✝⟩.val + 1",
+   "stateAfter": "no goals",
+   "pos": 1398,
+   "endPos": 1402}],
+ "premises":
+ [{"pos": {"line": 13, "column": 42},
+   "modName": "Init.Prelude",
+   "fullName": "Fin",
+   "endPos": {"line": 13, "column": 45},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 13, "column": 51},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 13, "column": 57},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 13, "column": 64},
+   "modName": "Init.Prelude",
+   "fullName": "Fin.val",
+   "endPos": {"line": 13, "column": 67},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 14, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 14, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 14, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 14, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 16, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec",
+   "endPos": {"line": 16, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 16, "column": 57},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 16, "column": 63},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 16, "column": 68},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 16, "column": 74},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 16, "column": 77},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toFin",
+   "endPos": {"line": 16, "column": 82},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 17, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 17, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 17, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 17, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 19, "column": 44},
+   "modName": "Init.Prelude",
+   "fullName": "UInt8",
+   "endPos": {"line": 19, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 19, "column": 44},
+   "modName": "Init.Prelude",
+   "fullName": "UInt8",
+   "endPos": {"line": 19, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 19, "column": 53},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 19, "column": 59},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 19, "column": 66},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt8.toNat",
+   "endPos": {"line": 19, "column": 71},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 20, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 20, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt8.toNat",
+   "endPos": {"line": 20, "column": 35},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 37},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 20, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt8.toNat",
+   "endPos": {"line": 20, "column": 35},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 20, "column": 37},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 20, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 22, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt16",
+   "endPos": {"line": 22, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 22, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt16",
+   "endPos": {"line": 22, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 22, "column": 55},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 22, "column": 61},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 22, "column": 68},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt16.toNat",
+   "endPos": {"line": 22, "column": 73},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 23, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 23, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt16.toNat",
+   "endPos": {"line": 23, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 23, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt16.toNat",
+   "endPos": {"line": 23, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 23, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 23, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 25, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt32",
+   "endPos": {"line": 25, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 25, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt32",
+   "endPos": {"line": 25, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 25, "column": 55},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 25, "column": 61},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 25, "column": 68},
+   "modName": "Init.Prelude",
+   "fullName": "UInt32.toNat",
+   "endPos": {"line": 25, "column": 73},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 26, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 26, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 24},
+   "modName": "Init.Prelude",
+   "fullName": "UInt32.toNat",
+   "endPos": {"line": 26, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 26, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 24},
+   "modName": "Init.Prelude",
+   "fullName": "UInt32.toNat",
+   "endPos": {"line": 26, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 26, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 26, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 28, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt64",
+   "endPos": {"line": 28, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 28, "column": 45},
+   "modName": "Init.Prelude",
+   "fullName": "UInt64",
+   "endPos": {"line": 28, "column": 51},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 28, "column": 55},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 28, "column": 61},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 28, "column": 68},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt64.toNat",
+   "endPos": {"line": 28, "column": 73},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 29, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 29, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt64.toNat",
+   "endPos": {"line": 29, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 29, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "UInt64.toNat",
+   "endPos": {"line": 29, "column": 36},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 29, "column": 38},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 29, "column": 50},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 31, "column": 44},
+   "modName": "Init.Prelude",
+   "fullName": "USize",
+   "endPos": {"line": 31, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 31, "column": 44},
+   "modName": "Init.Prelude",
+   "fullName": "USize",
+   "endPos": {"line": 31, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 31, "column": 53},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 31, "column": 59},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 31, "column": 66},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "USize.toNat",
+   "endPos": {"line": 31, "column": 71},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 32, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 32, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "USize.toNat",
+   "endPos": {"line": 32, "column": 35},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 37},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 32, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 24},
+   "modName": "Init.Data.UInt.BasicAux",
+   "fullName": "USize.toNat",
+   "endPos": {"line": 32, "column": 35},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/UInt/BasicAux.lean",
+   "defEndPos": null},
+  {"pos": {"line": 32, "column": 37},
+   "modName": "Init.Prelude",
+   "fullName": "BitVec.toNat",
+   "endPos": {"line": 32, "column": 49},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 34, "column": 43},
+   "modName": "Init.Prelude",
+   "fullName": "Char",
+   "endPos": {"line": 34, "column": 47},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 34, "column": 43},
+   "modName": "Init.Prelude",
+   "fullName": "Char",
+   "endPos": {"line": 34, "column": 47},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 34, "column": 51},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 34, "column": 57},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 34, "column": 64},
+   "modName": "Init.Data.Char.Basic",
+   "fullName": "Char.toNat",
+   "endPos": {"line": 34, "column": 69},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Char/Basic.lean",
+   "defEndPos": null},
+  {"pos": {"line": 35, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 35, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 35, "column": 16},
+   "modName": "Init.Prelude",
+   "fullName": "Bool.true",
+   "endPos": {"line": 35, "column": 22},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 35, "column": 24},
+   "modName": "Init.Data.Char.Basic",
+   "fullName": "Char.toNat",
+   "endPos": {"line": 35, "column": 34},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Char/Basic.lean",
+   "defEndPos": null},
+  {"pos": {"line": 35, "column": 24},
+   "modName": "Init.Data.Char.Basic",
+   "fullName": "Char.toNat",
+   "endPos": {"line": 35, "column": 34},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Data/Char/Basic.lean",
+   "defEndPos": null},
+  {"pos": {"line": 37, "column": 76},
+   "modName": "Init.Prelude",
+   "fullName": "Subtype",
+   "endPos": {"line": 37, "column": 83},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null},
+  {"pos": {"line": 37, "column": 89},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 37, "column": 95},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 37, "column": 100},
+   "modName": "Init.SizeOf",
+   "fullName": "SizeOf.sizeOf",
+   "endPos": {"line": 37, "column": 106},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/SizeOf.lean",
+   "defEndPos": null},
+  {"pos": {"line": 37, "column": 109},
+   "modName": "Init.Prelude",
+   "fullName": "Subtype.val",
+   "endPos": {"line": 37, "column": 112},
+   "defPos": null,
+   "defPath":
+   "/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean",
+   "defEndPos": null}],
+ "commandASTs":
+ [{"node":
+   {"kind": "Lean.Parser.Module.header",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.moduleTk",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": "module",
+             "info":
+             {"original":
+              {"trailing": "\n\n",
+               "pos": 164,
+               "leading": "",
+               "endPos": 170}}}}]}}]}},
+     {"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.prelude",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": "prelude",
+             "info":
+             {"original":
+              {"trailing": "\n",
+               "pos": 172,
+               "leading": "",
+               "endPos": 179}}}}]}}]}},
+     {"node":
+      {"kind": "null",
+       "info": "none",
+       "args":
+       [{"node":
+         {"kind": "Lean.Parser.Module.import",
+          "info": "none",
+          "args":
+          [{"node": {"kind": "null", "info": "none", "args": []}},
+           {"atom":
+            {"val": "import",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 180, "leading": "", "endPos": 186}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"ident":
+            {"val": "Init.Meta",
+             "rawVal": "Init.Meta",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": "\n", "pos": 187, "leading": "", "endPos": 196}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Module.import",
+          "info": "none",
+          "args":
+          [{"node": {"kind": "null", "info": "none", "args": []}},
+           {"atom":
+            {"val": "import",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 197, "leading": "", "endPos": 203}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"ident":
+            {"val": "Init.SizeOf",
+             "rawVal": "Init.SizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": "\n", "pos": 204, "leading": "", "endPos": 215}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Module.import",
+          "info": "none",
+          "args":
+          [{"node": {"kind": "null", "info": "none", "args": []}},
+           {"atom":
+            {"val": "import",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 216, "leading": "", "endPos": 222}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}},
+           {"ident":
+            {"val": "Init.Data.Nat.Linear",
+             "rawVal": "Init.Data.Nat.Linear",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": "\n\n", "pos": 223, "leading": "", "endPos": 243}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 245, "leading": "", "endPos": 247}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 247,
+                           "leading": "",
+                           "endPos": 251}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 251,
+                  "leading": "",
+                  "endPos": 252}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 253,
+                  "leading": "",
+                  "endPos": 262}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 263, "leading": "", "endPos": 270}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "Fin.sizeOf",
+             "rawVal": "Fin.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 271, "leading": "", "endPos": 281}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 282,
+                     "leading": "",
+                     "endPos": 283}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 283,
+                        "leading": "",
+                        "endPos": 284}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 285,
+                        "leading": "",
+                        "endPos": 286}}}},
+                    {"node":
+                     {"kind": "Lean.Parser.Term.app",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "Fin",
+                         "rawVal": "Fin",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 287,
+                           "leading": "",
+                           "endPos": 290}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "n",
+                            "rawVal": "n",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": "",
+                              "pos": 291,
+                              "leading": "",
+                              "endPos": 292}}}}]}}]}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 292,
+                     "leading": "",
+                     "endPos": 293}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 294, "leading": "", "endPos": 295}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 296,
+                        "leading": "",
+                        "endPos": 302}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 303,
+                           "leading": "",
+                           "endPos": 304}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 305,
+                     "leading": "",
+                     "endPos": 306}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.val",
+                      "rawVal": "a.val",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 307,
+                        "leading": "",
+                        "endPos": 312}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 313,
+                        "leading": "",
+                        "endPos": 314}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "1",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 315,
+                           "leading": "",
+                           "endPos": 316}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 317, "leading": "", "endPos": 319}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 320,
+                  "leading": "",
+                  "endPos": 322}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 325,
+                              "leading": "",
+                              "endPos": 330}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 331,
+                                    "leading": "",
+                                    "endPos": 332}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 332,
+                           "leading": "",
+                           "endPos": 333}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 334,
+                              "leading": "",
+                              "endPos": 338}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 339,
+                                          "leading": "",
+                                          "endPos": 340}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": "\n\n",
+                                          "pos": 340,
+                                          "leading": "",
+                                          "endPos": 345}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 347, "leading": "", "endPos": 349}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 349,
+                           "leading": "",
+                           "endPos": 353}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 353,
+                  "leading": "",
+                  "endPos": 354}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 355,
+                  "leading": "",
+                  "endPos": 364}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 365, "leading": "", "endPos": 372}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "BitVec.sizeOf",
+             "rawVal": "BitVec.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 373, "leading": "", "endPos": 386}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 387,
+                     "leading": "",
+                     "endPos": 388}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 388,
+                        "leading": "",
+                        "endPos": 389}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 390,
+                        "leading": "",
+                        "endPos": 391}}}},
+                    {"node":
+                     {"kind": "Lean.Parser.Term.app",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "BitVec",
+                         "rawVal": "BitVec",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 392,
+                           "leading": "",
+                           "endPos": 398}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "w",
+                            "rawVal": "w",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": "",
+                              "pos": 399,
+                              "leading": "",
+                              "endPos": 400}}}}]}}]}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 400,
+                     "leading": "",
+                     "endPos": 401}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 402, "leading": "", "endPos": 403}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 404,
+                        "leading": "",
+                        "endPos": 410}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 411,
+                           "leading": "",
+                           "endPos": 412}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 413,
+                     "leading": "",
+                     "endPos": 414}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.app",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "sizeOf",
+                         "rawVal": "sizeOf",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 415,
+                           "leading": "",
+                           "endPos": 421}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "a.toFin",
+                            "rawVal": "a.toFin",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 422,
+                              "leading": "",
+                              "endPos": 429}}}}]}}]}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 430,
+                        "leading": "",
+                        "endPos": 431}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "1",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 432,
+                           "leading": "",
+                           "endPos": 433}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 434, "leading": "", "endPos": 436}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 437,
+                  "leading": "",
+                  "endPos": 439}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 442,
+                              "leading": "",
+                              "endPos": 447}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 448,
+                                    "leading": "",
+                                    "endPos": 449}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 449,
+                           "leading": "",
+                           "endPos": 450}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 451,
+                              "leading": "",
+                              "endPos": 455}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 456,
+                                          "leading": "",
+                                          "endPos": 457}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": "\n\n",
+                                          "pos": 457,
+                                          "leading": "",
+                                          "endPos": 462}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 464, "leading": "", "endPos": 466}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 466,
+                           "leading": "",
+                           "endPos": 470}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 470,
+                  "leading": "",
+                  "endPos": 471}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 472,
+                  "leading": "",
+                  "endPos": 481}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 482, "leading": "", "endPos": 489}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "UInt8.sizeOf",
+             "rawVal": "UInt8.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 490, "leading": "", "endPos": 502}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 503,
+                     "leading": "",
+                     "endPos": 504}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 504,
+                        "leading": "",
+                        "endPos": 505}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 506,
+                        "leading": "",
+                        "endPos": 507}}}},
+                    {"ident":
+                     {"val": "UInt8",
+                      "rawVal": "UInt8",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 508,
+                        "leading": "",
+                        "endPos": 513}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 513,
+                     "leading": "",
+                     "endPos": 514}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 515, "leading": "", "endPos": 516}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 517,
+                        "leading": "",
+                        "endPos": 523}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 524,
+                           "leading": "",
+                           "endPos": 525}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 526,
+                     "leading": "",
+                     "endPos": 527}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 528,
+                        "leading": "",
+                        "endPos": 535}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 536,
+                        "leading": "",
+                        "endPos": 537}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "3",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 538,
+                           "leading": "",
+                           "endPos": 539}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 540, "leading": "", "endPos": 542}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 543,
+                  "leading": "",
+                  "endPos": 545}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 548,
+                              "leading": "",
+                              "endPos": 553}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 554,
+                                    "leading": "",
+                                    "endPos": 555}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 555,
+                           "leading": "",
+                           "endPos": 556}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 557,
+                              "leading": "",
+                              "endPos": 561}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 562,
+                                          "leading": "",
+                                          "endPos": 563}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 563,
+                                          "leading": "",
+                                          "endPos": 568}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 569,
+                                 "leading": "",
+                                 "endPos": 570}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "UInt8.toNat",
+                                     "rawVal": "UInt8.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 570,
+                                       "leading": "",
+                                       "endPos": 581}}}}]}},
+                                {"atom":
+                                 {"val": ",",
+                                  "info":
+                                  {"original":
+                                   {"trailing": " ",
+                                    "pos": 581,
+                                    "leading": "",
+                                    "endPos": 582}}}},
+                                {"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "BitVec.toNat",
+                                     "rawVal": "BitVec.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 583,
+                                       "leading": "",
+                                       "endPos": 595}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 595,
+                                 "leading": "",
+                                 "endPos": 596}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 598, "leading": "", "endPos": 600}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 600,
+                           "leading": "",
+                           "endPos": 604}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 604,
+                  "leading": "",
+                  "endPos": 605}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 606,
+                  "leading": "",
+                  "endPos": 615}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 616, "leading": "", "endPos": 623}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "UInt16.sizeOf",
+             "rawVal": "UInt16.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 624, "leading": "", "endPos": 637}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 638,
+                     "leading": "",
+                     "endPos": 639}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 639,
+                        "leading": "",
+                        "endPos": 640}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 641,
+                        "leading": "",
+                        "endPos": 642}}}},
+                    {"ident":
+                     {"val": "UInt16",
+                      "rawVal": "UInt16",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 643,
+                        "leading": "",
+                        "endPos": 649}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 649,
+                     "leading": "",
+                     "endPos": 650}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 651, "leading": "", "endPos": 652}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 653,
+                        "leading": "",
+                        "endPos": 659}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 660,
+                           "leading": "",
+                           "endPos": 661}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 662,
+                     "leading": "",
+                     "endPos": 663}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 664,
+                        "leading": "",
+                        "endPos": 671}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 672,
+                        "leading": "",
+                        "endPos": 673}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "3",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 674,
+                           "leading": "",
+                           "endPos": 675}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 676, "leading": "", "endPos": 678}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 679,
+                  "leading": "",
+                  "endPos": 681}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 684,
+                              "leading": "",
+                              "endPos": 689}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 690,
+                                    "leading": "",
+                                    "endPos": 691}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 691,
+                           "leading": "",
+                           "endPos": 692}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 693,
+                              "leading": "",
+                              "endPos": 697}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 698,
+                                          "leading": "",
+                                          "endPos": 699}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 699,
+                                          "leading": "",
+                                          "endPos": 704}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 705,
+                                 "leading": "",
+                                 "endPos": 706}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "UInt16.toNat",
+                                     "rawVal": "UInt16.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 706,
+                                       "leading": "",
+                                       "endPos": 718}}}}]}},
+                                {"atom":
+                                 {"val": ",",
+                                  "info":
+                                  {"original":
+                                   {"trailing": " ",
+                                    "pos": 718,
+                                    "leading": "",
+                                    "endPos": 719}}}},
+                                {"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "BitVec.toNat",
+                                     "rawVal": "BitVec.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 720,
+                                       "leading": "",
+                                       "endPos": 732}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 732,
+                                 "leading": "",
+                                 "endPos": 733}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 735, "leading": "", "endPos": 737}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 737,
+                           "leading": "",
+                           "endPos": 741}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 741,
+                  "leading": "",
+                  "endPos": 742}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 743,
+                  "leading": "",
+                  "endPos": 752}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 753, "leading": "", "endPos": 760}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "UInt32.sizeOf",
+             "rawVal": "UInt32.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 761, "leading": "", "endPos": 774}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 775,
+                     "leading": "",
+                     "endPos": 776}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 776,
+                        "leading": "",
+                        "endPos": 777}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 778,
+                        "leading": "",
+                        "endPos": 779}}}},
+                    {"ident":
+                     {"val": "UInt32",
+                      "rawVal": "UInt32",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 780,
+                        "leading": "",
+                        "endPos": 786}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 786,
+                     "leading": "",
+                     "endPos": 787}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 788, "leading": "", "endPos": 789}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 790,
+                        "leading": "",
+                        "endPos": 796}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 797,
+                           "leading": "",
+                           "endPos": 798}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 799,
+                     "leading": "",
+                     "endPos": 800}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 801,
+                        "leading": "",
+                        "endPos": 808}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 809,
+                        "leading": "",
+                        "endPos": 810}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "3",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 811,
+                           "leading": "",
+                           "endPos": 812}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 813, "leading": "", "endPos": 815}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 816,
+                  "leading": "",
+                  "endPos": 818}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 821,
+                              "leading": "",
+                              "endPos": 826}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 827,
+                                    "leading": "",
+                                    "endPos": 828}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 828,
+                           "leading": "",
+                           "endPos": 829}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 830,
+                              "leading": "",
+                              "endPos": 834}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 835,
+                                          "leading": "",
+                                          "endPos": 836}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 836,
+                                          "leading": "",
+                                          "endPos": 841}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 842,
+                                 "leading": "",
+                                 "endPos": 843}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "UInt32.toNat",
+                                     "rawVal": "UInt32.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 843,
+                                       "leading": "",
+                                       "endPos": 855}}}}]}},
+                                {"atom":
+                                 {"val": ",",
+                                  "info":
+                                  {"original":
+                                   {"trailing": " ",
+                                    "pos": 855,
+                                    "leading": "",
+                                    "endPos": 856}}}},
+                                {"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "BitVec.toNat",
+                                     "rawVal": "BitVec.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 857,
+                                       "leading": "",
+                                       "endPos": 869}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 869,
+                                 "leading": "",
+                                 "endPos": 870}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "", "pos": 872, "leading": "", "endPos": 874}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 874,
+                           "leading": "",
+                           "endPos": 878}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 878,
+                  "leading": "",
+                  "endPos": 879}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 880,
+                  "leading": "",
+                  "endPos": 889}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 890, "leading": "", "endPos": 897}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "UInt64.sizeOf",
+             "rawVal": "UInt64.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 898, "leading": "", "endPos": 911}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 912,
+                     "leading": "",
+                     "endPos": 913}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 913,
+                        "leading": "",
+                        "endPos": 914}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 915,
+                        "leading": "",
+                        "endPos": 916}}}},
+                    {"ident":
+                     {"val": "UInt64",
+                      "rawVal": "UInt64",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 917,
+                        "leading": "",
+                        "endPos": 923}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 923,
+                     "leading": "",
+                     "endPos": 924}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ", "pos": 925, "leading": "", "endPos": 926}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 927,
+                        "leading": "",
+                        "endPos": 933}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 934,
+                           "leading": "",
+                           "endPos": 935}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 936,
+                     "leading": "",
+                     "endPos": 937}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 938,
+                        "leading": "",
+                        "endPos": 945}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 946,
+                        "leading": "",
+                        "endPos": 947}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "3",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 948,
+                           "leading": "",
+                           "endPos": 949}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 950, "leading": "", "endPos": 952}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 953,
+                  "leading": "",
+                  "endPos": 955}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 958,
+                              "leading": "",
+                              "endPos": 963}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 964,
+                                    "leading": "",
+                                    "endPos": 965}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 965,
+                           "leading": "",
+                           "endPos": 966}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 967,
+                              "leading": "",
+                              "endPos": 971}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 972,
+                                          "leading": "",
+                                          "endPos": 973}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 973,
+                                          "leading": "",
+                                          "endPos": 978}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 979,
+                                 "leading": "",
+                                 "endPos": 980}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "UInt64.toNat",
+                                     "rawVal": "UInt64.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 980,
+                                       "leading": "",
+                                       "endPos": 992}}}}]}},
+                                {"atom":
+                                 {"val": ",",
+                                  "info":
+                                  {"original":
+                                   {"trailing": " ",
+                                    "pos": 992,
+                                    "leading": "",
+                                    "endPos": 993}}}},
+                                {"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "BitVec.toNat",
+                                     "rawVal": "BitVec.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 994,
+                                       "leading": "",
+                                       "endPos": 1006}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 1006,
+                                 "leading": "",
+                                 "endPos": 1007}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "",
+                  "pos": 1009,
+                  "leading": "",
+                  "endPos": 1011}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1011,
+                           "leading": "",
+                           "endPos": 1015}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1015,
+                  "leading": "",
+                  "endPos": 1016}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1017,
+                  "leading": "",
+                  "endPos": 1026}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 1027, "leading": "", "endPos": 1034}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "USize.sizeOf",
+             "rawVal": "USize.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1035, "leading": "", "endPos": 1047}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1048,
+                     "leading": "",
+                     "endPos": 1049}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1049,
+                        "leading": "",
+                        "endPos": 1050}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1051,
+                        "leading": "",
+                        "endPos": 1052}}}},
+                    {"ident":
+                     {"val": "USize",
+                      "rawVal": "USize",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1053,
+                        "leading": "",
+                        "endPos": 1058}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1058,
+                     "leading": "",
+                     "endPos": 1059}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1060,
+                  "leading": "",
+                  "endPos": 1061}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1062,
+                        "leading": "",
+                        "endPos": 1068}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1069,
+                           "leading": "",
+                           "endPos": 1070}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1071,
+                     "leading": "",
+                     "endPos": 1072}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1073,
+                        "leading": "",
+                        "endPos": 1080}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1081,
+                        "leading": "",
+                        "endPos": 1082}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "3",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1083,
+                           "leading": "",
+                           "endPos": 1084}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1085, "leading": "", "endPos": 1087}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 1088,
+                  "leading": "",
+                  "endPos": 1090}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1093,
+                              "leading": "",
+                              "endPos": 1098}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 1099,
+                                    "leading": "",
+                                    "endPos": 1100}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1100,
+                           "leading": "",
+                           "endPos": 1101}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1102,
+                              "leading": "",
+                              "endPos": 1106}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 1107,
+                                          "leading": "",
+                                          "endPos": 1108}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 1108,
+                                          "leading": "",
+                                          "endPos": 1113}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 1114,
+                                 "leading": "",
+                                 "endPos": 1115}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "USize.toNat",
+                                     "rawVal": "USize.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 1115,
+                                       "leading": "",
+                                       "endPos": 1126}}}}]}},
+                                {"atom":
+                                 {"val": ",",
+                                  "info":
+                                  {"original":
+                                   {"trailing": " ",
+                                    "pos": 1126,
+                                    "leading": "",
+                                    "endPos": 1127}}}},
+                                {"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "BitVec.toNat",
+                                     "rawVal": "BitVec.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 1128,
+                                       "leading": "",
+                                       "endPos": 1140}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 1140,
+                                 "leading": "",
+                                 "endPos": 1141}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "",
+                  "pos": 1143,
+                  "leading": "",
+                  "endPos": 1145}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1145,
+                           "leading": "",
+                           "endPos": 1149}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1149,
+                  "leading": "",
+                  "endPos": 1150}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1151,
+                  "leading": "",
+                  "endPos": 1160}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 1161, "leading": "", "endPos": 1168}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "Char.sizeOf",
+             "rawVal": "Char.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1169, "leading": "", "endPos": 1180}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1181,
+                     "leading": "",
+                     "endPos": 1182}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a",
+                      "rawVal": "a",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1182,
+                        "leading": "",
+                        "endPos": 1183}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1184,
+                        "leading": "",
+                        "endPos": 1185}}}},
+                    {"ident":
+                     {"val": "Char",
+                      "rawVal": "Char",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": "",
+                        "pos": 1186,
+                        "leading": "",
+                        "endPos": 1190}}}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1190,
+                     "leading": "",
+                     "endPos": 1191}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1192,
+                  "leading": "",
+                  "endPos": 1193}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1194,
+                        "leading": "",
+                        "endPos": 1200}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "a",
+                         "rawVal": "a",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1201,
+                           "leading": "",
+                           "endPos": 1202}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1203,
+                     "leading": "",
+                     "endPos": 1204}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "a.toNat",
+                      "rawVal": "a.toNat",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1205,
+                        "leading": "",
+                        "endPos": 1212}}}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1213,
+                        "leading": "",
+                        "endPos": 1214}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "4",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1215,
+                           "leading": "",
+                           "endPos": 1216}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1217, "leading": "", "endPos": 1219}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 1220,
+                  "leading": "",
+                  "endPos": 1222}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1225,
+                              "leading": "",
+                              "endPos": 1230}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "a",
+                                  "rawVal": "a",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 1231,
+                                    "leading": "",
+                                    "endPos": 1232}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1232,
+                           "leading": "",
+                           "endPos": 1233}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1234,
+                              "leading": "",
+                              "endPos": 1238}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.configItem",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "Lean.Parser.Tactic.posConfigItem",
+                                     "info": "none",
+                                     "args":
+                                     [{"atom":
+                                       {"val": "+",
+                                        "info":
+                                        {"original":
+                                         {"trailing": "",
+                                          "pos": 1239,
+                                          "leading": "",
+                                          "endPos": 1240}}}},
+                                      {"ident":
+                                       {"val": "arith",
+                                        "rawVal": "arith",
+                                        "preresolved": [],
+                                        "info":
+                                        {"original":
+                                         {"trailing": " ",
+                                          "pos": 1240,
+                                          "leading": "",
+                                          "endPos": 1245}}}}]}}]}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"atom":
+                              {"val": "[",
+                               "info":
+                               {"original":
+                                {"trailing": "",
+                                 "pos": 1246,
+                                 "leading": "",
+                                 "endPos": 1247}}}},
+                             {"node":
+                              {"kind": "null",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "Lean.Parser.Tactic.simpLemma",
+                                  "info": "none",
+                                  "args":
+                                  [{"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"node":
+                                    {"kind": "null",
+                                     "info": "none",
+                                     "args": []}},
+                                   {"ident":
+                                    {"val": "Char.toNat",
+                                     "rawVal": "Char.toNat",
+                                     "preresolved": [],
+                                     "info":
+                                     {"original":
+                                      {"trailing": "",
+                                       "pos": 1247,
+                                       "leading": "",
+                                       "endPos": 1257}}}}]}}]}},
+                             {"atom":
+                              {"val": "]",
+                               "info":
+                               {"original":
+                                {"trailing": "\n\n",
+                                 "pos": 1257,
+                                 "leading": "",
+                                 "endPos": 1258}}}}]}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+  {"node":
+   {"kind": "Lean.Parser.Command.declaration",
+    "info": "none",
+    "args":
+    [{"node":
+      {"kind": "Lean.Parser.Command.declModifiers",
+       "info": "none",
+       "args":
+       [{"node": {"kind": "null", "info": "none", "args": []}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Term.attributes",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "@[",
+                "info":
+                {"original":
+                 {"trailing": "",
+                  "pos": 1260,
+                  "leading": "",
+                  "endPos": 1262}}}},
+              {"node":
+               {"kind": "null",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.attrInstance",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.attrKind",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "null", "info": "none", "args": []}}]}},
+                    {"node":
+                     {"kind": "Lean.Parser.Attr.simp",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "simp",
+                         "info":
+                         {"original":
+                          {"trailing": "",
+                           "pos": 1262,
+                           "leading": "",
+                           "endPos": 1266}}}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node": {"kind": "null", "info": "none", "args": []}},
+                       {"node":
+                        {"kind": "null", "info": "none", "args": []}}]}}]}}]}},
+              {"atom":
+               {"val": "]",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1266,
+                  "leading": "",
+                  "endPos": 1267}}}}]}}]}},
+        {"node":
+         {"kind": "null",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "Lean.Parser.Command.protected",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "protected",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1268,
+                  "leading": "",
+                  "endPos": 1277}}}}]}}]}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}},
+        {"node": {"kind": "null", "info": "none", "args": []}}]}},
+     {"node":
+      {"kind": "Lean.Parser.Command.theorem",
+       "info": "none",
+       "args":
+       [{"atom":
+         {"val": "theorem",
+          "info":
+          {"original":
+           {"trailing": " ", "pos": 1278, "leading": "", "endPos": 1285}}}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declId",
+          "info": "none",
+          "args":
+          [{"ident":
+            {"val": "Subtype.sizeOf",
+             "rawVal": "Subtype.sizeOf",
+             "preresolved": [],
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1286, "leading": "", "endPos": 1300}}}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declSig",
+          "info": "none",
+          "args":
+          [{"node":
+            {"kind": "null",
+             "info": "none",
+             "args":
+             [{"node":
+               {"kind": "Lean.Parser.Term.implicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "{",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1301,
+                     "leading": "",
+                     "endPos": 1302}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "α",
+                      "rawVal": "α",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1302,
+                        "leading": "",
+                        "endPos": 1304}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1305,
+                        "leading": "",
+                        "endPos": 1306}}}},
+                    {"node":
+                     {"kind": "Lean.Parser.Term.sort",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "Sort",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1307,
+                           "leading": "",
+                           "endPos": 1311}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "u_1",
+                            "rawVal": "u_1",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": "",
+                              "pos": 1312,
+                              "leading": "",
+                              "endPos": 1315}}}}]}}]}}]}},
+                 {"atom":
+                  {"val": "}",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1315,
+                     "leading": "",
+                     "endPos": 1316}}}}]}},
+              {"node":
+               {"kind": "Lean.Parser.Term.implicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "{",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1317,
+                     "leading": "",
+                     "endPos": 1318}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "p",
+                      "rawVal": "p",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1318,
+                        "leading": "",
+                        "endPos": 1319}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1320,
+                        "leading": "",
+                        "endPos": 1321}}}},
+                    {"node":
+                     {"kind": "Lean.Parser.Term.arrow",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "α",
+                         "rawVal": "α",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1322,
+                           "leading": "",
+                           "endPos": 1324}}}},
+                       {"atom":
+                        {"val": "→",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1325,
+                           "leading": "",
+                           "endPos": 1328}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Term.prop",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "Prop",
+                            "info":
+                            {"original":
+                             {"trailing": "",
+                              "pos": 1329,
+                              "leading": "",
+                              "endPos": 1333}}}}]}}]}}]}},
+                 {"atom":
+                  {"val": "}",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1333,
+                     "leading": "",
+                     "endPos": 1334}}}}]}},
+              {"node":
+               {"kind": "Lean.Parser.Term.explicitBinder",
+                "info": "none",
+                "args":
+                [{"atom":
+                  {"val": "(",
+                   "info":
+                   {"original":
+                    {"trailing": "",
+                     "pos": 1335,
+                     "leading": "",
+                     "endPos": 1336}}}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "s",
+                      "rawVal": "s",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1336,
+                        "leading": "",
+                        "endPos": 1337}}}}]}},
+                 {"node":
+                  {"kind": "null",
+                   "info": "none",
+                   "args":
+                   [{"atom":
+                     {"val": ":",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1338,
+                        "leading": "",
+                        "endPos": 1339}}}},
+                    {"node":
+                     {"kind": "Lean.Parser.Term.app",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "Subtype",
+                         "rawVal": "Subtype",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1340,
+                           "leading": "",
+                           "endPos": 1347}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "p",
+                            "rawVal": "p",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": "",
+                              "pos": 1348,
+                              "leading": "",
+                              "endPos": 1349}}}}]}}]}}]}},
+                 {"node": {"kind": "null", "info": "none", "args": []}},
+                 {"atom":
+                  {"val": ")",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1349,
+                     "leading": "",
+                     "endPos": 1350}}}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Term.typeSpec",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": ":",
+                "info":
+                {"original":
+                 {"trailing": " ",
+                  "pos": 1351,
+                  "leading": "",
+                  "endPos": 1352}}}},
+              {"node":
+               {"kind": "«term_=_»",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Term.app",
+                   "info": "none",
+                   "args":
+                   [{"ident":
+                     {"val": "sizeOf",
+                      "rawVal": "sizeOf",
+                      "preresolved": [],
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1353,
+                        "leading": "",
+                        "endPos": 1359}}}},
+                    {"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "s",
+                         "rawVal": "s",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1360,
+                           "leading": "",
+                           "endPos": 1361}}}}]}}]}},
+                 {"atom":
+                  {"val": "=",
+                   "info":
+                   {"original":
+                    {"trailing": " ",
+                     "pos": 1362,
+                     "leading": "",
+                     "endPos": 1363}}}},
+                 {"node":
+                  {"kind": "«term_+_»",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "Lean.Parser.Term.app",
+                      "info": "none",
+                      "args":
+                      [{"ident":
+                        {"val": "sizeOf",
+                         "rawVal": "sizeOf",
+                         "preresolved": [],
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1364,
+                           "leading": "",
+                           "endPos": 1370}}}},
+                       {"node":
+                        {"kind": "null",
+                         "info": "none",
+                         "args":
+                         [{"ident":
+                           {"val": "s.val",
+                            "rawVal": "s.val",
+                            "preresolved": [],
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1371,
+                              "leading": "",
+                              "endPos": 1376}}}}]}}]}},
+                    {"atom":
+                     {"val": "+",
+                      "info":
+                      {"original":
+                       {"trailing": " ",
+                        "pos": 1377,
+                        "leading": "",
+                        "endPos": 1378}}}},
+                    {"node":
+                     {"kind": "num",
+                      "info": "none",
+                      "args":
+                      [{"atom":
+                        {"val": "1",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1379,
+                           "leading": "",
+                           "endPos": 1380}}}}]}}]}}]}}]}}]}},
+        {"node":
+         {"kind": "Lean.Parser.Command.declValSimple",
+          "info": "none",
+          "args":
+          [{"atom":
+            {"val": ":=",
+             "info":
+             {"original":
+              {"trailing": " ", "pos": 1381, "leading": "", "endPos": 1383}}}},
+           {"node":
+            {"kind": "Lean.Parser.Term.byTactic",
+             "info": "none",
+             "args":
+             [{"atom":
+               {"val": "by",
+                "info":
+                {"original":
+                 {"trailing": "\n  ",
+                  "pos": 1384,
+                  "leading": "",
+                  "endPos": 1386}}}},
+              {"node":
+               {"kind": "Lean.Parser.Tactic.tacticSeq",
+                "info": "none",
+                "args":
+                [{"node":
+                  {"kind": "Lean.Parser.Tactic.tacticSeq1Indented",
+                   "info": "none",
+                   "args":
+                   [{"node":
+                     {"kind": "null",
+                      "info": "none",
+                      "args":
+                      [{"node":
+                        {"kind": "Lean.Parser.Tactic.cases",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "cases",
+                            "info":
+                            {"original":
+                             {"trailing": " ",
+                              "pos": 1389,
+                              "leading": "",
+                              "endPos": 1394}}}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "Lean.Parser.Tactic.elimTarget",
+                               "info": "none",
+                               "args":
+                               [{"node":
+                                 {"kind": "null", "info": "none", "args": []}},
+                                {"ident":
+                                 {"val": "s",
+                                  "rawVal": "s",
+                                  "preresolved": [],
+                                  "info":
+                                  {"original":
+                                   {"trailing": "",
+                                    "pos": 1395,
+                                    "leading": "",
+                                    "endPos": 1396}}}}]}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}}]}},
+                       {"atom":
+                        {"val": ";",
+                         "info":
+                         {"original":
+                          {"trailing": " ",
+                           "pos": 1396,
+                           "leading": "",
+                           "endPos": 1397}}}},
+                       {"node":
+                        {"kind": "Lean.Parser.Tactic.simp",
+                         "info": "none",
+                         "args":
+                         [{"atom":
+                           {"val": "simp",
+                            "info":
+                            {"original":
+                             {"trailing": "\n",
+                              "pos": 1398,
+                              "leading": "",
+                              "endPos": 1402}}}},
+                          {"node":
+                           {"kind": "Lean.Parser.Tactic.optConfig",
+                            "info": "none",
+                            "args":
+                            [{"node":
+                              {"kind": "null", "info": "none", "args": []}}]}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null", "info": "none", "args": []}},
+                          {"node":
+                           {"kind": "null",
+                            "info": "none",
+                            "args": []}}]}}]}}]}}]}}]}},
+           {"node":
+            {"kind": "Lean.Parser.Termination.suffix",
+             "info": "none",
+             "args":
+             [{"node": {"kind": "null", "info": "none", "args": []}},
+              {"node": {"kind": "null", "info": "none", "args": []}}]}},
+           {"node": {"kind": "null", "info": "none", "args": []}}]}}]}}]}}]}

@@ -1,0 +1,192 @@
+<TracedFile path="src/lean/Init/BinderNameHint.lean" md5="f4bc36a04b55ad98e3c05c2f294823fc">
+  <FileNode start="(1, 1)" end="(44, 96)">
+    <ModuleHeaderNode start="(7, 1)" end="(11, 20)">
+      <NullNode start="(7, 1)" end="(7, 7)">
+        <OtherNode start="(7, 1)" end="(7, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(7, 1)" end="(7, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 8)">
+        <ModulePreludeNode start="(9, 1)" end="(9, 8)">
+          <AtomNode start="(9, 1)" end="(9, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(10, 1)" end="(11, 20)">
+        <ModuleImportNode start="(10, 1)" end="(10, 20)" module="Init.Prelude" path="src/lean/Init/Prelude.lean">
+          <NullNode/>
+          <AtomNode start="(10, 1)" end="(10, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(10, 8)" end="(10, 20)" leading="" trailing="&#10;" raw_val="Init.Prelude" val="Init.Prelude"/>
+          <NullNode/>
+        </ModuleImportNode>
+        <ModuleImportNode start="(11, 1)" end="(11, 20)" module="Init.Tactics" path="src/lean/Init/Tactics.lean">
+          <NullNode/>
+          <AtomNode start="(11, 1)" end="(11, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(11, 8)" end="(11, 20)" leading="" trailing="&#10;&#10;" raw_val="Init.Tactics" val="Init.Tactics"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(13, 1)" end="(44, 96)" kind="Lean.Parser.Command.in">
+      <OtherNode start="(13, 1)" end="(13, 40)" kind="Lean.Parser.Command.set_option">
+        <AtomNode start="(13, 1)" end="(13, 11)" leading="" trailing=" " val="set_option"/>
+        <IdentNode start="(13, 12)" end="(13, 34)" leading="" trailing=" " raw_val="linter.unusedVariables" val="linter.unusedVariables"/>
+        <NullNode/>
+        <AtomNode start="(13, 35)" end="(13, 40)" leading="" trailing=" " val="false"/>
+      </OtherNode>
+      <AtomNode start="(13, 41)" end="(13, 43)" leading="" trailing="&#10;" val="in"/>
+      <CommandDeclarationNode start="(14, 1)" end="(44, 96)" name="binderNameHint" full_name="binderNameHint">
+        <CommandDeclmodifiersNode start="(14, 1)" end="(43, 10)">
+          <NullNode start="(14, 1)" end="(42, 3)">
+            <CommandDoccommentNode start="(14, 1)" end="(42, 3)" comment="The expression `binderNameHint v binder e` defined to be `e`.&#10;&#10;If it is used on the right-hand side of an equation that is used for rewriting by `rw` or `simp`,&#10;and `v` is a local variable, and `binder` is an expression that (after beta-reduction) is a binder&#10;(`fun w =&amp;gt; …` or `∀ w, …`), then it will rename `v` to the name used in that binder, and remove&#10;the `binderNameHint`.&#10;&#10;A typical use of this gadget would be as follows; the gadget ensures that after rewriting, the local&#10;variable is still `name`, and not `x`:&#10;```&#10;theorem all_eq_not_any_not (l : List α) (p : α → Bool) :&#10;    l.all p = !l.any fun x =&amp;gt; binderNameHint x p (!p x) := sorry&#10;&#10;example (names : List String) : names.all (fun name =&amp;gt; &amp;quot;Waldo&amp;quot;.isPrefixOf name) = true := by&#10;  rw [all_eq_not_any_not]&#10;  -- ⊢ (!names.any fun name =&amp;gt; !&amp;quot;Waldo&amp;quot;.isPrefixOf name) = true&#10;```&#10;&#10;If `binder` is not a binder, then the name of `v` attains a macro scope. This only matters when the&#10;resulting term is used in a non-hygienic way, e.g. in termination proofs for well-founded recursion.&#10;&#10;This gadget is supported by&#10;* `simp`, `dsimp` and `rw` in the right-hand-side of an equation&#10;* `simp` in the assumptions of congruence rules&#10;&#10;It is ineffective in other positions (hyptheses of rewrite rules) or when used by other tactics&#10;(e.g. `apply`).&#10;-/">
+              <AtomNode start="(14, 1)" end="(14, 4)" leading="" trailing="&#10;" val="/--"/>
+              <AtomNode start="(15, 1)" end="(42, 3)" leading="" trailing="&#10;" val="The expression `binderNameHint v binder e` defined to be `e`.&#10;&#10;If it is used on the right-hand side of an equation that is used for rewriting by `rw` or `simp`,&#10;and `v` is a local variable, and `binder` is an expression that (after beta-reduction) is a binder&#10;(`fun w =&amp;gt; …` or `∀ w, …`), then it will rename `v` to the name used in that binder, and remove&#10;the `binderNameHint`.&#10;&#10;A typical use of this gadget would be as follows; the gadget ensures that after rewriting, the local&#10;variable is still `name`, and not `x`:&#10;```&#10;theorem all_eq_not_any_not (l : List α) (p : α → Bool) :&#10;    l.all p = !l.any fun x =&amp;gt; binderNameHint x p (!p x) := sorry&#10;&#10;example (names : List String) : names.all (fun name =&amp;gt; &amp;quot;Waldo&amp;quot;.isPrefixOf name) = true := by&#10;  rw [all_eq_not_any_not]&#10;  -- ⊢ (!names.any fun name =&amp;gt; !&amp;quot;Waldo&amp;quot;.isPrefixOf name) = true&#10;```&#10;&#10;If `binder` is not a binder, then the name of `v` attains a macro scope. This only matters when the&#10;resulting term is used in a non-hygienic way, e.g. in termination proofs for well-founded recursion.&#10;&#10;This gadget is supported by&#10;* `simp`, `dsimp` and `rw` in the right-hand-side of an equation&#10;* `simp` in the assumptions of congruence rules&#10;&#10;It is ineffective in other positions (hyptheses of rewrite rules) or when used by other tactics&#10;(e.g. `apply`).&#10;-/"/>
+            </CommandDoccommentNode>
+          </NullNode>
+          <NullNode start="(43, 1)" end="(43, 10)">
+            <OtherNode start="(43, 1)" end="(43, 10)" kind="Lean.Parser.Term.attributes">
+              <AtomNode start="(43, 1)" end="(43, 3)" leading="" trailing="" val="@["/>
+              <NullNode start="(43, 3)" end="(43, 9)">
+                <OtherNode start="(43, 3)" end="(43, 9)" kind="Lean.Parser.Term.attrInstance">
+                  <TermAttrkindNode>
+                    <NullNode/>
+                  </TermAttrkindNode>
+                  <OtherNode start="(43, 3)" end="(43, 9)" kind="Lean.Parser.Attr.simp">
+                    <AtomNode start="(43, 3)" end="(43, 7)" leading="" trailing=" " val="simp"/>
+                    <NullNode start="(43, 8)" end="(43, 9)">
+                      <OtherNode start="(43, 8)" end="(43, 9)" kind="Lean.Parser.Tactic.simpPre">
+                        <AtomNode start="(43, 8)" end="(43, 9)" leading="" trailing="" val="↓"/>
+                      </OtherNode>
+                    </NullNode>
+                    <NullNode/>
+                    <NullNode/>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+              <AtomNode start="(43, 9)" end="(43, 10)" leading="" trailing="&#10;" val="]"/>
+            </OtherNode>
+          </NullNode>
+          <NullNode/>
+          <NullNode/>
+          <NullNode/>
+          <NullNode/>
+        </CommandDeclmodifiersNode>
+        <CommandDefinitionNode start="(44, 1)" end="(44, 96)" name="binderNameHint">
+          <AtomNode start="(44, 1)" end="(44, 4)" leading="" trailing=" " val="def"/>
+          <CommandDeclidNode start="(44, 5)" end="(44, 19)">
+            <IdentNode start="(44, 5)" end="(44, 19)" leading="" trailing=" " raw_val="binderNameHint" val="binderNameHint"/>
+            <NullNode/>
+          </CommandDeclidNode>
+          <OtherNode start="(44, 20)" end="(44, 91)" kind="Lean.Parser.Command.optDeclSig">
+            <NullNode start="(44, 20)" end="(44, 87)">
+              <OtherNode start="(44, 20)" end="(44, 32)" kind="Lean.Parser.Term.implicitBinder">
+                <AtomNode start="(44, 20)" end="(44, 21)" leading="" trailing="" val="{"/>
+                <NullNode start="(44, 21)" end="(44, 22)">
+                  <IdentNode start="(44, 21)" end="(44, 22)" leading="" trailing=" " raw_val="α" val="α"/>
+                </NullNode>
+                <NullNode start="(44, 23)" end="(44, 31)">
+                  <AtomNode start="(44, 23)" end="(44, 24)" leading="" trailing=" " val=":"/>
+                  <OtherNode start="(44, 25)" end="(44, 31)" kind="Lean.Parser.Term.sort">
+                    <AtomNode start="(44, 25)" end="(44, 29)" leading="" trailing=" " val="Sort"/>
+                    <NullNode start="(44, 30)" end="(44, 31)">
+                      <IdentNode start="(44, 30)" end="(44, 31)" leading="" trailing="" raw_val="u" val="u"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(44, 31)" end="(44, 32)" leading="" trailing=" " val="}"/>
+              </OtherNode>
+              <OtherNode start="(44, 33)" end="(44, 45)" kind="Lean.Parser.Term.implicitBinder">
+                <AtomNode start="(44, 33)" end="(44, 34)" leading="" trailing="" val="{"/>
+                <NullNode start="(44, 34)" end="(44, 35)">
+                  <IdentNode start="(44, 34)" end="(44, 35)" leading="" trailing=" " raw_val="β" val="β"/>
+                </NullNode>
+                <NullNode start="(44, 36)" end="(44, 44)">
+                  <AtomNode start="(44, 36)" end="(44, 37)" leading="" trailing=" " val=":"/>
+                  <OtherNode start="(44, 38)" end="(44, 44)" kind="Lean.Parser.Term.sort">
+                    <AtomNode start="(44, 38)" end="(44, 42)" leading="" trailing=" " val="Sort"/>
+                    <NullNode start="(44, 43)" end="(44, 44)">
+                      <IdentNode start="(44, 43)" end="(44, 44)" leading="" trailing="" raw_val="v" val="v"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(44, 44)" end="(44, 45)" leading="" trailing=" " val="}"/>
+              </OtherNode>
+              <OtherNode start="(44, 46)" end="(44, 58)" kind="Lean.Parser.Term.implicitBinder">
+                <AtomNode start="(44, 46)" end="(44, 47)" leading="" trailing="" val="{"/>
+                <NullNode start="(44, 47)" end="(44, 48)">
+                  <IdentNode start="(44, 47)" end="(44, 48)" leading="" trailing=" " raw_val="γ" val="γ"/>
+                </NullNode>
+                <NullNode start="(44, 49)" end="(44, 57)">
+                  <AtomNode start="(44, 49)" end="(44, 50)" leading="" trailing=" " val=":"/>
+                  <OtherNode start="(44, 51)" end="(44, 57)" kind="Lean.Parser.Term.sort">
+                    <AtomNode start="(44, 51)" end="(44, 55)" leading="" trailing=" " val="Sort"/>
+                    <NullNode start="(44, 56)" end="(44, 57)">
+                      <IdentNode start="(44, 56)" end="(44, 57)" leading="" trailing="" raw_val="w" val="w"/>
+                    </NullNode>
+                  </OtherNode>
+                </NullNode>
+                <AtomNode start="(44, 57)" end="(44, 58)" leading="" trailing=" " val="}"/>
+              </OtherNode>
+              <TermExplicitbinderNode start="(44, 59)" end="(44, 66)">
+                <AtomNode start="(44, 59)" end="(44, 60)" leading="" trailing="" val="("/>
+                <NullNode start="(44, 60)" end="(44, 61)">
+                  <IdentNode start="(44, 60)" end="(44, 61)" leading="" trailing=" " raw_val="v" val="v"/>
+                </NullNode>
+                <NullNode start="(44, 62)" end="(44, 65)">
+                  <AtomNode start="(44, 62)" end="(44, 63)" leading="" trailing=" " val=":"/>
+                  <IdentNode start="(44, 64)" end="(44, 65)" leading="" trailing="" raw_val="α" val="α"/>
+                </NullNode>
+                <NullNode/>
+                <AtomNode start="(44, 65)" end="(44, 66)" leading="" trailing=" " val=")"/>
+              </TermExplicitbinderNode>
+              <TermExplicitbinderNode start="(44, 67)" end="(44, 79)">
+                <AtomNode start="(44, 67)" end="(44, 68)" leading="" trailing="" val="("/>
+                <NullNode start="(44, 68)" end="(44, 74)">
+                  <IdentNode start="(44, 68)" end="(44, 74)" leading="" trailing=" " raw_val="binder" val="binder"/>
+                </NullNode>
+                <NullNode start="(44, 75)" end="(44, 78)">
+                  <AtomNode start="(44, 75)" end="(44, 76)" leading="" trailing=" " val=":"/>
+                  <IdentNode start="(44, 77)" end="(44, 78)" leading="" trailing="" raw_val="β" val="β"/>
+                </NullNode>
+                <NullNode/>
+                <AtomNode start="(44, 78)" end="(44, 79)" leading="" trailing=" " val=")"/>
+              </TermExplicitbinderNode>
+              <TermExplicitbinderNode start="(44, 80)" end="(44, 87)">
+                <AtomNode start="(44, 80)" end="(44, 81)" leading="" trailing="" val="("/>
+                <NullNode start="(44, 81)" end="(44, 82)">
+                  <IdentNode start="(44, 81)" end="(44, 82)" leading="" trailing=" " raw_val="e" val="e"/>
+                </NullNode>
+                <NullNode start="(44, 83)" end="(44, 86)">
+                  <AtomNode start="(44, 83)" end="(44, 84)" leading="" trailing=" " val=":"/>
+                  <IdentNode start="(44, 85)" end="(44, 86)" leading="" trailing="" raw_val="γ" val="γ"/>
+                </NullNode>
+                <NullNode/>
+                <AtomNode start="(44, 86)" end="(44, 87)" leading="" trailing=" " val=")"/>
+              </TermExplicitbinderNode>
+            </NullNode>
+            <NullNode start="(44, 88)" end="(44, 91)">
+              <TermTypespecNode start="(44, 88)" end="(44, 91)">
+                <AtomNode start="(44, 88)" end="(44, 89)" leading="" trailing=" " val=":"/>
+                <IdentNode start="(44, 90)" end="(44, 91)" leading="" trailing=" " raw_val="γ" val="γ"/>
+              </TermTypespecNode>
+            </NullNode>
+          </OtherNode>
+          <CommandDeclvalsimpleNode start="(44, 92)" end="(44, 96)">
+            <AtomNode start="(44, 92)" end="(44, 94)" leading="" trailing=" " val=":="/>
+            <IdentNode start="(44, 95)" end="(44, 96)" leading="" trailing="&#10;" raw_val="e" val="e"/>
+            <OtherNode kind="Lean.Parser.Termination.suffix">
+              <NullNode/>
+              <NullNode/>
+            </OtherNode>
+            <NullNode/>
+          </CommandDeclvalsimpleNode>
+          <NullNode/>
+        </CommandDefinitionNode>
+      </CommandDeclarationNode>
+    </OtherNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(14, 1)" end="(42, 3)" text="The expression `binderNameHint v binder e` defined to be `e`.&#10;&#10;If it is used on the right-hand side of an equation that is used for rewriting by `rw` or `simp`,&#10;and `v` is a local variable, and `binder` is an expression that (after beta-reduction) is a binder&#10;(`fun w =&gt; …` or `∀ w, …`), then it will rename `v` to the name used in that binder, and remove&#10;the `binderNameHint`.&#10;&#10;A typical use of this gadget would be as follows; the gadget ensures that after rewriting, the local&#10;variable is still `name`, and not `x`:&#10;```&#10;theorem all_eq_not_any_not (l : List α) (p : α → Bool) :&#10;    l.all p = !l.any fun x =&gt; binderNameHint x p (!p x) := sorry&#10;&#10;example (names : List String) : names.all (fun name =&gt; &quot;Waldo&quot;.isPrefixOf name) = true := by&#10;  rw [all_eq_not_any_not]&#10;  -- ⊢ (!names.any fun name =&gt; !&quot;Waldo&quot;.isPrefixOf name) = true&#10;```&#10;&#10;If `binder` is not a binder, then the name of `v` attains a macro scope. This only matters when the&#10;resulting term is used in a non-hygienic way, e.g. in termination proofs for well-founded recursion.&#10;&#10;This gadget is supported by&#10;* `simp`, `dsimp` and `rw` in the right-hand-side of an equation&#10;* `simp` in the assumptions of congruence rules&#10;&#10;It is ineffective in other positions (hyptheses of rewrite rules) or when used by other tactics&#10;(e.g. `apply`).&#10;-/"/>
+  </Comments>
+</TracedFile>

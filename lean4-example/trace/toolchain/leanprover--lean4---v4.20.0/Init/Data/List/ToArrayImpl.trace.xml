@@ -1,0 +1,297 @@
+<TracedFile path="src/lean/Init/Data/List/ToArrayImpl.lean" md5="017dbebc90f1e93dee5a1c61581a38d8">
+  <FileNode start="(1, 1)" end="(34, 42)">
+    <ModuleHeaderNode start="(6, 1)" end="(9, 28)">
+      <NullNode start="(6, 1)" end="(6, 7)">
+        <OtherNode start="(6, 1)" end="(6, 7)" kind="Lean.Parser.Module.moduleTk">
+          <AtomNode start="(6, 1)" end="(6, 7)" leading="" trailing="&#10;&#10;" val="module"/>
+        </OtherNode>
+      </NullNode>
+      <NullNode start="(8, 1)" end="(8, 8)">
+        <ModulePreludeNode start="(8, 1)" end="(8, 8)">
+          <AtomNode start="(8, 1)" end="(8, 8)" leading="" trailing="&#10;" val="prelude"/>
+        </ModulePreludeNode>
+      </NullNode>
+      <NullNode start="(9, 1)" end="(9, 28)">
+        <ModuleImportNode start="(9, 1)" end="(9, 28)" module="Init.Data.List.Basic" path="src/lean/Init/Data/List/Basic.lean">
+          <NullNode/>
+          <AtomNode start="(9, 1)" end="(9, 7)" leading="" trailing=" " val="import"/>
+          <NullNode/>
+          <IdentNode start="(9, 8)" end="(9, 28)" leading="" trailing="&#10;&#10;" raw_val="Init.Data.List.Basic" val="Init.Data.List.Basic"/>
+          <NullNode/>
+        </ModuleImportNode>
+      </NullNode>
+    </ModuleHeaderNode>
+    <OtherNode start="(11, 1)" end="(11, 37)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(11, 1)" end="(11, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(11, 12)" end="(11, 32)" leading="" trailing=" " raw_val="linter.listVariables" val="linter.listVariables"/>
+      <NullNode/>
+      <AtomNode start="(11, 33)" end="(11, 37)" leading="" trailing=" -- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;" val="true"/>
+    </OtherNode>
+    <OtherNode start="(12, 1)" end="(12, 38)" kind="Lean.Parser.Command.set_option">
+      <AtomNode start="(12, 1)" end="(12, 11)" leading="" trailing=" " val="set_option"/>
+      <IdentNode start="(12, 12)" end="(12, 33)" leading="" trailing=" " raw_val="linter.indexVariables" val="linter.indexVariables"/>
+      <NullNode/>
+      <AtomNode start="(12, 34)" end="(12, 38)" leading="" trailing=" -- Enforce naming conventions for index variables.&#10;&#10;" val="true"/>
+    </OtherNode>
+    <CommandDeclarationNode start="(14, 1)" end="(21, 47)" name="List.toArrayAux" full_name="List.toArrayAux">
+      <CommandDeclmodifiersNode start="(14, 1)" end="(18, 20)">
+        <NullNode start="(14, 1)" end="(17, 3)">
+          <CommandDoccommentNode start="(14, 1)" end="(17, 3)" comment="Auxiliary definition for `List.toArray`.&#10;`List.toArrayAux as r = r ++ as.toArray`&#10;-/">
+            <AtomNode start="(14, 1)" end="(14, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(15, 1)" end="(17, 3)" leading="" trailing="&#10;" val="Auxiliary definition for `List.toArray`.&#10;`List.toArrayAux as r = r ++ as.toArray`&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(18, 1)" end="(18, 20)">
+          <OtherNode start="(18, 1)" end="(18, 20)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(18, 1)" end="(18, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(18, 3)" end="(18, 19)">
+              <OtherNode start="(18, 3)" end="(18, 19)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(18, 3)" end="(18, 19)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(18, 3)" end="(18, 19)" leading="" trailing="" raw_val="inline_if_reduce" val="inline_if_reduce"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(18, 19)" end="(18, 20)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(19, 1)" end="(21, 47)" name="List.toArrayAux">
+        <AtomNode start="(19, 1)" end="(19, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(19, 5)" end="(19, 20)">
+          <IdentNode start="(19, 5)" end="(19, 20)" leading="" trailing=" " raw_val="List.toArrayAux" val="List.toArrayAux"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(19, 21)" end="(19, 49)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode/>
+          <NullNode start="(19, 21)" end="(19, 49)">
+            <TermTypespecNode start="(19, 21)" end="(19, 49)">
+              <AtomNode start="(19, 21)" end="(19, 22)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(19, 23)" end="(19, 49)" kind="Lean.Parser.Term.arrow">
+                <OtherNode start="(19, 23)" end="(19, 29)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(19, 23)" end="(19, 27)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(19, 28)" end="(19, 29)">
+                    <IdentNode start="(19, 28)" end="(19, 29)" leading="" trailing=" " raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+                <AtomNode start="(19, 30)" end="(19, 31)" leading="" trailing=" " val="→"/>
+                <OtherNode start="(19, 32)" end="(19, 49)" kind="Lean.Parser.Term.arrow">
+                  <OtherNode start="(19, 32)" end="(19, 39)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(19, 32)" end="(19, 37)" leading="" trailing=" " raw_val="Array" val="Array" full_name="Array" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(19, 38)" end="(19, 39)">
+                      <IdentNode start="(19, 38)" end="(19, 39)" leading="" trailing=" " raw_val="α" val="α"/>
+                    </NullNode>
+                  </OtherNode>
+                  <AtomNode start="(19, 40)" end="(19, 41)" leading="" trailing=" " val="→"/>
+                  <OtherNode start="(19, 42)" end="(19, 49)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(19, 42)" end="(19, 47)" leading="" trailing=" " raw_val="Array" val="Array" full_name="Array" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                    <NullNode start="(19, 48)" end="(19, 49)">
+                      <IdentNode start="(19, 48)" end="(19, 49)" leading="" trailing="&#10;  " raw_val="α" val="α"/>
+                    </NullNode>
+                  </OtherNode>
+                </OtherNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvaleqnsNode start="(20, 3)" end="(21, 47)">
+          <OtherNode start="(20, 3)" end="(21, 47)" kind="Lean.Parser.Term.matchAltsWhereDecls">
+            <OtherNode start="(20, 3)" end="(21, 47)" kind="Lean.Parser.Term.matchAlts">
+              <NullNode start="(20, 3)" end="(21, 47)">
+                <OtherNode start="(20, 3)" end="(20, 24)" kind="Lean.Parser.Term.matchAlt">
+                  <AtomNode start="(20, 3)" end="(20, 4)" leading="" trailing=" " val="|"/>
+                  <NullNode start="(20, 5)" end="(20, 18)">
+                    <NullNode start="(20, 5)" end="(20, 18)">
+                      <IdentNode start="(20, 5)" end="(20, 8)" leading="" trailing="" raw_val="nil" val="nil" full_name="List.nil" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                      <AtomNode start="(20, 8)" end="(20, 9)" leading="" trailing="       " val=","/>
+                      <IdentNode start="(20, 16)" end="(20, 18)" leading="" trailing=" " raw_val="xs" val="xs"/>
+                    </NullNode>
+                  </NullNode>
+                  <AtomNode start="(20, 19)" end="(20, 21)" leading="" trailing=" " val="=&amp;gt;"/>
+                  <IdentNode start="(20, 22)" end="(20, 24)" leading="" trailing="&#10;  " raw_val="xs" val="xs"/>
+                </OtherNode>
+                <OtherNode start="(21, 3)" end="(21, 47)" kind="Lean.Parser.Term.matchAlt">
+                  <AtomNode start="(21, 3)" end="(21, 4)" leading="" trailing=" " val="|"/>
+                  <NullNode start="(21, 5)" end="(21, 18)">
+                    <NullNode start="(21, 5)" end="(21, 18)">
+                      <OtherNode start="(21, 5)" end="(21, 14)" kind="Lean.Parser.Term.app">
+                        <IdentNode start="(21, 5)" end="(21, 9)" leading="" trailing=" " raw_val="cons" val="cons" full_name="List.cons" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                        <NullNode start="(21, 10)" end="(21, 14)">
+                          <IdentNode start="(21, 10)" end="(21, 11)" leading="" trailing=" " raw_val="a" val="a"/>
+                          <IdentNode start="(21, 12)" end="(21, 14)" leading="" trailing="" raw_val="as" val="as"/>
+                        </NullNode>
+                      </OtherNode>
+                      <AtomNode start="(21, 14)" end="(21, 15)" leading="" trailing=" " val=","/>
+                      <IdentNode start="(21, 16)" end="(21, 18)" leading="" trailing=" " raw_val="xs" val="xs"/>
+                    </NullNode>
+                  </NullNode>
+                  <AtomNode start="(21, 19)" end="(21, 21)" leading="" trailing=" " val="=&amp;gt;"/>
+                  <OtherNode start="(21, 22)" end="(21, 47)" kind="Lean.Parser.Term.app">
+                    <IdentNode start="(21, 22)" end="(21, 32)" leading="" trailing=" " raw_val="toArrayAux" val="toArrayAux"/>
+                    <NullNode start="(21, 33)" end="(21, 47)">
+                      <IdentNode start="(21, 33)" end="(21, 35)" leading="" trailing=" " raw_val="as" val="as"/>
+                      <OtherNode start="(21, 36)" end="(21, 47)" kind="Lean.Parser.Term.paren">
+                        <AtomNode start="(21, 36)" end="(21, 37)" leading="" trailing="" val="("/>
+                        <OtherNode start="(21, 37)" end="(21, 46)" kind="Lean.Parser.Term.app">
+                          <IdentNode start="(21, 37)" end="(21, 44)" leading="" trailing=" " raw_val="xs.push" val="xs.push"/>
+                          <NullNode start="(21, 45)" end="(21, 46)">
+                            <IdentNode start="(21, 45)" end="(21, 46)" leading="" trailing="" raw_val="a" val="a"/>
+                          </NullNode>
+                        </OtherNode>
+                        <AtomNode start="(21, 46)" end="(21, 47)" leading="" trailing="&#10;&#10;" val=")"/>
+                      </OtherNode>
+                    </NullNode>
+                  </OtherNode>
+                </OtherNode>
+              </NullNode>
+            </OtherNode>
+            <OtherNode kind="Lean.Parser.Termination.suffix">
+              <NullNode/>
+              <NullNode/>
+            </OtherNode>
+            <NullNode/>
+          </OtherNode>
+        </CommandDeclvaleqnsNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+    <CommandDeclarationNode start="(23, 1)" end="(34, 42)" name="List.toArrayImpl" full_name="List.toArrayImpl">
+      <CommandDeclmodifiersNode start="(23, 1)" end="(32, 62)">
+        <NullNode start="(23, 1)" end="(29, 3)">
+          <CommandDoccommentNode start="(23, 1)" end="(29, 3)" comment="Converts a `List α` into an `Array α` by repeatedly pushing elements from the list onto an empty&#10;array. `O(|xs|)`.&#10;&#10;Use `List.toArray` instead of calling this function directly. At runtime, this operation implements&#10;both `List.toArray` and `Array.mk`.&#10;-/">
+            <AtomNode start="(23, 1)" end="(23, 4)" leading="" trailing="&#10;" val="/--"/>
+            <AtomNode start="(24, 1)" end="(29, 3)" leading="" trailing="&#10;-- This function is exported to C, where it is called by `Array.mk`&#10;-- (the constructor) to implement this functionality.&#10;" val="Converts a `List α` into an `Array α` by repeatedly pushing elements from the list onto an empty&#10;array. `O(|xs|)`.&#10;&#10;Use `List.toArray` instead of calling this function directly. At runtime, this operation implements&#10;both `List.toArray` and `Array.mk`.&#10;-/"/>
+          </CommandDoccommentNode>
+        </NullNode>
+        <NullNode start="(32, 1)" end="(32, 62)">
+          <OtherNode start="(32, 1)" end="(32, 62)" kind="Lean.Parser.Term.attributes">
+            <AtomNode start="(32, 1)" end="(32, 3)" leading="" trailing="" val="@["/>
+            <NullNode start="(32, 3)" end="(32, 61)">
+              <OtherNode start="(32, 3)" end="(32, 9)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(32, 3)" end="(32, 9)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(32, 3)" end="(32, 9)" leading="" trailing="" raw_val="inline" val="inline"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(32, 9)" end="(32, 10)" leading="" trailing=" " val=","/>
+              <OtherNode start="(32, 11)" end="(32, 24)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(32, 11)" end="(32, 24)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(32, 11)" end="(32, 24)" leading="" trailing="" raw_val="match_pattern" val="match_pattern"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(32, 24)" end="(32, 25)" leading="" trailing=" " val=","/>
+              <OtherNode start="(32, 26)" end="(32, 34)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(32, 26)" end="(32, 34)" kind="Lean.Parser.Attr.simple">
+                  <IdentNode start="(32, 26)" end="(32, 34)" leading="" trailing="" raw_val="pp_nodot" val="pp_nodot"/>
+                  <NullNode/>
+                </OtherNode>
+              </OtherNode>
+              <AtomNode start="(32, 34)" end="(32, 35)" leading="" trailing=" " val=","/>
+              <OtherNode start="(32, 36)" end="(32, 61)" kind="Lean.Parser.Term.attrInstance">
+                <TermAttrkindNode>
+                  <NullNode/>
+                </TermAttrkindNode>
+                <OtherNode start="(32, 36)" end="(32, 61)" kind="Lean.Parser.Attr.export">
+                  <AtomNode start="(32, 36)" end="(32, 42)" leading="" trailing=" " val="export"/>
+                  <IdentNode start="(32, 43)" end="(32, 61)" leading="" trailing="" raw_val="lean_list_to_array" val="lean_list_to_array"/>
+                </OtherNode>
+              </OtherNode>
+            </NullNode>
+            <AtomNode start="(32, 61)" end="(32, 62)" leading="" trailing="&#10;" val="]"/>
+          </OtherNode>
+        </NullNode>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+        <NullNode/>
+      </CommandDeclmodifiersNode>
+      <CommandDefinitionNode start="(33, 1)" end="(34, 42)" name="List.toArrayImpl">
+        <AtomNode start="(33, 1)" end="(33, 4)" leading="" trailing=" " val="def"/>
+        <CommandDeclidNode start="(33, 5)" end="(33, 21)">
+          <IdentNode start="(33, 5)" end="(33, 21)" leading="" trailing=" " raw_val="List.toArrayImpl" val="List.toArrayImpl"/>
+          <NullNode/>
+        </CommandDeclidNode>
+        <OtherNode start="(33, 22)" end="(33, 45)" kind="Lean.Parser.Command.optDeclSig">
+          <NullNode start="(33, 22)" end="(33, 35)">
+            <TermExplicitbinderNode start="(33, 22)" end="(33, 35)">
+              <AtomNode start="(33, 22)" end="(33, 23)" leading="" trailing="" val="("/>
+              <NullNode start="(33, 23)" end="(33, 25)">
+                <IdentNode start="(33, 23)" end="(33, 25)" leading="" trailing=" " raw_val="xs" val="xs"/>
+              </NullNode>
+              <NullNode start="(33, 26)" end="(33, 34)">
+                <AtomNode start="(33, 26)" end="(33, 27)" leading="" trailing=" " val=":"/>
+                <OtherNode start="(33, 28)" end="(33, 34)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(33, 28)" end="(33, 32)" leading="" trailing=" " raw_val="List" val="List" full_name="List" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(33, 33)" end="(33, 34)">
+                    <IdentNode start="(33, 33)" end="(33, 34)" leading="" trailing="" raw_val="α" val="α"/>
+                  </NullNode>
+                </OtherNode>
+              </NullNode>
+              <NullNode/>
+              <AtomNode start="(33, 34)" end="(33, 35)" leading="" trailing=" " val=")"/>
+            </TermExplicitbinderNode>
+          </NullNode>
+          <NullNode start="(33, 36)" end="(33, 45)">
+            <TermTypespecNode start="(33, 36)" end="(33, 45)">
+              <AtomNode start="(33, 36)" end="(33, 37)" leading="" trailing=" " val=":"/>
+              <OtherNode start="(33, 38)" end="(33, 45)" kind="Lean.Parser.Term.app">
+                <IdentNode start="(33, 38)" end="(33, 43)" leading="" trailing=" " raw_val="Array" val="Array" full_name="Array" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                <NullNode start="(33, 44)" end="(33, 45)">
+                  <IdentNode start="(33, 44)" end="(33, 45)" leading="" trailing=" " raw_val="α" val="α"/>
+                </NullNode>
+              </OtherNode>
+            </TermTypespecNode>
+          </NullNode>
+        </OtherNode>
+        <CommandDeclvalsimpleNode start="(33, 46)" end="(34, 42)">
+          <AtomNode start="(33, 46)" end="(33, 48)" leading="" trailing="&#10;  " val=":="/>
+          <OtherNode start="(34, 3)" end="(34, 42)" kind="Lean.Parser.Term.app">
+            <IdentNode start="(34, 3)" end="(34, 16)" leading="" trailing=" " raw_val="xs.toArrayAux" val="xs.toArrayAux"/>
+            <NullNode start="(34, 17)" end="(34, 42)">
+              <OtherNode start="(34, 17)" end="(34, 42)" kind="Lean.Parser.Term.paren">
+                <AtomNode start="(34, 17)" end="(34, 18)" leading="" trailing="" val="("/>
+                <OtherNode start="(34, 18)" end="(34, 41)" kind="Lean.Parser.Term.app">
+                  <IdentNode start="(34, 18)" end="(34, 31)" leading="" trailing=" " raw_val="Array.mkEmpty" val="Array.mkEmpty" full_name="Array.mkEmpty" mod_name="Init.Prelude" def_path="/home/linfe/.elan/toolchains/leanprover--lean4---v4.20.0/src/lean/Init/Prelude.lean"/>
+                  <NullNode start="(34, 32)" end="(34, 41)">
+                    <IdentNode start="(34, 32)" end="(34, 41)" leading="" trailing="" raw_val="xs.length" val="xs.length"/>
+                  </NullNode>
+                </OtherNode>
+                <AtomNode start="(34, 41)" end="(34, 42)" leading="" trailing="&#10;" val=")"/>
+              </OtherNode>
+            </NullNode>
+          </OtherNode>
+          <OtherNode kind="Lean.Parser.Termination.suffix">
+            <NullNode/>
+            <NullNode/>
+          </OtherNode>
+          <NullNode/>
+        </CommandDeclvalsimpleNode>
+        <NullNode/>
+      </CommandDefinitionNode>
+    </CommandDeclarationNode>
+  </FileNode>
+  <Comments>
+    <Comment start="(11, 38)" end="(12, 1)" text="-- Enforce naming conventions for `List`/`Array`/`Vector` variables.&#10;"/>
+    <Comment start="(12, 39)" end="(14, 1)" text="-- Enforce naming conventions for index variables.&#10;&#10;"/>
+    <Comment start="(14, 1)" end="(17, 3)" text="Auxiliary definition for `List.toArray`.&#10;`List.toArrayAux as r = r ++ as.toArray`&#10;-/"/>
+    <Comment start="(23, 1)" end="(29, 3)" text="Converts a `List α` into an `Array α` by repeatedly pushing elements from the list onto an empty&#10;array. `O(|xs|)`.&#10;&#10;Use `List.toArray` instead of calling this function directly. At runtime, this operation implements&#10;both `List.toArray` and `Array.mk`.&#10;-/"/>
+    <Comment start="(30, 1)" end="(32, 1)" text="-- This function is exported to C, where it is called by `Array.mk`&#10;-- (the constructor) to implement this functionality.&#10;"/>
+  </Comments>
+</TracedFile>
